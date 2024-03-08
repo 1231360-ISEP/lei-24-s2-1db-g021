@@ -15,6 +15,10 @@ However, be aware, this is a pedagogical simplification. On further projects and
 | UC/US | Description                                   |                   
 |:------|:----------------------------------------------|
 | US001 | [Short name for US001](../../us001/Readme.md) |
-| ...   | ...                                           |
+| US002 | [Short name for US001](../../us001/Readme.md) |
+| US003 | [Short name for US001](../../us001/Readme.md) |
+| US004 | [Short name for US001](../../us001/Readme.md) |
+| US005 | [Short name for US001](../../us001/Readme.md) |
 | US006 | [Create a Task](../../us006/Readme.md)        |
-| ...   | ...                                           |
+| US007 | [Short name for US001](../../us001/Readme.md) |
+| US008 | [Short name for US001](../../us001/Readme.md) |
