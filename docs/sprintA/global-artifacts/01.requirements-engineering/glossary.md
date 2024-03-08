@@ -8,7 +8,7 @@ _(Complete according to the provided example)_
 |:---------------|:------------------------------------------------------------------------------------------|
 | **Clerk**      | Person responsible for carrying out various business supporting activities on the system. |
 | **CLK**        | Acronym for _Clerk_.                                                                      |
-| **GRH**        | ...                                                                                       |
+| **GRH**        | Gestor de Recursos Humanos                                                                |
 
 
 
