@@ -21,12 +21,6 @@ _(Complete according to the provided example)_
 | **HRM**                     | Acronym for _Human Resources Manager_.                                                                                                                        |
 | ****                        |                                                                                                                                                               |
 | ****                        |                                                                                                                                                               |
-| ****                        |                                                                                                                                                               |
-| ****                        |                                                                                                                                                               |
-| ****                        |                                                                                                                                                               |
-| ****                        |                                                                                                                                                               |
-| ****                        |                                                                                                                                                               |
-| ****                        |                                                                                                                                                               |
 
 
 
