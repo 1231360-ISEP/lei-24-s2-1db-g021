@@ -1,4 +1,4 @@
-# US003 - Register Collaborator job 
+# US003 - Register Collaborator Job 
 
 [Requirements Engineering](01.requirements-engineering/Readme.md)
 
