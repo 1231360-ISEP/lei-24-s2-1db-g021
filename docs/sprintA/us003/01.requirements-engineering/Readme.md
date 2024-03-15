@@ -1,4 +1,4 @@
-# US003 - Register Collaborator Job 
+# US003 - Register Collaborator Job & Skills
 
 
 ## 1. Requirements Engineering
