@@ -5,7 +5,7 @@
 
 ### 1.1. User Story Description
 
-As an organization employee, I want to create a new task in order to be further published.
+As an HRM, I want to register a job.
 
 ### 1.2. Customer Specifications and Clarifications 
 
@@ -17,13 +17,9 @@ As an organization employee, I want to create a new task in order to be further 
 
 **From the client clarifications:**
 
-> **Question:** Which is the unit of measurement used to estimate duration?
+> **Question:** ?
 >
-> **Answer:** Duration is estimated in days.
-
-> **Question:** Monetary data is expressed in any particular currency?
->
-> **Answer:** Monetary data (e.g. estimated cost of a task) is indicated in POT (virtual currency internal to the platform).
+> **Answer:** .
 
 ### 1.3. Acceptance Criteria
 
@@ -33,7 +29,7 @@ As an organization employee, I want to create a new task in order to be further 
 
 ### 1.4. Found out Dependencies
 
-* There is a dependency on "US003 - Create a task category" as there must be at least one task category to classify the task being created.
+* There is a dependency on "US03 - Create a task category" as there must be at least one task category to classify the task being created.
 
 ### 1.5 Input and Output Data
 
