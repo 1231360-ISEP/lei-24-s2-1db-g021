@@ -12,13 +12,13 @@ However, be aware, this is a pedagogical simplification. On further projects and
 
 # Use Cases / User Stories
 
-| UC/US | Description                                                          |                   
-|:------|:---------------------------------------------------------------------|
-| US001 | [US001 - Register Collaborator Skills](../../us001/Readme.md)        |
-| US002 | [US002 - Register Job ](../../us002/Readme.md)                       |
-| US003 | [US003 - Register Collaborator Job & Skills](../../us003/Readme.md)  |
-| US004 | [US004 - Add Collaborator Skills](../../us004/Readme.md)             |
-| US005 | [US005 - Generate Proposal Team](../../us005/Readme.md)              |
-| US006 | [US006 - Register Vehicle](../../us006/Readme.md)                    |
-| US007 | [US007 - Register Vehicle´s Check-up](../../us007/Readme.md)         |
-| US008 | [US008 - List Vehicles Need Check-up](../../us008/Readme.md)         |
+| UC/US | Description                                                              |                   
+|:------|:-------------------------------------------------------------------------|
+| US001 | [US001 - Register Skills to Collaborators](../../us001/Readme.md)        |
+| US002 | [US002 - Register Job ](../../us002/Readme.md)                           |
+| US003 | [US003 - Register Collaborator Job & Skills](../../us003/Readme.md)      |
+| US004 | [US004 - Add Collaborator Skills](../../us004/Readme.md)                 |
+| US005 | [US005 - Generate Proposal Team](../../us005/Readme.md)                  |
+| US006 | [US006 - Register Vehicle](../../us006/Readme.md)                        |
+| US007 | [US007 - Register Vehicle´s Check-up](../../us007/Readme.md)             |
+| US008 | [US008 - List Vehicles Need Check-up](../../us008/Readme.md)             |
