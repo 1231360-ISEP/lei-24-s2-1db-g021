@@ -8,28 +8,44 @@ skinparam rectangle{
 }
 
 'title Use Case Diagram Example
-
+actor GRH
+actor GPV
 left to right direction
 
-rectangle "System Actors" as actors {
-    actor Freelancer
-    actor "Organization\nEmployee" as Employee
+rectangle "Integrating Project" as actors {
+        usecase "UC1 - Create a Task" as UC1
+        GRH --> UC1
+        usecase "UC2 - Create a Task" as UC2
+        GRH --> UC2
+        usecase "UC3 - Create a Task" as UC3
+        GRH --> UC3
+        usecase "UC4 - Create a Task" as UC4
+        GRH --> UC4
+        usecase "UC5 - Create a Task" as UC5
+        GRH --> UC5
+        usecase "UC6 - Create a Task" as UC6
+        GPV --> UC6
+        usecase "UC7 - Create a Task" as UC7
+        GPV --> UC7
+        usecase "UC8 - Create a Task" as UC8
+        GPV --> UC8
 }
 
-
-note right of Freelancer
-    Actor identified but still
-    no concrete use cases
-end note
-
-rectangle "Use Cases" as usecases{
-    usecase "UC6 - Create a Task" as UC6
-    Employee --> UC6
-}
-note right of actors
-    Rectangles and Titles are for
-    demonstration purposes only.
-    Omitt on your diagrams.
-end note
+left to right direction
+actor New_Colaborator
+UC3 -- New_Colaborator
+actor Modify_Colaborator
+UC4 -- Modify_Colaborator
+actor Colaborator
+New_Colaborator --> Colaborator
+Modify_Colaborator --> Colaborator
+actor New_Vehicle
+UC6 -- New_Vehicle
+actor Vehicle_Overhaul
+UC7 -- Vehicle_Overhaul
+UC8 -- Vehicle_Overhaul
+actor Vehicle
+New_Vehicle --> Vehicle
+Vehicle_Overhaul --> Vehicle
 
 @enduml
