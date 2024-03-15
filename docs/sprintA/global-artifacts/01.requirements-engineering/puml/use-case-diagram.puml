@@ -25,6 +25,7 @@ rectangle "Integrating Project" as actors {
         GRH --> UC4
         usecase "UC5 - Generate Proposal Team" as UC5
         GRH --> UC5
+        UC5 .> UC3 : include
         usecase "UC6 - Register Vehicle" as UC6
         GPV --> UC6
         usecase "UC7 - Register Vehicleïs Check-up" as UC7
