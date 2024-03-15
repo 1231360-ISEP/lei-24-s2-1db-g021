@@ -13,21 +13,21 @@ actor GPV
 left to right direction
 
 rectangle "Integrating Project" as actors {
-        usecase "UC1 - Create a Task" as UC1
+        usecase "UC1 - Register Collaborator Skills" as UC1
         GRH --> UC1
-        usecase "UC2 - Create a Task" as UC2
+        usecase "UC2 - Register Job" as UC2
         GRH --> UC2
-        usecase "UC3 - Create a Task" as UC3
+        usecase "UC3 - Register Collaborator Job & Skills" as UC3
         GRH --> UC3
-        usecase "UC4 - Create a Task" as UC4
+        usecase "UC4 - Add Collaborator Skills" as UC4
         GRH --> UC4
-        usecase "UC5 - Create a Task" as UC5
+        usecase "UC5 - Generate Proposal Team" as UC5
         GRH --> UC5
-        usecase "UC6 - Create a Task" as UC6
+        usecase "UC6 - Register Vehicle" as UC6
         GPV --> UC6
-        usecase "UC7 - Create a Task" as UC7
+        usecase "UC7 - Register Vehicle´s Check-up" as UC7
         GPV --> UC7
-        usecase "UC8 - Create a Task" as UC8
+        usecase "UC8 - List Vehicles Need Check-up" as UC8
         GPV --> UC8
 }
 
