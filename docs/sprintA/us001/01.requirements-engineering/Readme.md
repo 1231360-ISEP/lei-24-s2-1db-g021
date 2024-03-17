@@ -35,7 +35,20 @@ As an organization employee (HRM), I want to register skills that may be appoint
 >
 > **Answer:** All, it's up to HRM to decide. (special characters or algarisms should not be allowed in the skill name).
 
+> **Question:**  Do I need to add skills  by writing them or can I just give a file with all of the skills?
+> 
+> **Answer:** Both are acceptable since the business the same the crucial difference resides in the UX.
 
+
+
+> **Question:** Does the HRM need to see the confirmation of the sucess of the operation and the skills added or just the sucess of the operation?
+>
+> **Answer:** It will depend if you opt to insert one skil or a set of skils in a batch. Maybe some adaptation needed.
+
+
+> **Question:** Is there any other possible outcome like if the HMR does not put the requested data, do I need to ask the user to to register a diferent competence?
+>
+> **Answer:** This US is quite simple, atm a skill is simply a name.
 
 
 ### 1.3. Acceptance Criteria
