@@ -37,9 +37,8 @@ Teams are temporary associations of employees who will carry out a set of tasks 
 
 ### 1.3. Acceptance Criteria
 
-* **AC1:** .
-* **AC2:** The task reference must have at least 5 alphanumeric characters.
-* **AC3:** When creating a task with an existing reference, the system must reject such operation and the user must be able to modify the typed reference.
+* **AC1:** Valid number for maximum team size.
+* **AC2:** Provide the set of skills that collaborators need to have.
 
 ### 1.4. Found out Dependencies
 
@@ -54,7 +53,8 @@ Teams are temporary associations of employees who will carry out a set of tasks 
     * The skills needed
 	
 * Selected data:
-    * 
+    * The max size of the team
+      * The skills needed 
 
 **Output Data:**
 

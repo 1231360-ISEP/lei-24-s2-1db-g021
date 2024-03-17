@@ -11,7 +11,7 @@ As an organization employee (HRM), I want to register skills that may be appoint
 
 **From the specifications document:**
 
->	An employee has a main occupation (job) and a set of skills that enable him to perform/take on certain tasks/responsibilities, for example, driving vehicles of different types (e.g. light, or heavy), operating machines such as backhoes or tractors; tree pruning; application of phytopharmaceuticals.
+> An employee has a main occupation (job) and a set of skills that enable him to perform/take on certain tasks/responsibilities, for example, driving vehicles of different types (e.g. light, or heavy), operating machines such as backhoes or tractors; tree pruning; application of phytopharmaceuticals.
 
 **From the client clarifications:**
 
@@ -22,11 +22,6 @@ As an organization employee (HRM), I want to register skills that may be appoint
 > **Question:** When a skill that already exists is created, what should the system do?
 >
 > **Answer:** By definition, it is not possible to have duplicate values in a set. Checking for duplicates is not a business rule, it is a technological one.
-
-> **Question:** ?
->
-> **Answer:** .
-
 
 ### 1.3. Acceptance Criteria
 
@@ -53,7 +48,6 @@ As an organization employee (HRM), I want to register skills that may be appoint
 ### 1.6. System Sequence Diagram (SSD)
 
 ![System Sequence Diagram - Alternative One](svg/us006-system-sequence-diagram-alternative-one.svg)
-
 
 ### 1.7 Other Relevant Remarks
 

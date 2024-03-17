@@ -1,0 +1,49 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative One
+
+autonumber
+
+actor "Human Resources\nManager" as HRM
+participant ":System" as System
+
+activate HRM
+
+    HRM -> System : asks to create a new team
+    activate System
+
+        System --> HRM : requests which is the maximum number of team collaborators
+    deactivate System
+
+    HRM -> System : types the maximum number of team collaborators
+    activate System
+
+        System --> HRM : requests which are the skills needed\n(i.e. 4 tree pruner and 1 light vehicle driver)
+    deactivate System
+
+    HRM -> System : types the skills needed
+    activate System
+
+        System --> HRM : generate a team proposal
+    deactivate System
+
+    alt team proposal not approved
+        loop regenerate team proposal
+            HRM -> System : regenerate team proposal
+            activate System
+
+                System --> HRM : displays regenerated team proposal
+            deactivate System
+        end
+    else team proposal approved
+        HRM -> System : confirms generated team proposal
+            activate System
+
+                System --> HRM : displays operation success
+            deactivate System
+    end
+
+@enduml
