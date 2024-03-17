@@ -1,59 +1,64 @@
-# US005 - Generate Proposal Team
+# US005 - Generate Team Proposal
 
 
 ## 1. Requirements Engineering
 
 ### 1.1. User Story Description
 
-As an organization employee, I want to create a new task in order to be further published.
+As an organization employee (HRM), I want to Generate a Team Proposal automatically that may be selected to .
 
 ### 1.2. Customer Specifications and Clarifications 
 
 **From the specifications document:**
 
->	Each task is characterized by having a unique reference per organization, a designation, an informal and a technical description, an estimated duration and cost, as well as a task category. 
-
->	As long as it is not published, access to the task is exclusive to the employees of the respective organization. 
+Teams are temporary associations of employees who will carry out a set of tasks in one or more green spaces. When creating multipurpose teams, the number of members and the set of skills that must be covered are crucial.
 
 **From the client clarifications:**
 
-> **Question:** Which is the unit of measurement used to estimate duration?
+> **Question:** What information will the customer provide?
 >
-> **Answer:** Duration is estimated in days.
+> **Answer:** The customer provide the max size of the team and a set of skills.
 
-> **Question:** Monetary data is expressed in any particular currency?
+> **Question:** What should the output of the automation be? (should it just store the team proposal or show it to the customer?)  Will the team proposal be a document about all the instructions of each team member/worker?
 >
-> **Answer:** Monetary data (e.g. estimated cost of a task) is indicated in POT (virtual currency internal to the platform).
+> **Answer:** The systems provide team proposals and HRM can accept of refuse the proposals. In the future (not in this sprint) HRM may decide to edit the team.
+
+> **Question:** How does it generate the team if there are not enough employees?
+>
+> **Answer:** The system should provide information why it can't generate a team.
+
+> **Question:** How does he propose a team, for what purpose? (Is there any predefinition)?
+>
+> **Answer:** There is no purpose, at least in this sprint.
+
+> **Question:** What are the input data to automatically generate a team?
+> 
+> **Answer:** The max size of the team (for instance 4) and the skill needed: 4 tree pruner and 1 light vehicle driver meaning that one team member have 2 skills.
 
 ### 1.3. Acceptance Criteria
 
-* **AC1:** All required fields must be filled in.
+* **AC1:** .
 * **AC2:** The task reference must have at least 5 alphanumeric characters.
 * **AC3:** When creating a task with an existing reference, the system must reject such operation and the user must be able to modify the typed reference.
 
 ### 1.4. Found out Dependencies
 
-* There is a dependency on "US003 - Create a task category" as there must be at least one task category to classify the task being created.
+* There is a dependency on "US003 - Register Collaborator Job & Skills" and on "US001 - Register Skills to Collaborators", because to generate a proposal team, should have registed the collaborator and skills first.
 
 ### 1.5 Input and Output Data
 
 **Input Data:**
 
 * Typed data:
-    * a reference
-    * a designation 
-    * an informal description
-    * a technical description
-    * an estimated duration
-    * an estimated cost
+    * The max size of the team
+    * The skills needed
 	
 * Selected data:
-    * a task category 
+    * 
 
 **Output Data:**
 
-* List of existing task categories
-* (In)Success of the operation
+* Generated Team Proposal
 
 ### 1.6. System Sequence Diagram (SSD)
 
@@ -61,4 +66,4 @@ As an organization employee, I want to create a new task in order to be further 
 
 ### 1.7 Other Relevant Remarks
 
-* The created task stays in a "not published" state in order to distinguish from "published" tasks.
+* 

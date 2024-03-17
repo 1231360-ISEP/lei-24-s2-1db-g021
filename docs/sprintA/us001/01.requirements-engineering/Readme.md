@@ -15,43 +15,40 @@ As an organization employee (HRM), I want to register skills that may be appoint
 
 **From the client clarifications:**
 
-> **Question:** ?
+> **Question:** What criteria are needed to register a skill? What type of information does a skill have?
 >
-> **Answer:** .
+> **Answer:** The name of the skill, for example: Pruner, Heavy vehicle driver, Phytopharmaceutical applicator.
+
+> **Question:** When a skill that already exists is created, what should the system do?
+>
+> **Answer:** By definition, it is not possible to have duplicate values in a set. Checking for duplicates is not a business rule, it is a technological one.
 
 > **Question:** ?
 >
 > **Answer:** .
+
 
 ### 1.3. Acceptance Criteria
 
-* **AC1:** All required fields must be filled in.
-* **AC2:** The task reference must have at least 5 alphanumeric characters.
-* **AC3:** When creating a task with an existing reference, the system must reject such operation and the user must be able to modify the typed reference.
+* **AC1:** The name of the skill.
 
 ### 1.4. Found out Dependencies
 
-* There is a dependency on "US003 - Register Collaborator Job & Skills" because to register Collaborator´s Job & Skills, should have first the skills registed.
+* This User Storie doesn't have any dependencie.
 
 ### 1.5 Input and Output Data
 
 **Input Data:**
 
 * Typed data:
-    * a reference
-    * a designation 
-    * an informal description
-    * a technical description
-    * an estimated duration
-    * an estimated cost
+    * The name of the skill.
 	
 * Selected data:
-    * a task category 
+    * The name of the skill.
 
 **Output Data:**
 
-* List of existing task categories
-* (In)Success of the operation
+* List of existing skills
 
 ### 1.6. System Sequence Diagram (SSD)
 
