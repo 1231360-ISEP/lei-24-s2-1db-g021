@@ -13,7 +13,7 @@ actor GPV
 left to right direction
 
 rectangle "Integrating Project" as actors {
-        usecase "UC1 - Register Collaborator Skills" as UC1
+        usecase "UC1 - Register Skills to Collaborators" as UC1
         GRH --> UC1
         usecase "UC2 - Register Job" as UC2
         GRH --> UC2
@@ -28,7 +28,7 @@ rectangle "Integrating Project" as actors {
         UC5 .> UC3 : include
         usecase "UC6 - Register Vehicle" as UC6
         GPV --> UC6
-        usecase "UC7 - Register Vehicleïs Check-up" as UC7
+        usecase "UC7 - Register Vehicleï¿½s Check-up" as UC7
         GPV --> UC7
         usecase "UC8 - List Vehicles Need Check-up" as UC8
         GPV --> UC8
