@@ -23,6 +23,21 @@ As an organization employee (HRM), I want to register skills that may be appoint
 >
 > **Answer:** By definition, it is not possible to have duplicate values in a set. Checking for duplicates is not a business rule, it is a technological one.
 
+> **Question:** Which information can be introduced to create a new skill?
+> 
+> **Answer:** The skill name.
+
+> **Question:** Which information is mandatory for creating a new skill?
+>
+> **Answer:** The skill name.
+
+> **Question:** Which are the skills accepted? Or should we enable the HRM to introduce anything as a skill?
+>
+> **Answer:** All, it's up to HRM to decide. (special characters or algarisms should not be allowed in the skill name).
+
+
+
+
 ### 1.3. Acceptance Criteria
 
 * **AC1:** The name of the skill.
