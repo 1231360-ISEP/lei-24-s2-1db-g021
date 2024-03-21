@@ -12,10 +12,10 @@ participant ":System" as System
 
 activate Employee
 
-    Employee -> System : asks to list the vehicles needing the check-up
+    Employee -> System : triggers to show the list the vehicles needing (or almost needing) the check-up
     activate System
 
-        System --> Employee : shows a list with the vehicles, which need a check-up;\ndisplays operation success
+        System --> Employee : shows a list with the vehicles that need it (or are near it) and their check-up information;\ndisplays operation success
     deactivate System
 
 @enduml
