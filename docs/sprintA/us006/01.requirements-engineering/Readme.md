@@ -5,15 +5,19 @@
 
 ### 1.1. User Story Description
 
-As an organization employee, I want to create a new task in order to be further published.
+As an FM, I wish to register a vehicle including Brand, Model, Type, Tare,
+Gross Weight, Current Km, Register Date, Acquisition Date, Maintenance/Checkup Frequency (in Kms).
 
 ### 1.2. Customer Specifications and Clarifications 
 
 **From the specifications document:**
 
->	Each task is characterized by having a unique reference per organization, a designation, an informal and a technical description, an estimated duration and cost, as well as a task category. 
-
->	As long as it is not published, access to the task is exclusive to the employees of the respective organization. 
+> Vehicles are needed to carry out the tasks assigned to the teams as well as to transport
+machines and equipment. This type of vehicle can be only for passengers or mixed,
+light or heavy, open box or closed vans or trucks. 
+> As for machines, MS has tractors, backhoe loaders and rotating machines, lawnmowers, among others. The equipment can be greatly diverse, such as sprayers, lifting
+platforms, chainsaws, brush cutters, blowers, ladders, cisterns and the various elements
+that can be attached to tractors, such as disc harrows, weeders, aerators and scarifiers.
 
 **From the client clarifications:**
 
