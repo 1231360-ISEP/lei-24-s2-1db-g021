@@ -56,38 +56,28 @@ As an HRM, I want to register a job that a collaborator need to have.
 > **Answer:** (no response from the client to this question yet).
 ### 1.3. Acceptance Criteria
 
-* **AC1:** All required fields must be filled in.
-* **AC2:** The task reference must have at least 5 alphanumeric characters.
-* **AC3:** When creating a task with an existing reference, the system must reject such operation and the user must be able to modify the typed reference.
+* **AC1:** The name of the profession/job.
 
 ### 1.4. Found out Dependencies
 
-* There is a dependency on "US03 - Create a task category" as there must be at least one task category to classify the task being created.
+* This User Storie doesn't have any dependencies.
 
 ### 1.5 Input and Output Data
 
 **Input Data:**
 
 * Typed data:
-    * a reference
-    * a designation 
-    * an informal description
-    * a technical description
-    * an estimated duration
-    * an estimated cost
-	
+  * The name of the profession/job.
+
 * Selected data:
-    * a task category 
+  * The name of the profession/job.
 
 **Output Data:**
 
-* List of existing task categories
-* (In)Success of the operation
+* List of existing professions/jobs.
 
 ### 1.6. System Sequence Diagram (SSD)
 
 ![System Sequence Diagram - Alternative One](svg/us006-system-sequence-diagram-alternative-one.svg)
 
 ### 1.7 Other Relevant Remarks
-
-* The created task stays in a "not published" state in order to distinguish from "published" tasks.
