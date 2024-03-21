@@ -1,0 +1,32 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD)
+
+autonumber
+
+actor "Human Resources \nManager" as HRM
+participant "System" as System
+
+activate HRM
+
+    HRM -> System : asks to regist a new job
+    activate System
+
+        System --> HRM : requests the job name (i.e.  designer, budgetist,\n gardener, electrician or bricklayer...)
+    deactivate System
+
+    HRM -> System : regist the new(s) job(s)
+    activate System
+
+        System --> HRM : list all registered jobs
+    deactivate System
+
+    HRM -> System : confirms the selected job(s)
+    activate System
+
+        System --> HRM : show a successful operation alert
+    deactivate System
+@enduml
