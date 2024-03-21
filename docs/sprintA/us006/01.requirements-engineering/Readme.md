@@ -5,55 +5,86 @@
 
 ### 1.1. User Story Description
 
-As an organization employee, I want to create a new task in order to be further published.
+As an FM, I wish to register a vehicle including Brand, Model, Type, Tare,
+Gross Weight, Current Km, Register Date, Acquisition Date, Maintenance/Checkup Frequency (in Kms).
 
 ### 1.2. Customer Specifications and Clarifications 
 
 **From the specifications document:**
 
->	Each task is characterized by having a unique reference per organization, a designation, an informal and a technical description, an estimated duration and cost, as well as a task category. 
-
->	As long as it is not published, access to the task is exclusive to the employees of the respective organization. 
+> Vehicles are needed to carry out the tasks assigned to the teams as well as to transport
+machines and equipment. This type of vehicle can be only for passengers or mixed,
+light or heavy, open box or closed vans or trucks. 
+> As for machines, MS has tractors, backhoe loaders and rotating machines, lawnmowers, among others. The equipment can be greatly diverse, such as sprayers, lifting
+platforms, chainsaws, brush cutters, blowers, ladders, cisterns and the various elements
+that can be attached to tractors, such as disc harrows, weeders, aerators and scarifiers.
 
 **From the client clarifications:**
 
-> **Question:** Which is the unit of measurement used to estimate duration?
+> **Question:** For the application to work does the FM need to fill all the attributes of the vehicle?
 >
-> **Answer:** Duration is estimated in days.
+> **Answer:** Yes, besides the vehicle plate that by mistake doesn't appear on the text.
 
-> **Question:** Monetary data is expressed in any particular currency?
+> **Question:** The vehicle plate has a specific format?
 >
-> **Answer:** Monetary data (e.g. estimated cost of a task) is indicated in POT (virtual currency internal to the platform).
+> **Answer:** (no response from the client to this question yet).
+
+> **Question:** What are the acceptance criteria when registering a vehicle?
+>
+> **Answer:** (no response from the client to this question yet).
+
+> **Question:** Is there a specific format for the registration date and acquisition date of a vehicle? Which is the unit of measurement used for tare and gross weight of a vehicle?
+>
+> **Answer:** (no response from the client to this question yet).
+
+> **Question:** When registering a vehicle, when you enter the make, do you have to check that the make exists? As well as the model and type of the vehicle? Do I have to check that the kms entered, tare and numerical values, are not negative?
+>
+> **Answer:** (no response from the client to this question yet).
+
+> **Question:** Should the application identify a registered vehicle by a serial number or other attribute? Should the application a group the vehicles by their brand, serial number or other attribute? If the FM inserts the same vehicle by mistake, should it inform the user of the mistake and give him the option to add another vehicle?
+>
+> **Answer:** - By plate id. No requirements were set concerning groups of vehicles. Again, duplication of data is not a business rule is technical one, since by definition in a set you can't have duplicates.
 
 ### 1.3. Acceptance Criteria
 
-* **AC1:** All required fields must be filled in.
-* **AC2:** The task reference must have at least 5 alphanumeric characters.
-* **AC3:** When creating a task with an existing reference, the system must reject such operation and the user must be able to modify the typed reference.
+* **AC1:** Provide the set of attributes necessary for the correct registration of a given vehicle.
+* **AC2:** All attributes must be validated, there must be no negative values, no duplicate names or number plates and the date of purchase must not be more recent than the vehicle's registration date.
 
 ### 1.4. Found out Dependencies
 
-* There is a dependency on "US003 - Create a task category" as there must be at least one task category to classify the task being created.
+* This User Storie doesn't have any dependencies.
 
 ### 1.5 Input and Output Data
 
 **Input Data:**
 
 * Typed data:
-    * a reference
-    * a designation 
-    * an informal description
-    * a technical description
-    * an estimated duration
-    * an estimated cost
+    * Brand
+    * Model
+    * Type 
+    * Tare
+    * Gross Weight
+    * Current Km
+    * Register Date
+    * Acquisition Date
+    * Maintenance/Checkup Frequency (in Kms)
+    * Vehicle plate
 	
 * Selected data:
-    * a task category 
+  * Brand
+  * Model
+  * Type
+  * Tare
+  * Gross Weight
+  * Current Km
+  * Register Date
+  * Acquisition Date
+  * Maintenance/Checkup Frequency (in Kms)
+  * Vehicle plate
 
 **Output Data:**
 
-* List of existing task categories
-* (In)Success of the operation
+* Successful registration alert about the information on previously registered attributes for a particular vehicle.
 
 ### 1.6. System Sequence Diagram (SSD)
 
@@ -61,4 +92,4 @@ As an organization employee, I want to create a new task in order to be further 
 
 ### 1.7 Other Relevant Remarks
 
-* The created task stays in a "not published" state in order to distinguish from "published" tasks.
+* 

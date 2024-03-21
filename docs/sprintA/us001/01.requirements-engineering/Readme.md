@@ -39,12 +39,9 @@ As an organization employee (HRM), I want to register skills that may be appoint
 > 
 > **Answer:** Both are acceptable since the business the same the crucial difference resides in the UX.
 
-
-
 > **Question:** Does the HRM need to see the confirmation of the sucess of the operation and the skills added or just the sucess of the operation?
 >
-> **Answer:** It will depend if you opt to insert one skil or a set of skils in a batch. Maybe some adaptation needed.
-
+> **Answer:** It will depends if you opt to insert one skil or a set of skils in a batch. Maybe some adaptation needed.
 
 > **Question:** Is there any other possible outcome like if the HMR does not put the requested data, do I need to ask the user to to register a diferent competence?
 >
