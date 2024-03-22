@@ -13,20 +13,32 @@ participant "System" as System
 activate HRM
 
     HRM -> System : asks to regist a new job
-    activate System
+        activate System
 
-        System --> HRM : requests the job name (i.e.  designer, budgetist,\n gardener, electrician or bricklayer...)
-    deactivate System
+    System --> HRM : requests the job name (i.e.  designer, budgetist,\n gardener, electrician or bricklayer...)
+        deactivate System
 
-    HRM -> System : regist the new(s) job(s)
-    activate System
+    HRM -> System : types the new job
+        activate System
 
-        System --> HRM : list all registered jobs
-    deactivate System
+    System --> HRM : list all registered jobs
+        deactivate System
 
-    HRM -> System : confirms the selected job(s)
-    activate System
+    alt some invalid job name or duplicate name
+        loop as long as the job name remains invalid
+            HRM -> System : writes the name of the job again
+                activate System
 
-        System --> HRM : show a successful operation alert
-    deactivate System
+            System --> HRM : validates the job name
+                deactivate System
+        end
+    else valid job name
+        HRM -> System : confirms the registration of a new job
+            activate System
+
+        System --> HRM : show an alert saying that the job has been successfully registered
+            deactivate System
+    end
+
+
 @enduml

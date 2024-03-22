@@ -35,6 +35,14 @@ Teams are temporary associations of employees who will carry out a set of tasks 
 > 
 > **Answer:** The max size of the team (for instance 4) and the skill needed: 4 tree pruner and 1 light vehicle driver meaning that one team member have 2 skills.
 
+> **Question:** I would like to ask if, in this US, there should be any more information in the team generated beyond the collaborators in which it consists?
+> 
+> **Answer:** The information should contain each of team members and the its skills.
+
+> **Question:** I would also like to know if a collaborator can be in more than one team at the same time?
+>
+> **Answer:** No.
+
 ### 1.3. Acceptance Criteria
 
 * **AC1:** Valid number for maximum team size.

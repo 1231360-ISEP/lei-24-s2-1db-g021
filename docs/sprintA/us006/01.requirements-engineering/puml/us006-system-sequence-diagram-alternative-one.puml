@@ -7,33 +7,35 @@ title System Sequence Diagram (SSD) - Alternative One
 
 autonumber
 
-actor "Organization\nEmployee" as Employee
-participant ":System" as System
+actor "Vehicle and Equipment \nFleet Manager" as VFM
+participant "System" as System
 
-activate Employee
+activate VFM
 
-    Employee -> System : asks to create a new task
+
+    VFM -> System : asks to register a new vehicle
     activate System
 
-        System --> Employee : requests data (i.e. reference, designation, informal\ndescription, technical description, duration, cost)
+        System --> VFM : requests vehicle data (i.e. Brand, Model, Type, Tare,Gross Weight, \nCurrent Km, Register Date, Acquisition Date,\n Maintenance/Checkup Frequency (in Kms), vehicle plate)
     deactivate System
 
-    Employee -> System : types requested data
+    VFM -> System : fills in the fields with the required attributes
     activate System
 
-        System --> Employee : shows task category list and asks to select one
-    deactivate System
+    alt some invalid vehicle attribute
+        loop as long as the attribute stills invalid
+               VFM -> System : writes the value of the attribute again
+                    activate System
 
-    Employee -> System : selects a task category
-    activate System
+                        System --> VFM : validates the vehicle attribute
+                    deactivate System
+        end
+    else all valid vehicle attributes
+        VFM -> System : confirms the registration of a new vehicle
+            activate System
 
-        System --> Employee : shows all data and requests confirmation
-    deactivate System
-
-    Employee -> System : confirms data
-    activate System
-
-        System --> Employee : displays operation success
-    deactivate System
+        System --> VFM : show an alert saying that the vehicle has been successfully registered
+            deactivate System
+    end
 
 @enduml
