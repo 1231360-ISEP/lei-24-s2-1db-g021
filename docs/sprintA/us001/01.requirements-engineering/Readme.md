@@ -15,13 +15,13 @@ As an organization employee (HRM), I want to register skills that may be appoint
 
 **From the client clarifications:**
 
-> **Question:** What criteria are needed to register a skill? What type of information does a skill have?
->
-> **Answer:** The name of the skill, for example: Pruner, Heavy vehicle driver, Phytopharmaceutical applicator.
+> **Question:** Que criterios sao necessarios para registar uma skill? Que tipo de informação uma skill tem?
+> 
+> **Answer:** O nome da skill, por exemplo: podador, condutor de veiculos pesados e aplicador de fito-farmacos.
 
-> **Question:** When a skill that already exists is created, what should the system do?
->
-> **Answer:** By definition, it is not possible to have duplicate values in a set. Checking for duplicates is not a business rule, it is a technological one.
+> **Question:** Quando é criado uma skill que ja existe o que sistema devera fazer?
+> 
+> **Answer:** Por definição não é possível ter valores duplicados num conjunto. A verificação de duplicados não é uma regra de negócio é do nível tecnológico.
 
 > **Question:** Which information can be introduced to create a new skill?
 > 

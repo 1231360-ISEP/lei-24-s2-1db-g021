@@ -15,17 +15,21 @@ activate HRM
     HRM -> System : asks to regist a new skill
     activate System
 
-        System --> HRM : requests the skills (i.e. driving vehicles, operating machines,\n tree pruning, application of phytopharmaceuticals.)
-    deactivate System
 
-    HRM -> System : regist new(s) skill(s)
-    activate System
+    loop regist skills
+            System --> HRM : requests the skill (i.e. driving vehicles, operating machines,\n tree pruning, application of phytopharmaceuticals.)
+        deactivate System
 
-        System --> HRM : show all the skills registed
-    deactivate System
+        HRM -> System : regist the new skill
+        activate System
 
-    HRM -> System : confirm skill(s) selected
-    activate System
+            System --> HRM : show all the skills registed
+        deactivate System
+
+        HRM -> System : confirm the set of skills registed
+        activate System
+
+    end
 
         System --> HRM : displays operation success
     deactivate System
