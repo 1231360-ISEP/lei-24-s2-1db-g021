@@ -5,7 +5,7 @@
 
 ### 1.1. User Story Description
 
-As an FM, I want to list the vehicles needing the check-up.
+As a Fleet Manager, I want to list the vehicles needing the check-up.
 
 ### 1.2. Customer Specifications and Clarifications 
 
