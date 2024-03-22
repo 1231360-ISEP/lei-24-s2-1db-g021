@@ -15,8 +15,7 @@ activate HRM
     HRM -> System : asks to regist a new skill
     activate System
 
-
-    loop regist skills
+    loop while intended
             System --> HRM : requests the skill (i.e. driving vehicles, operating machines,\n tree pruning, application of phytopharmaceuticals.)
         deactivate System
 
@@ -26,7 +25,7 @@ activate HRM
             System --> HRM : show all the skills registed
         deactivate System
 
-        HRM -> System : confirm the set of skills registed
+        HRM -> System : confirm the set of skills registed and aks to confirm
         activate System
 
     end
