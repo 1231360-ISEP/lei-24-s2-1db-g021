@@ -5,54 +5,59 @@
 
 ### 1.1. User Story Description
 
-As an organization employee, I want to create a new task in order to be further published.
+As an Human Resources Manager skills to a collaborator
 
 ### 1.2. Customer Specifications and Clarifications 
 
 **From the specifications document:**
 
->	Each task is characterized by having a unique reference per organization, a designation, an informal and a technical description, an estimated duration and cost, as well as a task category. 
+>	Collaborator realises jobs, construction and maintenance depending on their skills. 
 
->	As long as it is not published, access to the task is exclusive to the employees of the respective organization. 
+>	An employee has a main occupation and a set of skills that enable him to perform certain tasks.
 
 **From the client clarifications:**
 
-> **Question:** Which is the unit of measurement used to estimate duration?
+> **Question:** Does it have a minimum or maximum number of skills?
 >
-> **Answer:** Duration is estimated in days.
+> **Answer:** No.
 
-> **Question:** Monetary data is expressed in any particular currency?
+> **Question:** Does it have any special property that is necessary for a collaborator to be assigned that skills?
 >
-> **Answer:** Monetary data (e.g. estimated cost of a task) is indicated in POT (virtual currency internal to the platform).
+> **Answer:** No.
+
+> **Question:** Can any skill be registered to any collaborator/job? Or should they be associated in categories in association with a specific job ?
+>
+> **Answer:** There is no association, it totally depends of the CV of the collaborator.
+
+> **Question:** Should it be possible to add the same skill to a collaborator multiple times?
+>
+> **Answer:** That does not make sense.
+
+> **Question:** Is there any certification/proof needed to register a skill to a colaborator?
+>
+> **Answer:** No.
 
 ### 1.3. Acceptance Criteria
 
 * **AC1:** All required fields must be filled in.
-* **AC2:** The task reference must have at least 5 alphanumeric characters.
-* **AC3:** When creating a task with an existing reference, the system must reject such operation and the user must be able to modify the typed reference.
 
 ### 1.4. Found out Dependencies
 
-* There is a dependency on "US003 - Create a task category" as there must be at least one task category to classify the task being created.
+* There is a dependency on "US001 - As a Human Resources Manager (HRM), I want to register skills that a
+  collaborator may have." as there must be at least one skill which can be assigned to a collaborator.
 
 ### 1.5 Input and Output Data
 
 **Input Data:**
 
 * Typed data:
-    * a reference
-    * a designation 
-    * an informal description
-    * a technical description
-    * an estimated duration
-    * an estimated cost
+    * The collaborator
 	
 * Selected data:
-    * a task category 
+    * One or more skills
 
 **Output Data:**
 
-* List of existing task categories
 * (In)Success of the operation
 
 ### 1.6. System Sequence Diagram (SSD)
@@ -61,4 +66,4 @@ As an organization employee, I want to create a new task in order to be further 
 
 ### 1.7 Other Relevant Remarks
 
-* The created task stays in a "not published" state in order to distinguish from "published" tasks.
+* None.
