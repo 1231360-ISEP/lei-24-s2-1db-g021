@@ -27,7 +27,7 @@ activate HRM
     HRM -> System : asks to type the skill needed
     activate System
 
-    loop type skills
+    loop while intended
 
             System --> HRM : requests which are the skill needed\n(i.e. 4 tree pruner and 1 light vehicle driver)
         deactivate System
@@ -40,7 +40,7 @@ activate HRM
     HRM -> System : asks to generate a team proposal
     activate System
 
-        System --> HRM : shows the generated team proposal
+        System --> HRM : shows the generated team proposal and aks to confirm the data
     deactivate System
 
     HRM -> System : confirms all the data (size of team, skills and team generated)
