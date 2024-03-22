@@ -6,9 +6,10 @@ _Specifies functionalities that:
 &nbsp; &nbsp; (i) are common across several US/UC;  
 &nbsp; &nbsp; (ii) are not related to US/UC, namely: Audit, Reporting and Security._
 
-(i)
+Security:
+* All those who wish to use the application must be authenticated with a password of seven alphanumeric characters, including three capital letters and two digits.
 
-(ii)
+
     
 
 ## Usability
