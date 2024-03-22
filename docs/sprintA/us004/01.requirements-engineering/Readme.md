@@ -17,13 +17,13 @@ As an Human Resources Manager skills to a collaborator
 
 **From the client clarifications:**
 
-> **Question:** Does it have a minimum or maximum number of skills?
+> **Question:** Se há um número mínimo e máximo de número de skills?
 >
-> **Answer:** No.
+> **Answer:** Não.
 
-> **Question:** Does it have any special property that is necessary for a collaborator to be assigned that skills?
->
-> **Answer:** No.
+> **Question:** Se há alguma característica especial que seja necessária o colaborar ter para que lhe sejam adicionadas estas skills?
+> 
+> **Answer:** Não.
 
 > **Question:** Can any skill be registered to any collaborator/job? Or should they be associated in categories in association with a specific job ?
 >

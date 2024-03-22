@@ -8,32 +8,41 @@ title System Sequence Diagram (SSD) - Alternative One
 autonumber
 
 actor "Human Resources\nManager" as Employee
-participant ":System" as System
+participant "System" as System
 
 activate Employee
 
-    Employee -> System : asks to assign one or more skills to a collaborator
+    Employee -> System : Asks to assign one or more skills to a collaborator
     activate System
 
-        System --> Employee : requests the collaborator to assign skills to
+        System --> Employee : Requests the collaborator to assign skills to
     deactivate System
 
-    Employee -> System : types the collaborator information
+    Employee -> System : Types the collaborator information
     activate System
 
-        System --> Employee : requests skill(s)
+            System --> Employee : Request confirmation
     deactivate System
 
-    Employee -> System : type the skill(s)
-    activate System
-
-        System --> Employee : shows all the skill(s), the collaborator and requests confirmation
+    Employee -> System : Confirms it.
+    loop as long as Human Resources Manager don´t want to type in more skills.
+        activate System
+        System --> Employee : Requests skill(s)
+        deactivate System
+        Employee -> System : Type a skill
+        activate System
+        System --> Employee : Request confirmation
+        deactivate System
+        Employee -> System : Confirms it
+        activate System
+    end
+        System --> Employee : Shows the skills typed in, the collaborator and requests confirmation
     deactivate System
 
-    Employee -> System : confirms data
+    Employee -> System : Confirms data
     activate System
 
-        System --> Employee : displays operation success
+        System --> Employee : Displays operation success
     deactivate System
 
 @enduml
