@@ -21,16 +21,15 @@ activate HRM
 
         HRM -> System : regist the new skill
         activate System
-
-            System --> HRM : show all the skills registed
-        deactivate System
-
-        HRM -> System : confirm the set of skills registed and aks to confirm
-        activate System
-
     end
 
-        System --> HRM : displays operation success
+        System --> HRM : show all the skills registed
+    deactivate System
+
+    HRM -> System : confirm the set of skills registed and aks to confirm
+    activate System
+
+    System --> HRM : displays operation success
     deactivate System
 
 
