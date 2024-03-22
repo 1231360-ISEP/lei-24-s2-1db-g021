@@ -5,7 +5,7 @@
 
 ### 1.1. User Story Description
 
-As an Human Resources Manager skills to a collaborator
+As an Human Resources Manager, I want to assign one or more skills to a collaborator.
 
 ### 1.2. Customer Specifications and Clarifications 
 
