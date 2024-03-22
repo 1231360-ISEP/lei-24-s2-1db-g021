@@ -8,43 +8,40 @@ skinparam rectangle{
 }
 
 'title Use Case Diagram Example
-actor GRH
-actor GPV
+actor "Human Resources Manager" as HRM
+actor  "Fleet Manager" as FM
 left to right direction
 
 rectangle "Integrating Project" as actors {
         usecase "UC1 - Register Skills to Collaborators" as UC1
-        GRH --> UC1
+        HRM --> UC1
         usecase "UC2 - Register Job" as UC2
-        GRH --> UC2
+        HRM --> UC2
         usecase "UC3 - Register Collaborator Job & Skills" as UC3
-        GRH --> UC3
-        UC3 .> UC1 : include
-        UC3 .> UC2 : include
+        HRM --> UC3
         usecase "UC4 - Add Collaborator Skills" as UC4
-        GRH --> UC4
+        HRM --> UC4
         usecase "UC5 - Generate Team Proposal" as UC5
-        GRH --> UC5
-        UC5 .> UC3 : include
+        HRM --> UC5
         usecase "UC6 - Register Vehicle" as UC6
-        GPV --> UC6
-        usecase "UC7 - Register Vehicle�s Check-up" as UC7
-        GPV --> UC7
+        FM --> UC6
+        usecase "UC7 - Register Vehicles Check-up" as UC7
+        FM --> UC7
         usecase "UC8 - List Vehicles Need Check-up" as UC8
-        GPV --> UC8
+        FM --> UC8
 }
 
 left to right direction
-actor New_Colaborator
+actor "New Colaborator" as New_Colaborator
 UC3 -- New_Colaborator
-actor Modify_Colaborator
+actor "Modify Colaborator" as Modify_Colaborator
 UC4 -- Modify_Colaborator
 actor Colaborator
 New_Colaborator --> Colaborator
 Modify_Colaborator --> Colaborator
-actor New_Vehicle
+actor "New Vehicle" as New_Vehicle
 UC6 -- New_Vehicle
-actor Vehicle_Overhaul
+actor "Vehicle Overhaul" as Vehicle_Overhaul
 UC7 -- Vehicle_Overhaul
 UC8 -- Vehicle_Overhaul
 actor Vehicle
