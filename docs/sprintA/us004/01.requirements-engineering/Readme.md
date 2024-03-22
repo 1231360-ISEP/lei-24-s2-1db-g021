@@ -51,19 +51,13 @@ As an Human Resources Manager skills to a collaborator
 **Input Data:**
 
 * Typed data:
-    * a reference
-    * a designation 
-    * an informal description
-    * a technical description
-    * an estimated duration
-    * an estimated cost
+    * The collaborator
 	
 * Selected data:
-    * a task category 
+    * One or more skills
 
 **Output Data:**
 
-* List of existing task categories
 * (In)Success of the operation
 
 ### 1.6. System Sequence Diagram (SSD)
