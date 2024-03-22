@@ -47,6 +47,11 @@ As an organization employee (HRM), I want to register skills that may be appoint
 >
 > **Answer:** This US is quite simple, atm a skill is simply a name.
 
+> **Question:** Should the system able the HRM to insert multiple collaborators in one interaction before saving them.
+>
+> **Answer:** It's not required to do so.
+
+
 
 ### 1.3. Acceptance Criteria
 
