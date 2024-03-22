@@ -28,14 +28,15 @@ activate HRM
     activate System
 
     loop while intended
-
             System --> HRM : requests which are the skill needed\n(i.e. 4 tree pruner and 1 light vehicle driver)
         deactivate System
 
         HRM -> System : types the skill
         activate System
-
     end
+
+        System --> HRM : show the skill typed
+            deactivate System
 
     HRM -> System : asks to generate a team proposal
     activate System
