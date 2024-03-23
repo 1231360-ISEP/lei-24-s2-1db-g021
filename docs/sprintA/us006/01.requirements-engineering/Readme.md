@@ -25,22 +25,6 @@ that can be attached to tractors, such as disc harrows, weeders, aerators and sc
 >
 > **Answer:** Yes, besides the vehicle plate that by mistake doesn't appear on the text.
 
-> **Question:** The vehicle plate has a specific format?
->
-> **Answer:** (no response from the client to this question yet).
-
-> **Question:** What are the acceptance criteria when registering a vehicle?
->
-> **Answer:** (no response from the client to this question yet).
-
-> **Question:** Is there a specific format for the registration date and acquisition date of a vehicle? Which is the unit of measurement used for tare and gross weight of a vehicle?
->
-> **Answer:** (no response from the client to this question yet).
-
-> **Question:** When registering a vehicle, when you enter the make, do you have to check that the make exists? As well as the model and type of the vehicle? Do I have to check that the kms entered, tare and numerical values, are not negative?
->
-> **Answer:** (no response from the client to this question yet).
-
 > **Question:** Should the application identify a registered vehicle by a serial number or other attribute? Should the application a group the vehicles by their brand, serial number or other attribute? If the FM inserts the same vehicle by mistake, should it inform the user of the mistake and give him the option to add another vehicle?
 >
 > **Answer:** - By plate id. No requirements were set concerning groups of vehicles. Again, duplication of data is not a business rule is technical one, since by definition in a set you can't have duplicates.

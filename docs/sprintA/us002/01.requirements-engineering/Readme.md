@@ -16,19 +16,9 @@ As an HRM, I want to register a job that a collaborator need to have.
 **From the client clarifications:**
 
 > **Question:**
->When the HRM registers a job, is it necessary to provide a job description and inquire about the collaborator's qualifications? Should the system be able to display a list of all jobs currently registered? Does the system need to provide the capability to edit a job?
-> 
-> **Answer:** .
-
-> **Question:**
->Can a job be anything? Should numbers or special char be allowed? Is there a minim or max number of char?
+>É relevante associar uma área ou setor específico a cada Job? (Por exemplo, "Jardineiro" seria inserido no setor de "Manutenção"). Deve-se incluir informações como salário, tipo de contratação (full-time ou part-time), e modalidade de trabalho (presencial, remoto ou híbrido) no Job? Ou essas informações encaixam-se melhor no âmbito do colaborador, ou talvez nem sejam necessárias? Or is this information better suited to the employee, or perhaps not necessary at all? Que outras informações acha necessárias associar ao Job?
 >
-> **Answer:** (no response from the client to this question yet).
-
-> **Question:**
->Is it relevant to associate a specific area or sector with each Job? (For example, "Gardener" would be inserted in the "Maintenance" sector). Should information such as salary, type of employment (full-time or part-time), and working method (face-to-face, remote or hybrid) be included in the Job? Or is this information better suited to the employee, or perhaps not necessary at all? What other information do you think should be included in the job?
->
-> **Answer:**  Is not necessary as there is no US to suggest that it might be necessary. Idem. None at the moment.
+> **Answer:** Bom dia, não é necessário na medida que não existem US que sugiram que isso possa vir a ser necessário; - idem; - para já nenhumas. De nada.
 
 > **Question:**
 >What are the acceptance criteria? When are creating a job that already exit, what the system do?
@@ -36,24 +26,10 @@ As an HRM, I want to register a job that a collaborator need to have.
 > **Answer:** By definition a set can´t have duplicates. Assuring no duplicates is not a business rule is a tecnichal issue.
 
 > **Question:**
->What are the criteries to accept a job category regist? Any business rule?
+>Quais são os dados de entrada para a criação de uma profissão?
 >
-> **Answer:** (no response from the client to this question yet).
+> **Answer:** O Nome da profissão: jardineiro, calceteiro, electricista, condutor,...
 
-> **Question:**
->What are the inputs for creating a profession?
->
-> **Answer:** Name of profession: gardener, cobbler, electrician, driver,...
-
-> **Question:**
->-When you register a skill or job, which fields are filled in, for example, name, more specific description, identification number? Do you want all the fields, if there are more than one depending on the answer to the previous question, to be compulsory or optional, and which ones? In the case of the identification number, does the customer want to provide one, or have one assigned by the system? When something is successfully registered, do you only want to see a success message, or also a list of what has already been registered?
->
-> **Answer:** (no response from the client to this question yet).
-
-> **Question:**
-> When the user registers a job does he select a job from a list or does he type out a custom job name? What data is introduced by the user when creating a job?
->
-> **Answer:** (no response from the client to this question yet).
 ### 1.3. Acceptance Criteria
 
 * **AC1:** The name of the profession/job.
