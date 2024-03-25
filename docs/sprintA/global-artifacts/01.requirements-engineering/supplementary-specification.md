@@ -95,6 +95,6 @@ system being developed with other external systems._
 
 _Specifies a limitation or physical requirement regarding the hardware used to house the system, as for example: material, shape, size or weight._
 
-(fill in here )
+* (Waiting for the answer of client)
 
 
