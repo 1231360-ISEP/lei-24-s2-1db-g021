@@ -6,11 +6,10 @@ _Specifies functionalities that:
 &nbsp; &nbsp; (i) are common across several US/UC;  
 &nbsp; &nbsp; (ii) are not related to US/UC, namely: Audit, Reporting and Security._
 
-(i) -- acho que aqui o que está em comum com algumas US são as dependências (registos), ou então as funcionalidades das
-pessoas que estão envovlvidas (HRM e VFM - copiava-se as funcionalidades que eles iam ter do significado que diz no enunciado)
+(i)
 * Register skills that a collaborator need to have.
 * Register a job that an employee should have.
-* Register a vehicle with various attributes.
+* Register a vehicle with multiple attributes.
 
 (ii)
 Security:
