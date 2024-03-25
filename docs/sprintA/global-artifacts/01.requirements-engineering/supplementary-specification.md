@@ -62,7 +62,7 @@ must follow a TDD (Test-Driven Development) approach.
 
 _Specifies or constraints the system design process. Examples may include: programming languages, software process, mandatory standards/patterns, use of development tools, class library, etc._
 
-(fill in here )
+* Adopt recognized coding standards (e.g., CamelCase).
 
 
 
@@ -76,7 +76,6 @@ database integrity, resource limits, operating system._
 * The unit tests should be implemented using the JUnit 5 framework. 
 * The JaCoCo plugin should be used to generate the coverage report.
 * All the images/figures produced during the software development process should be recorded in SVG format.
-* Adopt recognized coding standards (e.g., CamelCase).
 * Use Javadoc to generate useful documentation for Java code.
 * The JaCoCo plugin should be used to generate the coverage report.
 
