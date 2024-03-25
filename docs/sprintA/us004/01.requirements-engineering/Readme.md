@@ -45,6 +45,8 @@ As a Human Resources Manager, I want to assign one or more skills to a collabora
 
 * There is a dependency on "US001 - As a Human Resources Manager (HRM), I want to register skills that a
   collaborator may have." as there must be at least one skill which can be assigned to a collaborator.
+* There is a dependency on "US003 - As an HRM, I want to register a collaborator with a job and fundamental
+  characteristics." as there must be at least one collaborator that can have skills assigned to.
 
 ### 1.5 Input and Output Data
 
