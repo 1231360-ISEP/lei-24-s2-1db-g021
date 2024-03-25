@@ -41,7 +41,7 @@ _Refers to the integrity, compliance and interoperability of the software. The r
 
 _Evaluates the performance requirements of the software, namely: response time, start-up time, recovery time, memory consumption, CPU usage, load capacity and application availability._
 
-(fill in here )
+* The application should use object serialization to ensure data persistence between two runs of the application;
 
 
 
@@ -54,7 +54,6 @@ configurability, installability, scalability and more._
 * The class structure must be designed to allow easy maintenance and the addition of new features, following the best OO practices.
 *  In order to increase the solution maintainability, and respect good software development practices, the implementation 
 must follow a TDD (Test-Driven Development) approach.
-* The application should use object serialization to ensure data persistence between two runs of the application;
 
 
 
