@@ -3,7 +3,7 @@ skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
 
-title System Sequence Diagram (SSD) - Alternative One
+title System Sequence Diagram (SSD)
 
 autonumber
 
@@ -12,30 +12,23 @@ participant "System" as System
 
 activate VFM
 
-
     VFM -> System : asks to register a new vehicle
     activate System
 
-        System --> VFM : requests vehicle data (i.e. Brand, Model, Type, Tare,Gross Weight, \nCurrent Km, Register Date, Acquisition Date,\n Maintenance/Checkup Frequency (in Kms), vehicle plate)
-    deactivate System
+    loop while intended
+            System --> VFM : requests vehicle data (i.e. Brand, Model, Type, Tare,Gross Weight, \nCurrent Km, Register Date, Acquisition Date,\n Maintenance/Checkup Frequency (in Kms), vehicle plate)
+        deactivate System
 
-    VFM -> System : fills in the fields with the required attributes
-    activate System
-
-    alt some invalid vehicle attribute
-        loop as long as the attribute stills invalid
-               VFM -> System : writes the value of the attribute again
-                    activate System
-
-                        System --> VFM : validates the vehicle attribute
-                    deactivate System
-        end
-    else all valid vehicle attributes
-        VFM -> System : confirms the registration of a new vehicle
-            activate System
-
-        System --> VFM : show an alert saying that the vehicle has been successfully registered
-            deactivate System
+        VFM -> System : write the values of the new vehicle's attributes
+        activate System
     end
 
+        System --> VFM : shows all registered vehicles and asks to confirm the data of the new vehicle typed in
+    deactivate System
+
+    VFM -> System : confirms the set of registered vehicles and the new vehicle
+    activate System
+
+    System --> VFM : displays operation success
+    deactivate System
 @enduml
