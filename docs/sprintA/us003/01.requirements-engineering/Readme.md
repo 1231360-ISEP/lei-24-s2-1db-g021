@@ -47,7 +47,7 @@ displaying or not, It's a matter of UX, the dev team should decide about it, but
 
 ### 1.4. Found out Dependencies
 
-* There is a dependency on "US003 - Create a task category" as there must be at least one task category to classify the task being created.
+* There is a dependency on "US02- As an Human Resources Manager, I want to register a job that a collaborator need to have." as there must be at least one job which can be assigned to a collaborator.
 
 ### 1.5 Input and Output Data
 
@@ -66,7 +66,6 @@ displaying or not, It's a matter of UX, the dev team should decide about it, but
 
 **Output Data:**
 
-* List of existing task categories
 * (In)Success of the operation
 
 ### 1.6. System Sequence Diagram (SSD)
@@ -76,4 +75,4 @@ displaying or not, It's a matter of UX, the dev team should decide about it, but
 
 ### 1.7 Other Relevant Remarks
 
-* The created task stays in a "not published" state in order to distinguish from "published" tasks.
+* None.
