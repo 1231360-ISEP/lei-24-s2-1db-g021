@@ -18,13 +18,27 @@ characteristics.
 
 **From the client clarifications:**
 
-> **Question:** Which is the unit of measurement used to estimate duration?
+> **Question:** Should the system able the Human Resources Manager to insert multiple collaborators in one interaction before saving them?
 >
-> **Answer:** Duration is estimated in days.
+> **Answer:** it's not required to do so.
 
-> **Question:** Monetary data is expressed in any particular currency?
+> **Question:**
+When creating a collaborator with an existing name, what the system do?
 >
-> **Answer:** Monetary data (e.g. estimated cost of a task) is indicated in POT (virtual currency internal to the platform).
+> **Answer:**
+It's not common and most improbable to have different individual with same name in the same context, however it’s ID documentation number should be unique for sure.
+
+> **Question:**
+Which information is mandatory to insert a collaborator in the program (fundamental characteristics)?
+>
+> **Answer:**
+name, birth date, admission date, address, contact info (mobile and email), taxpayer number, ID doc type and respective number.
+
+> **Question:**
+Does the Human Resources Manager select the job from a list that we display?
+>
+> **Answer:**
+displaying or not, It's a matter of UX, the dev team should decide about it, but the valid jobs are the ones created within the US02.
 
 ### 1.3. Acceptance Criteria
 
