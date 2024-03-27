@@ -88,7 +88,7 @@ As an organization employee (HRM), I want to register skills that may be appoint
 
 ### 1.6. System Sequence Diagram (SSD)
 
-![System Sequence Diagram - Alternative One](svg/us006-system-sequence-diagram-alternative-one.svg)
+![System Sequence Diagram - Alternative One](svg/us001-system-sequence-diagram.svg)
 
 ### 1.7 Other Relevant Remarks
 

@@ -78,7 +78,7 @@ Teams are temporary associations of employees who will carry out a set of tasks 
 
 ### 1.6. System Sequence Diagram (SSD)
 
-![System Sequence Diagram - Alternative One](svg/us006-system-sequence-diagram-alternative-one.svg)
+![System Sequence Diagram - Alternative One](svg/us005-system-sequence-diagram.svg)
 
 ### 1.7 Other Relevant Remarks
 
