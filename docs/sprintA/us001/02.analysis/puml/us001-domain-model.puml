@@ -16,16 +16,17 @@ class Organization {
     email
 }
 
-class Skills {
-    name
-}
-
 class HRM {
     name
     email
     position
     phone
 }
+
+class Skills {
+    name
+}
+
 
 Organization "1" - "1" HRM: has >
 HRM "1" -- "0..*" Skills : regist >
