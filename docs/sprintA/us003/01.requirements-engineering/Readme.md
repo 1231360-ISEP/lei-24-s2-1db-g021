@@ -59,7 +59,6 @@ displaying or not, It's a matter of UX, the dev team should decide about it, but
     * an informal description
     * a technical description
     * an estimated duration
-    * an estimated cost
 	
 * Selected data:
     * a task category 
