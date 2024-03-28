@@ -12,9 +12,9 @@ characteristics.
 
 **From the specifications document:**
 
->	Each task is characterized by having a unique reference per organization, a designation, an informal and a technical description, an estimated duration and cost, as well as a task category. 
-
->	As long as it is not published, access to the task is exclusive to the employees of the respective organization. 
+>	A collaborator is a person who is an employee of the organization and carries out
+design, construction and/or maintenance tasks for green areas, depending on their
+skills.
 
 **From the client clarifications:**
 
@@ -43,7 +43,7 @@ displaying or not, It's a matter of UX, the dev team should decide about it, but
 ### 1.3. Acceptance Criteria
 
 * **AC1:** name, birthdate, admission date, address, contact info (mobile and
-  email), ID doc type and respective number should be provided by HRM
+  email), ID doc type and respective number should be provided by Human Resources Manager
 
 ### 1.4. Found out Dependencies
 
@@ -70,7 +70,7 @@ displaying or not, It's a matter of UX, the dev team should decide about it, but
 
 ### 1.6. System Sequence Diagram (SSD)
 
-![System Sequence Diagram - Alternative One](svg/us006-system-sequence-diagram-alternative-one.svg)
+![System Sequence Diagram - Alternative One](svg/us003-system-sequence-diagram-alternative-one.svg)
 
 
 ### 1.7 Other Relevant Remarks
