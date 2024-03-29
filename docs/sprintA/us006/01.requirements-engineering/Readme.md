@@ -29,6 +29,11 @@ that can be attached to tractors, such as disc harrows, weeders, aerators and sc
 >
 > **Answer:** - By plate id. No requirements were set concerning groups of vehicles. Again, duplication of data is not a business rule is technical one, since by definition in a set you can't have duplicates.
 
+> **Question:** When a vehicle is registered, are there specific requirements for accepting the brand? 
+> For example, does the system need to check if the brand is on a predetermined list? Does this also apply to the model or any other characteristics?
+>
+> **Answer:** No; one can consider a list os brands and a list of models previsously inserted in the system, no need to go through validations.
+
 ### 1.3. Acceptance Criteria
 
 * **AC1:** Provide the set of attributes necessary for the correct registration of a given vehicle.
