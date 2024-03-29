@@ -12,28 +12,42 @@ characteristics.
 
 **From the specifications document:**
 
->	Each task is characterized by having a unique reference per organization, a designation, an informal and a technical description, an estimated duration and cost, as well as a task category. 
-
->	As long as it is not published, access to the task is exclusive to the employees of the respective organization. 
+>	A collaborator is a person who is an employee of the organization and carries out
+design, construction and/or maintenance tasks for green areas, depending on their
+skills.
 
 **From the client clarifications:**
 
-> **Question:** Which is the unit of measurement used to estimate duration?
+> **Question:** Should the system able the Human Resources Manager to insert multiple collaborators in one interaction before saving them?
 >
-> **Answer:** Duration is estimated in days.
+> **Answer:** it's not required to do so.
 
-> **Question:** Monetary data is expressed in any particular currency?
+> **Question:**
+When creating a collaborator with an existing name, what the system do?
 >
-> **Answer:** Monetary data (e.g. estimated cost of a task) is indicated in POT (virtual currency internal to the platform).
+> **Answer:**
+It's not common and most improbable to have different individual with same name in the same context, however it’s ID documentation number should be unique for sure.
+
+> **Question:**
+Which information is mandatory to insert a collaborator in the program (fundamental characteristics)?
+>
+> **Answer:**
+name, birth date, admission date, address, contact info (mobile and email), taxpayer number, ID doc type and respective number.
+
+> **Question:**
+Does the Human Resources Manager select the job from a list that we display?
+>
+> **Answer:**
+displaying or not, It's a matter of UX, the dev team should decide about it, but the valid jobs are the ones created within the US02.
 
 ### 1.3. Acceptance Criteria
 
 * **AC1:** name, birthdate, admission date, address, contact info (mobile and
-  email), ID doc type and respective number should be provided by HRM
+  email), ID doc type and respective number should be provided by Human Resources Manager
 
 ### 1.4. Found out Dependencies
 
-* There is a dependency on "US003 - Create a task category" as there must be at least one task category to classify the task being created.
+* There is a dependency on "US02- As an Human Resources Manager, I want to register a job that a collaborator need to have." as there must be at least one job which can be assigned to a collaborator.
 
 ### 1.5 Input and Output Data
 
@@ -45,21 +59,19 @@ characteristics.
     * an informal description
     * a technical description
     * an estimated duration
-    * an estimated cost
 	
 * Selected data:
     * a task category 
 
 **Output Data:**
 
-* List of existing task categories
 * (In)Success of the operation
 
 ### 1.6. System Sequence Diagram (SSD)
 
-![System Sequence Diagram - Alternative One](svg/us006-system-sequence-diagram-alternative-one.svg)
+![System Sequence Diagram - Alternative One](svg/us003-system-sequence-diagram-alternative-one.svg)
 
 
 ### 1.7 Other Relevant Remarks
 
-* The created task stays in a "not published" state in order to distinguish from "published" tasks.
+* None.

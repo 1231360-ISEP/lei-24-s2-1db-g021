@@ -43,10 +43,16 @@ Teams are temporary associations of employees who will carry out a set of tasks 
 >
 > **Answer:** No.
 
+> **Question:** I would to know which business rules apply for the input data to generate a team proposal.
+>
+> **Answer:** max and min team size, and a list of skills needed. For instance: min: 3 max: 4
+
+
 ### 1.3. Acceptance Criteria
 
 * **AC1:** Valid number for maximum team size.
-* **AC2:** Provide the set of skills that collaborators need to have.
+* **AC2:** Valid number for minimum team size.
+* **AC3:** Provide the set of skills that collaborators need to have.
 
 ### 1.4. Found out Dependencies
 
@@ -57,12 +63,14 @@ Teams are temporary associations of employees who will carry out a set of tasks 
 **Input Data:**
 
 * Typed data:
-    * The max size of the team
+    * The maximum size of the team
+    * The minimum size of the team
     * The skills needed
 	
 * Selected data:
     * The max size of the team
-      * The skills needed 
+    * The minimum size of the team
+    * The skills needed 
 
 **Output Data:**
 
@@ -70,7 +78,7 @@ Teams are temporary associations of employees who will carry out a set of tasks 
 
 ### 1.6. System Sequence Diagram (SSD)
 
-![System Sequence Diagram - Alternative One](svg/us006-system-sequence-diagram-alternative-one.svg)
+![System Sequence Diagram - Alternative One](svg/us005-system-sequence-diagram.svg)
 
 ### 1.7 Other Relevant Remarks
 

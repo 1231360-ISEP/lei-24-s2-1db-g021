@@ -12,16 +12,16 @@ participant ":System" as System
 
 activate HRM
 
-    HRM -> System : asks to type the maximum number of team collaborators
+    HRM -> System : asks to type the minimum and maximum number of team collaborators
     activate System
 
-        System --> HRM : requests which is the maximum number of team collaborators
+        System --> HRM : requests which is the minimum and maximum number of team collaborators
     deactivate System
 
-    HRM -> System : types the maximum number of team collaborators
+    HRM -> System : types the minimum and maximum number of team collaborators
     activate System
 
-        System --> HRM : show the maximum number of team collaborators registed
+        System --> HRM : show the minimum and maximum number of team collaborators typed
     deactivate System
 
     HRM -> System : asks to type the skill needed

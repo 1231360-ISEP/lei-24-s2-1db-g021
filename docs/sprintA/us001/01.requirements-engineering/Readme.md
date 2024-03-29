@@ -51,6 +51,17 @@ As an organization employee (HRM), I want to register skills that may be appoint
 >
 > **Answer:** It's not required to do so.
 
+> **Question:** Dear client, which is the difference between collaborator and employ? And employ could have skills? HRM, VFM, GSM and GSU are employers?
+>
+> **Answer:** Employee and collaborator are synonyms.
+
+> **Question:** The indentificator of the skill will be the name, or the system will generate authomatically and Id when the manager insert the name?
+>
+> **Answer:** A skill is just a name, can be a composition os words like "Light Vehicle Driving Licence". I have no knowledge about systems IDs.
+
+> **Question:** Are the skills(input) typed or selected? Does the output show the team members with or without their skills?
+>
+> **Answer:** The ux/ui is up to the dev team.
 
 
 ### 1.3. Acceptance Criteria
@@ -77,7 +88,7 @@ As an organization employee (HRM), I want to register skills that may be appoint
 
 ### 1.6. System Sequence Diagram (SSD)
 
-![System Sequence Diagram - Alternative One](svg/us006-system-sequence-diagram-alternative-one.svg)
+![System Sequence Diagram - Alternative One](svg/us001-system-sequence-diagram.svg)
 
 ### 1.7 Other Relevant Remarks
 
