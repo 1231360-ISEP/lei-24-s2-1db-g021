@@ -1,4 +1,4 @@
-# US006 - As an FM, I wish to register a vehicle
+# US006 - Register Vehicle
 
 ## 2. Analysis
 
