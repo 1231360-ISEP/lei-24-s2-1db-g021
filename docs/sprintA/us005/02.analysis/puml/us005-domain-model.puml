@@ -16,11 +16,15 @@ class MusgoSublime {
     email
 }
 
-class HRM {
+class HumanResourceManager {
     name
+    bornDate
+    admDate
+    address
+    phoneNumber
     email
-    position
-    phone
+    idCard
+    idNumber
 }
 
 class Skills {
@@ -45,7 +49,7 @@ class GenerateTeam {
 
 MusgoSublime "1" - "0..*" Skills: owns >
 MusgoSublime "1" - "0..*" Collaborator: owns >
-MusgoSublime "1" - "1..*" HRM : has >
+MusgoSublime "1" - "1..*" HumanResourceManager : has >
 MusgoSublime "1" - "0..*" GenerateTeam: owns >
-HRM "1" -- "*" GenerateTeam : creates >
+HumanResourceManager "1" -- "*" GenerateTeam : creates >
 @enduml

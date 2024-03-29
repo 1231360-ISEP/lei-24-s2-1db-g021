@@ -18,9 +18,13 @@ class MusgoSublime {
 
 class HumanResourceManager {
     name
+    bornDate
+    admDate
+    address
+    phoneNumber
     email
-    position
-    phone
+    idCard
+    idNumber
 }
 
 class Skills {
