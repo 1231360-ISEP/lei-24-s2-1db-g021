@@ -8,7 +8,7 @@ skinparam classAttributeIconSize 0
 hide circle
 hide methods
 
-class Organization {
+class MusgoSublime {
     name
     vatNumber
     website
@@ -16,7 +16,7 @@ class Organization {
     email
 }
 
-class HRM {
+class HumanResourceManager {
     name
     email
     position
@@ -28,7 +28,7 @@ class Skills {
 }
 
 
-Organization "1" - "1" HRM: has >
-HRM "1" -- "0..*" Skills : regist >
+MusgoSublime "1" - "1..*" HumanResourceManager: has >
+HumanResourceManager "1" -- "0..*" Skills : regist >
 
 @enduml
