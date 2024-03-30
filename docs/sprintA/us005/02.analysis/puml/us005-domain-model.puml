@@ -28,7 +28,7 @@ class HumanResourceManager {
 }
 
 class Skills {
-    name
+    skillName
 }
 
 class Collaborator {
@@ -47,9 +47,9 @@ class GenerateTeam {
     skillsName
 }
 
-MusgoSublime "1" - "0..*" Skills: owns >
-MusgoSublime "1" - "0..*" Collaborator: owns >
+MusgoSublime "1" - "1..*" Skills: owns >
+MusgoSublime "1" - "1..*" Collaborator: owns >
 MusgoSublime "1" - "1..*" HumanResourceManager : has >
 MusgoSublime "1" - "0..*" GenerateTeam: owns >
-HumanResourceManager "1" -- "*" GenerateTeam : creates >
+HumanResourceManager "1" -- "1..*" GenerateTeam : creates >
 @enduml
