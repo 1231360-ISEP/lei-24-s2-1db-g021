@@ -22,6 +22,13 @@ As a Fleet Manager, I want to list the vehicles needing the check-up.
 > **Question:** Are there acceptance criteria when asking for the list?
 >
 > **Answer:** The list must contain all vehicles that have already exceeded the number of km required for the inspection or those that are close to it.
+>The list must clearly identify the vehicles through: plate number, brand, model and the that justified the checkup need.
+
+>  **Question:** "The list must clearly identify the vehicles through: plate number, brand, model and the [?] that justified the checkup need."
+Did you mean the reason for the check-up need?
+>
+> **Answer:** [?] DATA
+current kms, frequency, last checkup kms, next checkup (optimal) kms
 
 > **Question:** Can the vehicles get placed automatically on a list or the one listing has to be the FM?
 >
@@ -30,6 +37,10 @@ As a Fleet Manager, I want to list the vehicles needing the check-up.
 > **Question:** What information will appear on the final list regarding the vehicle,besides the needing for check-up?
 >
 > **Answer:** Data that allow to identify the vehicle like Plate, brand and modle, as well as, the data that allowed to select/insert te vehicle in the list, number of kms, frequecny of checkup and the last checkup.
+
+> **Question:** I'm not sure if I understood everything about US08. In this US we should only list the vehicles that need a check up (surpass the check up frequency in KM) or that will shortly need a check up (5% to the check up frequency *already said in another post*), correct? If so, the information about the checkup frequency for each vehicle should be asked in US07?
+>
+> **Answer:** No; the Maintenance/Check-up Frequency (in km) is registered in US06.
 
 ### 1.3. Acceptance Criteria
 

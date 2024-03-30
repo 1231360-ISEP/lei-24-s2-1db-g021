@@ -37,6 +37,10 @@ As a Human Resources Manager, I want to assign one or more skills to a collabora
 >
 > **Answer:** No.
 
+> **Question:** Can a collaborator have no skills assigned?
+>
+> **Answer:** yes.
+
 ### 1.3. Acceptance Criteria
 
 * **AC1:** All required fields must be filled in.
