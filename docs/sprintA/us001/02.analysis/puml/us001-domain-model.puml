@@ -27,12 +27,12 @@ class HumanResourceManager {
     idNumber
 }
 
-class Skills {
+class Skill {
     skillName
 }
 
 
 MusgoSublime "1" - "1..*" HumanResourceManager: has >
-HumanResourceManager "1" -- "1..*" Skills : regist >
+HumanResourceManager "1" -- "1..*" Skill : regist >
 
 @enduml

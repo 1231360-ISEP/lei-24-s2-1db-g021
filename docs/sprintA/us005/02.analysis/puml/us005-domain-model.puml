@@ -27,7 +27,7 @@ class HumanResourceManager {
     idNumber
 }
 
-class Skills {
+class Skill {
     skillName
 }
 
@@ -47,7 +47,7 @@ class GenerateTeam {
     skillsName
 }
 
-MusgoSublime "1" - "1..*" Skills: owns >
+MusgoSublime "1" - "1..*" Skill: owns >
 MusgoSublime "1" - "1..*" Collaborator: owns >
 MusgoSublime "1" - "1..*" HumanResourceManager : has >
 MusgoSublime "1" - "0..*" GenerateTeam: owns >
