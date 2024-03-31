@@ -1,0 +1,43 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+'left to right direction
+
+skinparam classAttributeIconSize 0
+
+hide circle
+hide methods
+
+'title Domain Model
+
+class MusgoSublime {
+    name
+    vatNumber
+    website
+    phoneNumber
+    email
+}
+
+class HumanResourcesManager {
+}
+
+class Collaborator {
+    name
+    bornDate
+    admDate
+    address
+    phoneNumber
+    email
+    idCard
+    idNumber
+}
+
+class Skill {
+    skillName
+}
+MusgoSublime "1" -- "1..*" Collaborator : has >
+HumanResourcesManager  <|-- Collaborator
+Collaborator "1" -- "1..*" Skill : assigned to <
+@enduml

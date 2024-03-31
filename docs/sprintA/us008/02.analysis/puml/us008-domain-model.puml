@@ -1,0 +1,51 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+'left to right direction
+
+skinparam classAttributeIconSize 0
+
+hide circle
+hide methods
+
+'title Domain Model
+
+class MusgoSublime {
+    name
+    vatNumber
+    website
+    phoneNumber
+    email
+}
+class Collaborator {
+    name
+    bornDate
+    admDate
+    address
+    phoneNumber
+    email
+    idCard
+    idNumber
+}
+
+class FleetManager {
+}
+
+class Vehicle {
+    brand
+    model
+    type
+    tare
+    grossWeight
+    currentKm
+    registerDate
+    acquisitionDate
+    maintenance
+    plate
+}
+MusgoSublime "1" -- "1..*" Collaborator : has >
+FleetManager  <|-- Collaborator
+MusgoSublime "1" -- "*" Vehicle : has >
+@enduml
