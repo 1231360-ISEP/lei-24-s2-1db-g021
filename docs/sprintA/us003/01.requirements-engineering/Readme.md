@@ -54,14 +54,12 @@ displaying or not, It's a matter of UX, the dev team should decide about it, but
 **Input Data:**
 
 * Typed data:
-    * a reference
-    * a designation 
-    * an informal description
-    * a technical description
-    * an estimated duration
+    * The job
+    * The fundamental characteristics
 	
 * Selected data:
-    * a task category 
+    * The job
+    * The fundamental characteristics 
 
 **Output Data:**
 
