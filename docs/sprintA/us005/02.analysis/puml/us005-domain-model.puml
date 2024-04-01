@@ -8,7 +8,7 @@ skinparam classAttributeIconSize 0
 hide circle
 hide methods
 
-class Organization {
+class MusgoSublime {
     name
     vatNumber
     website
@@ -16,32 +16,40 @@ class Organization {
     email
 }
 
-class HRM {
+class HumanResourceManager {
     name
+    bornDate
+    admDate
+    address
+    phoneNumber
     email
-    position
-    phone
+    idCard
+    idNumber
 }
 
-class Skills {
-    name
+class Skill {
+    skillName
 }
 
 class Collaborator {
     name
+    bornDate
+    admDate
+    address
+    phoneNumber
     email
-    position
-    phone
+    idCard
+    idNumber
 }
 
 class GenerateTeam {
     membersName
-    skillNames
+    skillsName
 }
 
-Organization "1" - "0..*" Skills: owns >
-Organization "1" - "0..*" Collaborator: owns >
-Organization "1" - "1" HRM : has >
-Organization "1" - "0..*" GenerateTeam: owns >
-HRM "1" -- "*" GenerateTeam : creates >
+MusgoSublime "1" - "1..*" Skill: owns >
+MusgoSublime "1" - "1..*" Collaborator: owns >
+MusgoSublime "1" - "1..*" HumanResourceManager : has >
+MusgoSublime "1" - "0..*" GenerateTeam: owns >
+HumanResourceManager "1" -- "1..*" GenerateTeam : creates >
 @enduml

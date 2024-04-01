@@ -10,19 +10,21 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 **Business Transactions**
 
-* 
+* Tasks
 
 ---
 
-**Transaction Line Itemss**
+**Transaction Line Items**
 
-* 
+* Skills
+* Jobs
+* Vehicles
 
 ---
 
 **Product/Service related to a Transaction or Transaction Line Item**
 
-* 
+* Characteristics
 
 ---
 
@@ -34,13 +36,19 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 **Roles of People or Organizations**
 
-* 
+* Human Resources Manager (HRM)
+* Fleet Manager (FM)
+* Collaborator
+* Green Spaces Manager (GSM)
+* Green Spaces User (GSU)
 
 ---
 
 **Places**
 
-* 
+* Garden
+* Medium-sized park
+* Large-sized park
 
 ---
 
@@ -58,7 +66,9 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 **Descriptions of Things**
 
-* 
+* Register skills, jobs and vehicles
+* Assign 1 or more skills to a Collaborator
+* List the vehicles needing the check-up
 
 ---
 
@@ -82,7 +92,7 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 **Organizations**
 
-* 
+* MusgoSublime (MS)
 
 ---
 
@@ -124,10 +134,11 @@ An association is a relationship between instances of objects that indicates a r
 - etc.
 
 
-| Concept (A) 		|  Association   	|  Concept (B) |
-|----------	   		|:-------------:		|------:       |
-| C1  	| verb1    		 	| C2  |
-| ...  	| ...    		 	| ...  |
+| Concept (A) 		  |      Association   	       |                                                    Concept (B) |
+|-----------------|:--------------------------:|---------------------------------------------------------------:|
+| MusgoSublime  	 |        has    		 	         |          Human Resources Manager (HRM)<br/> Fleet Manager (FM) |
+| Human Resources Manager (HRM)  	          | regists <br/>assigns  		 	 |          Jobs,Skils,Collaborator <br/>Skills to a Collaborator |
+| Fleet Manager (FM) 	          | regists<br/>lists    		 	  | Vehicles,Vehicle’s check-up<br/>Vehicles needing the check-up. |
 
 
 

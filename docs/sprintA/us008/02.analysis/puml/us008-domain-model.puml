@@ -3,10 +3,14 @@ skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
 
+'left to right direction
+
 skinparam classAttributeIconSize 0
 
 hide circle
 hide methods
+
+'title Domain Model
 
 class MusgoSublime {
     name
@@ -15,8 +19,7 @@ class MusgoSublime {
     phoneNumber
     email
 }
-
-class FleetManager {
+class Collaborator {
     name
     bornDate
     admDate
@@ -25,6 +28,9 @@ class FleetManager {
     email
     idCard
     idNumber
+}
+
+class FleetManager {
 }
 
 class Vehicle {
@@ -39,7 +45,7 @@ class Vehicle {
     maintenance
     plate
 }
-
-MusgoSublime "1" - "1..*" FleetManager: has >
-FleetManager "1" -- "1..*" Vehicle : regist >
+MusgoSublime "1" -- "1..*" Collaborator : has >
+FleetManager  <|-- Collaborator
+MusgoSublime "1" -- "*" Vehicle : has >
 @enduml
