@@ -1,0 +1,48 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+skinparam classAttributeIconSize 0
+
+hide circle
+hide methods
+
+class MusgoSublime {
+    name
+    vatNumber
+    website
+    phoneNumber
+    email
+}
+
+class HumanResourceManager {
+    name
+    bornDate
+    admDate
+    address
+    phoneNumber
+    email
+    idCard
+    idNumber
+}
+
+class Collaborator {
+    name
+    bornDate
+    admDate
+    address
+    phoneNumber
+    email
+    idCard
+    idNumber
+}
+
+class Job {
+    jobName
+}
+
+MusgoSublime "1" - "1..*" HumanResourceManager: has >
+HumanResourceManager "1" -- "1..*" Collaborator : regist >
+Collaborator "1" -- "1..*" Job : assigned to <
+@enduml
