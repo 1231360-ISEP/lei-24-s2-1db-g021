@@ -16,7 +16,7 @@ class MusgoSublime {
     email
 }
 
-class HumanResourceManager {
+class FleetManager {
     name
     bornDate
     admDate
@@ -40,6 +40,6 @@ class Vehicle {
     plate
 }
 
-MusgoSublime "1" - "1..*" HumanResourceManager: has >
-HumanResourceManager "1" -- "1..*" Vehicle : regist >
+MusgoSublime "1" - "1..*" FleetManager: has >
+FleetManager "1" -- "1..*" Vehicle : regist >
 @enduml
