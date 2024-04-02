@@ -40,19 +40,16 @@ As an Fleet Manager, I wish to register a vehicle’s check-up.
 **Input Data:**
 
 * Typed data:
-    * a reference
-    * a designation 
-    * an informal description
-    * a technical description
-    * an estimated duration
-    * an estimated cost
+    * The vehicle
+    * The information about the check-up
 	
 * Selected data:
-    * a task category 
+  * The vehicle
+  * The information about the check-up
 
 **Output Data:**
 
-* List of existing task categories
+* List of registered vehicle check-up's
 * (In)Success of the operation
 
 ### 1.6. System Sequence Diagram (SSD)
