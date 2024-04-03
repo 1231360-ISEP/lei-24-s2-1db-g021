@@ -5,7 +5,7 @@
 
 ### 1.1. User Story Description
 
-As an organization employee, I want to create a new task in order to be further published.
+As an Fleet Manager, I wish to register a vehicle’s check-up.
 
 ### 1.2. Customer Specifications and Clarifications 
 
@@ -40,25 +40,22 @@ As an organization employee, I want to create a new task in order to be further 
 **Input Data:**
 
 * Typed data:
-    * a reference
-    * a designation 
-    * an informal description
-    * a technical description
-    * an estimated duration
-    * an estimated cost
+    * The vehicle
+    * The information about the check-up
 	
 * Selected data:
-    * a task category 
+  * The vehicle
+  * The information about the check-up
 
 **Output Data:**
 
-* List of existing task categories
+* List of registered vehicle check-up's
 * (In)Success of the operation
 
 ### 1.6. System Sequence Diagram (SSD)
 
-![System Sequence Diagram - Alternative One](svg/us006-system-sequence-diagram-alternative-one.svg)
+![System Sequence Diagram - Alternative One](svg/us007-system-sequence-diagram-alternative-one.svg)
 
 ### 1.7 Other Relevant Remarks
 
-* The created task stays in a "not published" state in order to distinguish from "published" tasks.
+* None.

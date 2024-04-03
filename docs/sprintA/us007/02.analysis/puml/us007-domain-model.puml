@@ -1,0 +1,52 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+skinparam classAttributeIconSize 0
+
+hide circle
+hide methods
+
+class MusgoSublime {
+    name
+    vatNumber
+    website
+    phoneNumber
+    email
+}
+
+class FleetManager {
+    name
+    bornDate
+    admDate
+    address
+    phoneNumber
+    email
+    idCard
+    idNumber
+}
+
+class Vehicle {
+    brand
+    model
+    type
+    tare
+    grossWeight
+    currentKm
+    registerDate
+    acquisitionDate
+    maintenance
+    plate
+}
+
+class VehicleCheckUp {
+    Date
+    Place
+}
+
+MusgoSublime "1" - "1..*" FleetManager: has >
+MusgoSublime "1" - "1..*" Vehicle: has >
+FleetManager "1" -- "1..*" VehicleCheckUp : regist >
+Vehicle "1" -- "1..*" VehicleCheckUp : assigned to <
+@enduml

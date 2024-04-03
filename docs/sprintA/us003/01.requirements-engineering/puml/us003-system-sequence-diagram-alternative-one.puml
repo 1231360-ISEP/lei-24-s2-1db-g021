@@ -20,14 +20,14 @@ activate HRM
         deactivate System
         HRM -> System : Type a job
         activate System
+
+        System --> HRM : requests the fundamental characteristics (i.e. name, birth date, admission date,\n address, contact info (mobile and email), taxpayer number,ID doc type and respective number)
+        deactivate System
+        HRM -> System : Type the fundamental characteristics
+        activate System
         System --> HRM : Request confirmation
         deactivate System
-        HRM -> System : Confirms it
-        activate System
-
-            System --> HRM : requests the fundamental characteristics (i.e. name, birth date, admission date,\n address, contact info (mobile and email), taxpayer number,ID doc type and respective number)
-        deactivate System
-        HRM -> System : regist the new collaborator
+        HRM -> System : Confirms it and regist the new collaborator
         activate System
     end
 

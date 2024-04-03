@@ -27,10 +27,6 @@ class HumanResourceManager {
     idNumber
 }
 
-class Skill {
-    skillName
-}
-
 class Collaborator {
     name
     bornDate
@@ -42,15 +38,11 @@ class Collaborator {
     idNumber
 }
 
-class GenerateTeam {
-    membersName
-    skillsName
+class Job {
+    jobName
 }
 
-MusgoSublime "1" - "1..*" Collaborator: has >
-MusgoSublime "1" - "1..*" HumanResourceManager : has >
-Collaborator "1" -- "1..*" Skill : has >
-MusgoSublime "1" - "1..*" GenerateTeam: has >
-GenerateTeam "1" -- "1..*" Collaborator : has >
-HumanResourceManager "1" -- "1..*" GenerateTeam : creates >
+MusgoSublime "1" - "1..*" HumanResourceManager: has >
+HumanResourceManager "1" -- "1..*" Collaborator : regist >
+Collaborator "1" -- "1..*" Job : assigned to <
 @enduml
