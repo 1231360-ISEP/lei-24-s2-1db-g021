@@ -11,9 +11,7 @@ As an Fleet Manager, I wish to register a vehicle’s check-up.
 
 **From the specifications document:**
 
->	Each task is characterized by having a unique reference per organization, a designation, an informal and a technical description, an estimated duration and cost, as well as a task category. 
-
->	As long as it is not published, access to the task is exclusive to the employees of the respective organization. 
+>	A Fleet Manager is a person who manages the fleet park, the machines, equipment and vehicles, ensuring their good condition and assigning them to the tasks to be carried out.
 
 **From the client clarifications:**
 
@@ -27,13 +25,12 @@ As an Fleet Manager, I wish to register a vehicle’s check-up.
 
 ### 1.3. Acceptance Criteria
 
-* **AC1:** All required fields must be filled in.
-* **AC2:** The task reference must have at least 5 alphanumeric characters.
-* **AC3:** When creating a task with an existing reference, the system must reject such operation and the user must be able to modify the typed reference.
+* **AC1:** The vehicle plate.
+* **AC2:** The information of the check-up.
 
 ### 1.4. Found out Dependencies
 
-* There is a dependency on "US003 - Create a task category" as there must be at least one task category to classify the task being created.
+* There is a dependency on "US06-As an Fleet Manager,I wish to register a vehicle including Brand, Model, Type, Tare, Gross Weight, Current Km, Register Date, Acquisition Date, Maintenance/Check up Frequency (in Kms)." as there must be at least one vehicle which can be assigned to a check-up.
 
 ### 1.5 Input and Output Data
 
