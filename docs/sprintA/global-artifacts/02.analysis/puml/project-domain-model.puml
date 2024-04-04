@@ -2,19 +2,12 @@
 skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
-'skinparam linetype ortho
-'left to right direction
 skinparam classAttributeIconSize 0
 hide circle
 hide methods
 
-'title Domain Model
 
-'class Platform {
-'  -description
-'}
-
-class Organization {
+class MusgoSublime {
     name
     vatNumber
     website
@@ -22,63 +15,113 @@ class Organization {
     email
 }
 
-class Task {
-    reference
-    description
-    informalDesc
-    technicalDesc
-    duration
-    cost
-}
-
-class Category {
-    description
-}
-
-class Employee {
+class HumanResourceManager {
     name
+    bornDate
+    admDate
+    address
+    phoneNumber
     email
-    position
-    phone
+    idCard
+    idNumber
 }
 
-class TechnicalSkill{
-    shortDescription
-    fullDescription
+class Collaborator {
+    name
+    bornDate
+    admDate
+    address
+    phoneNumber
+    email
+    idCard
+    idNumber
 }
 
-class ActivityArea{
-    shortDescription
-    fullDescription
+class FleetManager {
+    name
+    bornDate
+    admDate
+    address
+    phoneNumber
+    email
+    idCard
+    idNumber
 }
 
-class FeatureTS{
-    mandatory
+class Skill {
+    skillName
 }
 
-'class User {
-'    name
-'    email
-'    password
+class Job {
+    jobName
+}
+
+class GenerateTeam {
+    membersName
+    skillsName
+}
+
+class Vehicle {
+    brand
+    model
+    type
+    tare
+    grossWeight
+    currentKm
+    registerDate
+    acquisitionDate
+    maintenance
+    plate
+}
+
+class VehicleCheckUp {
+    Date
+    Place
+}
+'
+'class TechnicalSkill{
+'    shortDescription
+'    fullDescription
 '}
-class PostalAddress{
-    street
-    zipCode
-    city
-}
-'Platform "1" -- "*" Organization : has registered >
-'Platform "1" -- "*" Category : defines >
-Organization "1" - "0..*" Employee : has >
-Organization "1" - "0..*" Task: owns >
-'Task "*" -- "1" Employee: created by >
-Employee "1" -- "*" Task : creates >
-'Employee "0..1" -- "1" User: acts as >
-Task "*" - "1" Category: cataloged as >
-TechnicalSkill "*" - "1" ActivityArea: regarding an >
 
-Category "*" - "*" TechnicalSkill :  : requires >
-(Category, TechnicalSkill) . FeatureTS
+'class ActivityArea{
+'    shortDescription
+'    fullDescription
+'}
 
-Organization "1" -left "1" PostalAddress : located At >
+'class FeatureTS{
+'    mandatory
+'}
+
+'class PostalAddress{
+'    street
+'    zipCode
+'    city
+'}
+
+
+MusgoSublime "1" - "1..*" HumanResourceManager: has >
+MusgoSublime "1" - "1..*" Collaborator: has >
+MusgoSublime "1" - "1..*" FleetManager: has >
+MusgoSublime "1" - "1..*" Skill: has >
+MusgoSublime "1" - "1..*" Job: has >
+MusgoSublime "1" - "1..*" GenerateTeam: has >
+HumanResourceManager "1" -- "1..*" Skill : regist >
+HumanResourceManager "1" -- "1..*" Job : regist >
+HumanResourceManager "1" -- "1..*" Collaborator : regist >
+HumanResourceManager "1" -- "1..*" GenerateTeam : creates >
+Collaborator "1" -- "1..*" Job : assigned to <
+Collaborator "1" -- "1..*" Skill : assigned to <
+GenerateTeam "1" -- "1..*" Collaborator : has >
+FleetManager "1" -- "1..*" Vehicle : regist >
+FleetManager "1" -- "1..*" VehicleCheckUp : regist >
+Vehicle "1" -- "1..*" VehicleCheckUp : assigned to <
+
+
+
+'TechnicalSkill "*" - "1" ActivityArea: regarding an >
+'HumanResourceManager "*" - "*" TechnicalSkill :  : requires >
+'(HumanResourceManager, TechnicalSkill) . FeatureTS
+'MusgoSublime "1" -left "1" PostalAddress : located At >
 
 @enduml
