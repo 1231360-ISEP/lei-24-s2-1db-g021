@@ -33,4 +33,5 @@ class Job {
 
 MusgoSublime "1" - "1..*" HumanResourceManager: has >
 HumanResourceManager "1" -- "1..*" Job : regist >
+MusgoSublime "1" - "1..*" Job: has >
 @enduml
