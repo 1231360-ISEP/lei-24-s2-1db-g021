@@ -136,7 +136,7 @@ An association is a relationship between instances of objects that indicates a r
 
 | Concept (A) 		  |      Association   	       |                                                    Concept (B) |
 |-----------------|:--------------------------:|---------------------------------------------------------------:|
-| MusgoSublime  	 |        has    		 	         |          Human Resources Manager (HRM)<br/> Fleet Manager (FM) |
+| MusgoSublime  	 |        has    		 	         |              Human Resources Manager (HRM), Fleet Manager (FM) |
 | Human Resources Manager (HRM)  	          | regists <br/>assigns  		 	 |          Jobs,Skils,Collaborator <br/>Skills to a Collaborator |
 | Fleet Manager (FM) 	          | regists<br/>lists    		 	  | Vehicles,Vehicle’s check-up<br/>Vehicles needing the check-up. |
 
