@@ -1,4 +1,4 @@
-# US005 - Generate Team Proposal
+# US005 - As a Human Resource Manager I want to Generate Team Proposal
 
 ## 2. Analysis
 

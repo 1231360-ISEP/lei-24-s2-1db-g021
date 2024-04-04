@@ -1,4 +1,4 @@
-# US001 - Register Skills to Collaborators
+# US001 - As a Human Resource Manager I want to Register Skills to Collaborators
 
 ## 2. Analysis
 
