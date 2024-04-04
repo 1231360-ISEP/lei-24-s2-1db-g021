@@ -19,7 +19,7 @@ class MusgoSublime {
     phoneNumber
     email
 }
-class Collaborator {
+class FleetManager {
     name
     bornDate
     admDate
@@ -28,9 +28,6 @@ class Collaborator {
     email
     idCard
     idNumber
-}
-
-class FleetManager {
 }
 
 class Vehicle {
@@ -45,7 +42,13 @@ class Vehicle {
     maintenance
     plate
 }
-MusgoSublime "1" -- "1..*" Collaborator : has >
-FleetManager  <|-- Collaborator
+
+class VehicleCheckUp {
+    Date
+    Place
+}
+
+MusgoSublime "1" -- "1..*" FleetManager : has >
 MusgoSublime "1" -- "*" Vehicle : has >
+Vehicle "1" -- "1..*" VehicleCheckUp : assigned to <
 @enduml

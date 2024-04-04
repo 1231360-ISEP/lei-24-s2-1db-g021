@@ -21,6 +21,14 @@ class MusgoSublime {
 }
 
 class HumanResourcesManager {
+    name
+    bornDate
+    admDate
+    address
+    phoneNumber
+    email
+    idCard
+    idNumber
 }
 
 class Collaborator {
@@ -38,6 +46,6 @@ class Skill {
     skillName
 }
 MusgoSublime "1" -- "1..*" Collaborator : has >
-HumanResourcesManager  <|-- Collaborator
+MusgoSublime "1" -- "1..*" HumanResourcesManager : has >
 Collaborator "1" -- "1..*" Skill : assigned to <
 @enduml
