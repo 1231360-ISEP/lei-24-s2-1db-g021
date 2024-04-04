@@ -15,13 +15,21 @@ As an Fleet Manager, I wish to register a vehicle’s check-up.
 
 **From the client clarifications:**
 
-> **Question:** Which is the unit of measurement used to estimate duration?
+> **Question:** What are the validation requirements for the vehicle ID?
 >
-> **Answer:** Duration is estimated in days.
+> **Answer:** After 2020: AA-00-AA between 2005-2020 00-AA-00 between 1992-2005 00-00-XX.
 
-> **Question:** Monetary data is expressed in any particular currency?
+> **Question:** Can a vehicle have more than one check-up?
 >
-> **Answer:** Monetary data (e.g. estimated cost of a task) is indicated in POT (virtual currency internal to the platform).
+> **Answer:** Yes.
+
+> **Question:** Which attributes will you need for the vehicle's check-up?
+>
+> **Answer:** Plate number, date, kms at checkup
+
+> **Question:** What is the unit of measurement used to estimate the check-up frequency (Kms, months, etc.)?
+>
+> **Answer:** In real context all could be considered, in the scope of this project just kms will be considered.
 
 ### 1.3. Acceptance Criteria
 
