@@ -42,4 +42,5 @@ class Vehicle {
 
 MusgoSublime "1" - "1..*" FleetManager: has >
 FleetManager "1" -- "1..*" Vehicle : regist >
+MusgoSublime "1" - "1..*" Vehicle: has >
 @enduml
