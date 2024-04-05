@@ -42,15 +42,15 @@ class Collaborator {
     idNumber
 }
 
-class GenerateTeam {
+class Team {
     membersName
     skillsName
 }
 
 MusgoSublime "1" - "1..*" Collaborator: has >
 MusgoSublime "1" - "1..*" HumanResourceManager : has >
-Collaborator "1" -- "1..*" Skill : has >
-MusgoSublime "1" - "1..*" GenerateTeam: has >
-GenerateTeam "1" -- "1..*" Collaborator : has >
-HumanResourceManager "1" -- "1..*" GenerateTeam : creates >
+Collaborator "*" -- "*" Skill : owns >
+MusgoSublime "1" - "1..*" Team: owns >
+Team "1" -- "1..*" Collaborator : has >
+HumanResourceManager "1" -- "1..*" Team : creates >
 @enduml
