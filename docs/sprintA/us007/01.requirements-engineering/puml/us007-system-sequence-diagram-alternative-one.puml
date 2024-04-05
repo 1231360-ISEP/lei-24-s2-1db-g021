@@ -16,12 +16,12 @@ activate VFM
     activate System
 
     loop while intended
-            System --> VFM : requests the vehicle
+            System --> VFM : requests the vehicle plate
         deactivate System
-        VFM -> System : Type a vehicle
+        VFM -> System : Type a vehicle plate
         activate System
 
-        System --> VFM : requests the information about the check-up (i.e. date, place)
+        System --> VFM : requests the information about the \ncheck-up (i.e. date, place)
         deactivate System
         VFM -> System : Type the information about the check-up
         activate System
@@ -34,7 +34,7 @@ activate VFM
         System --> VFM : shows all registered vehicle check-up's
     deactivate System
 
-    VFM -> System : confirms the set of registered vehicle check-up's and the new vehicle check-up
+    VFM -> System : confirms the set of registered vehicle check-up's and the \nnew vehicle check-up
     activate System
 
     System --> VFM : displays operation success

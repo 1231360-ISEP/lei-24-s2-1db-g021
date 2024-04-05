@@ -13,11 +13,6 @@ hide methods
 'title Domain Model
 
 class MusgoSublime {
-    name
-    vatNumber
-    website
-    phoneNumber
-    email
 }
 
 class HumanResourcesManager {
