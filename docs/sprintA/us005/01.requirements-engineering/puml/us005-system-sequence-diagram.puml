@@ -12,39 +12,27 @@ participant ":System" as System
 
 activate HRM
 
-    HRM -> System : asks to type the minimum and maximum number of team collaborators
+    HRM -> System : asks to generate a team proposal
     activate System
 
-        System --> HRM : requests which is the minimum and maximum number of team collaborators
+        System --> HRM : requests which is the minimum and\n maximum number of team collaborators
     deactivate System
 
-    HRM -> System : types the minimum and maximum number of team collaborators
-    activate System
-
-        System --> HRM : show the minimum and maximum number of team collaborators typed
-    deactivate System
-
-    HRM -> System : asks to type the skill needed
+    HRM -> System : types the minimum and maximum number of\n team collaborators
     activate System
 
     loop while intended
-            System --> HRM : requests which are the skill needed\n(i.e. 4 tree pruner and 1 light vehicle driver)
+            System --> HRM : requests which are the skills needed
         deactivate System
 
         HRM -> System : types the skill
         activate System
     end
 
-        System --> HRM : show the skill typed
-            deactivate System
-
-    HRM -> System : asks to generate a team proposal
-    activate System
-
-        System --> HRM : shows the generated team proposal and aks to confirm the data
+        System --> HRM : shows and aks to confirm all the data
     deactivate System
 
-    HRM -> System : confirms all the data (size of team, skills and team generated)
+    HRM -> System : confirms all the data
     activate System
 
         System --> HRM : displays operation success
