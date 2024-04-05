@@ -43,6 +43,23 @@ As an HRM, I want to register a job that a collaborator need to have.
 > **Answer:** Not need to, job is just a name; don't know what is job id, job is just a name; no; a collaborator is hired for a job and can have skills or not; 
 >a collaborator is hired for a (valid) job; see 3 and 4; the UX/UI is to be decided by dev team.
 
+> **Question:**
+>For registering a job into system manager needs to type just "Job tilte" ? we do not need other attributes such as below: 
+>1. Job ID, for identifying each job from Administration prespective.
+>2. Job category : for classifying jobs like gardening, drivers, administration employees , etc
+>3. Job Skills: for assigning qualified employee/collaborator in future (having same qualities and skills) or other attributes...
+>
+> **Answer:** I'll repeat:
+a job is just the job name!
+>1. Don't know what means job ID, because in the client perspective, a job is just the job name;
+>2. there is no job category;
+>3. There is the concept of skill but not directly related (atm) with job;
+
+> **Question:**
+>Can special characters and numbers be entered when registering a job? I assume that a job name cannot be empty. Is that right?
+>
+> **Answer:** No; That's right.
+
 ### 1.3. Acceptance Criteria
 
 * **AC1:** The name of the profession/job.
