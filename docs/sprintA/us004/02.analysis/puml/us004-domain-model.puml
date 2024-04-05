@@ -47,5 +47,5 @@ class Skill {
 }
 MusgoSublime "1" -- "1..*" Collaborator : has >
 MusgoSublime "1" -- "1..*" HumanResourcesManager : has >
-Collaborator "1" -- "1..*" Skill : assigned to <
+Collaborator "*" -- "*" Skill : assigned to <
 @enduml

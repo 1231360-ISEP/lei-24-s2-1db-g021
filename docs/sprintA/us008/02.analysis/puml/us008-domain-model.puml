@@ -49,6 +49,6 @@ class VehicleCheckUp {
 }
 
 MusgoSublime "1" -- "1..*" FleetManager : has >
-MusgoSublime "1" -- "*" Vehicle : has >
-Vehicle "1" -- "1..*" VehicleCheckUp : assigned to <
+MusgoSublime "1" -- "1..*" Vehicle : owns >
+Vehicle "1" -- "*" VehicleCheckUp : assigned to <
 @enduml

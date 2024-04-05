@@ -56,7 +56,7 @@ class Job {
     jobName
 }
 
-class GenerateTeam {
+class Team {
     membersName
     skillsName
 }
@@ -103,19 +103,20 @@ class VehicleCheckUp {
 MusgoSublime "1" - "1..*" HumanResourceManager: has >
 MusgoSublime "1" - "1..*" Collaborator: has >
 MusgoSublime "1" - "1..*" FleetManager: has >
-MusgoSublime "1" - "1..*" Skill: has >
-MusgoSublime "1" - "1..*" Job: has >
-MusgoSublime "1" - "1..*" GenerateTeam: has >
+MusgoSublime "1" - "1..*" Skill: owns >
+MusgoSublime "1" - "1..*" Job: owns >
+MusgoSublime "1" - "1..*" Team: owns >
+MusgoSublime "1" - "1..*" Vehicle: owns >
 HumanResourceManager "1" -- "1..*" Skill : regist >
 HumanResourceManager "1" -- "1..*" Job : regist >
 HumanResourceManager "1" -- "1..*" Collaborator : regist >
-HumanResourceManager "1" -- "1..*" GenerateTeam : creates >
-Collaborator "1" -- "1..*" Job : assigned to <
-Collaborator "1" -- "1..*" Skill : assigned to <
-GenerateTeam "1" -- "1..*" Collaborator : has >
+HumanResourceManager "1" -- "1..*" Team : creates >
+Collaborator "1..*" -- "1" Job : assigned to <
+Collaborator "1..*" -- "*" Skill : assigned to <
+Team "1" -- "1..*" Collaborator : has >
 FleetManager "1" -- "1..*" Vehicle : regist >
 FleetManager "1" -- "1..*" VehicleCheckUp : regist >
-Vehicle "1" -- "1..*" VehicleCheckUp : assigned to <
+Vehicle "1" -- "*" VehicleCheckUp : assigned to <
 
 
 

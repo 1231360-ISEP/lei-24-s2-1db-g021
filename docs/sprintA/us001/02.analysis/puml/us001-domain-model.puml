@@ -33,7 +33,7 @@ class Skill {
 
 
 MusgoSublime "1" - "1..*" HumanResourceManager: has >
-MusgoSublime "1" - "1..*" Skill: has >
+MusgoSublime "1" - "1..*" Skill: owns >
 HumanResourceManager "1" -- "1..*" Skill : regist >
 
 @enduml
