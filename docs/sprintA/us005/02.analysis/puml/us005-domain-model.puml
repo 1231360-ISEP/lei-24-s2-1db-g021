@@ -9,11 +9,6 @@ hide circle
 hide methods
 
 class MusgoSublime {
-    name
-    vatNumber
-    website
-    phoneNumber
-    email
 }
 
 class HumanResourceManager {
@@ -43,8 +38,6 @@ class Collaborator {
 }
 
 class Team {
-    membersName
-    skillsName
 }
 
 MusgoSublime "1" - "1..*" Collaborator: has >

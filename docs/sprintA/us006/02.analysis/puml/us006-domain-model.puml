@@ -9,11 +9,6 @@ hide circle
 hide methods
 
 class MusgoSublime {
-    name
-    vatNumber
-    website
-    phoneNumber
-    email
 }
 
 class FleetManager {
