@@ -16,7 +16,7 @@ activate VFM
     activate System
 
     loop while intended
-            System --> VFM : requests vehicle data (i.e. Brand, Model, Type, \nTare,Gross Weight, Current Km, Register Date, \nAcquisition Date, Checkup Frequency (in Kms), vehicle plate)
+            System --> VFM : requests vehicle data (i.e. Brand, Model, Type, \nTare,Gross Weight, Current Km, Register Date, \nAcquisition Date, Maintenance/Checkup Frequency (in Kms),\n vehicle plate)
         deactivate System
 
         VFM -> System : write the values of the new vehicle's attributes
