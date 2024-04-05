@@ -16,17 +16,17 @@ activate HRM
     activate System
 
     loop while intended
-            System --> HRM : requests the job name (i.e.  designer, budgetist,\n gardener, electrician or bricklayer...)
+            System --> HRM : requests the job name
         deactivate System
 
         HRM -> System : type the new job
         activate System
     end
 
-        System --> HRM : list all registered jobs and asks to confirm the new typed job
+        System --> HRM : list all registered jobs and asks to confirm
     deactivate System
 
-    HRM -> System : confirms the set of registered jobs and the new typed job
+    HRM -> System : confirms all jobs
     activate System
 
     System --> HRM : displays operation success
