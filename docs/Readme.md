@@ -10,6 +10,7 @@ The teams consists of students identified in the following table.
 | **1231080**    | João Jorge       |
 | **1231087**    | Tomás Moreira    |
 | **1231070**    | Bernardo Cardoso |
+| **1231360**    | Leonardo Silva   |
 
 # 2. Task Distribution ###
 
