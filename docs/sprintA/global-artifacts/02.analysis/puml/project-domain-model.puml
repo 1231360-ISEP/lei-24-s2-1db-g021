@@ -78,7 +78,6 @@ Organization "1" - "1..*" Collaborator: has >
 Organization "1" - "1..*" FleetManager: has >
 Organization "1" - "1..*" Skill: owns >
 Organization "1" - "1..*" Job: owns >
-Organization "1" - "1..*" Team: owns >
 Organization "1" - "1..*" Vehicle: owns >
 HumanResourceManager "1" -- "1..*" Skill : regist >
 HumanResourceManager "1" -- "1..*" Job : regist >
