@@ -70,6 +70,7 @@ class Vehicle {
 class VehicleCheckUp {
     Date
     Place
+    Kms
 }
 
 Organization "1" - "1..*" HumanResourceManager: has >
