@@ -31,21 +31,5 @@ rectangle "Integrating Project" as actors {
         FM -- UC8
 }
 
-left to right direction
-actor "New Colaborator" as New_Colaborator
-UC3 -- New_Colaborator
-actor "Modify Colaborator" as Modify_Colaborator
-UC4 -- Modify_Colaborator
-actor Colaborator
-New_Colaborator -- Colaborator
-Modify_Colaborator -- Colaborator
-actor "New Vehicle" as New_Vehicle
-UC6 -- New_Vehicle
-actor "Vehicle Overhaul" as Vehicle_Overhaul
-UC7 -- Vehicle_Overhaul
-UC8 -- Vehicle_Overhaul
-actor Vehicle
-New_Vehicle -- Vehicle
-Vehicle_Overhaul -- Vehicle
 
 @enduml
