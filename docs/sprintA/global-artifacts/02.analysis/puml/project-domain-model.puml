@@ -7,7 +7,7 @@ hide circle
 hide methods
 
 
-class MusgoSublime {
+class Organization {
 }
 
 class HumanResourceManager {
@@ -70,15 +70,15 @@ class Vehicle {
 class VehicleCheckUp {
     Date
     Place
+    Kms
 }
 
-MusgoSublime "1" - "1..*" HumanResourceManager: has >
-MusgoSublime "1" - "1..*" Collaborator: has >
-MusgoSublime "1" - "1..*" FleetManager: has >
-MusgoSublime "1" - "1..*" Skill: owns >
-MusgoSublime "1" - "1..*" Job: owns >
-MusgoSublime "1" - "1..*" Team: owns >
-MusgoSublime "1" - "1..*" Vehicle: owns >
+Organization "1" - "1..*" HumanResourceManager: has >
+Organization "1" - "1..*" Collaborator: has >
+Organization "1" - "1..*" FleetManager: has >
+Organization "1" - "1..*" Skill: owns >
+Organization "1" - "1..*" Job: owns >
+Organization "1" - "1..*" Vehicle: owns >
 HumanResourceManager "1" -- "1..*" Skill : regist >
 HumanResourceManager "1" -- "1..*" Job : regist >
 HumanResourceManager "1" -- "1..*" Collaborator : regist >

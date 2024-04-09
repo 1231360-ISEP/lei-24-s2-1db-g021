@@ -8,7 +8,7 @@ skinparam classAttributeIconSize 0
 hide circle
 hide methods
 
-class MusgoSublime {
+class Organization {
 }
 
 class HumanResourceManager {
@@ -40,10 +40,10 @@ class Collaborator {
 class Team {
 }
 
-MusgoSublime "1" - "1..*" Collaborator: has >
-MusgoSublime "1" - "1..*" HumanResourceManager : has >
+Organization "1" - "1..*" Collaborator: has >
+Organization "1" - "1..*" HumanResourceManager : has >
 Collaborator "*" -- "*" Skill : owns >
-MusgoSublime "1" - "1..*" Team: owns >
+Organization "1" - "1..*" Team: owns >
 Team "1" -- "1..*" Collaborator : has >
 HumanResourceManager "1" -- "1..*" Team : creates >
 @enduml

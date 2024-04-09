@@ -8,7 +8,7 @@ skinparam classAttributeIconSize 0
 hide circle
 hide methods
 
-class MusgoSublime {
+class Organization {
 }
 
 class FleetManager {
@@ -38,10 +38,11 @@ class Vehicle {
 class VehicleCheckUp {
     Date
     Place
+    Kms
 }
 
-MusgoSublime "1" - "1..*" FleetManager: has >
-MusgoSublime "1" - "1..*" Vehicle: owns >
+Organization "1" - "1..*" FleetManager: has >
+Organization "1" - "1..*" Vehicle: owns >
 FleetManager "1" -- "1..*" VehicleCheckUp : regist >
 Vehicle "1" -- "*" VehicleCheckUp : assigned to <
 @enduml

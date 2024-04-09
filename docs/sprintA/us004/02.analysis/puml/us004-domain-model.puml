@@ -12,7 +12,7 @@ hide methods
 
 'title Domain Model
 
-class MusgoSublime {
+class Organization {
 }
 
 class HumanResourcesManager {
@@ -40,7 +40,8 @@ class Collaborator {
 class Skill {
     skillName
 }
-MusgoSublime "1" -- "1..*" Collaborator : has >
-MusgoSublime "1" -- "1..*" HumanResourcesManager : has >
+
+Organization "1" -- "1..*" Collaborator : has >
+Organization "1" -- "1..*" HumanResourcesManager : has >
 Collaborator "*" -- "*" Skill : assigned to <
 @enduml
