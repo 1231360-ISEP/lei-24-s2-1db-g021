@@ -64,7 +64,7 @@ As a Human Resources Manager, I want to assign one or more skills to a collabora
 
 **Output Data:**
 
-* (In)Success of the operation
+* Collaborator with assigned skills
 
 ### 1.6. System Sequence Diagram (SSD)
 
