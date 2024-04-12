@@ -46,6 +46,16 @@ current kms, frequency, last checkup kms, next checkup (optimal) kms
 
 * **AC1:** The report should have the data concerning the vehicle description (Plate, Brand, Model and Current Kms) and the Checkup related data, like the following example: 
 
+| **_Type_**   | **_Information_** |                                       
+|:-------------|:------------------|
+| **Plate**    | 10-10-QR          |
+| **Brand**    | Ford Focus        |
+| **Model**    | Focus             |
+| **Curr.Kms** | 43124             |
+| **Freq**     | 15000             |
+| **Last**     | 41152             |
+| **Next**     | 56152             |
+
 ### 1.4. Found out Dependencies
 
 * There is a dependency on "US006 - As an FM, I wish to register a vehicle including Brand, Model, Type, Tare,
