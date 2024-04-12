@@ -44,6 +44,8 @@ current kms, frequency, last checkup kms, next checkup (optimal) kms
 
 ### 1.3. Acceptance Criteria
 
+* **AC1:** The report should have the data concerning the vehicle description (Plate, Brand, Model and Current Kms) and the Checkup related data, like the following example: 
+
 ### 1.4. Found out Dependencies
 
 * There is a dependency on "US006 - As an FM, I wish to register a vehicle including Brand, Model, Type, Tare,

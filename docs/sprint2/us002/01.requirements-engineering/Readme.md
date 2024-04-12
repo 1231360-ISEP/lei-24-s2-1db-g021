@@ -62,7 +62,7 @@ a job is just the job name!
 
 ### 1.3. Acceptance Criteria
 
-* **AC1:** The name of the profession/job.
+* **AC1:** A job name can’t have special characters or digits.
 
 ### 1.4. Found out Dependencies
 

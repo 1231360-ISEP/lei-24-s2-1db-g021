@@ -50,9 +50,8 @@ Teams are temporary associations of employees who will carry out a set of tasks 
 
 ### 1.3. Acceptance Criteria
 
-* **AC1:** Valid number for maximum team size.
-* **AC2:** Valid number for minimum team size.
-* **AC3:** Provide the set of skills that collaborators need to have.
+* **AC1:** The max and minimum team size and the set of skills must be supplied by the HRM, like in the following example:
+  4; 3; <tree pruner; tree pruner; tree pruner; light vehicle licence>
 
 ### 1.4. Found out Dependencies
 

@@ -66,7 +66,7 @@ As an organization employee (HRM), I want to register skills that may be appoint
 
 ### 1.3. Acceptance Criteria
 
-* **AC1:** The name of the skill.
+* **AC1:** A skill name can’t have special characters or digits.
 
 ### 1.4. Found out Dependencies
 

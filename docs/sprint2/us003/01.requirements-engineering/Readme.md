@@ -42,8 +42,7 @@ displaying or not, It's a matter of UX, the dev team should decide about it, but
 
 ### 1.3. Acceptance Criteria
 
-* **AC1:** name, birthdate, admission date, address, contact info (mobile and
-  email), ID doc type and respective number should be provided by Human Resources Manager
+* **AC1:** name, birth date, admission date, address, contact info (mobile and email), taxpayer number, ID doc type, and respective number should be provided by the HRM. The taxpayer identification number and the citizen card number should be valid.
 
 ### 1.4. Found out Dependencies
 
