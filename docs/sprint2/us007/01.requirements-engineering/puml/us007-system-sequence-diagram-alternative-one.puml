@@ -1,0 +1,42 @@
+€@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD)
+
+autonumber
+
+actor "Vehicle and Equipment \nFleet Manager" as VFM
+participant "System" as System
+
+activate VFM
+
+    VFM -> System : asks to register a vehicle check-up
+    activate System
+
+    loop while intended
+            System --> VFM : requests the vehicle plate
+        deactivate System
+        VFM -> System : Type a vehicle plate
+        activate System
+
+        System --> VFM : requests the information about the \ncheck-up (i.e. date, place)
+        deactivate System
+        VFM -> System : Type the information about the check-up
+        activate System
+        System --> VFM : Request confirmation
+        deactivate System
+        VFM -> System : Confirms it and regist the vehicle check-up
+        activate System
+    end
+
+        System --> VFM : shows all registered vehicle check-up's
+    deactivate System
+
+    VFM -> System : confirms the set of registered vehicle check-up's and the \nnew vehicle check-up
+    activate System
+
+    System --> VFM : displays operation success
+    deactivate System
+@enduml
