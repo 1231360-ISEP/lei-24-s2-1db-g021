@@ -1,6 +1,6 @@
 package pt.ipp.isep.dei.esoft.project.repository;
 
-import pt.ipp.isep.dei.esoft.project.domain.Employee;
+import pt.ipp.isep.dei.esoft.project.domain.Collaborator;
 import pt.ipp.isep.dei.esoft.project.domain.Organization;
 
 import java.util.ArrayList;
@@ -15,12 +15,12 @@ public class OrganizationRepository {
         organizations = new ArrayList<>();
     }
 
-    public Optional<Organization> getOrganizationByEmployee(Employee employee) {
+    public Optional<Organization> getOrganizationByCollaborator(Collaborator collaborator) {
 
         Optional<Organization> returnOrganization = Optional.empty();
 
         for (Organization organization : organizations) {
-            if (organization.employs(employee)) {
+            if (organization.employs(collaborator)) {
                 returnOrganization = Optional.of(organization);
             }
         }
@@ -28,12 +28,12 @@ public class OrganizationRepository {
         return returnOrganization;
     }
 
-    public Optional<Organization> getOrganizationByEmployeeEmail(String email) {
+    public Optional<Organization> getOrganizationByCollaboratorEmail(String email) {
 
         Optional<Organization> returnOrganization = Optional.empty();
 
         for (Organization organization : organizations) {
-            if (organization.anyEmployeeHasEmail(email)) {
+            if (organization.anyCollaboratorHasEmail(email)) {
                 returnOrganization = Optional.of(organization);
             }
         }

@@ -1,6 +1,6 @@
 package pt.ipp.isep.dei.esoft.project.application.controller;
 
-import pt.ipp.isep.dei.esoft.project.domain.Employee;
+import pt.ipp.isep.dei.esoft.project.domain.Collaborator;
 import pt.ipp.isep.dei.esoft.project.domain.Organization;
 import pt.ipp.isep.dei.esoft.project.domain.Task;
 import pt.ipp.isep.dei.esoft.project.domain.TaskCategory;
@@ -10,6 +10,7 @@ import pt.ipp.isep.dei.esoft.project.repository.Repositories;
 import pt.ipp.isep.dei.esoft.project.repository.TaskCategoryRepository;
 import pt.isep.lei.esoft.auth.domain.model.Email;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -71,23 +72,24 @@ public class CreateTaskController {
 
         TaskCategory taskCategory = getTaskCategoryByDescription(taskCategoryDescription);
 
-        Employee employee = getEmployeeFromSession();
-        Optional<Organization> organization = getOrganizationRepository().getOrganizationByEmployee(employee);
+        Collaborator collaborator = getCollaboratorFromSession();
+        Optional<Organization> organization = getOrganizationRepository().getOrganizationByCollaborator(collaborator);
 
         Optional<Task> newTask = Optional.empty();
 
         if (organization.isPresent()) {
             newTask = organization.get()
                     .createTask(reference, description, informalDescription, technicalDescription, duration, cost,
-                            taskCategory, employee);
+                            taskCategory, collaborator);
         }
         return newTask;
     }
 
-    private Employee getEmployeeFromSession() {
+    private Collaborator getCollaboratorFromSession() {
         Email email = getAuthenticationRepository().getCurrentUserSession().getUserId();
-        return new Employee(email.getEmail());
+        return new Collaborator(email.getEmail());
     }
+
 
     private TaskCategory getTaskCategoryByDescription(String taskCategoryDescription) {
         TaskCategoryRepository taskCategoryRepository = getTaskCategoryRepository();
