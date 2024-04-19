@@ -1,13 +1,16 @@
 package pt.ipp.isep.dei.esoft.project.ui;
 
 import pt.ipp.isep.dei.esoft.project.application.controller.authorization.AuthenticationController;
-import pt.ipp.isep.dei.esoft.project.domain.Employee;
+import pt.ipp.isep.dei.esoft.project.domain.Collaborator;
 import pt.ipp.isep.dei.esoft.project.domain.Organization;
 import pt.ipp.isep.dei.esoft.project.domain.TaskCategory;
 import pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository;
 import pt.ipp.isep.dei.esoft.project.repository.OrganizationRepository;
 import pt.ipp.isep.dei.esoft.project.repository.Repositories;
 import pt.ipp.isep.dei.esoft.project.repository.TaskCategoryRepository;
+
+import java.util.Calendar;
+import java.util.Date;
 
 public class Bootstrap implements Runnable {
 
@@ -23,8 +26,10 @@ public class Bootstrap implements Runnable {
         //get organization repository
         OrganizationRepository organizationRepository = Repositories.getInstance().getOrganizationRepository();
         Organization organization = new Organization("This Company");
-        organization.addEmployee(new Employee("admin@this.app"));
-        organization.addEmployee(new Employee("employee@this.app"));
+        Date bornDate = new Date(1234, Calendar.MAY, 6);
+        Date admDate = new Date(6543, Calendar.FEBRUARY, 1);
+        organization.addCollaborator(new Collaborator("admin", bornDate, admDate,"lamas", 123456789,"admin@this.app", 123456789, 123456789));
+        organization.addCollaborator(new Collaborator("collaborator",bornDate,admDate,"lamas", 987654321,"collaborator@this.app", 987654321, 987654321));
         organizationRepository.add(organization);
     }
 
@@ -46,13 +51,13 @@ public class Bootstrap implements Runnable {
         //TODO: add Authentication users here: should be created for each user in the organization
         AuthenticationRepository authenticationRepository = Repositories.getInstance().getAuthenticationRepository();
         authenticationRepository.addUserRole(AuthenticationController.ROLE_ADMIN, AuthenticationController.ROLE_ADMIN);
-        authenticationRepository.addUserRole(AuthenticationController.ROLE_EMPLOYEE,
-                AuthenticationController.ROLE_EMPLOYEE);
+        authenticationRepository.addUserRole(AuthenticationController.ROLE_COLLABORATOR,
+                AuthenticationController.ROLE_COLLABORATOR);
 
         authenticationRepository.addUserWithRole("Main Administrator", "admin@this.app", "admin",
                 AuthenticationController.ROLE_ADMIN);
 
-        authenticationRepository.addUserWithRole("Employee", "employee@this.app", "pwd",
-                AuthenticationController.ROLE_EMPLOYEE);
+        authenticationRepository.addUserWithRole("Collaborator", "collaborator@this.app", "pwd",
+                AuthenticationController.ROLE_COLLABORATOR);
     }
 }

@@ -1,0 +1,34 @@
+€@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD)
+
+autonumber
+
+actor "Vehicle and Equipment \nFleet Manager" as VFM
+participant "System" as System
+
+activate VFM
+
+    VFM -> System : asks to register a new vehicle
+    activate System
+
+    loop while intended
+            System --> VFM : requests vehicle data (i.e. Brand, Model, Type, \nTare,Gross Weight, Current Km, Register Date, \nAcquisition Date, Maintenance/Checkup Frequency (in Kms),\n vehicle plate)
+        deactivate System
+
+        VFM -> System : write the values of the new vehicle's attributes
+        activate System
+    end
+
+        System --> VFM : shows all registered vehicles and asks to confirm
+    deactivate System
+
+    VFM -> System : confirms all vehicles
+    activate System
+
+    System --> VFM : displays operation success
+    deactivate System
+@enduml

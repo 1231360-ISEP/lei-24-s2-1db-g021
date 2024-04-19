@@ -1,0 +1,49 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+skinparam classAttributeIconSize 0
+
+hide circle
+hide methods
+
+class Organization {
+}
+
+class HumanResourceManager {
+    name
+    bornDate
+    admDate
+    address
+    phoneNumber
+    email
+    idCard
+    idNumber
+}
+
+class Skill {
+    skillName
+}
+
+class Collaborator {
+    name
+    bornDate
+    admDate
+    address
+    phoneNumber
+    email
+    idCard
+    idNumber
+}
+
+class Team {
+}
+
+Organization "1" - "1..*" Collaborator: has >
+Organization "1" - "1..*" HumanResourceManager : has >
+Collaborator "*" -- "*" Skill : owns >
+Organization "1" - "1..*" Team: owns >
+Team "1" -- "1..*" Collaborator : has >
+HumanResourceManager "1" -- "1..*" Team : creates >
+@enduml

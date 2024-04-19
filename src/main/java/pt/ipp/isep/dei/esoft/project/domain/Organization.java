@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public class Organization {
     private final String vatNumber;
-    private final List<Employee> employees;
+    private final List<Collaborator> collaborators;
     private final List<Task> tasks;
     private String name;
     private String website;
@@ -22,18 +22,18 @@ public class Organization {
      */
     public Organization(String vatNumber) {
         this.vatNumber = vatNumber;
-        employees = new ArrayList<>();
+        collaborators = new ArrayList<>();
         tasks = new ArrayList<>();
     }
 
     /**
-     * This method checks if an employee works for the organization.
+     * This method checks if an collaborator works for the organization.
      *
-     * @param employee The employee to be checked.
-     * @return True if the employee works for the organization.
+     * @param collaborator The collaborator to be checked.
+     * @return True if the collaborator works for the organization.
      */
-    public boolean employs(Employee employee) {
-        return employees.contains(employee);
+    public boolean employs(Collaborator collaborator) {
+        return collaborators.contains(collaborator);
     }
 
     /**
@@ -46,22 +46,22 @@ public class Organization {
      * @param duration             The duration of the task to be created.
      * @param cost                 The cost of the task to be created.
      * @param taskCategory         The task category of the task to be created.
-     * @param employee             The employee of the task to be created.
+     * @param collaborator         The collaborator of the task to be created.
      * @return
      */
     public Optional<Task> createTask(String reference, String description, String informalDescription,
                                      String technicalDescription, int duration, double cost,
-                                     TaskCategory taskCategory, Employee employee) {
+                                     TaskCategory taskCategory, Collaborator collaborator) {
 
-        //TODO: we could also check if the employee works for the organization before proceeding
-        //checkIfEmployeeWorksForOrganization(employee);
+        //TODO: we could also check if the collaborator works for the organization before proceeding
+        //checkIfCollaboratorWorksForOrganization(collaborator);
 
         // When a Task is added, it should fail if the Task already exists in the list of Tasks.
         // In order to not return null if the operation fails, we use the Optional class.
         Optional<Task> optionalValue = Optional.empty();
 
         Task task = new Task(reference, description, informalDescription, technicalDescription, duration, cost,
-                taskCategory, employee);
+                taskCategory, collaborator);
 
         if (addTask(task)) {
             optionalValue = Optional.of(task);
@@ -106,15 +106,15 @@ public class Organization {
     }
 
     /**
-     * This methos checks if the organization has an employee with the given email.
+     * This methos checks if the organization has an collaborator with the given email.
      *
      * @param email The email to be checked.
-     * @return True if the organization has an employee with the given email.
+     * @return True if the organization has an collaborator with the given email.
      */
-    public boolean anyEmployeeHasEmail(String email) {
+    public boolean anyCollaboratorHasEmail(String email) {
         boolean result = false;
-        for (Employee employee : employees) {
-            if (employee.hasEmail(email)) {
+        for (Collaborator collaborator : collaborators) {
+            if (collaborator.hasEmail(email)) {
                 result = true;
             }
         }
@@ -138,21 +138,21 @@ public class Organization {
         return Objects.hash(vatNumber);
     }
 
-    //add employee to organization
-    public boolean addEmployee(Employee employee) {
+    //add collaborator to organization
+    public boolean addCollaborator(Collaborator collaborator) {
         boolean success = false;
-        if (validateEmployee(employee)) {
-            success = employees.add(employee);
+        if (validateCollaborator(collaborator)) {
+            success = collaborators.add(collaborator);
         }
         return success;
     }
 
-    private boolean validateEmployee(Employee employee) {
-        return employeesDoNotContain(employee);
+    private boolean validateCollaborator(Collaborator collaborator) {
+        return collaboratorsDoNotContain(collaborator);
     }
 
-    private boolean employeesDoNotContain(Employee employee) {
-        return !employees.contains(employee);
+    private boolean collaboratorsDoNotContain(Collaborator collaborator) {
+        return !collaborators.contains(collaborator);
     }
 
     //Clone organization
@@ -163,8 +163,8 @@ public class Organization {
         clone.phone = (this.phone);
         clone.email = (this.email);
 
-        for (Employee in : this.employees) {
-            clone.employees.add(in.clone());
+        for (Collaborator in : this.collaborators) {
+            clone.collaborators.add(in.clone());
         }
 
 

@@ -1,0 +1,93 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+hide circle
+hide methods
+
+
+class Organization {
+}
+
+class HumanResourceManager {
+    name
+    bornDate
+    admDate
+    address
+    phoneNumber
+    email
+    idCard
+    idNumber
+}
+
+class Collaborator {
+    name
+    bornDate
+    admDate
+    address
+    phoneNumber
+    email
+    idCard
+    idNumber
+}
+
+class FleetManager {
+    name
+    bornDate
+    admDate
+    address
+    phoneNumber
+    email
+    idCard
+    idNumber
+}
+
+class Skill {
+    skillName
+}
+
+class Job {
+    jobName
+}
+
+class Team {
+}
+
+class Vehicle {
+    brand
+    model
+    type
+    tare
+    grossWeight
+    currentKm
+    registerDate
+    acquisitionDate
+    maintenance
+    plate
+}
+
+class VehicleCheckUp {
+    Date
+    Place
+    Kms
+}
+
+Organization "1" - "1..*" HumanResourceManager: has >
+Organization "1" - "1..*" Collaborator: has >
+Organization "1" - "1..*" FleetManager: has >
+Organization "1" - "1..*" Skill: owns >
+Organization "1" - "1..*" Job: owns >
+Organization "1" - "1..*" Vehicle: owns >
+HumanResourceManager "1" -- "1..*" Skill : regist >
+HumanResourceManager "1" -- "1..*" Job : regist >
+HumanResourceManager "1" -- "1..*" Collaborator : regist >
+HumanResourceManager "1" -- "1..*" Team : creates >
+Collaborator "1..*" -- "1" Job : assigned to <
+Collaborator "*" -- "*" Skill : assigned to <
+Team "1" -- "1..*" Collaborator : has >
+FleetManager "1" -- "1..*" Vehicle : regist >
+FleetManager "1" -- "1..*" VehicleCheckUp : regist >
+Vehicle "1" -- "*" VehicleCheckUp : assigned to <
+
+@enduml

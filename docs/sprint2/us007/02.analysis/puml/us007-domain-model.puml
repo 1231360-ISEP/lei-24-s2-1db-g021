@@ -1,0 +1,48 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+skinparam classAttributeIconSize 0
+
+hide circle
+hide methods
+
+class Organization {
+}
+
+class FleetManager {
+    name
+    bornDate
+    admDate
+    address
+    phoneNumber
+    email
+    idCard
+    idNumber
+}
+
+class Vehicle {
+    brand
+    model
+    type
+    tare
+    grossWeight
+    currentKm
+    registerDate
+    acquisitionDate
+    maintenance
+    plate
+}
+
+class VehicleCheckUp {
+    Date
+    Place
+    Kms
+}
+
+Organization "1" - "1..*" FleetManager: has >
+Organization "1" - "1..*" Vehicle: owns >
+FleetManager "1" -- "1..*" VehicleCheckUp : regist >
+Vehicle "1" -- "*" VehicleCheckUp : assigned to <
+@enduml

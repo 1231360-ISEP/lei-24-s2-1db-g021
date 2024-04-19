@@ -84,15 +84,15 @@ class OrganizationTest {
     void testThatCreateTaskWorks() {
         Organization organization = new Organization("123456789");
 
-        Employee employee = new Employee("john.doe@this.company.com");
+        Collaborator collaborator = new Collaborator("collaborator",1,1,"lamas", 987654321,"collaborator@this.app", 987654321, 987654321);
         TaskCategory taskCategory = new TaskCategory("Task Category Description");
 
         Task expected = new Task("Task Description", "Task Category Description", "informal description",
-                "technical description", 1, 1d, taskCategory, employee);
+                "technical description", 1, 1d, taskCategory, collaborator);
 
         Optional<Task> task =
                 organization.createTask("Task Description", "Task Category Description", "informal description",
-                        "technical description", 1, 1d, taskCategory, employee);
+                        "technical description", 1, 1d, taskCategory, collaborator);
 
         assertNotNull(task);
         assertTrue(task.isPresent());
@@ -103,17 +103,17 @@ class OrganizationTest {
     void ensureAddingDuplicateTaskFails() {
         //Arrange
         Organization organization = new Organization("123456789");
-        Employee employee = new Employee("john.doe@this.company.com");
+        Collaborator collaborator = new Collaborator("collaborator",1,1,"lamas", 987654321,"collaborator@this.app", 987654321, 987654321);
         TaskCategory taskCategory = new TaskCategory("Task Category Description");
         //Add the first task
         Optional<Task> originalTask =
                 organization.createTask("Task Description", "Task Category Description", "informal description",
-                        "technical description", 1, 1d, taskCategory, employee);
+                        "technical description", 1, 1d, taskCategory, collaborator);
 
         //Act
         Optional<Task> duplicateTask =
                 organization.createTask("Task Description", "Task Category Description", "informal description",
-                        "technical description", 1, 1d, taskCategory, employee);
+                        "technical description", 1, 1d, taskCategory, collaborator);
 
         //Assert
         assertTrue(duplicateTask.isEmpty());
@@ -123,58 +123,58 @@ class OrganizationTest {
     @Test
     void ensureEmploysFails() {
         Organization organization = new Organization("123456789");
-        Employee employee = new Employee("john.doe@this.company.com");
+        Collaborator collaborator = new Collaborator("collaborator",1,1,"lamas", 987654321,"collaborator@this.app", 987654321, 987654321);
 
-        assertFalse(organization.employs(employee));
+        assertFalse(organization.employs(collaborator));
 
     }
 
     @Test
     void ensureEmploysSuccess() {
         Organization organization = new Organization("123456789");
-        Employee employee = new Employee("john.doe@this.company.com");
-        organization.addEmployee(employee);
-        assertTrue(organization.employs(employee));
+        Collaborator collaborator = new Collaborator("collaborator",1,1,"lamas", 987654321,"collaborator@this.app", 987654321, 987654321);
+        organization.addCollaborator(collaborator);
+        assertTrue(organization.employs(collaborator));
     }
 
     @Test
-    void ensureAnyEmployeeHasEmailFails() {
+    void ensureAnyCollaboratorHasEmailFails() {
         Organization organization = new Organization("123456789");
-        Employee employee = new Employee("john.doe@this.company.com");
-        organization.addEmployee(employee);
-        assertFalse(organization.anyEmployeeHasEmail("jane.doe@this.company.com"));
+        Collaborator collaborator = new Collaborator("collaborator",1,1,"lamas", 987654321,"collaborator@this.app", 987654321, 987654321);
+        organization.addCollaborator(collaborator);
+        assertFalse(organization.anyCollaboratorHasEmail("jane.doe@this.company.com"));
     }
 
     @Test
-    void ensureAnyEmployeeHasEmailWorks() {
+    void ensureAnyCollaboratorHasEmailWorks() {
         Organization organization = new Organization("123456789");
-        Employee employee = new Employee("john.doe@this.company.com");
-        organization.addEmployee(employee);
-        assertTrue(organization.anyEmployeeHasEmail("john.doe@this.company.com"));
+        Collaborator collaborator = new Collaborator("collaborator",1,1,"lamas", 987654321,"collaborator@this.app", 987654321, 987654321);
+        organization.addCollaborator(collaborator);
+        assertTrue(organization.anyCollaboratorHasEmail("john.doe@this.company.com"));
     }
 
     @Test
-    void ensureAddDuplicateEmployeeFails() {
+    void ensureAddDuplicateCollaboratorFails() {
         Organization organization = new Organization("123456789");
-        Employee employee = new Employee("john.doe@this.company.com");
-        assertTrue(organization.addEmployee(employee));
-        assertFalse(organization.addEmployee(employee));
+        Collaborator collaborator = new Collaborator("collaborator",1,1,"lamas", 987654321,"collaborator@this.app", 987654321, 987654321);
+        assertTrue(organization.addCollaborator(collaborator));
+        assertFalse(organization.addCollaborator(collaborator));
     }
 
     @Test
     void ensureAddEmployeeWorks() {
         Organization organization = new Organization("123456789");
-        Employee employee = new Employee("john.doe@this.company.com");
-        assertTrue(organization.addEmployee(employee));
+        Collaborator collaborator = new Collaborator("collaborator",1,1,"lamas", 987654321,"collaborator@this.app", 987654321, 987654321);
+        assertTrue(organization.addCollaborator(collaborator));
     }
 
     @Test
     void ensureCloneWorks() {
         Organization organization = new Organization("123456789");
-        Employee employee = new Employee("john.doe@this.company.com");
-        organization.addEmployee(employee);
+        Collaborator collaborator = new Collaborator("collaborator",1,1,"lamas", 987654321,"collaborator@this.app", 987654321, 987654321);
+        organization.addCollaborator(collaborator);
         organization.createTask("Task Description", "Task Category Description", "informal description",
-                "technical description", 1, 1d, new TaskCategory("Task Category Description"), employee);
+                "technical description", 1, 1d, new TaskCategory("Task Category Description"), collaborator);
 
         Organization clone = organization.clone();
         assertEquals(organization, clone);
