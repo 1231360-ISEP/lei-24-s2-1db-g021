@@ -7,8 +7,6 @@ hide circle
 hide methods
 
 
-class Organization {}
-
 class Collaborator {
     name
     bornDate
@@ -20,10 +18,12 @@ class Collaborator {
 }
 
 class Address {
-    street
-    city
-    zipCode
     doorNumber
+}
+
+class zipCode {
+    local
+    street
 }
 
 class HumanResourceManager {}
@@ -72,7 +72,7 @@ class VehicleCheckUp {
     kms
 }
 
-class GreenSpace {
+class TypeGarden {
     garden
     mediumSizedGarden
     largeSizedGarden
@@ -80,32 +80,24 @@ class GreenSpace {
 
 class Agenda {}
 
-Organization "1" --- "1..*" HumanResourceManager: has >
-Organization "1" --- "1..*" Collaborator: has >
-Organization "1" --- "1..*" FleetManager: has >
-Organization "1" --- "1..*" SoftwareQualityTeamManager: has >
-Organization "1" --- "1..*" GreenSpaceManager: has >
-Organization "1" --- "1..*" Skill: owns >
-Organization "1" --- "1..*" Job: owns >
-Organization "1" --- "1..*" Vehicle: owns >
-
 HumanResourceManager "1" --"1..*" Skill : regist >
 HumanResourceManager "1" -- "1..*" Job : regist >
 HumanResourceManager "1" -- "1..*" Collaborator : regist >
 HumanResourceManager "1" -- "1..*" Team : creates >
 
-FleetManager --|> Collaborator
-HumanResourceManager --|> Collaborator
-SoftwareQualityTeamManager --|> Collaborator
-GreenSpaceManager --|> Collaborator
+FleetManager ---|> Collaborator
+HumanResourceManager ---|> Collaborator
+SoftwareQualityTeamManager ---|> Collaborator
+GreenSpaceManager ---|> Collaborator
 
 Collaborator "1..*" -- "1" Job : assigned to <
 Collaborator "*" -- "*" Skill : assigned to <
 Collaborator "1" -- "1" Address: owns >
+Address "1" -- "1" zipCode : owns >
 
 Team "1" -- "1..*" Collaborator : has >
-Team "1" --- "1*" Agenda : has >
-Team "1..*" --- "1..*" Task : assigned to <
+Team "1" -- "1*" Agenda : has >
+Team "1..*" -- "1..*" Task : assigned to <
 
 FleetManager "1" -- "1..*" Vehicle : regist >
 FleetManager "1" -- "1..*" VehicleCheckUp : regist >
@@ -116,8 +108,9 @@ Vehicle "1" -- "1" PlateCertification : owns >
 
 Agenda "1" --- "1" Task : has >
 
-Task "1..*" -- "1..*" GreenSpace : carried out in >
+Task "1..*" -- "1..*" TypeGarden : carried out in >
 
-GreenSpaceUser "1..*" -- "1..*" GreenSpace : use >
+GreenSpaceUser "1..*" -- "1..*" TypeGarden : use >
+
 
 @enduml
