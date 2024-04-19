@@ -42,6 +42,14 @@ current kms, frequency, last checkup kms, next checkup (optimal) kms
 >
 > **Answer:** No; the Maintenance/Check-up Frequency (in km) is registered in US06.
 
+> **Question:** Are there any specific criteria for determining which vehicles need check-up?Are there any specific criteria for determining which vehicles need check-up?
+> 
+> **Answer:** yes; previously answered;
+
+> **Question:** Should the list include all vehicles or only those assigned to a specific location?
+>
+> **Answer:** all
+
 ### 1.3. Acceptance Criteria
 
 * **AC1:** The report should have the data concerning the vehicle description (Plate, Brand, Model and Current Kms) and the Checkup related data, like the following example: 

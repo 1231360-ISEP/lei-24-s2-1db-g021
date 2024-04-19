@@ -41,6 +41,18 @@ As a Human Resources Manager, I want to assign one or more skills to a collabora
 >
 > **Answer:** yes.
 
+> **Question:** Can multiple skills be assigned to a collaborator simultaneously?
+> 
+> **Answer:** yes; already answered;
+
+> **Question:** Can multiple skills be assigned to a collaborator simultaneously?
+>
+> **Answer:** yes; previously answered;
+
+> **Question:** Should the list include all vehicles or only those assigned to a specific location?
+> 
+> **Answer:** no
+
 ### 1.3. Acceptance Criteria
 
 * **AC1:** All required fields must be filled in.
