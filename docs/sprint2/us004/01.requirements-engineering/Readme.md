@@ -40,14 +40,6 @@ As a Human Resources Manager, I want to assign one or more skills to a collabora
 > **Question:** Can a collaborator have no skills assigned?
 >
 > **Answer:** yes.
- 
-> **Question:** Can multiple skills be assigned to a collaborator simultaneously?
->
-> **Answer:** yes; already answered; 
-
-> **Question:** Is there any limit to the number of skills that can be assigned to a collaborator?
->
-> **Answer:** no
 
 ### 1.3. Acceptance Criteria
 
