@@ -96,8 +96,9 @@ Collaborator "1" -- "1" Address: owns >
 Address "1" -- "1" zipCode : owns >
 
 Team "1" -- "1..*" Collaborator : has >
-Team "1" -- "1*" Agenda : has >
-Team "1..*" -- "1..*" Task : assigned to <
+Team "1" -- "1" Agenda : has >
+Task "1..*" -- "1..*" Team : assigned to >
+Agenda "1..*" --- "1..*" Task : has >
 
 FleetManager "1" -- "1..*" Vehicle : regist >
 FleetManager "1" -- "1..*" VehicleCheckUp : regist >
@@ -105,8 +106,6 @@ FleetManager "1" -- "1" Address: owns >
 
 Vehicle "1" --- "*" VehicleCheckUp : assigned to <
 Vehicle "1" -- "1" PlateCertification : owns >
-
-Agenda "1" --- "1" Task : has >
 
 Task "1..*" -- "1..*" TypeGarden : carried out in >
 
