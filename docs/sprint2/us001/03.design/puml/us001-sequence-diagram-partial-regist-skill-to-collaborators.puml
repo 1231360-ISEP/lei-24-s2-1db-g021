@@ -1,40 +1,42 @@
 @startuml
-skinparam monochrome true
+/'skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
 
 actor "Human Resources\nManager" as HRM
-participant ":RegistSkillsToCollaboratorsUI" as RGC
+participant ":RegistSkillsToCollaboratorsUI" as UI
 
 autonumber 1
 
 activate HRM
 
-    HRM -> RGC : asks to regist a new skill
-    activate RGC
+    HRM -> UI : asks to regist a new skill
+    activate UI
 
-    RGC ->: getRegistSkillsToCollaborators()
+    UI ->: getRegistSkillsToCollaborators()
 
     loop while intended
-            RGC --> HRM : requests the skill name
-        deactivate RGC
+            UI --> HRM : requests the skill name
+        deactivate UI
 
-        HRM -> RGC : types the new skill name
-        activate RGC
+        HRM -> UI : types the new skill name
+        activate UI
     end
 
-        RGC --> RGC: keepData
+        UI --> UI: keepData
 
-        RGC --> HRM : show all the skills registed and aks to confirm
-    deactivate RGC
+        UI --> HRM : show all the skills registed and aks to confirm
+    deactivate UI
 
-    HRM -> RGC : confirm the set of skills registed
-    activate RGC
+    HRM -> UI : confirm the set of skills registed
+    activate UI
 
-    RGC -->: RegistSkillsToCollaborators
+    UI -->: RegistSkillsToCollaborators
 
-    RGC --> HRM : displays operation success
-    deactivate RGC
+    UI --> HRM : displays operation success
+    deactivate UI
 
+'/
 
 @enduml
+*/
