@@ -4,10 +4,12 @@ skinparam packageStyle rectangle
 skinparam shadowing false
 
 actor "Human Resources\nManager" as HRM
-participant ":RegistSkillsToCollaboratorsUI" as UI
+participant ":RegistSkillsUI" as UI
+participant ":RegistSkillsController" as CTRL
 participant ":Repositories" as RepositorySingleton
 participant "repositories\n:Repositories" as PLAT
 participant "registedSkillsRepository:\nRegistedSkillsRepository" as RegistedSkillsRepository
+participant "skill\n:Skill" as TAREFA
 
 autonumber 1
 
@@ -16,36 +18,49 @@ activate HRM
     HRM -> UI : asks to regist a new skill
     activate UI
 
-        UI -> RepositorySingleton : getInstance()
+        UI -> CTRL** : create
+
+        activate CTRL
+
+        CTRL -> RepositorySingleton : getInstance()
         activate RepositorySingleton
 
-            RepositorySingleton --> UI: repositories
+            RepositorySingleton --> CTRL: repositories
         deactivate RepositorySingleton
 
-        UI -> PLAT : getRegistedSkillsRepository()
+        CTRL -> PLAT : getRegistedSkillsRepository()
         activate PLAT
 
-            PLAT --> UI: registedSkillsRepository
+            PLAT --> CTRL: registedSkillsRepository
         deactivate PLAT
 
-        UI -> RegistedSkillsRepository : getRegistedSkills()
-        activate RegistedSkillsRepository
-
-            RegistedSkillsRepository --> UI : registedSkillsList
-        deactivate RegistedSkillsRepository
-
     loop while intended
-            UI --> HRM : requests the skill name
-        deactivate UI
+            CTRL --> HRM : requests the skill name
+        deactivate CTRL
 
-        HRM -> UI : types the new skill name
-        activate UI
+        HRM -> CTRL : types the new skill name
+        activate CTRL
+
+            CTRL --> RegistedSkillsRepository
+
+            activate RegistedSkillsRepository
+
+                RegistedSkillsRepository -> TAREFA**: create skill
+                TAREFA -> RegistedSkillsRepository: addSkill (skill)
+
+                    RegistedSkillsRepository -> RegistedSkillsRepository: validateSkill(skill)
+
+                autonumber 17
+
     end
+                RegistedSkillsRepository --> CTRL : registedSkillsList
 
-        UI --> UI: keepData
+            deactivate RegistedSkillsRepository
 
-        UI --> HRM : show all the skills registed and aks to confirm
-    deactivate UI
+        CTRL --> HRM : show all the skills registed and aks to confirm
+
+            deactivate CTRL
+            deactivate UI
 
     HRM -> UI : confirm the set of skills registed
     activate UI
