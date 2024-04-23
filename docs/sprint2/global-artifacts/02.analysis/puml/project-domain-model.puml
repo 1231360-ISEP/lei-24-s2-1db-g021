@@ -7,41 +7,34 @@ hide circle
 hide methods
 
 
-class Organization {
-}
-
-class HumanResourceManager {
-    name
-    bornDate
-    admDate
-    address
-    phoneNumber
-    email
-    idCard
-    idNumber
-}
-
 class Collaborator {
     name
     bornDate
     admDate
-    address
     phoneNumber
     email
     idCard
     idNumber
 }
 
-class FleetManager {
-    name
-    bornDate
-    admDate
-    address
-    phoneNumber
-    email
-    idCard
-    idNumber
+class Address {
+    doorNumber
 }
+
+class zipCode {
+    local
+    street
+}
+
+class HumanResourceManager {}
+
+class FleetManager {}
+
+class SoftwareQualityTeamManager {}
+
+class GreenSpaceManager {}
+
+class GreenSpaceUser {}
 
 class Skill {
     skillName
@@ -51,43 +44,72 @@ class Job {
     jobName
 }
 
-class Team {
+class Task {
+    taskName
 }
 
+class Team {}
+
 class Vehicle {
+    currentKm
+    acquisitionDate
+    maintenance
+}
+
+class PlateCertification {
     brand
     model
     type
     tare
     grossWeight
-    currentKm
     registerDate
-    acquisitionDate
-    maintenance
     plate
 }
 
 class VehicleCheckUp {
-    Date
-    Place
-    Kms
+    date
+    place
+    kms
 }
 
-Organization "1" - "1..*" HumanResourceManager: has >
-Organization "1" - "1..*" Collaborator: has >
-Organization "1" - "1..*" FleetManager: has >
-Organization "1" - "1..*" Skill: owns >
-Organization "1" - "1..*" Job: owns >
-Organization "1" - "1..*" Vehicle: owns >
-HumanResourceManager "1" -- "1..*" Skill : regist >
+class TypeGarden {
+    garden
+    mediumSizedGarden
+    largeSizedGarden
+}
+
+class Agenda {}
+
+HumanResourceManager "1" --"1..*" Skill : regist >
 HumanResourceManager "1" -- "1..*" Job : regist >
 HumanResourceManager "1" -- "1..*" Collaborator : regist >
 HumanResourceManager "1" -- "1..*" Team : creates >
+
+FleetManager ---|> Collaborator
+HumanResourceManager ---|> Collaborator
+SoftwareQualityTeamManager ---|> Collaborator
+GreenSpaceManager ---|> Collaborator
+
 Collaborator "1..*" -- "1" Job : assigned to <
 Collaborator "*" -- "*" Skill : assigned to <
+Collaborator "1" -- "1" Address: owns >
+Address "1" -- "1" zipCode : owns >
+
 Team "1" -- "1..*" Collaborator : has >
+Team "1" -- "1" Agenda : has >
+Task "1..*" -- "1..*" Team : assigned to >
+Agenda "1..*" --- "1..*" Task : has >
+
 FleetManager "1" -- "1..*" Vehicle : regist >
 FleetManager "1" -- "1..*" VehicleCheckUp : regist >
-Vehicle "1" -- "*" VehicleCheckUp : assigned to <
+FleetManager "1" -- "1" Address: owns >
+
+Vehicle "1" --- "*" VehicleCheckUp : assigned to <
+Vehicle "1" -- "1" PlateCertification : owns >
+
+Task "1..*" -- "1..*" TypeGarden : carried out in >
+
+GreenSpaceUser "1..*" -- "1..*" TypeGarden : use >
+
 
 @enduml

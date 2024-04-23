@@ -1,0 +1,73 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+actor "Human Resources\nManager" as HRM
+participant ":RegistSkillsUI" as UI
+participant ":RegistSkillsController" as CTRL
+participant ":Repositories" as RepositorySingleton
+participant "repositories\n:Repositories" as PLAT
+participant "registedSkillsRepository:\nRegistedSkillsRepository" as RegistedSkillsRepository
+participant "skill\n:Skill" as TAREFA
+
+autonumber 1
+
+activate HRM
+
+    HRM -> UI : asks to regist a new skill
+    activate UI
+
+        UI -> CTRL** : create
+
+        activate CTRL
+
+        CTRL -> RepositorySingleton : getInstance()
+        activate RepositorySingleton
+
+            RepositorySingleton --> CTRL: repositories
+        deactivate RepositorySingleton
+
+        CTRL -> PLAT : getRegistedSkillsRepository()
+        activate PLAT
+
+            PLAT --> CTRL: registedSkillsRepository
+        deactivate PLAT
+
+    loop while intended
+            CTRL --> HRM : requests the skill name
+        deactivate CTRL
+
+        HRM -> CTRL : types the new skill name
+        activate CTRL
+
+            CTRL --> RegistedSkillsRepository
+
+            activate RegistedSkillsRepository
+
+                RegistedSkillsRepository -> TAREFA**: create skill
+                TAREFA -> RegistedSkillsRepository: addSkill (skill)
+
+                    RegistedSkillsRepository -> RegistedSkillsRepository: validateSkill(skill)
+
+                autonumber 17
+
+    end
+                RegistedSkillsRepository --> CTRL : registedSkillsList
+
+            deactivate RegistedSkillsRepository
+
+        CTRL --> HRM : show all the skills registed and aks to confirm
+
+            deactivate CTRL
+            deactivate UI
+
+    HRM -> UI : confirm the set of skills registed
+    activate UI
+
+    UI --> HRM : displays operation success
+    deactivate UI
+
+
+@enduml
+

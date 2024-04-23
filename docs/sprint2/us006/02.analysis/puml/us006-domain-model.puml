@@ -8,34 +8,48 @@ skinparam classAttributeIconSize 0
 hide circle
 hide methods
 
-class Organization {
-}
-
-class FleetManager {
+class Collaborator {
     name
     bornDate
     admDate
-    address
     phoneNumber
     email
     idCard
     idNumber
 }
 
+class Address {
+    doorNumber
+}
+
+class zipCode {
+    local
+    street
+}
+
+class FleetManager {}
+
 class Vehicle {
+    currentKm
+    acquisitionDate
+    maintenance
+}
+
+class PlateCertification{
     brand
     model
     type
     tare
     grossWeight
-    currentKm
     registerDate
-    acquisitionDate
-    maintenance
     plate
 }
 
-Organization "1" - "1..*" FleetManager: has >
+
+Collaborator --|> FleetManager
 FleetManager "1" -- "1..*" Vehicle : regist >
-Organization "1" - "1..*" Vehicle: owns >
+Vehicle "1" -- "1" PlateCertification : owns >
+Collaborator "1" -- "1" Address: owns >
+Address "1" -- "1" zipCode : owns >
+
 @enduml
