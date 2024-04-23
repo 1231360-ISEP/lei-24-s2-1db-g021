@@ -1,0 +1,58 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+actor "Human Resources\nManager" as HRM
+participant ":RegistSkillsToCollaboratorsUI" as UI
+participant ":Repositories" as RepositorySingleton
+participant "repositories\n:Repositories" as PLAT
+participant "registedSkillsRepository:\nRegistedSkillsRepository" as RegistedSkillsRepository
+
+autonumber 1
+
+activate HRM
+
+    HRM -> UI : asks to regist a new skill
+    activate UI
+
+        UI -> RepositorySingleton : getInstance()
+        activate RepositorySingleton
+
+            RepositorySingleton --> UI: repositories
+        deactivate RepositorySingleton
+
+        UI -> PLAT : getRegistedSkillsRepository()
+        activate PLAT
+
+            PLAT --> UI: registedSkillsRepository
+        deactivate PLAT
+
+        UI -> RegistedSkillsRepository : getRegistedSkills()
+        activate RegistedSkillsRepository
+
+            RegistedSkillsRepository --> UI : registedSkillsList
+        deactivate RegistedSkillsRepository
+
+    loop while intended
+            UI --> HRM : requests the skill name
+        deactivate UI
+
+        HRM -> UI : types the new skill name
+        activate UI
+    end
+
+        UI --> UI: keepData
+
+        UI --> HRM : show all the skills registed and aks to confirm
+    deactivate UI
+
+    HRM -> UI : confirm the set of skills registed
+    activate UI
+
+    UI --> HRM : displays operation success
+    deactivate UI
+
+
+@enduml
+

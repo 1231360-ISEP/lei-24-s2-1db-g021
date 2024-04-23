@@ -5,9 +5,7 @@ skinparam shadowing false
 
 autonumber
 
-'hide footbox
-
-participant ":RegistSkillsToCollaboratorUI" as UI
+participant ":RegistSkillsToCollaboratorsUI" as UI
 participant ":Repositories" as RepositorySingleton
 participant "repositories\n:Repositories" as PLAT
 participant "registedSkillsRepository:\nRegistedSkillsRepository" as RegistedSkillsRepository
@@ -25,16 +23,16 @@ activate UI
                 RepositorySingleton --> UI: repositories
             deactivate RepositorySingleton
 
-            UI -> PLAT : getRegistedSkillRepository()
+            UI -> PLAT : getRegistedSkillsRepository()
             activate PLAT
 
-                PLAT --> UI: registedSkillRepository
+                PLAT --> UI: registedSkillsRepository
             deactivate PLAT
 
-            UI -> RegistedSkillsRepository : getRegistedSkill()
+            UI -> RegistedSkillsRepository : getRegistedSkills()
             activate RegistedSkillsRepository
 
-                RegistedSkillsRepository --> UI : registedSkillList
+                RegistedSkillsRepository --> UI : registedSkillsList
             deactivate RegistedSkillsRepository
 
 
