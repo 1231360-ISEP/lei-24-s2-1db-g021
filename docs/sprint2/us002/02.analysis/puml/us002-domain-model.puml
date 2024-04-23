@@ -8,25 +8,36 @@ skinparam classAttributeIconSize 0
 hide circle
 hide methods
 
-class Organization {
-}
-
-class HumanResourceManager {
+class Collaborator {
     name
     bornDate
     admDate
-    address
     phoneNumber
     email
     idCard
     idNumber
 }
 
+class Address {
+    doorNumber
+}
+
+class zipCode {
+    local
+    street
+}
+
+class HumanResourceManager {}
+
 class Job {
     jobName
 }
 
-Organization "1" - "1..*" HumanResourceManager: has >
+
+Collaborator --|> HumanResourceManager
+'Collaborator "1..*" - "1" Job: assigned to <
 HumanResourceManager "1" -- "1..*" Job : regist >
-Organization "1" - "1..*" Job: owns >
+Collaborator "1" -- "1" Address: owns >
+Address "1" -- "1" zipCode : owns >
+
 @enduml
