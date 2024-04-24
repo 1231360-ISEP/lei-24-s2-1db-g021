@@ -3,49 +3,60 @@ skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
 
-'left to right direction
-
 skinparam classAttributeIconSize 0
 
 hide circle
 hide methods
 
-'title Domain Model
-
-class Organization {
-}
-
-class FleetManager {
+class Collaborator {
     name
     bornDate
     admDate
-    address
     phoneNumber
     email
     idCard
     idNumber
 }
 
+class Address {
+    doorNumber
+}
+
+class zipCode {
+    local
+    street
+}
+
+class FleetManager {}
+
 class Vehicle {
+    currentKm
+    acquisitionDate
+    maintenance
+}
+
+class PlateCertification{
     brand
     model
     type
     tare
     grossWeight
-    currentKm
     registerDate
-    acquisitionDate
-    maintenance
     plate
 }
 
 class VehicleCheckUp {
-    Date
-    Place
-    Kms
+    date
+    place
+    kms
 }
 
-Organization "1" -- "1..*" FleetManager : has >
-Organization "1" -- "1..*" Vehicle : owns >
+Collaborator --|> FleetManager
+FleetManager "1" -- "1..*" Vehicle : regist >
+Vehicle "1" -- "1" PlateCertification : owns >
+Collaborator "1" -- "1" Address: owns >
+Address "1" -- "1" zipCode : owns >
+FleetManager "1" -- "1..*" VehicleCheckUp : regist >
 Vehicle "1" -- "*" VehicleCheckUp : assigned to <
+
 @enduml

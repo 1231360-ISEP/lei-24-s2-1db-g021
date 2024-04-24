@@ -53,24 +53,16 @@ The following diagram shows the same sequence of interactions between the classe
 
 It uses Interaction Occurrence (a.k.a. Interaction Use).
 
-![Sequence Diagram - split](svg/us006-sequence-diagram-split.svg)
+![Sequence Diagram - split](svg/us001-sequence-diagram-split.svg)
 
-**Get Task Category List Partial SD**
+**Get Registed Skills Repository Partial SD**
 
-![Sequence Diagram - Partial - Get Task Category List](svg/us001-sequence-diagram-partial-get-registed-skills-list.svg)
+![Sequence Diagram - Partial - Get Task Category List](svg/us001-sequence-diagram-partial-get-registed-skills-repository.svg)
 
-**Get Task Category Object**
+**Create Skill Partial SD**
 
-![Sequence Diagram - Partial - Get Task Category Object](svg/us006-sequence-diagram-partial-get-task-category.svg)
-
-**Get Employee**
-
-![Sequence Diagram - Partial - Get Employee](svg/us006-sequence-diagram-partial-get-employee.svg)
-
-**Create Task**
-
-![Sequence Diagram - Partial - Create Task](svg/us006-sequence-diagram-partial-create-task.svg)
+![Sequence Diagram - Partial - Create Task](svg/us001-sequence-diagram-partial-create-skill.svg)
 
 ## 3.3. Class Diagram (CD)
 
-![Class Diagram](svg/us006-class-diagram.svg)
+![Class Diagram](svg/us001-class-diagram.svg)

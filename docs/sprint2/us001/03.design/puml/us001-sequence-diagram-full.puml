@@ -34,14 +34,20 @@ activate HRM
             PLAT --> CTRL: registedSkillsRepository
         deactivate PLAT
 
-    loop while intended
-            CTRL --> HRM : requests the skill name
+        UI <-- CTRL : registedSkillsRepository
         deactivate CTRL
 
-        HRM -> CTRL : types the new skill name
+    loop while intended
+            UI --> HRM : requests the skill name
+        deactivate UI
+
+        HRM -> UI : types the new skill name
+        activate UI
+            UI --> CTRL: createSkill
         activate CTRL
 
-            CTRL --> RegistedSkillsRepository
+
+            CTRL --> RegistedSkillsRepository : createSkill
 
             activate RegistedSkillsRepository
 
@@ -50,17 +56,17 @@ activate HRM
 
                     RegistedSkillsRepository -> RegistedSkillsRepository: validateSkill(skill)
 
-                autonumber 17
-
     end
                 RegistedSkillsRepository --> CTRL : registedSkillsList
-
             deactivate RegistedSkillsRepository
 
-        CTRL --> HRM : show all the skills registed and aks to confirm
+            CTRL --> UI : registedSkillsList
+        deactivate CTRL
+
+        UI --> HRM : show all the skills registed\n and aks to confirm
 
             deactivate CTRL
-            deactivate UI
+        deactivate UI
 
     HRM -> UI : confirm the set of skills registed
     activate UI

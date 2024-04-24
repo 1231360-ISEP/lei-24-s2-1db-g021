@@ -9,7 +9,7 @@ hide circle
 hide methods
 
 
-class HumanResourceManager {}
+class HumanResourcesManager {}
 
 class Skill {
     skillName
@@ -40,8 +40,8 @@ class zipCode {
 
 class Team {}
 
-HumanResourceManager ---|> Collaborator
-HumanResourceManager "1" -- "1..*" Team : creates >
+HumanResourcesManager ---|> Collaborator
+HumanResourcesManager "1" -- "1..*" Team : creates >
 Collaborator "*" -- "*" Skill : owns >
 Collaborator "1" -- "1" Address: owns >
 Address "1" -- "1" zipCode : owns >

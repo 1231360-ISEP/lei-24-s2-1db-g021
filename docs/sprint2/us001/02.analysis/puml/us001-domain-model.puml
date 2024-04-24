@@ -27,16 +27,15 @@ class zipCode {
     street
 }
 
-class HumanResourceManager {}
+class HumanResourcesManager {}
 
 class Skill {
     skillName
 }
 
 
-Collaborator --|> HumanResourceManager
-Collaborator "1" - "1..*" Skill: owns >
-HumanResourceManager "1" -- "1..*" Skill : regist >
+Collaborator --|> HumanResourcesManager
+HumanResourcesManager "1" -- "1..*" Skill : regist >
 Collaborator "1" -- "1" Address: owns >
 Address "1" -- "1" zipCode : owns >
 

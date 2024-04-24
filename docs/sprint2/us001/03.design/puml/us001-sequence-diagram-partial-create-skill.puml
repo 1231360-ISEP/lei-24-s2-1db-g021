@@ -6,10 +6,9 @@ skinparam shadowing false
 participant "registedSkillsRepository:\nRegistedSkillsRepository" as RegistedSkillsRepository
 participant "skill\n:Skill" as TAREFA
 
-autonumber 16
--> RegistedSkillsRepository:
+autonumber 11
+-> RegistedSkillsRepository: createSkill
 
-autonumber 16.1
 activate RegistedSkillsRepository
     group Create Skill
 
@@ -19,8 +18,6 @@ activate RegistedSkillsRepository
             RegistedSkillsRepository -> RegistedSkillsRepository: validateSkill(skill)
 
     end
-
-    autonumber 17
 
     <-- RegistedSkillsRepository : registedSkillsList
 
