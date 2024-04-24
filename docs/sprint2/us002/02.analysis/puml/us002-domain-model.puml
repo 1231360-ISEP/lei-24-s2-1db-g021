@@ -27,16 +27,15 @@ class zipCode {
     street
 }
 
-class HumanResourceManager {}
+class HumanResourcesManager {}
 
 class Job {
     jobName
 }
 
 
-Collaborator --|> HumanResourceManager
-'Collaborator "1..*" - "1" Job: assigned to <
-HumanResourceManager "1" -- "1..*" Job : regist >
+Collaborator --|> HumanResourcesManager
+HumanResourcesManager "1" -- "1..*" Job : regist >
 Collaborator "1" -- "1" Address: owns >
 Address "1" -- "1" zipCode : owns >
 
