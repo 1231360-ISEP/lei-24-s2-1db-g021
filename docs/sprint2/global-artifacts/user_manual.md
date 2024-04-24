@@ -29,11 +29,8 @@ defines the most efficient and least expensive route.
 # System Overview
 
 <p style="text-align: justify">
-This green space management application aims to speed up and facilitate the entire process of managing a green space, 
-being able to register collaborators to be able to generate teams dynamically, and register vehicles to be able to 
-manage their check-up's and kilometers. This application works with a small hierarchical system in which the Human 
-Resources Manager has the highest permission to register collaborators and generate teams with these same previously 
-registered collaborators. The Fleet Manager also has a higher position to register vehicles and record their check-ups.
+This green space management application aims to speed up and facilitate the entire process of managing a green space, being able to register employees to be able to generate teams dynamically, register vehicles to be able to manage their check-ups and kilometers, calculate and display costs of water consumption, show the equipment used each day, collect information about the use of the park, calculate possible water routes, calculate the best routes and pipes to reduce costs and carry out tests for different sizes. This application works with a small hierarchical system in which the Human Resources Manager has the greatest permission to register employees and generate teams with these same previously registered employees. The Fleet Manager also has a superior position to register vehicles and record their inspections.
+
 </p>
 
 ![Domain Model](02.analysis/svg/project-domain-model.svg)
@@ -76,3 +73,34 @@ machines and equipment.
 >**List the vehicles needing the check-up | Vehicle and Equipment Fleet Manager**
 >
 >This feature is important because it lists vehicles which need a check-up.
+
+>**Know the exact costs referring to water
+consumption of specific green space | Green Spaces Manager**
+>
+>This feature goal is to carry out a statistical analysis concerning the water consumption costs in all parks.
+
+>**Know which piece(s) of equipment is/are
+used in each day | Green Spaces Manager**
+>
+>This feature goal is to understand the users preferences.
+
+>**Collect data from the user portal
+about the use of the park | Green Spaces Manager**
+>
+>This feature goal is to understand the use of the park
+by different age groups.
+
+>**Import a .csv file containing lines with: Water Point X, Water Point Y, Distance into a unique data structure | Green Spaces Manager**
+>
+>This feature is important to get all possible routes.
+
+>**Apply an algorithm that returns the routes
+to be opened and pipes needed to be laid with a minimum accumulated
+cost | Green Spaces Manager**
+>
+>This feature is important to get the minimum cost between routes and respective pipes.
+
+>**Run tests for inputs of variable size |  Software Quality Assessment Team Manager**
+>
+>This feature is important to observe the asymptotic behavior of the execution time of the US13
+algorithm.
