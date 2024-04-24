@@ -29,11 +29,8 @@ defines the most efficient and least expensive route.
 # System Overview
 
 <p style="text-align: justify">
-This green space management application aims to speed up and facilitate the entire process of managing a green space, 
-being able to register collaborators to be able to generate teams dynamically, and register vehicles to be able to 
-manage their check-up's and kilometers. This application works with a small hierarchical system in which the Human 
-Resources Manager has the highest permission to register collaborators and generate teams with these same previously 
-registered collaborators. The Fleet Manager also has a higher position to register vehicles and record their check-ups.
+This green space management application aims to speed up and facilitate the entire process of managing a green space, being able to register employees to be able to generate teams dynamically, register vehicles to be able to manage their check-ups and kilometers, calculate and display costs of water consumption, show the equipment used each day, collect information about the use of the park, calculate possible water routes, calculate the best routes and pipes to reduce costs and carry out tests for different sizes. This application works with a small hierarchical system in which the Human Resources Manager has the greatest permission to register employees and generate teams with these same previously registered employees. The Fleet Manager also has a superior position to register vehicles and record their inspections.
+
 </p>
 
 ![Domain Model](02.analysis/svg/project-domain-model.svg)
