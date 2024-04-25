@@ -7,13 +7,13 @@ participant "registedJobsRepository:\nRegistedJobsRepository" as RegistedJobsRep
 participant "jobName\n:Job" as PROFISSAO
 
 autonumber 11
---> RegistedJobsRepository: createJob
+-> RegistedJobsRepository: createJob
 activate RegistedJobsRepository
 
-    group Create Job
+    group Create a Job
 
         RegistedJobsRepository -> PROFISSAO**: create job
-        PROFISSAO -> RegistedJobsRepository: addJob (jobName)
+        PROFISSAO -> RegistedJobsRepository: addJob(jobName)
 
             RegistedJobsRepository -> RegistedJobsRepository: validateJob(jobName)
 

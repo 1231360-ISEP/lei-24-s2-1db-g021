@@ -43,16 +43,16 @@ activate HRM
 
         HRM -> UI : type the new job
         activate UI
-            UI --> CTRL: createJob
+            UI -> CTRL: createJob
         activate CTRL
 
 
-            CTRL --> RegistedJobsRepository : createJob
+            CTRL -> RegistedJobsRepository : createJob
 
             activate RegistedJobsRepository
 
                 RegistedJobsRepository -> PROFISSAO**: create job
-                PROFISSAO -> RegistedJobsRepository: addJob (jobName)
+                PROFISSAO -> RegistedJobsRepository: addJob(jobName)
 
                     RegistedJobsRepository -> RegistedJobsRepository: validateJob(jobName)
 
