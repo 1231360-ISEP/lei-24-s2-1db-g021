@@ -27,7 +27,7 @@ class zipCode {
     street
 }
 
-class FleetManager {}
+class VehicleFleetManager {}
 
 class Vehicle {
     currentKm
@@ -51,12 +51,12 @@ class VehicleCheckUp {
     kms
 }
 
-Collaborator --|> FleetManager
-FleetManager "1" -- "1..*" Vehicle : regist >
+Collaborator --|> VehicleFleetManager
+VehicleFleetManager "1" -- "1..*" Vehicle : regist >
 Vehicle "1" -- "1" PlateCertification : owns >
 Collaborator "1" -- "1" Address: owns >
 Address "1" -- "1" zipCode : owns >
-FleetManager "1" -- "1..*" VehicleCheckUp : regist >
+VehicleFleetManager "1" -- "1..*" VehicleCheckUp : regist >
 Vehicle "1" -- "*" VehicleCheckUp : assigned to <
 
 @enduml
