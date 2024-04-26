@@ -90,3 +90,71 @@ activate ADM
 deactivate ADM
 
 @enduml
+
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+actor "Human Resources\nManager" as HRM
+participant ":RegistSkillsUI" as UI
+participant ":RegistSkillsController" as CTRL
+participant "registedSkillsRepository:\nRegistedSkillsRepository" as RegistedSkillsRepository
+
+autonumber 1
+
+activate HRM
+
+    HRM -> UI : asks to regist a new skill
+    activate UI
+
+        UI -> CTRL** : create
+
+        activate CTRL
+
+        ref over CTRL
+            Get Registed Skills Repository
+        end ref
+
+
+        UI <-- CTRL : registedSkillsRepository
+        deactivate CTRL
+
+    loop while intended
+            UI --> HRM : requests the skill name
+        deactivate UI
+
+        HRM -> UI : types the new skill name
+        activate UI
+            UI --> CTRL: createSkill
+        activate CTRL
+
+
+            CTRL --> RegistedSkillsRepository : createSkill
+
+            activate RegistedSkillsRepository
+
+            ref over RegistedSkillsRepository
+                Get Registed Skills List
+            end ref
+    end
+                RegistedSkillsRepository --> CTRL : registedSkillsList
+            deactivate RegistedSkillsRepository
+
+            CTRL --> UI : registedSkillsList
+        deactivate CTRL
+
+        UI --> HRM : show all the skills registed\n and aks to confirm
+
+            deactivate CTRL
+        deactivate UI
+
+    HRM -> UI : confirm the set of skills registed
+    activate UI
+
+    UI --> HRM : displays operation success
+    deactivate UI
+
+
+@enduml
+
