@@ -5,8 +5,9 @@
 
 ### 1.1. User Story Description
 
-As an FM, I wish to register a vehicle including Brand, Model, Type, Tare,
-Gross Weight, Current Km, Register Date, Acquisition Date, Maintenance/Checkup Frequency (in Kms).
+As a VFM, I wish to register a vehicle including Brand, Model,
+Type, Tare Weight, Gross Weight, Current Km, Register Date, Acqui
+sition Date, and Maintenance/Check-up Frequency (in km).
 
 ### 1.2. Customer Specifications and Clarifications 
 

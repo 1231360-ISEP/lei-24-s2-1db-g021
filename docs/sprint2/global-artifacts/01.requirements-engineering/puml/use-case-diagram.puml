@@ -9,7 +9,7 @@ skinparam rectangle{
 
 'title Use Case Diagram Example
 actor "Human Resources Manager" as HRM
-actor  "Fleet Manager" as FM
+actor  "Vehicle Fleet Manager" as VFM
 left to right direction
 
 rectangle "Integrating Project" as actors {
@@ -24,11 +24,11 @@ rectangle "Integrating Project" as actors {
         usecase "UC5 - Generate Team Proposal" as UC5
         HRM -- UC5
         usecase "UC6 - Register Vehicle" as UC6
-        FM -- UC6
+        VFM -- UC6
         usecase "UC7 - Register Vehicles Check-up" as UC7
-        FM -- UC7
+        VFM -- UC7
         usecase "UC8 - List Vehicles Need Check-up" as UC8
-        FM -- UC8
+        VFM -- UC8
 }
 
 
