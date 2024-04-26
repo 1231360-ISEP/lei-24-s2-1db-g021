@@ -1,0 +1,64 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+actor "Human Resources Manager" as ADM
+participant ":AssignSkillUI" as UI
+participant ":AssignSkillController" as CTRL
+participant ":CollaboratorList" as CollaboratorList
+participant ":SkillList" as SkillList
+
+activate ADM
+
+        ADM -> UI : asks to assign collaborator skills
+
+        activate UI
+            UI -> CTRL** : create
+            UI -> CTRL : getCollaborators()
+
+            activate CTRL
+
+                CTRL -> CollaboratorList** : create
+                CTRL -> CollaboratorList : getAllCollaborators()
+
+                activate CollaboratorList
+                    CollaboratorList --> CTRL: collaborators
+                deactivate CollaboratorList
+
+                CTRL --> UI : collaborators
+            deactivate CTRL
+
+            UI --> ADM : Shows all the collaborators.
+        deactivate UI
+
+        ADM -> UI : selects one of the collaborators.
+
+        activate UI
+            UI --> ADM : shows collaborator information and request confirmation
+        deactivate UI
+
+        ADM -> UI : confirms it.
+
+        activate UI
+            UI -> CTRL : getSkills()
+
+            activate CTRL
+                CTRL -> SkillList** : create
+                CTRL -> SkillList : getAllSkills()
+
+                activate SkillList
+                    SkillList --> CTRL : skills
+                deactivate SkillList
+
+                CTRL --> UI : skills
+            deactivate CTRL
+
+            UI --> ADM : shows the skills available to assign.
+        deactivate UI
+deactivate ADM
+
+@enduml
