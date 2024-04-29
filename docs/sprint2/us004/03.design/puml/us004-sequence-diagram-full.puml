@@ -1,0 +1,110 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+actor "Human Resources Manager" as ADM
+participant ":AssignSkillUI" as UI
+participant ":AssignSkillController" as CTRL
+participant ":CollaboratorList" as CollaboratorList
+participant ":RegistedSkillsRepository" as RegistedSkillsRepository
+participant ":Collaborator" as Collaborator
+
+activate ADM
+
+        ADM -> UI : Asks to assign collaborator skills
+
+        activate UI
+            UI -> CTRL** : create
+            UI -> CTRL : getCollaborators()
+
+            activate CTRL
+
+                CTRL -> CollaboratorList** : create
+                CTRL -> CollaboratorList : getAllCollaborators()
+
+                activate CollaboratorList
+                    CollaboratorList --> CTRL: collaborators
+                deactivate CollaboratorList
+
+                CTRL --> UI : collaborators
+            deactivate CTRL
+
+            UI --> ADM : Shows all the collaborators
+        deactivate UI
+
+        ADM -> UI : Selects one of the collaborators
+
+        activate UI
+
+            UI -> CTRL : collaboratorSelected
+
+            activate CTRL
+                CTRL -> Collaborator** : create
+                CTRL --> UI : success
+            deactivate CTRL
+
+            UI --> ADM : Shows collaborator information and request confirmation
+        deactivate UI
+
+        ADM -> UI : Confirms it
+
+        activate UI
+            UI -> CTRL : getSkills()
+
+            activate CTRL
+                CTRL -> RegistedSkillsRepository** : create
+                CTRL -> RegistedSkillsRepository : getRegistedSkillsRepository()
+
+                activate RegistedSkillsRepository
+                    RegistedSkillsRepository --> CTRL : registedSkillsRepository
+                deactivate RegistedSkillsRepository
+
+                CTRL --> UI : skills
+            deactivate CTRL
+
+            UI --> ADM : Shows the skills available to assign
+        deactivate UI
+
+        ADM -> UI : Selects the skills which are going to be assigned
+
+        activate UI
+            UI -> CTRL : skillsToAssign
+
+            activate CTRL
+                CTRL -> Collaborator : skillsToAssign
+
+                activate Collaborator
+                    Collaborator --> CTRL : Success
+                deactivate Collaborator
+
+                CTRL --> UI : Success
+            deactivate CTRL
+
+            UI --> ADM : Shows them and request confirmation
+        deactivate UI
+
+        ADM -> UI : Confirms it
+
+        activate UI
+            UI -> CTRL : Confirms changes
+            
+            activate CTRL
+                CTRL -> CollaboratorList : Modify the selected collaborator
+
+                activate CollaboratorList
+                    CollaboratorList --> CTRL : Success
+                deactivate CollaboratorList
+
+                CTRL --> UI : Success
+            deactivate CTRL
+
+            UI --> ADM : Displays operation success
+        deactivate UI
+
+deactivate ADM
+
+@enduml

@@ -1,4 +1,4 @@
-# US004 - Add Collaborator Skills
+# US004 - As an HRM, I want to assign one or more skills to a collaborator.
 
 
 ## 1. Requirements Engineering

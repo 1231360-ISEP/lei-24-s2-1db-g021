@@ -5,7 +5,7 @@
 
 ### 1.1. User Story Description
 
-As an Fleet Manager, I wish to register a vehicle’s check-up.
+As a VFM, I wish to register a vehicle’s maintenance.
 
 ### 1.2. Customer Specifications and Clarifications 
 
