@@ -4,7 +4,7 @@ skinparam packageStyle rectangle
 skinparam shadowing false
 
 participant "registedSkillsRepository:\nRegistedSkillsRepository" as RegistedSkillsRepository
-participant "skillName\n:Skill" as TAREFA
+participant "skillName\n:RegistSkill" as TAREFA
 
 autonumber 11
 -> RegistedSkillsRepository: createSkill

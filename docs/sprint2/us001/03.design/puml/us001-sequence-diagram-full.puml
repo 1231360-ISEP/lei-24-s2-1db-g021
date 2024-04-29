@@ -9,7 +9,7 @@ participant ":RegistSkillsController" as CTRL
 participant ":Repositories" as RepositorySingleton
 participant "repositories\n:Repositories" as PLAT
 participant "registedSkillsRepository:\nRegistedSkillsRepository" as RegistedSkillsRepository
-participant "skillName\n:Skill" as TAREFA
+participant "skillName\n:RegistSkill" as TAREFA
 
 autonumber 1
 
@@ -46,27 +46,29 @@ activate HRM
             UI -> CTRL: createSkill
         activate CTRL
 
-
             CTRL -> RegistedSkillsRepository : createSkill
+        activate RegistedSkillsRepository
 
-            activate RegistedSkillsRepository
+            RegistedSkillsRepository -> TAREFA**: create skill
 
-                RegistedSkillsRepository -> TAREFA**: create skill
-                TAREFA -> RegistedSkillsRepository: addSkill (skillName)
+        activate TAREFA
 
-                    RegistedSkillsRepository -> RegistedSkillsRepository: validateSkill(skillName)
+        TAREFA -> RegistedSkillsRepository: addSkill (skillName)
+        deactivate TAREFA
+            RegistedSkillsRepository -> RegistedSkillsRepository: validateSkill(skillName)
 
     end
-                RegistedSkillsRepository --> CTRL : registedSkillsList
-            deactivate RegistedSkillsRepository
 
-            CTRL --> UI : registedSkillsList
-        deactivate CTRL
+    RegistedSkillsRepository --> CTRL : registedSkillsList
+    deactivate RegistedSkillsRepository
 
-        UI --> HRM : show all the skills registed\n and aks to confirm
+    CTRL --> UI : registedSkillsList
+    deactivate CTRL
 
-            deactivate CTRL
-        deactivate UI
+    UI --> HRM : show all the skills registed\n and aks to confirm
+
+    deactivate CTRL
+    deactivate UI
 
     HRM -> UI : confirm the set of skills registed
     activate UI
