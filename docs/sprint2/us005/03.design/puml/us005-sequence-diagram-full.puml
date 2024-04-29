@@ -1,0 +1,122 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+actor "Human Resources\nManager" as HRM
+participant ":RegistSkillsUI" as UI
+participant ":RegistSkillsController" as CTRL
+participant ":Repositories" as RepositorySingleton
+participant "repositories\n:Repositories" as PLAT
+participant "registedSkillsRepository\n:RegistedSkillsRepository" as RegistedSkillsRepository
+participant "registedCollaboratorsRepository\n:RegistedCollaboratorsRepository" as RegistedCollaboratorsRepository
+participant "collaboratorsSkillsRepository\n:CollaboratorsSkillsRepository" as CollaboratorsSkillsRepository
+participant "proposalTeamRepository\n:ProposalTeamRepository" as ProposalTeamRepository
+
+autonumber 1
+
+activate HRM
+
+    HRM -> UI : asks to generate a team proposal
+        activate UI
+
+    UI --> HRM : requests which is the minimum and\n maximum number of team collaborators
+    deactivate UI
+
+
+    HRM -> UI : types the minimum and maximum number of\n team collaborators
+        activate UI
+
+    UI --> HRM : requests which are the skills needed
+    deactivate UI
+
+    loop while intended
+
+            HRM -> UI : types the skill
+        activate UI
+
+            UI -> CTRL: getRegistedSkillsList()
+
+        activate CTRL
+
+            CTRL -> RepositorySingleton : getInstance()
+        activate RepositorySingleton
+
+        RepositorySingleton --> CTRL: repositories
+        deactivate RepositorySingleton
+
+            CTRL -> PLAT : getRegistedSkillsRepository()
+        activate PLAT
+
+        PLAT --> CTRL: registedSkillsRepository
+        deactivate PLAT
+
+            CTRL -> RegistedSkillsRepository : getRegistedSkillsList()
+        activate RegistedSkillsRepository
+
+        RegistedSkillsRepository --> CTRL : registedSkillsList
+        deactivate RegistedSkillsRepository
+
+        CTRL --> UI : registedSkillsList
+        deactivate CTRL
+
+    deactivate CTRL
+    end
+
+    UI -> CTRL: getCollaboratorsBySkillsList()
+
+    activate CTRL
+
+    CTRL -> RegistedSkillsRepository : getRegistedSkillsList()
+    activate RegistedSkillsRepository
+
+        RegistedSkillsRepository --> CTRL : registedSkillsList
+    deactivate RegistedSkillsRepository
+
+    CTRL -> RegistedCollaboratorsRepository : getRegistedCollaboratorsList()
+        activate RegistedCollaboratorsRepository
+
+        RegistedCollaboratorsRepository --> CTRL: registedCollaboratorsList
+        deactivate RegistedCollaboratorsRepository
+
+        CTRL -> CollaboratorsSkillsRepository : getCollaboratorsBySkillsList()
+    activate CollaboratorsSkillsRepository
+
+    CollaboratorsSkillsRepository --> CTRL : collaboratorsBySkillsList
+    deactivate CollaboratorsSkillsRepository
+
+    CTRL --> UI : collaboratorsBySkillsList
+    deactivate CTRL
+
+    UI -> CTRL: getProposalTeam()
+
+    activate CTRL
+
+        CTRL -> CollaboratorsSkillsRepository : getCollaboratorsBySkillsList()
+    activate CollaboratorsSkillsRepository
+
+    CollaboratorsSkillsRepository --> CTRL: collaboratorsList
+    deactivate CollaboratorsSkillsRepository
+
+        CTRL -> ProposalTeamRepository : getProposalTeam()
+    activate ProposalTeamRepository
+
+    ProposalTeamRepository --> CTRL : proposalTeam
+    deactivate ProposalTeamRepository
+
+    CTRL --> UI : proposalTeam
+    deactivate CTRL
+
+
+    UI --> HRM : shows and aks to confirm all the data
+    deactivate UI
+
+    HRM -> UI : confirms all the data
+    activate UI
+
+    UI --> HRM : displays operation success
+    deactivate UI
+
+
+@enduml
+

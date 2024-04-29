@@ -1,0 +1,41 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+participant ":CreateTaskController" as CTRL
+participant "registedSkillsRepository\n:RegistedSkillsRepository" as RegistedSkillsRepository
+participant "registedCollaboratorsRepository\n:RegistedCollaboratorsRepository" as RegistedCollaboratorsRepository
+participant "collaboratorsSkillsRepository\n:CollaboratorsSkillsRepository" as CollaboratorsSkillsRepository
+
+autonumber 3
+--> CTRL: getCollaboratorsBySkillsList()
+
+group Get Collaborators By Skills List
+    activate CTRL
+
+    CTRL -> RegistedSkillsRepository : getRegistedSkillsList()
+    activate RegistedSkillsRepository
+
+        RegistedSkillsRepository --> CTRL : registedSkillsList
+    deactivate RegistedSkillsRepository
+
+        CTRL -> RegistedCollaboratorsRepository : getRegistedCollaboratorsList()
+    activate RegistedCollaboratorsRepository
+
+    RegistedCollaboratorsRepository --> CTRL: registedCollaboratorsList
+    deactivate RegistedCollaboratorsRepository
+
+        CTRL -> CollaboratorsSkillsRepository : getCollaboratorsBySkillsList()
+    activate CollaboratorsSkillsRepository
+
+    CollaboratorsSkillsRepository --> CTRL : collaboratorsBySkillsList
+    deactivate CollaboratorsSkillsRepository
+
+end
+
+<-- CTRL: collaboratorsBySkillsList
+deactivate CTRL
+@enduml
