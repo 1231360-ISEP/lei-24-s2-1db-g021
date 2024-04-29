@@ -10,7 +10,7 @@ participant "registedSkillsRepository\n:RegistedSkillsRepository" as RegistedSki
 participant "registedCollaboratorsRepository\n:RegistedCollaboratorsRepository" as RegistedCollaboratorsRepository
 participant "collaboratorsSkillsRepository\n:CollaboratorsSkillsRepository" as CollaboratorsSkillsRepository
 
-autonumber 3
+autonumber 14
 --> CTRL: getCollaboratorsBySkillsList()
 
 group Get Collaborators By Skills List

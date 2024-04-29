@@ -61,11 +61,11 @@ It uses Interaction Occurrence (a.k.a. Interaction Use).
 
 **Get Task Category Object**
 
-![Sequence Diagram - Partial - Get Task Category Object](svg/us005-sequence-diagram-partial-get-registed-skills-list.svg)
+![Sequence Diagram - Partial - Get Task Category Object](svg/us005-sequence-diagram-partial-registed-skills-list.svg)
 
 **Get Employee**
 
-![Sequence Diagram - Partial - Get Employee](svg/us005-sequence-diagram-partial-get-proposal-team.svg)
+![Sequence Diagram - Partial - Get Employee](svg/us005-sequence-diagram-partial-proposal-team.svg)
 
 **Create Task**
 

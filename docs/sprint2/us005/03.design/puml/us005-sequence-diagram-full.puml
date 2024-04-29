@@ -95,7 +95,7 @@ activate HRM
         CTRL -> CollaboratorsSkillsRepository : getCollaboratorsBySkillsList()
     activate CollaboratorsSkillsRepository
 
-    CollaboratorsSkillsRepository --> CTRL: collaboratorsList
+    CollaboratorsSkillsRepository --> CTRL: collaboratorsBySkillsList
     deactivate CollaboratorsSkillsRepository
 
         CTRL -> ProposalTeamRepository : getProposalTeam()

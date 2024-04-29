@@ -9,8 +9,9 @@ participant ":CreateTaskController" as CTRL
 participant ":Repositories" as RepositorySingleton
 participant "repositories\n:Repositories" as PLAT
 participant "registedSkillsRepository\n:RegistedSkillsRepository" as RegistedSkillsRepository
+participant "proposalTeamRepository\n:ProposalTeamRepository" as ProposalTeamRepository
 
-autonumber 3
+autonumber 6
 
 loop while intended
 
