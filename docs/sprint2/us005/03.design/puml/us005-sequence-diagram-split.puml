@@ -6,12 +6,6 @@ skinparam shadowing false
 actor "Human Resources\nManager" as HRM
 participant ":RegistSkillsUI" as UI
 participant ":RegistSkillsController" as CTRL
-participant ":Repositories" as RepositorySingleton
-participant "repositories\n:Repositories" as PLAT
-participant "registedSkillsRepository\n:RegistedSkillsRepository" as RegistedSkillsRepository
-participant "registedCollaboratorsRepository\n:RegistedCollaboratorsRepository" as RegistedCollaboratorsRepository
-participant "collaboratorsSkillsRepository\n:CollaboratorsSkillsRepository" as CollaboratorsSkillsRepository
-participant "proposalTeamRepository\n:ProposalTeamRepository" as ProposalTeamRepository
 
 autonumber 1
 
