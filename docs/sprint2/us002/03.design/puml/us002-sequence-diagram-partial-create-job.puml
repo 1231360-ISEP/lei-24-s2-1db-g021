@@ -13,7 +13,7 @@ activate RegistedJobsRepository
     group Create a Job
 
         RegistedJobsRepository -> PROFISSAO**: create
-        PROFISSAO -> RegistedJobsRepository: addJob(jobName)
+        RegistedJobsRepository -> RegistedJobsRepository: addJob(jobName)
 
             RegistedJobsRepository -> RegistedJobsRepository: validateJob(jobName)
 

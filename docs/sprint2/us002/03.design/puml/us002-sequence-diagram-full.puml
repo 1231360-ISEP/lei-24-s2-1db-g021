@@ -14,61 +14,59 @@ participant "jobName\n:Job" as PROFISSAO
 autonumber 1
 
 activate HRM
-
     HRM -> UI : asks to regist a new job
-    activate UI
 
+    activate UI
         UI -> CTRL** : create
 
         activate CTRL
+            CTRL -> RepositorySingleton : getInstance()
 
-        CTRL -> RepositorySingleton : getInstance()
-        activate RepositorySingleton
+            activate RepositorySingleton
+                RepositorySingleton --> CTRL: repositories
+            deactivate RepositorySingleton
 
-            RepositorySingleton --> CTRL: repositories
-        deactivate RepositorySingleton
+            CTRL -> PLAT : getRegistedJobsRepository()
 
-        CTRL -> PLAT : getRegistedJobsRepository()
-        activate PLAT
-
-            PLAT --> CTRL: registedJobsRepository
-        deactivate PLAT
+            activate PLAT
+                PLAT --> CTRL: registedJobsRepository
+            deactivate PLAT
 
         deactivate CTRL
 
-    loop while intended
+        loop while intended
             UI --> HRM : requests the job name
-        deactivate UI
 
-        HRM -> UI : type the new job
-        activate UI
-            UI -> CTRL: create
+    deactivate UI
+
+    HRM -> UI : type the new job
+
+    activate UI
+        UI -> CTRL: create
+
         activate CTRL
-
             CTRL -> RegistedJobsRepository : create
 
             activate RegistedJobsRepository
-
                 RegistedJobsRepository -> PROFISSAO**: create
-                PROFISSAO -> RegistedJobsRepository: addJob(jobName)
+                RegistedJobsRepository -> RegistedJobsRepository: addJob(jobName)
+                RegistedJobsRepository -> RegistedJobsRepository: validateJob(jobName)
 
-                    RegistedJobsRepository -> RegistedJobsRepository: validateJob(jobName)
-
-    end
+        end
                 RegistedJobsRepository --> CTRL : registedJobsList
             deactivate RegistedJobsRepository
 
             CTRL --> UI : registedJobsList
+
         deactivate CTRL
 
         UI --> HRM : list all registered jobs and asks to confirm
 
-            deactivate CTRL
-        deactivate UI
+    deactivate UI
 
     HRM -> UI : confirms all jobs
-    activate UI
 
+    activate UI
     UI --> HRM : displays operation success
     deactivate UI
 
