@@ -7,15 +7,14 @@ participant "registedSkillsRepository:\nRegistedSkillsRepository" as RegistedSki
 participant "skillName\n:RegistSkill" as TAREFA
 
 autonumber 11
--> RegistedSkillsRepository: createSkill
+-> RegistedSkillsRepository: create
 
 activate RegistedSkillsRepository
     group Create Skill
 
-        RegistedSkillsRepository -> TAREFA**: create skill
-        TAREFA -> RegistedSkillsRepository: addSkill (skillName)
-
-            RegistedSkillsRepository -> RegistedSkillsRepository: validateSkill(skillName)
+        RegistedSkillsRepository -> TAREFA**: create
+        RegistedSkillsRepository -> RegistedSkillsRepository: validateSkill(skillName)
+        RegistedSkillsRepository -> RegistedSkillsRepository: addSkill(skillName)
 
     end
 

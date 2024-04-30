@@ -13,53 +13,54 @@ autonumber 1
 activate HRM
 
     HRM -> UI : asks to regist a new skill
-    activate UI
+activate UI
 
-        UI -> CTRL** : create
+    UI -> CTRL** : create
 
-        activate CTRL
+activate CTRL
 
-        ref over CTRL
-            Get Registed Skills Repository
-        end ref
+ref over CTRL
+    Get Registed Skills Repository
+end ref
 
-        UI <-- CTRL : registedSkillsRepository
-        deactivate CTRL
+deactivate CTRL
 
-    loop while intended
-            UI --> HRM : requests the skill name
-        deactivate UI
+loop while intended
 
-        HRM -> UI : types the new skill name
-        activate UI
-            UI -> CTRL: createSkill
-        activate CTRL
-
-            CTRL -> RegistedSkillsRepository : createSkill
-        activate RegistedSkillsRepository
-
-        ref over RegistedSkillsRepository
-            Get Registed Skills List
-        end ref
-
-    end
-
-    RegistedSkillsRepository --> CTRL : registedSkillsList
-    deactivate RegistedSkillsRepository
-
-    CTRL --> UI : registedSkillsList
-    deactivate CTRL
-
-    UI --> HRM : show all the skills registed\n and aks to confirm
-
-    deactivate CTRL
+    autonumber 7
+        UI --> HRM : requests the skill name
     deactivate UI
 
-    HRM -> UI : confirm the set of skills registed
+    HRM -> UI : types the new skill name
     activate UI
+        UI -> CTRL: create
+    activate CTRL
 
-    UI --> HRM : displays operation success
-    deactivate UI
+        CTRL -> RegistedSkillsRepository : createSkill
+    activate RegistedSkillsRepository
+
+    ref over RegistedSkillsRepository
+        Get Registed Skills List
+    end ref
+
+end
+
+RegistedSkillsRepository --> CTRL : registedSkillsList
+deactivate RegistedSkillsRepository
+
+CTRL --> UI : registedSkillsList
+deactivate CTRL
+
+UI --> HRM : show all the skills registed\n and aks to confirm
+
+deactivate CTRL
+deactivate UI
+
+HRM -> UI : confirm the set of skills registed
+activate UI
+
+UI --> HRM : displays operation success
+deactivate UI
 
 
 @enduml
