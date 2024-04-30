@@ -34,7 +34,6 @@ activate HRM
             PLAT --> CTRL: registedJobsRepository
         deactivate PLAT
 
-        UI <-- CTRL : registedJobsRepository
         deactivate CTRL
 
     loop while intended
@@ -43,15 +42,14 @@ activate HRM
 
         HRM -> UI : type the new job
         activate UI
-            UI -> CTRL: createJob
+            UI -> CTRL: create
         activate CTRL
 
-
-            CTRL -> RegistedJobsRepository : createJob
+            CTRL -> RegistedJobsRepository : create
 
             activate RegistedJobsRepository
 
-                RegistedJobsRepository -> PROFISSAO**: create job
+                RegistedJobsRepository -> PROFISSAO**: create
                 PROFISSAO -> RegistedJobsRepository: addJob(jobName)
 
                     RegistedJobsRepository -> RegistedJobsRepository: validateJob(jobName)

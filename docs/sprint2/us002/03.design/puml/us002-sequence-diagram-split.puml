@@ -18,17 +18,18 @@ activate HRM
         ref over CTRL
             Get Registed Jobs Repository
         end ref
-        UI <-- CTRL : registedJobsRepository
-        deactivate CTRL
+
     loop while intended
+            autonumber 7
             UI --> HRM : requests the job name
         deactivate UI
         HRM -> UI : type the new job
         activate UI
-            UI --> CTRL: createJob
+            UI --> CTRL: create
         activate CTRL
-            CTRL --> RegistedJobsRepository : createJob
+            CTRL --> RegistedJobsRepository : create
             activate RegistedJobsRepository
+            autonumber 14
             ref over RegistedJobsRepository
                 Get Registed Jobs List
             end ref

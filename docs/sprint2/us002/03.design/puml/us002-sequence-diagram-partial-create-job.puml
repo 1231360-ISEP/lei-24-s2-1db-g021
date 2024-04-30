@@ -6,13 +6,13 @@ skinparam shadowing false
 participant "registedJobsRepository:\nRegistedJobsRepository" as RegistedJobsRepository
 participant "jobName\n:Job" as PROFISSAO
 
-autonumber 11
--> RegistedJobsRepository: createJob
+autonumber 10
+-> RegistedJobsRepository: create
 activate RegistedJobsRepository
 
     group Create a Job
 
-        RegistedJobsRepository -> PROFISSAO**: create job
+        RegistedJobsRepository -> PROFISSAO**: create
         PROFISSAO -> RegistedJobsRepository: addJob(jobName)
 
             RegistedJobsRepository -> RegistedJobsRepository: validateJob(jobName)
