@@ -21,13 +21,12 @@ activate HRM
     HRM -> System : types the minimum and maximum number of\n team collaborators
     activate System
 
-    loop while intended
-            System --> HRM : requests which are the skills needed
-        deactivate System
+        System --> HRM : requests to selects the skills needed
+    deactivate System
 
-        HRM -> System : types the skill
-        activate System
-    end
+    HRM -> System : selects the skills
+    activate System
+
 
         System --> HRM : shows and aks to confirm all the data
     deactivate System

@@ -34,28 +34,28 @@ activate HRM
             PLAT --> CTRL: registedSkillsRepository
         deactivate PLAT
 
-        UI <-- CTRL : registedSkillsRepository
+       ' UI <-- CTRL : registedSkillsRepository
         deactivate CTRL
 
     loop while intended
             UI --> HRM : requests the skill name
         deactivate UI
 
-        HRM -> UI : types the new skill name
+            HRM -> UI : types the new skill name
         activate UI
-            UI -> CTRL: createSkill
+
+            UI -> CTRL: create
         activate CTRL
 
-            CTRL -> RegistedSkillsRepository : createSkill
+            CTRL -> RegistedSkillsRepository : create
         activate RegistedSkillsRepository
 
-            RegistedSkillsRepository -> TAREFA**: create skill
-
+            RegistedSkillsRepository -> TAREFA**: create
         activate TAREFA
 
-        TAREFA -> RegistedSkillsRepository: addSkill (skillName)
+        RegistedSkillsRepository -> RegistedSkillsRepository: validateSkill(skillName)
         deactivate TAREFA
-            RegistedSkillsRepository -> RegistedSkillsRepository: validateSkill(skillName)
+        RegistedSkillsRepository -> RegistedSkillsRepository: addSkill(skillName)
 
     end
 

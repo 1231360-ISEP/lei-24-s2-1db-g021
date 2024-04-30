@@ -10,112 +10,119 @@ participant ":Repositories" as RepositorySingleton
 participant "repositories\n:Repositories" as PLAT
 participant "registedSkillsRepository\n:RegistedSkillsRepository" as RegistedSkillsRepository
 participant "registedCollaboratorsRepository\n:RegistedCollaboratorsRepository" as RegistedCollaboratorsRepository
-participant "collaboratorsSkillsRepository\n:CollaboratorsSkillsRepository" as CollaboratorsSkillsRepository
+participant "CollaboratorSkills\n:List<CollaboratorSkills>" as CollaboratorSkills
+participant "SkillsSelected\n:List<SkillsSelected>" as ListOfSkillsSelected
 participant "proposalTeamRepository\n:ProposalTeamRepository" as ProposalTeamRepository
 
 autonumber 1
 
 activate HRM
 
-    HRM -> UI : asks to generate a team proposal
-        activate UI
-
-    UI --> HRM : requests which is the minimum and\n maximum number of team collaborators
-    deactivate UI
-
-
-    HRM -> UI : types the minimum and maximum number of\n team collaborators
-        activate UI
-
-    UI --> HRM : requests which are the skills needed
-    deactivate UI
-
-    loop while intended
-
-            HRM -> UI : types the skill
-        activate UI
-
-            UI -> CTRL: getRegistedSkillsList()
-
-        activate CTRL
-
-            CTRL -> RepositorySingleton : getInstance()
-        activate RepositorySingleton
-
-        RepositorySingleton --> CTRL: repositories
-        deactivate RepositorySingleton
-
-            CTRL -> PLAT : getRegistedSkillsRepository()
-        activate PLAT
-
-        PLAT --> CTRL: registedSkillsRepository
-        deactivate PLAT
-
-            CTRL -> RegistedSkillsRepository : getRegistedSkillsList()
-        activate RegistedSkillsRepository
-
-        RegistedSkillsRepository --> CTRL : registedSkillsList
-        deactivate RegistedSkillsRepository
-
-        CTRL --> UI : registedSkillsList
-        deactivate CTRL
-
-    deactivate CTRL
-    end
-
-    UI -> CTRL: getCollaboratorsBySkillsList()
-
-    activate CTRL
-
-    CTRL -> RegistedSkillsRepository : getRegistedSkillsList()
-    activate RegistedSkillsRepository
-
-        RegistedSkillsRepository --> CTRL : registedSkillsList
-    deactivate RegistedSkillsRepository
-
-    CTRL -> RegistedCollaboratorsRepository : getRegistedCollaboratorsList()
-        activate RegistedCollaboratorsRepository
-
-        RegistedCollaboratorsRepository --> CTRL: registedCollaboratorsList
-        deactivate RegistedCollaboratorsRepository
-
-        CTRL -> CollaboratorsSkillsRepository : getCollaboratorsBySkillsList()
-    activate CollaboratorsSkillsRepository
-
-    CollaboratorsSkillsRepository --> CTRL : collaboratorsBySkillsList
-    deactivate CollaboratorsSkillsRepository
-
-    CTRL --> UI : collaboratorsBySkillsList
-    deactivate CTRL
-
-    UI -> CTRL: getProposalTeam()
-
-    activate CTRL
-
-        CTRL -> CollaboratorsSkillsRepository : getCollaboratorsBySkillsList()
-    activate CollaboratorsSkillsRepository
-
-    CollaboratorsSkillsRepository --> CTRL: collaboratorsBySkillsList
-    deactivate CollaboratorsSkillsRepository
-
-        CTRL -> ProposalTeamRepository : getProposalTeam()
-    activate ProposalTeamRepository
-
-    ProposalTeamRepository --> CTRL : proposalTeam
-    deactivate ProposalTeamRepository
-
-    CTRL --> UI : proposalTeam
-    deactivate CTRL
-
-
-    UI --> HRM : shows and aks to confirm all the data
-    deactivate UI
-
-    HRM -> UI : confirms all the data
+HRM -> UI : asks to generate a team proposal
     activate UI
 
-    UI --> HRM : displays operation success
-    deactivate UI
+UI --> HRM : requests which is the minimum and\n maximum number of team collaborators
+deactivate UI
+
+
+HRM -> UI : types the minimum and maximum number of\n team collaborators
+    activate UI
+
+UI -> CTRL: getRegistedSkillsList()
+
+activate CTRL
+
+    CTRL -> RepositorySingleton : getInstance()
+activate RepositorySingleton
+
+RepositorySingleton --> CTRL: repositories
+deactivate RepositorySingleton
+
+    CTRL -> PLAT : getRegistedSkillsRepository()
+activate PLAT
+
+PLAT --> CTRL: registedSkillsRepository
+deactivate PLAT
+
+    CTRL -> RegistedSkillsRepository : getRegistedSkillsList()
+activate RegistedSkillsRepository
+
+RegistedSkillsRepository --> CTRL : registedSkillsList
+deactivate RegistedSkillsRepository
+
+CTRL --> UI : registedSkillsList
+deactivate CTRL
+
+UI --> HRM : requests to selects the skills needed
+deactivate UI
+
+    HRM -> UI : selects the skills
+activate UI
+
+deactivate CTRL
+
+UI -> CTRL: getRegistedCollaboratorsList()
+
+activate CTRL
+
+    CTRL -> RegistedCollaboratorsRepository : getRegistedCollaboratorsList()
+activate RegistedCollaboratorsRepository
+
+    loop for each collaborator
+            RegistedCollaboratorsRepository -> CollaboratorSkills : getCollaboratorSkillsList()
+        activate CollaboratorSkills
+
+            loop for each Skill of that Collaborator
+                    CollaboratorSkills -> ListOfSkillsSelected : e = equalSkill(skillName)
+                activate ListOfSkillsSelected
+
+                CollaboratorSkills <-- ListOfSkillsSelected : true/false
+                deactivate ListOfSkillsSelected
+            end
+        RegistedCollaboratorsRepository <-- CollaboratorSkills : true/false
+        deactivate CollaboratorSkills
+
+        opt e = true
+
+            RegistedCollaboratorsRepository -> ProposalTeamRepository : add(colllaborator)
+            activate ProposalTeamRepository
+            deactivate ProposalTeamRepository
+
+        end
+
+        deactivate CollaboratorSkills
+
+    end
+
+RegistedCollaboratorsRepository --> CTRL:
+deactivate RegistedCollaboratorsRepository
+
+
+CTRL --> UI :
+deactivate CTRL
+
+UI -> CTRL: getProposalTeam()
+
+activate CTRL
+
+    CTRL -> ProposalTeamRepository : getProposalTeam()
+activate ProposalTeamRepository
+
+ProposalTeamRepository --> CTRL : proposalTeam
+deactivate ProposalTeamRepository
+
+CTRL --> UI : proposalTeam
+deactivate CTRL
+
+
+UI --> HRM : shows and aks to confirm all the data
+deactivate UI
+
+HRM -> UI : confirms all the data
+activate UI
+
+UI --> HRM : displays operation success
+deactivate UI
 
 
 @enduml
