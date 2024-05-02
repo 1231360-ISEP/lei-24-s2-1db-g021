@@ -29,7 +29,9 @@ loop while intended
 
     autonumber 7
         UI --> HRM : requests the skill name
+    deactivate CTRL
     deactivate UI
+
 
     HRM -> UI : types the new skill name
     activate UI

@@ -13,7 +13,7 @@ actor  "Vehicle Fleet Manager" as VFM
 left to right direction
 
 rectangle "Integrating Project" as actors {
-        usecase "UC1 - Register Skills to Collaborators" as UC1
+        usecase "UC1 - Register Skills" as UC1
         HRM -- UC1
         usecase "UC2 - Register Job" as UC2
         HRM -- UC2
