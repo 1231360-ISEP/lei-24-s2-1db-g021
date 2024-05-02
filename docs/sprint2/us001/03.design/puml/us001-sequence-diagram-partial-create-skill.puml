@@ -4,18 +4,17 @@ skinparam packageStyle rectangle
 skinparam shadowing false
 
 participant "registedSkillsRepository:\nRegistedSkillsRepository" as RegistedSkillsRepository
-participant "skill\n:Skill" as TAREFA
+participant "skillName\n:RegistSkill" as TAREFA
 
 autonumber 11
--> RegistedSkillsRepository: createSkill
+-> RegistedSkillsRepository: create
 
 activate RegistedSkillsRepository
     group Create Skill
 
-        RegistedSkillsRepository -> TAREFA**: create skill
-        TAREFA -> RegistedSkillsRepository: addSkill (skill)
-
-            RegistedSkillsRepository -> RegistedSkillsRepository: validateSkill(skill)
+        RegistedSkillsRepository -> TAREFA**: create
+        RegistedSkillsRepository -> RegistedSkillsRepository: validateSkill(skillName)
+        RegistedSkillsRepository -> RegistedSkillsRepository: addSkill(skillName)
 
     end
 

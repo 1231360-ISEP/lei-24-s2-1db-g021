@@ -6,9 +6,9 @@ skinparam shadowing false
 autonumber
 
 'hide footbox
-actor "Organization Employee" as ADM
-participant ":CreateTaskUI" as UI
-participant ":CreateTaskController" as CTRL
+actor "Human Resources Manager" as ADM
+participant ":RegistCollaboratorUI" as UI
+participant ":RegistCollaboratorController" as CTRL
 participant ":Repositories" as RepositorySingleton
 participant "repositories\n:Repositories" as PLAT
 participant "taskCategoryRepository:\nTaskCategoryRepository" as TaskCategoryRepository
@@ -17,11 +17,11 @@ participant "appSession\n:ApplicationSession" as APP
 participant "currentSession\n:UserSession" as SESSAO
 participant "organizationRepository:\nOrganizationRepository" as OrganizationRepository
 participant "organization\n:Organization" as ORG
-participant "task\n:Task" as TAREFA
+participant ":Collaborator" as Collaborator
 
 activate ADM
 
-        ADM -> UI : asks to create a new task
+        ADM -> UI : asks to regist a new collaborator
 
         activate UI
 
@@ -29,7 +29,7 @@ activate ADM
             'create CTRL
             UI -> CTRL** : create
 
-            UI -> CTRL : getTaskCategories()
+            UI -> CTRL : getJobsCategories()
             activate CTRL
 
                 CTRL -> RepositorySingleton : getInstance()

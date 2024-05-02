@@ -1,0 +1,57 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+participant ":CreateTaskController" as CTRL
+participant "registedCollaboratorsRepository\n:RegistedCollaboratorsRepository" as RegistedCollaboratorsRepository
+participant "registedCollaboratorsRepository\n:RegistedCollaboratorsRepository" as RegistedCollaboratorsRepository
+participant "CollaboratorSkills\n:List<CollaboratorSkills>" as CollaboratorSkills
+participant "SkillsSelected\n:List<SkillsSelected>" as ListOfSkillsSelected
+participant "proposalTeamRepository\n:ProposalTeamRepository" as ProposalTeamRepository
+
+
+autonumber 14
+
+->CTRL: getRegistedCollaboratorsList()
+
+activate CTRL
+
+group Get Collaborators By Skills List
+
+    CTRL -> RegistedCollaboratorsRepository : getRegistedCollaboratorsList()
+activate RegistedCollaboratorsRepository
+
+    loop for each collaborator
+            RegistedCollaboratorsRepository -> CollaboratorSkills : getCollaboratorSkillsList()
+        activate CollaboratorSkills
+
+            loop for each Skill of that Collaborator
+                    CollaboratorSkills -> ListOfSkillsSelected : e = equalSkill(skillName)
+                activate ListOfSkillsSelected
+
+                CollaboratorSkills <-- ListOfSkillsSelected : true/false
+                deactivate ListOfSkillsSelected
+            end
+        RegistedCollaboratorsRepository <-- CollaboratorSkills : true/false
+        deactivate CollaboratorSkills
+
+        opt e = true
+
+            RegistedCollaboratorsRepository -> ProposalTeamRepository : add(colllaborator)
+            activate ProposalTeamRepository
+            deactivate ProposalTeamRepository
+
+        end
+
+        deactivate CollaboratorSkills
+
+    end
+
+RegistedCollaboratorsRepository --> CTRL:
+deactivate RegistedCollaboratorsRepository
+
+<-- CTRL :
+@enduml

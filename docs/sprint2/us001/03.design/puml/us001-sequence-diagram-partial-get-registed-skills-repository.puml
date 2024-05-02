@@ -28,7 +28,6 @@ activate CTRL
             deactivate PLAT
 
     end
-    <-- CTRL : registedSkillsRepository
 deactivate CTRL
 
 

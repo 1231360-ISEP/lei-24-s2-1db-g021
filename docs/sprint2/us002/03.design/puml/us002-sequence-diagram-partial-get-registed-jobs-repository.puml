@@ -26,7 +26,7 @@ activate CTRL
             deactivate PLAT
 
     end
-    <-- CTRL : registedJobsRepository
+
 deactivate CTRL
 
 

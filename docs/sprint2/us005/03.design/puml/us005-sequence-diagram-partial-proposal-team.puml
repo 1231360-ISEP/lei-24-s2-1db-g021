@@ -1,0 +1,26 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+participant ":CreateTaskController" as CTRL
+participant "proposalTeamRepository\n:ProposalTeamRepository" as ProposalTeamRepository
+
+autonumber 22
+
+-> CTRL : getProposalTeam()
+activate CTRL
+
+group Get Proposal Team
+        CTRL -> ProposalTeamRepository : getProposalTeam()
+    activate ProposalTeamRepository
+
+    ProposalTeamRepository --> CTRL : proposalTeam
+    deactivate ProposalTeamRepository
+
+end
+
+<-- CTRL : proposalTeam
+deactivate CTRL
+
+@enduml
