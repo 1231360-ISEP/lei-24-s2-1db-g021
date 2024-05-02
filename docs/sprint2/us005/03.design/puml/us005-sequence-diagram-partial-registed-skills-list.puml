@@ -10,42 +10,34 @@ participant ":Repositories" as RepositorySingleton
 participant "repositories\n:Repositories" as PLAT
 participant "registedSkillsRepository\n:RegistedSkillsRepository" as RegistedSkillsRepository
 
-autonumber 6
-
-loop while intended
-
+autonumber 4
 -> CTRL : getRegistedSkillsList()
 
-    activate CTRL
+activate CTRL
 
-    group Get Registed Skills List
+group Get Registed Skills List
 
-    activate CTRL
+    CTRL -> RepositorySingleton : getInstance()
+activate RepositorySingleton
 
-        CTRL -> RepositorySingleton : getInstance()
-    activate RepositorySingleton
+RepositorySingleton --> CTRL: repositories
+deactivate RepositorySingleton
 
-    RepositorySingleton --> CTRL: repositories
-    deactivate RepositorySingleton
+    CTRL -> PLAT : getRegistedSkillsRepository()
+activate PLAT
 
-        CTRL -> PLAT : getRegistedSkillsRepository()
-    activate PLAT
+PLAT --> CTRL: registedSkillsRepository
+deactivate PLAT
 
-    PLAT --> CTRL: registedSkillsRepository
-    deactivate PLAT
+    CTRL -> RegistedSkillsRepository : getRegistedSkillsList()
+activate RegistedSkillsRepository
 
-        CTRL -> RegistedSkillsRepository : getRegistedSkillsList()
-    activate RegistedSkillsRepository
+RegistedSkillsRepository --> CTRL : registedSkillsList
+deactivate RegistedSkillsRepository
 
-    RegistedSkillsRepository --> CTRL : registedSkillsList
-    deactivate RegistedSkillsRepository
-
-    <-- CTRL : registedSkillsList
-    deactivate CTRL
-
-    end
-
+<-- CTRL : registedSkillsList
 deactivate CTRL
+
 end
 
 @enduml

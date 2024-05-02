@@ -114,7 +114,6 @@ deactivate ProposalTeamRepository
 CTRL --> UI : proposalTeam
 deactivate CTRL
 
-
 UI --> HRM : shows and aks to confirm all the data
 deactivate UI
 

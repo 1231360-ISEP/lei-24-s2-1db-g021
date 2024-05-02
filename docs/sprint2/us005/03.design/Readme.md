@@ -61,7 +61,7 @@ It uses Interaction Occurrence (a.k.a. Interaction Use).
 
 **Get Collaborators By Skills List Partial SD**
 
-![Sequence Diagram - Partial - Get Task Category Object](svg/us005-sequence-diagram-partial-collaborators-by-skills-list.svg)
+![Sequence Diagram - Partial - Get Task Category Object](svg/us005-sequence-diagram-partial-registed-collaborators-list.svg)
 
 **Get Proposal Team Partial SD**
 
