@@ -10,7 +10,8 @@ actor "Human Resources Manager" as ADM
 participant ":AssignSkillUI" as UI
 participant ":AssignSkillController" as CTRL
 participant ":CollaboratorList" as CollaboratorList
-participant ":RegistedSkillsRepository" as RegistedSkillsRepository
+participant ":Repositories" as Repositories
+participant "repositories\n:Repositories" as RepoInstance
 participant ":Collaborator" as Collaborator
 
 activate ADM
@@ -22,8 +23,6 @@ activate ADM
             UI -> CTRL : getCollaborators()
 
             activate CTRL
-
-                CTRL -> CollaboratorList** : create
                 CTRL -> CollaboratorList : getAllCollaborators()
 
                 activate CollaboratorList
@@ -43,7 +42,6 @@ activate ADM
             UI -> CTRL : collaboratorSelected
 
             activate CTRL
-                CTRL -> Collaborator** : create
                 CTRL --> UI : success
             deactivate CTRL
 
@@ -56,12 +54,18 @@ activate ADM
             UI -> CTRL : getSkills()
 
             activate CTRL
-                CTRL -> RegistedSkillsRepository** : create
-                CTRL -> RegistedSkillsRepository : getRegistedSkillsRepository()
 
-                activate RegistedSkillsRepository
-                    RegistedSkillsRepository --> CTRL : registedSkillsRepository
-                deactivate RegistedSkillsRepository
+                CTRL -> Repositories : getInstance()
+
+                activate Repositories
+                    Repositories --> CTRL : repositories
+                deactivate Repositories
+
+                CTRL -> RepoInstance : getRegistedSkillsRepository()
+
+                activate RepoInstance
+                    RepoInstance --> CTRL : registedSkillsRepository
+                deactivate RepoInstance
 
                 CTRL --> UI : skills
             deactivate CTRL
