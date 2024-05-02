@@ -96,7 +96,7 @@ activate ADM
             UI -> CTRL : Confirms changes
             
             activate CTRL
-                CTRL -> Collaborator : skillsToAssign
+                CTRL -> Collaborator : assignSkills(skillsToAssign)
 
                 activate Collaborator
                     Collaborator --> CTRL : Success
