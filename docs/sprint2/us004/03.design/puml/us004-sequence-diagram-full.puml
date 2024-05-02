@@ -11,7 +11,7 @@ participant ":AssignSkillUI" as UI
 participant ":AssignSkillController" as CTRL
 participant ":Repositories" as Repositories
 participant "repositories\n:Repositories" as RepoInstance
-participant ":Collaborator" as Collaborator
+participant "collaboratorSelected\n:Collaborator" as Collaborator
 
 activate ADM
 
