@@ -12,7 +12,6 @@ participant ":RegistCollaboratorController" as CTRL
 participant ":Repositories" as RepositorySingleton
 participant "repositories\n:Repositories" as PLAT
 participant "registedCollaboratorsRepository:\nRegistedCollaboratorsRepository" as RegistedCollaboratorsRepository
-participant ":Collaborator" as Collaborator
 participant "fundamentalCharacteristics\n:Collaborator" as Data
 
 activate ADM
@@ -57,7 +56,7 @@ activate ADM
                     CTRL --> CTRL : success
                 deactivate CTRL
 
-                CTRL --> UI : Success
+                CTRL --> UI : success
             deactivate CTRL
 
             UI --> ADM : Requests the fundamental characteristics\n (i.e. name, birth date, admission date, address,\n contact info (mobile and email), taxpayer number,\nID doc type and respective number)
