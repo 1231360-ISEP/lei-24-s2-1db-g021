@@ -60,12 +60,6 @@ activate ADM
 
             activate CTRL
 
-                CTRL -> Repositories : getInstance()
-
-                activate Repositories
-                    Repositories --> CTRL : repositories
-                deactivate Repositories
-
                 CTRL -> RepoInstance : getRegistedSkillsRepository()
 
                 activate RepoInstance
