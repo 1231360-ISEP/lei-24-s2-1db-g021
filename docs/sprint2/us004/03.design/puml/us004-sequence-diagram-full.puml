@@ -9,7 +9,6 @@ autonumber
 actor "Human Resources Manager" as ADM
 participant ":AssignSkillUI" as UI
 participant ":AssignSkillController" as CTRL
-participant ":CollaboratorList" as CollaboratorList
 participant ":Repositories" as Repositories
 participant "repositories\n:Repositories" as RepoInstance
 participant ":Collaborator" as Collaborator
@@ -23,11 +22,17 @@ activate ADM
             UI -> CTRL : getCollaborators()
 
             activate CTRL
-                CTRL -> CollaboratorList : getAllCollaborators()
 
-                activate CollaboratorList
-                    CollaboratorList --> CTRL: collaborators
-                deactivate CollaboratorList
+                CTRL -> Repositories : getInstance()
+                activate Repositories
+                    Repositories --> CTRL : repositories
+                deactivate Repositories
+
+                CTRL -> RepoInstance : getRegistedCollaboratorsRepository()
+
+                activate RepoInstance
+                    RepoInstance --> CTRL : registedCollaboratorsRepository
+                deactivate RepoInstance
 
                 CTRL --> UI : collaborators
             deactivate CTRL
@@ -79,11 +84,11 @@ activate ADM
             UI -> CTRL : skillsToAssign
 
             activate CTRL
-                CTRL -> Collaborator : skillsToAssign
+                CTRL -> CTRL : storeSkills()
 
-                activate Collaborator
-                    Collaborator --> CTRL : Success
-                deactivate Collaborator
+                activate CTRL
+                    CTRL --> CTRL : success
+                deactivate CTRL
 
                 CTRL --> UI : Success
             deactivate CTRL
@@ -97,11 +102,11 @@ activate ADM
             UI -> CTRL : Confirms changes
             
             activate CTRL
-                CTRL -> CollaboratorList : Modify the selected collaborator
+                CTRL -> Collaborator : skillsToAssign
 
-                activate CollaboratorList
-                    CollaboratorList --> CTRL : Success
-                deactivate CollaboratorList
+                activate Collaborator
+                    Collaborator --> CTRL : Success
+                deactivate Collaborator
 
                 CTRL --> UI : Success
             deactivate CTRL
