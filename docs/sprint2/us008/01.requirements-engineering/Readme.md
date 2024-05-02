@@ -22,6 +22,12 @@ As a Fleet Manager, I want to list the vehicles needing the check-up.
 > **Question:** Are there acceptance criteria when asking for the list?
 >
 > **Answer:** The list must contain all vehicles that have already exceeded the number of km required for the inspection or those that are close to it.
+> For example: a vehicle that made the checkup at 23500 and has a checkup frequency of 10000km.
+>
+> a) If it currently has 33600 (exceeded) or
+>
+> b) 33480 (there is a difference minor than 5% of the number of kms of the checkup frequency).
+>
 >The list must clearly identify the vehicles through: plate number, brand, model and the that justified the checkup need.
 
 >  **Question:** "The list must clearly identify the vehicles through: plate number, brand, model and the [?] that justified the checkup need."
