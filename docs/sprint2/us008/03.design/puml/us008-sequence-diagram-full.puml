@@ -42,7 +42,8 @@ activate ADM
             deactivate VehRepo
 
             loop as long as VehiclesRepository doesn't end.
-                CTRL -> Veh : isVehicleNeedingCheckup(vehicle)
+
+                CTRL -> Veh : isVehicleNeedingOrAlmostCheckup()
 
                 activate Veh
 
