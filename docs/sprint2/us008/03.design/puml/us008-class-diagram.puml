@@ -57,46 +57,18 @@ class Organization {
     + Organization(name, vatNumber, webSite, phone, email, postalAddress, manager)
     + createTask(reference, description, informalDesccription,\ntechnicalDescription, duration, cost, taskCategoryDescription)
     - getEmployeeByEmail(email)
-
-'  +saveTask(task)
-}
-
-class TaskCategoryRepository {
-    + getTaskCategoryByDescription(description)
-}
-
-class OrganizationRepository {
-    + getOrganizationByEmployeeEmail(email)
 }
 
 class Repositories {
     - Repositories()
     + getInstance() : Repositories
-    + getTaskCategoryRepository()
-    + getOrganizationRepository()
+    + getVehiclesRepository()
 }
 
-class CreateTaskController {
-    + CreateTaskController(organizationRepository, taskCategoryRepository)
-    + getTaskCategories()
-    + createTask(userEmail, reference, description,\ninformalDescription, technicalDescription,\nduration, cost, categoryDescription)
-    - getTaskCategoryByDescription(taskCategoryDescription)
-    - getEmployeeFromSession()
+class ListVehiclesCheckupController {
 }
 
-note right of CreateTaskController
-    - userEmail is obtained
-    from the user session
-    - categoryDescription
-    is retrieved from selected data
-end note
-
-note bottom of TaskCategoryRepository
-    - used for displaying
-    the category list
-end note
-
-class CreateTaskUI {
+class ListVehiclesCheckupUI {
 }
 
 Repositories -> Repositories : instance
