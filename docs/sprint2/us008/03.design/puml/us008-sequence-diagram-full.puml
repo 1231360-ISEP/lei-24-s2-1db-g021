@@ -1,0 +1,51 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+actor "Vehicle and Equipment\nFleet Manager" as ADM
+participant ":ListVehiclesCheckupUI" as UI
+participant ":ListVehiclesCheckupController" as CTRL
+participant ":Repositories" as RepositorySingleton
+participant "repositories\n:Repositories" as PLAT
+participant "VehiclesRepository" as VehRepo
+
+activate ADM
+    ADM -> UI : asks to list the vehicles needing a check-up
+
+    activate UI
+        UI -> CTRL** : create
+        UI -> CTRL : getVehicles()
+
+        activate CTRL
+
+            CTRL -> RepositorySingleton : getInstance()
+
+            activate RepositorySingleton
+                RepositorySingleton --> CTRL: repositories
+            deactivate RepositorySingleton
+
+            CTRL -> PLAT : getVehiclesRepository()
+
+            activate PLAT
+                PLAT --> CTRL: vehiclesRepository
+            deactivate PLAT
+
+            CTRL -> VehRepo : getVehicles()
+
+            activate VehRepo
+                VehRepo --> CTRL : vehicles
+            deactivate VehRepo
+
+            CTRL --> UI : vehicles
+        deactivate CTRL
+
+        UI --> ADM : shows task category list\n and asks to sleect one
+    deactivate UI
+
+deactivate ADM
+
+@enduml
