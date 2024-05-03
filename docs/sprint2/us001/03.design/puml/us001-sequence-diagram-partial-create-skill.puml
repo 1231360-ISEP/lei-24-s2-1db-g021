@@ -3,24 +3,32 @@ skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
 
-participant "registedSkillsRepository:\nRegistedSkillsRepository" as RegistedSkillsRepository
-participant "skillName\n:RegistSkill" as TAREFA
+participant "skillsRepository:\nSkillsRepository" as SkillsRepository
+participant "skillName\n:Skill" as TAREFA
 
-autonumber 11
--> RegistedSkillsRepository: create
+autonumber 10
+-> SkillsRepository: create
 
-activate RegistedSkillsRepository
+activate SkillsRepository
     group Create Skill
 
-        RegistedSkillsRepository -> TAREFA**: create
-        RegistedSkillsRepository -> RegistedSkillsRepository: validateSkill(skillName)
-        RegistedSkillsRepository -> RegistedSkillsRepository: addSkill(skillName)
+        SkillsRepository -> TAREFA**: create
+                activate TAREFA
+
+                TAREFA -> TAREFA: validateSkill(skillName)
+
+                TAREFA --> SkillsRepository : skillName
+                SkillsRepository -> SkillsRepository: validateSkill(skillName)
+                deactivate TAREFA
+                SkillsRepository -> SkillsRepository: addSkill(skillName)
+                SkillsRepository -> SkillsRepository: true/false
+                SkillsRepository -> SkillsRepository: true/false
 
     end
 
-    <-- RegistedSkillsRepository : registedSkillsList
+    <-- SkillsRepository : registedSkillsList
 
-deactivate RegistedSkillsRepository
+deactivate SkillsRepository
 
 
 @enduml

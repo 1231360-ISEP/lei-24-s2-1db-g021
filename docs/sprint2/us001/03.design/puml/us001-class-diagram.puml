@@ -15,45 +15,45 @@ class UserSession
     + getUserEmail()
 }
 
-class RegistSkill {
+class Skill {
     - String skillName
-    + RegistSkill()
+    + Skill()
 }
 
-class RegistedSkillsRepository {
-    + getRegistSkill()
+class SkillsRepository {
+    + getSkill()
 }
 
 class Repositories {
     - Repositories()
     + getInstance() : Repositories
-    + getRegistedSkillsRepository()
+    + getSkillsRepository()
 }
 
-class RegistSkillsController {
-    + RegistSkillsController()
-    + getRegistSkill()
-    + RegistSkill(skillName)
+class RegisterSkillController {
+    + RegisterSkillController()
+    + getSkill()
+    + Skill(skillName)
 }
 
-class RegistSkillsUI {
+class RegisterSkillUI {
 }
 
-RegistSkillsUI .> RegistSkillsController
+RegisterSkillUI .> RegisterSkillController
 
-RegistSkillsController .> Repositories : repositories
+RegisterSkillController .> Repositories : repositories
 
-Repositories -> "1" RegistedSkillsRepository
+Repositories -> "1" SkillsRepository
 
-RegistSkillsController ..> RegistSkill
-RegistSkillsController ..> RegistedSkillsRepository : RegistedSkillsRepository
+RegisterSkillController ..> Skill
+RegisterSkillController ..> SkillsRepository : SkillsRepository
 
 
 ApplicationSession --> "1" UserSession : userSession
 
-RegistSkillsController ..> ApplicationSession
-RegistSkillsController ..> UserSession
-RegistedSkillsRepository "1" --> "*" RegistSkill : RegistSkill
+RegisterSkillController ..> ApplicationSession
+RegisterSkillController ..> UserSession
+SkillsRepository "1" --> "*" Skill : Skill
 
 
 @enduml

@@ -4,9 +4,9 @@ skinparam packageStyle rectangle
 skinparam shadowing false
 
 actor "Human Resources\nManager" as HRM
-participant ":RegistSkillsUI" as UI
-participant ":RegistSkillsController" as CTRL
-participant "registedSkillsRepository:\nRegistedSkillsRepository" as RegistedSkillsRepository
+participant ":RegisterSkillUI" as UI
+participant ":RegisterSkillController" as CTRL
+participant "skillsRepository:\nSkillsRepository" as SkillsRepository
 
 autonumber 1
 
@@ -20,7 +20,7 @@ activate UI
 activate CTRL
 
 ref over CTRL
-    Get Registed Skills Repository
+    Get Skills Repository
 end ref
 
 deactivate CTRL
@@ -38,19 +38,21 @@ loop while intended
         UI -> CTRL: create
     activate CTRL
 
-        CTRL -> RegistedSkillsRepository : createSkill
-    activate RegistedSkillsRepository
+        CTRL -> SkillsRepository : create
+    activate SkillsRepository
 
-    ref over RegistedSkillsRepository
-        Get Registed Skills List
+    ref over SkillsRepository
+        Get Skills List
     end ref
 
 end
 
-RegistedSkillsRepository --> CTRL : registedSkillsList
-deactivate RegistedSkillsRepository
+autonumber 18
 
-CTRL --> UI : registedSkillsList
+SkillsRepository --> CTRL : skillsList
+deactivate SkillsRepository
+
+CTRL --> UI : skillsList
 deactivate CTRL
 
 UI --> HRM : show all the skills registed\n and aks to confirm
