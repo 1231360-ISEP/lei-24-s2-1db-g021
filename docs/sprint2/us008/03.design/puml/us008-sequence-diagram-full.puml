@@ -11,7 +11,7 @@ participant ":ListVehiclesCheckupUI" as UI
 participant ":ListVehiclesCheckupController" as CTRL
 participant ":Repositories" as RepositorySingleton
 participant "repositories\n:Repositories" as PLAT
-participant "VehiclesRepository" as VehRepo
+participant "vehiclesRepository\n:VehiclesRepository" as VehRepo
 participant "Vehicle" as Veh
 
 activate ADM
@@ -46,20 +46,20 @@ activate ADM
 
                 activate Veh
 
-                    Veh -> Veh : didVehExceededCheckup(vehicle)
+                    Veh -> Veh : didVehExceededCheckup()
                     activate Veh
                         Veh --> Veh : true/false
                     deactivate Veh
 
-                    Veh -> Veh : isVehicleCloseToExceedCheckup(vehicle)
+                    Veh -> Veh : isVehicleCloseToExceedCheckup()
 
                     activate Veh
                         Veh --> Veh : true/false
                     deactivate Veh
 
-                    alt didVehExceededCheckup(vehicle) == true
+                    alt didVehExceededCheckup() == true
                         Veh --> CTRL : true
-                    else isVehicleCloseToExceedCheckup(vehicle) == true
+                    else isVehicleCloseToExceedCheckup() == true
                         Veh --> CTRL : true
                     else
                         Veh --> CTRL : false
