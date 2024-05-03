@@ -4,15 +4,15 @@ skinparam packageStyle rectangle
 skinparam shadowing false
 
 actor "Human Resources\nManager" as HRM
-participant ":RegistSkillsUI" as UI
-participant ":RegistSkillsController" as CTRL
+participant ":GenerateTeamProposalUI" as UI
+participant ":GenerateTeamProposalController" as CTRL
 participant ":Repositories" as RepositorySingleton
 participant "repositories\n:Repositories" as PLAT
-participant "registedSkillsRepository\n:RegistedSkillsRepository" as RegistedSkillsRepository
-participant "registedCollaboratorsRepository\n:RegistedCollaboratorsRepository" as RegistedCollaboratorsRepository
+participant "skillName\n:SkillsRepository" as SkillsRepository
+participant "name\n:CollaboratorsRepository" as CollaboratorsRepository
 participant "CollaboratorSkills\n:List<CollaboratorSkills>" as CollaboratorSkills
 participant "SkillsSelected\n:List<SkillsSelected>" as ListOfSkillsSelected
-participant "proposalTeamRepository\n:ProposalTeamRepository" as ProposalTeamRepository
+participant "team\n:TeamRepository" as TeamRepository
 
 autonumber 1
 
@@ -28,7 +28,7 @@ deactivate UI
 HRM -> UI : types the minimum and maximum number of\n team collaborators
     activate UI
 
-UI -> CTRL: getRegistedSkillsList()
+UI -> CTRL: getSkillsList()
 
 activate CTRL
 
@@ -38,19 +38,19 @@ activate RepositorySingleton
 RepositorySingleton --> CTRL: repositories
 deactivate RepositorySingleton
 
-    CTRL -> PLAT : getRegistedSkillsRepository()
+    CTRL -> PLAT : getSkillsRepository()
 activate PLAT
 
-PLAT --> CTRL: registedSkillsRepository
+PLAT --> CTRL: SkillsRepository
 deactivate PLAT
 
-    CTRL -> RegistedSkillsRepository : getRegistedSkillsList()
-activate RegistedSkillsRepository
+    CTRL -> SkillsRepository : getSkillsList()
+activate SkillsRepository
 
-RegistedSkillsRepository --> CTRL : registedSkillsList
-deactivate RegistedSkillsRepository
+SkillsRepository --> CTRL : skillsList
+deactivate SkillsRepository
 
-CTRL --> UI : registedSkillsList
+CTRL --> UI : skillsList
 deactivate CTRL
 
 UI --> HRM : requests to selects the skills needed
@@ -61,15 +61,15 @@ activate UI
 
 deactivate CTRL
 
-UI -> CTRL: getRegistedCollaboratorsList()
+UI -> CTRL: getCollaboratorsList()
 
 activate CTRL
 
-    CTRL -> RegistedCollaboratorsRepository : getRegistedCollaboratorsList()
-activate RegistedCollaboratorsRepository
+    CTRL -> CollaboratorsRepository : getCollaboratorsList()
+activate CollaboratorsRepository
 
     loop for each collaborator
-            RegistedCollaboratorsRepository -> CollaboratorSkills : getCollaboratorSkillsList()
+            CollaboratorsRepository -> CollaboratorSkills : getCollaboratorSkillsList()
         activate CollaboratorSkills
 
             loop for each Skill of that Collaborator
@@ -79,14 +79,14 @@ activate RegistedCollaboratorsRepository
                 CollaboratorSkills <-- ListOfSkillsSelected : true/false
                 deactivate ListOfSkillsSelected
             end
-        RegistedCollaboratorsRepository <-- CollaboratorSkills : true/false
+        CollaboratorsRepository <-- CollaboratorSkills : true/false
         deactivate CollaboratorSkills
 
         opt e = true
 
-            RegistedCollaboratorsRepository -> ProposalTeamRepository : add(colllaborator)
-            activate ProposalTeamRepository
-            deactivate ProposalTeamRepository
+            CollaboratorsRepository -> TeamRepository : add(colllaborator)
+            activate TeamRepository
+            deactivate TeamRepository
 
         end
 
@@ -94,24 +94,24 @@ activate RegistedCollaboratorsRepository
 
     end
 
-RegistedCollaboratorsRepository --> CTRL:
-deactivate RegistedCollaboratorsRepository
+CollaboratorsRepository --> CTRL:
+deactivate CollaboratorsRepository
 
 
 CTRL --> UI :
 deactivate CTRL
 
-UI -> CTRL: getProposalTeam()
+UI -> CTRL: getTeam()
 
 activate CTRL
 
-    CTRL -> ProposalTeamRepository : getProposalTeam()
-activate ProposalTeamRepository
+    CTRL -> TeamRepository : getTeam()
+activate TeamRepository
 
-ProposalTeamRepository --> CTRL : proposalTeam
-deactivate ProposalTeamRepository
+TeamRepository --> CTRL : team
+deactivate TeamRepository
 
-CTRL --> UI : proposalTeam
+CTRL --> UI : team
 deactivate CTRL
 
 UI --> HRM : shows and aks to confirm all the data
