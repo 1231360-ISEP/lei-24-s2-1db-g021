@@ -5,7 +5,7 @@ skinparam shadowing false
 
 autonumber
 
-participant ":RegistSkillsController" as CTRL
+participant ":RegisterSkillController" as CTRL
 participant ":Repositories" as RepositorySingleton
 participant "repositories\n:Repositories" as PLAT
 
@@ -21,10 +21,10 @@ activate CTRL
                 RepositorySingleton --> CTRL: repositories
             deactivate RepositorySingleton
 
-            CTRL -> PLAT : getRegistedSkillsRepository()
+            CTRL -> PLAT : getSkillsRepository()
             activate PLAT
 
-                PLAT --> CTRL: registedSkillsRepository
+                PLAT --> CTRL: skillsRepository
             deactivate PLAT
 
     end

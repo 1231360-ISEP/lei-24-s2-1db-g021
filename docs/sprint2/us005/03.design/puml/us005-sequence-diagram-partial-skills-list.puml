@@ -1,0 +1,43 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+participant ":GenerateTeamProposalController" as CTRL
+participant ":Repositories" as RepositorySingleton
+participant "repositories\n:Repositories" as PLAT
+participant "skillName\n:SkillsRepository" as SkillsRepository
+
+autonumber 4
+-> CTRL : skillsList()
+
+activate CTRL
+
+group Get Skills List
+
+    CTRL -> RepositorySingleton : getInstance()
+activate RepositorySingleton
+
+RepositorySingleton --> CTRL: repositories
+deactivate RepositorySingleton
+
+    CTRL -> PLAT : getSkillsRepository()
+activate PLAT
+
+PLAT --> CTRL: SkillsRepository
+deactivate PLAT
+
+    CTRL -> SkillsRepository : skillsList()
+activate SkillsRepository
+
+SkillsRepository --> CTRL : skillsList
+deactivate SkillsRepository
+
+<-- CTRL : skillsList
+deactivate CTRL
+
+end
+
+@enduml

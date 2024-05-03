@@ -4,12 +4,12 @@ skinparam packageStyle rectangle
 skinparam shadowing false
 
 actor "Human Resources\nManager" as HRM
-participant ":RegistSkillsUI" as UI
-participant ":RegistSkillsController" as CTRL
+participant ":RegisterSkillUI" as UI
+participant ":RegisterSkillController" as CTRL
 participant ":Repositories" as RepositorySingleton
 participant "repositories\n:Repositories" as PLAT
-participant "registedSkillsRepository:\nRegistedSkillsRepository" as RegistedSkillsRepository
-participant "skillName\n:RegistSkill" as TAREFA
+participant "skillsRepository:\nSkillsRepository" as SkillsRepository
+participant "skillName\n:Skill" as TAREFA
 
 autonumber 1
 
@@ -28,13 +28,12 @@ activate HRM
             RepositorySingleton --> CTRL: repositories
         deactivate RepositorySingleton
 
-        CTRL -> PLAT : getRegistedSkillsRepository()
+        CTRL -> PLAT : getSkillsRepository()
         activate PLAT
 
-            PLAT --> CTRL: registedSkillsRepository
+            PLAT --> CTRL: SkillsRepository
         deactivate PLAT
 
-       ' UI <-- CTRL : registedSkillsRepository
         deactivate CTRL
 
     loop while intended
@@ -47,22 +46,28 @@ activate HRM
             UI -> CTRL: create
         activate CTRL
 
-            CTRL -> RegistedSkillsRepository : create
-        activate RegistedSkillsRepository
+            CTRL -> SkillsRepository : create
+        activate SkillsRepository
 
-            RegistedSkillsRepository -> TAREFA**: create
+            SkillsRepository -> TAREFA**: create
         activate TAREFA
 
-        RegistedSkillsRepository -> RegistedSkillsRepository: validateSkill(skillName)
+        TAREFA -> TAREFA: validateSkill(skillName)
+
+        TAREFA --> SkillsRepository : skillName
+        SkillsRepository -> SkillsRepository: validateSkill(skillName)
         deactivate TAREFA
-        RegistedSkillsRepository -> RegistedSkillsRepository: addSkill(skillName)
+        SkillsRepository -> SkillsRepository: addSkill(skillName)
+        SkillsRepository -> SkillsRepository: true/false
+        SkillsRepository -> SkillsRepository: true/false
+
 
     end
 
-    RegistedSkillsRepository --> CTRL : registedSkillsList
-    deactivate RegistedSkillsRepository
+    SkillsRepository --> CTRL : skillsList
+    deactivate SkillsRepository
 
-    CTRL --> UI : registedSkillsList
+    CTRL --> UI : skillsList
     deactivate CTRL
 
     UI --> HRM : show all the skills registed\n and aks to confirm
