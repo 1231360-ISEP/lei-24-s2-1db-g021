@@ -61,7 +61,7 @@ class Organization {
 '  +saveTask(task)
 }
 
-class TaskCategoryRepository {
+class registedCollaboratorsRepository {
     + getTaskCategoryByDescription(description)
 }
 
@@ -76,7 +76,7 @@ class Repositories {
     + getOrganizationRepository()
 }
 
-class CreateTaskController {
+class RegistCollaboratorController {
     + CreateTaskController(organizationRepository, taskCategoryRepository)
     + getTaskCategories()
     + createTask(userEmail, reference, description,\ninformalDescription, technicalDescription,\nduration, cost, categoryDescription)
@@ -84,14 +84,14 @@ class CreateTaskController {
     - getEmployeeFromSession()
 }
 
-note right of CreateTaskController
+note right of RegistCollaboratorController
     - userEmail is obtained
     from the user session
     - categoryDescription
     is retrieved from selected data
 end note
 
-note bottom of TaskCategoryRepository
+note bottom of registedCollaboratorsRepository
     - used for displaying
     the category list
 end note
@@ -102,26 +102,26 @@ class CreateTaskUI {
 Repositories -> Repositories : instance
 ApplicationSession -> ApplicationSession : instance
 
-CreateTaskUI .> CreateTaskController
+RegistCollaboratorUI .> RegistCollaboratorController
 
-CreateTaskController .> Repositories : repositories
+RegistCollaboratorController .> Repositories : repositories
 
-Repositories -> "1" TaskCategoryRepository
+Repositories -> "1" registedCollaboratorsRepository
 
-CreateTaskController ..> TaskCategory
-CreateTaskController ..> OrganizationRepository : organizationRepository
-CreateTaskController ..> TaskCategoryRepository : TaskCategoryRepository
+RegistCollaboratorController ..> TaskCategory
+RegistCollaboratorController ..> OrganizationRepository : organizationRepository
+RegistCollaboratorController ..> registedCollaboratorsRepository : TaskCategoryRepository
 
 Repositories --> "1" OrganizationRepository
 
 OrganizationRepository --> "*" Organization
 ApplicationSession --> "1" UserSession : userSession
 
-CreateTaskController ..> "1" Organization : organization
-CreateTaskController ..> ApplicationSession
-CreateTaskController ..> UserSession
+RegistCollaboratorController ..> "1" Organization : organization
+RegistCollaboratorController ..> ApplicationSession
+RegistCollaboratorController ..> UserSession
 Task "*" --> "1" TaskCategory : taskCategory
-TaskCategoryRepository "1" --> "*" TaskCategory : taskCategory
+registedCollaboratorsRepository "1" --> "*" TaskCategory : taskCategory
 Organization "1" --> "*" Task : tasks
 Task --> Employee : createdBy
 

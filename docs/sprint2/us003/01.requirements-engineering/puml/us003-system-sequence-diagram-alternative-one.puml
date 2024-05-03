@@ -16,25 +16,21 @@ activate HRM
     activate System
 
     loop while intended
-            System --> HRM : requests the job
+            System --> HRM : List all jobs and requests the job
         deactivate System
-        HRM -> System : Type a job
+        HRM -> System : Select a job
         activate System
 
         System --> HRM : requests the fundamental characteristics (i.e. name, birth date, admission date,\n address, contact info (mobile and email), taxpayer number,ID doc type and respective number)
         deactivate System
         HRM -> System : Type the fundamental characteristics
         activate System
-        System --> HRM : Request confirmation
-        deactivate System
-        HRM -> System : Confirms it and regist the new collaborator
-        activate System
     end
 
-        System --> HRM : show all the collaborators registed
+        System --> HRM : show all the collaborator(s) and requests confirmation
     deactivate System
 
-    HRM -> System : confirm the collaborator(s) registed and requests confirmation
+    HRM -> System : confirm the collaborator(s)
     activate System
 
     System --> HRM : displays operation success
