@@ -47,6 +47,11 @@ Teams are temporary associations of employees who will carry out a set of tasks 
 >
 > **Answer:** max and min team size, and a list of skills needed. For instance: min: 3 max: 4
 
+> **Question** Se, hipoteticamente, tivermos definidas as minSize e as maxSize da equipa como 3 e 5 respetivamente e ao verificar quantos colaboradores têm as respetivas skills chegamos à conclusao que temos 6 colaboradores com as skills necessárias, como é suposto sabermos se precisamos de gerar uma team com 3, 4 ou 5 elementos e qual o elemento para deixar de fora ?
+>
+> **Answer** Algumas palavras chave que podem ajudar: Critérios (por exemplo, minimizar o número de elementos), Ordenação (de acordo com os critérios escolhidos), Algoritmos (apresentar propostas e interagir com o gestor de recursos humanos)
+
+
 
 ### 1.3. Acceptance Criteria
 
