@@ -4,24 +4,14 @@ skinparam shadowing false
 skinparam linetype polyline
 skinparam classAttributeIconSize 0
 
-class ApplicationSession
-{
-    + static getInstance()
-    + getCurrentSession()
-}
-
-class UserSession
-{
-    + getUserEmail()
-}
 
 class Skill {
     - String name
-    + Skill()
+    + Skill(name)
 }
 
 class SkillsRepository {
-    + getSkill()
+    + getSkillsList()
 }
 
 class Repositories {
@@ -32,8 +22,7 @@ class Repositories {
 
 class RegisterSkillController {
     + RegisterSkillController()
-    + getSkill()
-    + Skill(name)
+    + getSkillsList()
 }
 
 class RegisterSkillUI {
@@ -43,16 +32,11 @@ RegisterSkillUI .> RegisterSkillController
 
 RegisterSkillController .> Repositories : repositories
 
-Repositories -> "1" SkillsRepository
+Repositories --> "1" SkillsRepository
 
 RegisterSkillController ..> Skill
 RegisterSkillController ..> SkillsRepository : SkillsRepository
 
-
-ApplicationSession --> "1" UserSession : userSession
-
-RegisterSkillController ..> ApplicationSession
-RegisterSkillController ..> UserSession
 SkillsRepository "1" --> "*" Skill : Skill
 
 

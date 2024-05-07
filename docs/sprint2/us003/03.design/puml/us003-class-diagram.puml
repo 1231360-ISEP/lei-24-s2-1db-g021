@@ -61,7 +61,7 @@ class Organization {
 '  +saveTask(task)
 }
 
-class registedCollaboratorsRepository {
+class CollaboratorsRepository {
     + getTaskCategoryByDescription(description)
 }
 
@@ -91,7 +91,7 @@ note right of RegistCollaboratorController
     is retrieved from selected data
 end note
 
-note bottom of registedCollaboratorsRepository
+note bottom of CollaboratorsRepository
     - used for displaying
     the category list
 end note
@@ -106,11 +106,11 @@ RegistCollaboratorUI .> RegistCollaboratorController
 
 RegistCollaboratorController .> Repositories : repositories
 
-Repositories -> "1" registedCollaboratorsRepository
+Repositories -> "1" CollaboratorsRepository
 
 RegistCollaboratorController ..> TaskCategory
 RegistCollaboratorController ..> OrganizationRepository : organizationRepository
-RegistCollaboratorController ..> registedCollaboratorsRepository : TaskCategoryRepository
+RegistCollaboratorController ..> CollaboratorsRepository : TaskCategoryRepository
 
 Repositories --> "1" OrganizationRepository
 
@@ -121,7 +121,7 @@ RegistCollaboratorController ..> "1" Organization : organization
 RegistCollaboratorController ..> ApplicationSession
 RegistCollaboratorController ..> UserSession
 Task "*" --> "1" TaskCategory : taskCategory
-registedCollaboratorsRepository "1" --> "*" TaskCategory : taskCategory
+CollaboratorsRepository "1" --> "*" TaskCategory : taskCategory
 Organization "1" --> "*" Task : tasks
 Task --> Employee : createdBy
 

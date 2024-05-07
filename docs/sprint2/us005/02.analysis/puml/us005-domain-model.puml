@@ -16,7 +16,7 @@ class Skill {
 }
 
 class Task {
-    taskName
+    name
 }
 
 class Collaborator {
@@ -49,7 +49,7 @@ Collaborator "1" -- "1" Address: owns >
 Address "1" -- "1" ZipCode : owns >
 Team "1" -- "1..*" Collaborator : has >
 Team "1" -- "1" Agenda : has >
-Task "1..*" -- "1..*" Team : assigned to >
 Agenda "1..*" -- "1..*" Task : has >
+Task "1..*" -- "1..*" Team : assigned to >
 
 @enduml

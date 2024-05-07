@@ -28,7 +28,7 @@ activate CollaboratorsRepository
         activate CollaboratorSkills
 
             loop for each Skill of that Collaborator
-                    CollaboratorSkills -> ListOfSkillsSelected : e = equalSkill(skillName)
+                    CollaboratorSkills -> ListOfSkillsSelected : e = equalsSkill(name)
                 activate ListOfSkillsSelected
 
                 CollaboratorSkills <-- ListOfSkillsSelected : true/false
@@ -37,9 +37,9 @@ activate CollaboratorsRepository
         CollaboratorsRepository <-- CollaboratorSkills : true/false
         deactivate CollaboratorSkills
 
-        opt e = true
+        opt e == true
 
-            CollaboratorsRepository -> TeamRepository : add(colllaborator)
+            CollaboratorsRepository -> TeamRepository : addCollaborator(colllaborator)
             activate TeamRepository
             deactivate TeamRepository
 

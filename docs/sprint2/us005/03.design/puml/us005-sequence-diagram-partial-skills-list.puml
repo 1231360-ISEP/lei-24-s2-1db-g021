@@ -8,7 +8,7 @@ autonumber
 participant ":GenerateTeamProposalController" as CTRL
 participant ":Repositories" as RepositorySingleton
 participant "repositories\n:Repositories" as PLAT
-participant "skillName\n:SkillsRepository" as SkillsRepository
+participant "name\n:SkillsRepository" as SkillsRepository
 
 autonumber 4
 -> CTRL : skillsList()

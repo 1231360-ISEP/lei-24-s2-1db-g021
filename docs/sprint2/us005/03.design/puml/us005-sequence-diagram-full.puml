@@ -8,7 +8,7 @@ participant ":GenerateTeamProposalUI" as UI
 participant ":GenerateTeamProposalController" as CTRL
 participant ":Repositories" as RepositorySingleton
 participant "repositories\n:Repositories" as PLAT
-participant "skillName\n:SkillsRepository" as SkillsRepository
+participant "name\n:SkillsRepository" as SkillsRepository
 participant "name\n:CollaboratorsRepository" as CollaboratorsRepository
 participant "CollaboratorSkills\n:List<CollaboratorSkills>" as CollaboratorSkills
 participant "SkillsSelected\n:List<SkillsSelected>" as ListOfSkillsSelected
@@ -54,6 +54,7 @@ CTRL --> UI : skillsList
 deactivate CTRL
 
 UI --> HRM : requests to selects the skills needed
+
 deactivate UI
 
     HRM -> UI : selects the skills
@@ -73,7 +74,7 @@ activate CollaboratorsRepository
         activate CollaboratorSkills
 
             loop for each Skill of that Collaborator
-                    CollaboratorSkills -> ListOfSkillsSelected : e = equalSkill(skillName)
+                    CollaboratorSkills -> ListOfSkillsSelected : e = equalsSkill(name)
                 activate ListOfSkillsSelected
 
                 CollaboratorSkills <-- ListOfSkillsSelected : true/false
@@ -82,9 +83,9 @@ activate CollaboratorsRepository
         CollaboratorsRepository <-- CollaboratorSkills : true/false
         deactivate CollaboratorSkills
 
-        opt e = true
+        opt e == true
 
-            CollaboratorsRepository -> TeamRepository : add(colllaborator)
+            CollaboratorsRepository -> TeamRepository : addCollaborator(colllaborator)
             activate TeamRepository
             deactivate TeamRepository
 

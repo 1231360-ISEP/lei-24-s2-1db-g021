@@ -14,12 +14,12 @@ class Collaborator {
     +assignSkills(skillsToAssign)
 }
 
-class RegistedSkillsRepository {
+class SkillsRepository {
     - skillsRepository
     + getAllSkills()
 }
 
-class RegistedCollaboratorsRepository {
+class CollaboratorsRepository {
     - collaboratorsRepository
     + getAllCollaborators()
 }
@@ -27,8 +27,8 @@ class RegistedCollaboratorsRepository {
 class Repositories {
     - Repositories()
     + getInstance() : Repositories
-    + getRegistedCollaboratorsRepository()
-    + getRegistedSkillsRepository()
+    + getCollaboratorsRepository()
+    + getSkillsRepository()
 }
 
 class AssignSkillController {
@@ -46,16 +46,16 @@ AssignSkillUI -- AssignSkillController
 
 AssignSkillController -- Repositories
 
-AssignSkillController -- RegistedCollaboratorsRepository
+AssignSkillController -- CollaboratorsRepository
 
-AssignSkillController -- RegistedSkillsRepository
+AssignSkillController -- SkillsRepository
 
 AssignSkillController -- Collaborator
 
-Repositories *- RegistedCollaboratorsRepository
+Repositories *- CollaboratorsRepository
 
-Repositories *- RegistedSkillsRepository
+Repositories *- SkillsRepository
 
-RegistedCollaboratorsRepository o- Collaborator
+CollaboratorsRepository o- Collaborator
 
 @enduml

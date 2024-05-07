@@ -52,22 +52,18 @@ activate CollaboratorsRepository
         Get Collaborators List
     end ref
 
-
-CollaboratorsRepository --> CTRL:
+CollaboratorsRepository --> CTRL
 deactivate CollaboratorsRepository
 
-
-CTRL --> UI :
+CTRL --> UI
 deactivate CTRL
 
-UI -> CTRL: getTeam()
-
+    UI -> CTRL: getTeam()
 activate CTRL
 
-ref over CTRL
-    Get Team
-end ref
-
+    ref over CTRL
+        Get Team
+    end ref
 
 CTRL --> UI : team
 deactivate CTRL

@@ -36,7 +36,7 @@ Other software classes (i.e. Pure Fabrication) identified:
 * RegistSkillskUI  
 * RegistSkillsController
 * Repositories
-* RegistedSkillsRepository
+* SkillsRepository
 * RegistSkill
 
 ## 3.2. Sequence Diagram (SD)

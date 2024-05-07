@@ -45,7 +45,7 @@ class Job {
 }
 
 class Task {
-    taskName
+    name
 }
 
 class Team {

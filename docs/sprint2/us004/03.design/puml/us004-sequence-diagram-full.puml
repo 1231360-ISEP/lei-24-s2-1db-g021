@@ -11,8 +11,8 @@ participant ":AssignSkillUI" as UI
 participant ":AssignSkillController" as CTRL
 participant ":Repositories" as Repositories
 participant "repositories\n:Repositories" as RepoInstance
-participant "registedCollaboratorsRepository\n:RegistedCollaboratorsRepository" as CollaboratorRepo
-participant "registedSkillsRepository\n:RegistedSkillsRepository" as SkillRepo
+participant "CollaboratorsRepository\n:CollaboratorsRepository" as CollaboratorRepo
+participant "SkillsRepository\n:SkillsRepository" as SkillRepo
 participant "collaboratorSelected\n:Collaborator" as Collaborator
 
 activate ADM
@@ -30,10 +30,10 @@ activate ADM
                     Repositories --> CTRL : repositories
                 deactivate Repositories
 
-                CTRL -> RepoInstance : getRegistedCollaboratorsRepository()
+                CTRL -> RepoInstance : getCollaboratorsRepository()
 
                 activate RepoInstance
-                    RepoInstance --> CTRL : registedCollaboratorsRepository
+                    RepoInstance --> CTRL : CollaboratorsRepository
                 deactivate RepoInstance
 
                 CTRL -> CollaboratorRepo : getAllCollaborators()
@@ -67,10 +67,10 @@ activate ADM
 
             activate CTRL
 
-                CTRL -> RepoInstance : getRegistedSkillsRepository()
+                CTRL -> RepoInstance : getSkillsRepository()
 
                 activate RepoInstance
-                    RepoInstance --> CTRL : registedSkillsRepository
+                    RepoInstance --> CTRL : SkillsRepository
                 deactivate RepoInstance
 
                 CTRL -> SkillRepo : getAllSkills()
