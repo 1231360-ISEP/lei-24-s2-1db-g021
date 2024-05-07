@@ -11,14 +11,15 @@ participant ":ListVehiclesCheckupUI" as UI
 participant ":ListVehiclesCheckupController" as CTRL
 participant ":Repositories" as RepositorySingleton
 participant "repositories\n:Repositories" as PLAT
-participant "VehiclesRepository" as VehRepo
+participant "vehiclesRepository\n:VehiclesRepository" as VehRepo
+participant "Vehicle" as Veh
 
 activate ADM
     ADM -> UI : asks to list the vehicles needing a check-up
 
     activate UI
         UI -> CTRL** : create
-        UI -> CTRL : getVehicles()
+        UI -> CTRL : getVehiclesNeedingCheckup()
 
         activate CTRL
 
@@ -40,10 +41,39 @@ activate ADM
                 VehRepo --> CTRL : vehicles
             deactivate VehRepo
 
-            CTRL --> UI : vehicles
+            loop as long as VehiclesRepository doesn't end.
+
+                CTRL -> Veh : isVehicleNeedingOrAlmostCheckup()
+
+                activate Veh
+
+                    Veh -> Veh : didVehExceededCheckup()
+                    activate Veh
+                        Veh --> Veh : true/false
+                    deactivate Veh
+
+                    Veh -> Veh : isVehicleCloseToExceedCheckup()
+
+                    activate Veh
+                        Veh --> Veh : true/false
+                    deactivate Veh
+
+                    alt didVehExceededCheckup() == true
+                        Veh --> CTRL : true
+                    else isVehicleCloseToExceedCheckup() == true
+                        Veh --> CTRL : true
+                    else
+                        Veh --> CTRL : false
+                    end
+
+                deactivate Veh
+
+            end
+
+            CTRL --> UI : vehiclesNeedingCheckup
         deactivate CTRL
 
-        UI --> ADM : shows task category list\n and asks to sleect one
+        UI --> ADM : Shows the list of vehicles needing or almost needing check-up.
     deactivate UI
 
 deactivate ADM
