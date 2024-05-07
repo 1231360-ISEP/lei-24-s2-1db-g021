@@ -16,7 +16,7 @@ class UserSession
 }
 
 class Skill {
-    - String skillName
+    - String name
     + Skill()
 }
 
@@ -33,7 +33,7 @@ class Repositories {
 class RegisterSkillController {
     + RegisterSkillController()
     + getSkill()
-    + Skill(skillName)
+    + Skill(name)
 }
 
 class RegisterSkillUI {

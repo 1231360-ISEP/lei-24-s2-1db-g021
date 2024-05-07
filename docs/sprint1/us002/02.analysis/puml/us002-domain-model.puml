@@ -23,7 +23,7 @@ class HumanResourceManager {
 }
 
 class Job {
-    jobName
+    name
 }
 
 Organization "1" - "1..*" HumanResourceManager: has >

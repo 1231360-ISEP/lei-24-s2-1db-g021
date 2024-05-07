@@ -4,7 +4,7 @@ skinparam packageStyle rectangle
 skinparam shadowing false
 
 participant "registedJobsRepository:\nRegistedJobsRepository" as RegistedJobsRepository
-participant "jobName\n:Job" as PROFISSAO
+participant "name\n:Job" as PROFISSAO
 
 autonumber 10
 -> RegistedJobsRepository: create
@@ -13,9 +13,9 @@ activate RegistedJobsRepository
     group Create a Job
 
         RegistedJobsRepository -> PROFISSAO**: create
-        RegistedJobsRepository -> RegistedJobsRepository: addJob(jobName)
+        RegistedJobsRepository -> RegistedJobsRepository: addJob(name)
 
-            RegistedJobsRepository -> RegistedJobsRepository: validateJob(jobName)
+            RegistedJobsRepository -> RegistedJobsRepository: validateJob(name)
 
     end
 

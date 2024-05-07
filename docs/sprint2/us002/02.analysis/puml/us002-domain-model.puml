@@ -30,7 +30,7 @@ class ZipCode {
 class HumanResourcesManager {}
 
 class Job {
-    jobName
+    name
 }
 
 

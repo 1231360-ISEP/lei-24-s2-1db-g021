@@ -21,7 +21,7 @@ class Address {
     doorNumber
 }
 
-class zipCode {
+class ZipCode {
     local
     street
 }
@@ -37,18 +37,20 @@ class GreenSpaceManager {}
 class GreenSpaceUser {}
 
 class Skill {
-    skillName
+    name
 }
 
 class Job {
-    jobName
+    name
 }
 
 class Task {
     taskName
 }
 
-class Team {}
+class Team {
+    name
+}
 
 class Vehicle {
     currentKm
@@ -93,7 +95,7 @@ GreenSpaceManager ---|> Collaborator
 Collaborator "1..*" -- "1" Job : assigned to <
 Collaborator "*" -- "*" Skill : assigned to <
 Collaborator "1" -- "1" Address: owns >
-Address "1" -- "1" zipCode : owns >
+Address "1" -- "1" ZipCode : owns >
 
 Team "1" -- "1..*" Collaborator : has >
 Team "1" -- "1" Agenda : has >

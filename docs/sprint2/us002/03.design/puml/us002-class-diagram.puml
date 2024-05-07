@@ -5,7 +5,7 @@ skinparam linetype polyline
 skinparam classAttributeIconSize 0
 
 class Job {
-    - String jobName
+    - String name
     + registJob()
 }
 
@@ -22,7 +22,7 @@ class Repositories {
 class RegistJobController {
     + registJobController()
     + getRegistJob()
-    + registJob(jobName)
+    + registJob(name)
 }
 
 class RegistJobUI {

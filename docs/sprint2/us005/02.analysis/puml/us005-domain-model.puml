@@ -12,7 +12,7 @@ hide methods
 class HumanResourcesManager {}
 
 class Skill {
-    skillName
+    name
 }
 
 class Task {
@@ -38,7 +38,9 @@ class ZipCode {
     street
 }
 
-class Team {}
+class Team {
+    name
+}
 
 HumanResourcesManager ---|> Collaborator
 HumanResourcesManager "1" -- "1..*" Team : creates >

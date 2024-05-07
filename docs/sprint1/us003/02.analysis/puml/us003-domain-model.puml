@@ -34,7 +34,7 @@ class Collaborator {
 }
 
 class Job {
-    jobName
+    name
 }
 
 Organization "1" - "1..*" HumanResourceManager: has >

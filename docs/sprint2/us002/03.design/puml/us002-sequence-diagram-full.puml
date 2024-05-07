@@ -9,7 +9,7 @@ participant ":RegistJobController" as CTRL
 participant ":Repositories" as RepositorySingleton
 participant "repositories\n:Repositories" as PLAT
 participant "registedJobsRepository:\nRegistedJobsRepository" as RegistedJobsRepository
-participant "jobName\n:Job" as PROFISSAO
+participant "name\n:Job" as PROFISSAO
 
 autonumber 1
 
@@ -49,8 +49,8 @@ activate HRM
 
             activate RegistedJobsRepository
                 RegistedJobsRepository -> PROFISSAO**: create
-                RegistedJobsRepository -> RegistedJobsRepository: addJob(jobName)
-                RegistedJobsRepository -> RegistedJobsRepository: validateJob(jobName)
+                RegistedJobsRepository -> RegistedJobsRepository: addJob(name)
+                RegistedJobsRepository -> RegistedJobsRepository: validateJob(name)
 
         end
                 RegistedJobsRepository --> CTRL : registedJobsList

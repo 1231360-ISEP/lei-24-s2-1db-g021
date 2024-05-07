@@ -38,7 +38,7 @@ class Collaborator {
 }
 
 class Skill {
-    skillName
+    name
 }
 
 Organization "1" -- "1..*" Collaborator : has >

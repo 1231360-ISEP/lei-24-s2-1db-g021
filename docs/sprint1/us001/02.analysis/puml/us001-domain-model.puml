@@ -23,7 +23,7 @@ class HumanResourceManager {
 }
 
 class Skill {
-    skillName
+    name
 }
 
 

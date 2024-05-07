@@ -9,7 +9,7 @@ participant ":RegisterSkillController" as CTRL
 participant ":Repositories" as RepositorySingleton
 participant "repositories\n:Repositories" as PLAT
 participant "skillsRepository:\nSkillsRepository" as SkillsRepository
-participant "skillName\n:Skill" as TAREFA
+participant "name\n:Skill" as TAREFA
 
 autonumber 1
 
@@ -52,12 +52,12 @@ activate HRM
             SkillsRepository -> TAREFA**: create
         activate TAREFA
 
-        TAREFA -> TAREFA: validateSkill(skillName)
+        TAREFA -> TAREFA: validateSkill(name)
 
-        TAREFA --> SkillsRepository : skillName
-        SkillsRepository -> SkillsRepository: validateSkill(skillName)
+        TAREFA --> SkillsRepository : name
+        SkillsRepository -> SkillsRepository: validateSkill(name)
         deactivate TAREFA
-        SkillsRepository -> SkillsRepository: addSkill(skillName)
+        SkillsRepository -> SkillsRepository: addSkill(name)
         SkillsRepository -> SkillsRepository: true/false
         SkillsRepository -> SkillsRepository: true/false
 

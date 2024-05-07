@@ -44,11 +44,11 @@ class FleetManager {
 }
 
 class Skill {
-    skillName
+    name
 }
 
 class Job {
-    jobName
+    name
 }
 
 class Team {
