@@ -28,7 +28,7 @@ class Address {
     doorNumber
 }
 
-class zipCode {
+class ZipCode {
     local
     street
 }
@@ -37,6 +37,6 @@ class zipCode {
 Collaborator --|> HumanResourcesManager
 Collaborator "*" -- "*" Skill : assigned to <
 Collaborator "1" -- "1" Address: owns >
-Address "1" -- "1" zipCode : owns >
+Address "1" -- "1" ZipCode : owns >
 
 @enduml

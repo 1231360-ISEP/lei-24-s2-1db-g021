@@ -22,7 +22,7 @@ class Address {
     doorNumber
 }
 
-class zipCode {
+class ZipCode {
     local
     street
 }
@@ -50,6 +50,6 @@ Collaborator --|> VehicleFleetManager
 VehicleFleetManager "1" -- "1..*" Vehicle : regist >
 Vehicle "1" -- "1" PlateCertification : owns >
 Collaborator "1" -- "1" Address: owns >
-Address "1" -- "1" zipCode : owns >
+Address "1" -- "1" ZipCode : owns >
 
 @enduml

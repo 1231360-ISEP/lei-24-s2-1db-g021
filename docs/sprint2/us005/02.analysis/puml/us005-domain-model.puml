@@ -33,7 +33,7 @@ class Address {
     doorNumber
 }
 
-class zipCode {
+class ZipCode {
     local
     street
 }
@@ -44,7 +44,7 @@ HumanResourcesManager ---|> Collaborator
 HumanResourcesManager "1" -- "1..*" Team : creates >
 Collaborator "*" -- "*" Skill : owns >
 Collaborator "1" -- "1" Address: owns >
-Address "1" -- "1" zipCode : owns >
+Address "1" -- "1" ZipCode : owns >
 Team "1" -- "1..*" Collaborator : has >
 Team "1" -- "1" Agenda : has >
 Task "1..*" -- "1..*" Team : assigned to >
