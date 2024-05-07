@@ -8,7 +8,7 @@ participant ":RegisterSkillUI" as UI
 participant ":RegisterSkillController" as CTRL
 participant ":Repositories" as RepositorySingleton
 participant "repositories\n:Repositories" as PLAT
-participant "skillsRepository:\nSkillsRepository" as SkillsRepository
+participant "skillsRepository\n:SkillsRepository" as SkillsRepository
 participant "name\n:Skill" as TAREFA
 
 autonumber 1
