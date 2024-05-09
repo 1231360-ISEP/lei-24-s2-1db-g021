@@ -26,7 +26,7 @@ activate SkillsRepository
 
     end
 
-    <-- SkillsRepository : registedSkillsList
+    <-- SkillsRepository : SkillsList
 
 deactivate SkillsRepository
 
