@@ -5,13 +5,24 @@ skinparam linetype polyline
 skinparam classAttributeIconSize 0
 
 
+class RegisterSkillUI {
+}
+
+class RegisterSkillController {
+    + RegisterSkillController()
+    + getSkillsList()
+}
+
 class Skill {
     - String name
     + Skill(name)
+    + validateSkill(name)
 }
 
 class SkillsRepository {
     + getSkillsList()
+    + addSkill(name)
+    + validateSkill(name)
 }
 
 class Repositories {
@@ -20,13 +31,6 @@ class Repositories {
     + getSkillsRepository()
 }
 
-class RegisterSkillController {
-    + RegisterSkillController()
-    + getSkillsList()
-}
-
-class RegisterSkillUI {
-}
 
 RegisterSkillUI .> RegisterSkillController
 
@@ -34,10 +38,10 @@ RegisterSkillController .> Repositories : repositories
 
 Repositories --> "1" SkillsRepository
 
-RegisterSkillController ..> Skill
+RegisterSkillController ..> Skill : Skill
 RegisterSkillController ..> SkillsRepository : SkillsRepository
 
-SkillsRepository "1" --> "*" Skill : Skill
+SkillsRepository "1" --> "*" Skill
 
 
 @enduml
