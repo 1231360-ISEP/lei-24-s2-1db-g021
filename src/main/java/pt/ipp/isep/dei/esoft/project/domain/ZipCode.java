@@ -4,6 +4,16 @@ public class ZipCode {
     private int local;
     private int street;
 
+    public ZipCode(int local, int street) {
+        this.local = local;
+        this.street = street;
+    }
+
+    public ZipCode(ZipCode zipCode) {
+        this.local = zipCode.getLocal();
+        this.street = zipCode.getStreet();
+    }
+
     public int getLocal() {
         return local;
     }

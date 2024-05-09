@@ -4,11 +4,8 @@ import java.util.Objects;
 
 public class Skill {
     private final String reference;
-
     private String name;
-
     private TaskCategory taskCategory;
-
     private Collaborator collaborator;
 
     public Skill(String reference, String name, TaskCategory taskCategory, Collaborator collaborator) {
