@@ -1,9 +1,7 @@
 package pt.ipp.isep.dei.esoft.project.ui;
 
 import pt.ipp.isep.dei.esoft.project.application.controller.authorization.AuthenticationController;
-import pt.ipp.isep.dei.esoft.project.domain.Collaborator;
-import pt.ipp.isep.dei.esoft.project.domain.Organization;
-import pt.ipp.isep.dei.esoft.project.domain.TaskCategory;
+import pt.ipp.isep.dei.esoft.project.domain.*;
 import pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository;
 import pt.ipp.isep.dei.esoft.project.repository.OrganizationRepository;
 import pt.ipp.isep.dei.esoft.project.repository.Repositories;
@@ -28,8 +26,10 @@ public class Bootstrap implements Runnable {
         Organization organization = new Organization("This Company");
         Date bornDate = new Date(1234, Calendar.MAY, 6);
         Date admDate = new Date(6543, Calendar.FEBRUARY, 1);
-        organization.addCollaborator(new Collaborator("admin", bornDate, admDate,"lamas", 123456789,"admin@this.app", 123456789, 123456789));
-        organization.addCollaborator(new Collaborator("collaborator",bornDate,admDate,"lamas", 987654321,"collaborator@this.app", 987654321, 987654321));
+        ZipCode zipCode = new ZipCode(4200,400);
+        Address address = new Address(123, zipCode);
+        organization.addCollaborator(new Collaborator("admin", bornDate, admDate, address, 123456789,"admin@this.app", 123456789, 123456789));
+        organization.addCollaborator(new Collaborator("collaborator",bornDate,admDate, address, 987654321,"collaborator@this.app", 987654321, 987654321));
         organizationRepository.add(organization);
     }
 

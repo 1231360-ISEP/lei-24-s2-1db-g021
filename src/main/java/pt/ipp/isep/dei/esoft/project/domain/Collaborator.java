@@ -3,25 +3,28 @@ package pt.ipp.isep.dei.esoft.project.domain;
 import java.util.Date;
 import java.util.Objects;
 
-public class Collaborator {
+public class Collaborator{
     private String name;
     private Date bornDate;
     private Date admDate;
-    private String address;
+    private Address address;
     private int phoneNumber;
     private String email;
     private int idCard;
     private int idNumber;
 
-    public Collaborator(String name, Date bornDate, Date admDate, String address, int phoneNumber, String email, int idCard, int idNumber) {
+    public Collaborator(String name, Date bornDate, Date admDate, Address address, int phoneNumber, String email, int idCard, int idNumber) {
         this.name = name;
         this.bornDate = bornDate;
         this.admDate = admDate;
-        this.address = address;
+        this.setAddress(address);
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.idCard = idCard;
         this.idNumber = idNumber;
+    }
+
+    public Collaborator(String email) {
     }
 
     public String getName() {
@@ -48,13 +51,9 @@ public class Collaborator {
         this.admDate = admDate;
     }
 
-    public String getAddress() {
-        return address;
-    }
+    public Address getAddress() { return new Address(address); }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+    public void setAddress(Address address) { this.address = new Address(address); }
 
     public int getPhoneNumber() {
         return phoneNumber;
