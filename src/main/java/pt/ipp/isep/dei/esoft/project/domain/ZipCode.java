@@ -21,7 +21,7 @@ public class ZipCode {
     }
 
     public void setLocal(int local) {
-        if (local > 9999){
+        if (local > 9999 || local < 1000){
             throw new InvalidParameterException("Street must have a total of 3 digits.");
         }
         this.local = local;
