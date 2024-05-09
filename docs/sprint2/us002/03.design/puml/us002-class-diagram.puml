@@ -4,41 +4,42 @@ skinparam shadowing false
 skinparam linetype polyline
 skinparam classAttributeIconSize 0
 
-class Job {
-    - String name
-    + registJob()
+
+class RegisterJobUI {
 }
 
-class RegistedJobsRepository {
-    + getRegistJob()
+class RegisterJobController {
+    + RegisterJobController()
+    + getJobsList()
+}
+
+class Job {
+    - String name
+    + Job(name)
+    + validateJob(name)
+}
+
+class JobsRepository {
+    + getJobsList()
+    + addJob(name)
+    + validateJob(name)
 }
 
 class Repositories {
-    - repositories()
+    - Repositories()
     + getInstance() : Repositories
-    + getRegistedJobsRepository()
+    + getJobsRepository()
 }
 
-class RegistJobController {
-    + registJobController()
-    + getRegistJob()
-    + registJob(name)
-}
+RegisterJobUI .> RegisterJobController
 
-class RegistJobUI {
-}
+RegisterJobController .> Repositories : repositories
 
-RegistJobUI .> RegistJobController
+Repositories --> "1" JobsRepository
 
-RegistJobController .> Repositories : repositories
+RegisterJobController ..> Job : Job
+RegisterJobController ..> JobsRepository : JobsRepository
 
-Repositories -> "1" RegistedJobsRepository
-
-RegistJobController ..> Job
-RegistJobController ..> RegistedJobsRepository : RegistedJobsRepository
-
-
-RegistedJobsRepository "1" --> "*" Job : RegistJob
-
+JobsRepository "1" --> "*" Job
 
 @enduml
