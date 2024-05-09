@@ -30,6 +30,8 @@ activate CTRL
         Get Skills List
     end ref
 
+autonumber 11
+
 CTRL --> UI : skillsList
 deactivate CTRL
 
@@ -52,6 +54,8 @@ activate CollaboratorsRepository
         Get Collaborators List
     end ref
 
+autonumber 21
+
 CollaboratorsRepository --> CTRL
 deactivate CollaboratorsRepository
 
@@ -64,6 +68,8 @@ activate CTRL
     ref over CTRL
         Get Team
     end ref
+
+autonumber 26
 
 CTRL --> UI : team
 deactivate CTRL

@@ -11,7 +11,7 @@ participant "repositories\n:Repositories" as PLAT
 participant "name\n:SkillsRepository" as SkillsRepository
 
 autonumber 4
--> CTRL : skillsList()
+-> CTRL : getskillsList()
 
 activate CTRL
 
@@ -29,7 +29,7 @@ activate PLAT
 PLAT --> CTRL: SkillsRepository
 deactivate PLAT
 
-    CTRL -> SkillsRepository : skillsList()
+    CTRL -> SkillsRepository : getskillsList()
 activate SkillsRepository
 
 SkillsRepository --> CTRL : skillsList
