@@ -57,7 +57,7 @@ It uses Interaction Occurrence (a.k.a. Interaction Use).
 
 **Get Registed Jobs Repository Partial SD**
 
-![Sequence Diagram - Partial - Get Task Category Object](svg/us002-sequence-diagram-partial-get-registed-jobs-repository.svg)
+![Sequence Diagram - Partial - Get Task Category Object](svg/us002-sequence-diagram-partial-get-jobs-repository.svg)
 
 **Create Job Partial SD**
 

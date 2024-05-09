@@ -31,7 +31,7 @@ activate HRM
         CTRL -> PLAT : getJobsRepository()
         activate PLAT
 
-            PLAT --> CTRL: JobsRepository
+            PLAT --> CTRL: jobsRepository
         deactivate PLAT
 
         deactivate CTRL

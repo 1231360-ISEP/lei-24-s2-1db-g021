@@ -3,7 +3,9 @@ skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
 
-participant ":RegistJobController" as CTRL
+autonumber
+
+participant ":RegisterJobController" as CTRL
 participant ":Repositories" as RepositorySingleton
 participant "repositories\n:Repositories" as PLAT
 
@@ -19,14 +21,13 @@ activate CTRL
                 RepositorySingleton --> CTRL: repositories
             deactivate RepositorySingleton
 
-            CTRL -> PLAT : getRegistedJobsRepository()
+            CTRL -> PLAT : getJobsRepository()
             activate PLAT
 
-                PLAT --> CTRL: registedJobsRepository
+                PLAT --> CTRL: jobsRepository
             deactivate PLAT
 
     end
-
 deactivate CTRL
 
 

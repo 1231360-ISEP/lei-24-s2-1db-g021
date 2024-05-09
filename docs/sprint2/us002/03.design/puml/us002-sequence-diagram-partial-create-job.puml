@@ -3,25 +3,31 @@ skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
 
-participant "registedJobsRepository:\nRegistedJobsRepository" as RegistedJobsRepository
+participant "jobsRepository\n:JobsRepository" as JobsRepository
 participant "name\n:Job" as PROFISSAO
 
 autonumber 10
--> RegistedJobsRepository: create
-activate RegistedJobsRepository
+-> JobsRepository: create
 
-    group Create a Job
+activate JobsRepository
+    group Create Job
 
-        RegistedJobsRepository -> PROFISSAO**: create
-        RegistedJobsRepository -> RegistedJobsRepository: addJob(name)
+        JobsRepository -> PROFISSAO**: create
+                activate PROFISSAO
 
-            RegistedJobsRepository -> RegistedJobsRepository: validateJob(name)
+                PROFISSAO -> PROFISSAO: validateSkill(name)
+
+                PROFISSAO --> JobsRepository : name
+                JobsRepository -> JobsRepository: validateJob(name)
+                deactivate PROFISSAO
+                JobsRepository -> JobsRepository: addJob(name)
+                JobsRepository -> JobsRepository: true/false
+                JobsRepository -> JobsRepository: true/false
 
     end
 
-    <-- RegistedJobsRepository : registedJobsList
+    <-- JobsRepository : jobsList
 
-deactivate RegistedJobsRepository
-
+deactivate JobsRepository
 
 @enduml
