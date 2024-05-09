@@ -18,7 +18,7 @@ As an HRM, I want to register a job that a collaborator need to have.
 > **Question:**
 >É relevante associar uma área ou setor específico a cada Job? (Por exemplo, "Jardineiro" seria inserido no setor de "Manutenção"). Deve-se incluir informações como salário, tipo de contratação (full-time ou part-time), e modalidade de trabalho (presencial, remoto ou híbrido) no Job? Ou essas informações encaixam-se melhor no âmbito do colaborador, ou talvez nem sejam necessárias? Or is this information better suited to the employee, or perhaps not necessary at all? Que outras informações acha necessárias associar ao Job?
 >
-> **Answer:** Bom dia, não é necessário na medida que não existem US que sugiram que isso possa vir a ser necessário; - idem; - para já nenhumas. De nada.
+> **Answer:** Bom dia, não é  necessário na medida que não existem US que sugiram que isso possa vir a ser necessário; - idem; - para já nenhumas. De nada.
 
 > **Question:**
 >What are the acceptance criteria? When are creating a job that already exit, what the system do?
@@ -59,6 +59,11 @@ a job is just the job name!
 >Can special characters and numbers be entered when registering a job? I assume that a job name cannot be empty. Is that right?
 >
 > **Answer:** No; That's right.
+
+> **Question:**
+>Hello Client. Where do you want the jobs and skills to be stored and validated? Do you which to have a skill and job repository or do you want them to be stored in the organization?
+>
+> **Answer:** Hello, the business rules regarding skills and stored were already provided in this forum; I have no knowledge about repositories.
 
 ### 1.3. Acceptance Criteria
 
