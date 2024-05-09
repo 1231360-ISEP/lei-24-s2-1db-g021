@@ -123,12 +123,6 @@ public class Collaborator {
         return this.email.equals(email);
     }
 
-
-    /**
-     * Clone method.
-     *
-     * @return A clone of the current instance.
-     */
     public Collaborator clone() {
         return new Collaborator(this.name, this.bornDate, this.admDate, this.address, this.phoneNumber, this.email, this.idCard, this.idNumber);
     }
