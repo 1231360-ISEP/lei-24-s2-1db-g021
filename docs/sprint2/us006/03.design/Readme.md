@@ -55,19 +55,11 @@ It uses Interaction Occurrence (a.k.a. Interaction Use).
 
 ![Sequence Diagram - split](svg/us006-sequence-diagram-split.svg)
 
-**Get Task Category List Partial SD**
+**Get Vehicles Repository**
 
 ![Sequence Diagram - Partial - Get Task Category List](svg/us006-sequence-diagram-partial-get-vehicles-repository.svg)
 
-**Get Task Category Object**
-
-![Sequence Diagram - Partial - Get Task Category Object](svg/us006-sequence-diagram-partial-get-task-category.svg)
-
-**Get Employee**
-
-![Sequence Diagram - Partial - Get Employee](svg/us006-sequence-diagram-partial-get-employee.svg)
-
-**Create Task**
+**Create Vehicle**
 
 ![Sequence Diagram - Partial - Create Task](svg/us006-sequence-diagram-partial-create-vehicle.svg)
 
