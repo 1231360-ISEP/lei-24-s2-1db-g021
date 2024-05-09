@@ -30,15 +30,17 @@ that can be attached to tractors, such as disc harrows, weeders, aerators and sc
 >
 > **Answer:** - By plate id. No requirements were set concerning groups of vehicles. Again, duplication of data is not a business rule is technical one, since by definition in a set you can't have duplicates.
 
-> **Question:** When a vehicle is registered, are there specific requirements for accepting the brand? 
-> For example, does the system need to check if the brand is on a predetermined list? Does this also apply to the model or any other characteristics?
+> **Question:** When a vehicle is registered, are there specific requirements for accepting the brand? For example, does the system need to check if the brand is on a predetermined list? Does this also apply to the model or any other characteristics?
 >
 > **Answer:** No; one can consider a list os brands and a list of models previsously inserted in the system, no need to go through validations.
 
 > **Question:** Can a fm register no vehicles or does he have to regsiter at least one?
 >
-> **Answer:** The VFM is a role or system user profile that has the rights to perform some system actions (like the ones described by the US06, US07 and US08).
-In theory If there is no need to register a vehicle, no vehicles will be registered but that would be rather odd.
+> **Answer:** The VFM is a role or system user profile that has the rights to perform some system actions (like the ones described by the US06, US07 and US08). In theory If there is no need to register a vehicle, no vehicles will be registered but that would be rather odd.
+
+> **Question:** Does the plate id of a vehicle have a specific format?
+>
+> **Answer:** I believe that the business rules concerning plate id were previously supplied in this forum.
 
 ### 1.3. Acceptance Criteria
 

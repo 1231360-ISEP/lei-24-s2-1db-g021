@@ -4,70 +4,83 @@ skinparam packageStyle rectangle
 skinparam shadowing false
 
 actor "Human Resources\nManager" as HRM
-participant ":RegistJobUI" as UI
-participant ":RegistJobController" as CTRL
+participant ":RegisterJobUI" as UI
+participant ":RegisterJobController" as CTRL
 participant ":Repositories" as RepositorySingleton
 participant "repositories\n:Repositories" as PLAT
-participant "registedJobsRepository:\nRegistedJobsRepository" as RegistedJobsRepository
+participant "jobsRepository\n:JobsRepository" as JobsRepository
 participant "name\n:Job" as PROFISSAO
 
 autonumber 1
 
 activate HRM
-    HRM -> UI : asks to regist a new job
 
+    HRM -> UI : asks to regist a new job
     activate UI
+
         UI -> CTRL** : create
 
         activate CTRL
-            CTRL -> RepositorySingleton : getInstance()
 
-            activate RepositorySingleton
-                RepositorySingleton --> CTRL: repositories
-            deactivate RepositorySingleton
+        CTRL -> RepositorySingleton : getInstance()
+        activate RepositorySingleton
 
-            CTRL -> PLAT : getRegistedJobsRepository()
+            RepositorySingleton --> CTRL: repositories
+        deactivate RepositorySingleton
 
-            activate PLAT
-                PLAT --> CTRL: registedJobsRepository
-            deactivate PLAT
+        CTRL -> PLAT : getJobsRepository()
+        activate PLAT
+
+            PLAT --> CTRL: jobsRepository
+        deactivate PLAT
 
         deactivate CTRL
 
-        loop while intended
+    loop while intended
             UI --> HRM : requests the job name
+        deactivate UI
 
-    deactivate UI
+            HRM -> UI : type the new job
+        activate UI
 
-    HRM -> UI : type the new job
-
-    activate UI
-        UI -> CTRL: create
-
+            UI -> CTRL: create
         activate CTRL
-            CTRL -> RegistedJobsRepository : create
 
-            activate RegistedJobsRepository
-                RegistedJobsRepository -> PROFISSAO**: create
-                RegistedJobsRepository -> RegistedJobsRepository: addJob(name)
-                RegistedJobsRepository -> RegistedJobsRepository: validateJob(name)
+            CTRL -> JobsRepository : create
+        activate JobsRepository
 
-        end
-                RegistedJobsRepository --> CTRL : registedJobsList
-            deactivate RegistedJobsRepository
+            JobsRepository -> PROFISSAO**: create
+        activate PROFISSAO
 
-            CTRL --> UI : registedJobsList
+        PROFISSAO -> PROFISSAO: validateJob(name)
 
-        deactivate CTRL
+        PROFISSAO --> JobsRepository : name
+        JobsRepository -> JobsRepository: validateJob(name)
+        deactivate PROFISSAO
+        JobsRepository -> JobsRepository: addJob(name)
+        JobsRepository -> JobsRepository: true/false
+        JobsRepository -> JobsRepository: true/false
 
-        UI --> HRM : list all registered jobs and asks to confirm
 
+    end
+
+    JobsRepository --> CTRL : jobsList
+    deactivate JobsRepository
+
+    CTRL --> UI : jobsList
+    deactivate CTRL
+
+    UI --> HRM : list all registered\n jobs and asks to confirm
+
+    deactivate CTRL
     deactivate UI
 
     HRM -> UI : confirms all jobs
-
     activate UI
+
     UI --> HRM : displays operation success
     deactivate UI
 
+
 @enduml
+
