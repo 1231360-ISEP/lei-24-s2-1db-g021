@@ -5,43 +5,37 @@ skinparam shadowing false
 
 autonumber
 
-'hide footbox
-
-participant ":CreateTaskController" as CTRL
+participant ":RegisterJobController" as CTRL
 participant ":Repositories" as RepositorySingleton
 participant "repositories\n:Repositories" as PLAT
-participant "taskCategoryRepository:\nTaskCategoryRepository" as TaskCategoryRepository
 
-autonumber 3
+autonumber 2
 
  -> CTRL : getTaskCategories()
-autonumber 3.1
+autonumber 3
 activate CTRL
-    group Get Task Category List
+    group Get Vehicles Repository
 
+        CTRL -> RepositorySingleton : getInstance()
+        activate RepositorySingleton
 
-            CTRL -> RepositorySingleton : getInstance()
-            activate RepositorySingleton
+        RepositorySingleton --> CTRL: repositories
+        deactivate RepositorySingleton
 
-                RepositorySingleton --> CTRL: repositories
-            deactivate RepositorySingleton
+        CTRL -> PLAT : getVehiclesRepository()
+        activate PLAT
 
-            CTRL -> PLAT : getTaskCategoryRepository()
-            activate PLAT
+        PLAT --> CTRL: VehiclesRepository
+        deactivate PLAT
 
-                PLAT --> CTRL: taskCategoryRepository
-            deactivate PLAT
+        CTRL -> PLAT : getPlateCertificationsRepository()
 
-            CTRL -> TaskCategoryRepository : getTaskCategories()
-            activate TaskCategoryRepository
+        activate PLAT
 
-                TaskCategoryRepository --> CTRL : taskCategoryList
-            deactivate TaskCategoryRepository
-
+        PLAT --> CTRL: PlateCertificationsRepository
+        deactivate PLAT
 
     end
-    autonumber 4
-    <-- CTRL  : taskCategoryList
 deactivate CTRL
 
 

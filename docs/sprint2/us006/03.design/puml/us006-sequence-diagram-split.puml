@@ -3,90 +3,72 @@ skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
 
-autonumber
+actor "Vehicle Fleet\nManager" as VFM
+participant ":RegisterVehicleUI" as UI
+participant ":RegisterVehicleController" as CTRL
+participant ":Repositories" as RepositorySingleton
+participant "repositories\n:Repositories" as PLAT
+participant "VehiclesRepository:\nVehiclesRepository" as VehiclesRepository
+participant "PlateCertificationsRepository:\nPlateCertificationsRepository" as PlateCertificationsRepository
+participant "vehicle\n:Vehicle" as VEICULO
+participant "plateCertification\n:PlateCertification" as PLATE_CERTIFICATION
 
-'hide footbox
-actor "Organization Employee" as ADM
-participant ":CreateTaskUI" as UI
-participant ":CreateTaskController" as CTRL
-participant "organization\n:Organization" as ORG
+autonumber 1
 
-activate ADM
+activate VFM
 
-    ADM -> UI : asks to create a new task
+VFM -> UI : asks to register a new vehicle
+activate UI
 
-    activate UI
+UI -> CTRL : create
+activate CTRL
 
-        UI -> CTRL** : create
-        UI -> CTRL : getTaskCategories()
-        ref over CTRL
-            Get Task Category List
+ref over CTRL
+    Get Vehicles Repository
+end ref
+deactivate CTRL
 
-        end ref
+loop while intended
+autonumber 9
+UI --> VFM : requests vehicle data (i.e. Brand, Model, Type, \nTare,Gross Weight, Current Km, Register Date, \nAcquisition Date, Maintenance/Checkup Frequency (in Kms),\n vehicle plate)
 
-        activate CTRL
+deactivate UI
 
-            CTRL --> UI : taskCategoryList
-        deactivate CTRL
+VFM -> UI : write the values of the new vehicle's attributes
+activate UI
 
-        UI --> ADM : shows task category list and asks to sleect one
-    deactivate UI
+UI -> CTRL: create
+activate CTRL
 
-    ADM -> UI : selects a task category
-    activate UI
+CTRL -> VehiclesRepository : create
+activate VehiclesRepository
 
-        UI --> ADM : requests data
-    deactivate UI
+ref over VehiclesRepository,PlateCertificationsRepository
+    Get Vehicles List
+end ref
 
-    ADM -> UI : types requested data (reference, description,\ninformal description, technical description,\nduration, cost)
-    activate UI
+deactivate VehiclesRepository
+deactivate CTRL
+end
 
-        UI --> ADM : shows selected category and requested data
-    deactivate UI
+activate PlateCertificationsRepository
+autonumber 31
+CTRL <-- PlateCertificationsRepository : plateCertificationsList
+deactivate PlateCertificationsRepository
 
-    ADM -> UI : submits data
-    activate UI
+CTRL --> UI : plateCertificationsList
+activate VehiclesRepository
+CTRL <-- VehiclesRepository : vehiclesList
+CTRL --> UI : vehiclesList
+deactivate VehiclesRepository
+deactivate CTRL
 
-        UI -> CTRL : createTask(reference, description, informalDescription,\ntechnicalDescription,duration, cost, taskCategoryDescription)
-        activate CTRL
+UI --> VFM : shows all registered vehicles and asks to confirm
+deactivate UI
 
-            CTRL -> CTRL : getTaskCategoryByDescription(taskCategoryDescription)
-            activate CTRL
-
-                ref over CTRL
-                    Get Task Category Object
-
-                end ref
-
-                CTRL --> CTRL : taskCategory
-            deactivate CTRL
-
-            CTRL -> CTRL : getEmployeeFromSession()
-            activate CTRL
-
-                ref over CTRL
-                    Get Employee
-
-                end ref
-                CTRL -> CTRL : employee
-            deactivate CTRL
-
-            CTRL -> ORG: createTask(reference, description, informalDescription,\ntechnicalDescription, duration, cost, taskCategory, employee)
-            activate ORG
-
-                ref over ORG
-                    Create Task
-
-                end
-
-                ORG --> CTRL : task
-            deactivate ORG
-
-            CTRL --> UI: task
-            deactivate CTRL
-            UI --> ADM: displays operation success
-    deactivate UI
-
-deactivate ADM
+VFM -> UI : confirms all vehicles
+activate UI
+UI --> VFM : displays operation success
+deactivate UI
 
 @enduml

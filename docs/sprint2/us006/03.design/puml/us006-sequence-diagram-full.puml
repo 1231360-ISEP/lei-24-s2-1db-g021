@@ -107,8 +107,8 @@ deactivate CTRL
 
     activate VehiclesRepository
 
-    CTRL <-- VehiclesRepository : vehiclesList
-    CTRL --> UI : vehiclesList
+    CTRL <-- VehiclesRepository : VehiclesList
+    CTRL --> UI : VehiclesList
     deactivate VehiclesRepository
 
     deactivate CTRL

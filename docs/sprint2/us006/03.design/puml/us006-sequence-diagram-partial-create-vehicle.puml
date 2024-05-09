@@ -3,32 +3,53 @@ skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
 
-participant "organization\n:Organization" as ORG
-participant "task\n:Task" as TAREFA
+participant "VehiclesRepository:\nVehiclesRepository" as VehiclesRepository
+participant "vehicle\n:Vehicle" as VEICULO
+participant "PlateCertificationsRepository:\nPlateCertificationsRepository" as PlateCertificationsRepository
+participant "plateCertification\n:PlateCertification" as PLATE_CERTIFICATION
 
-autonumber 16
--> ORG: createTask(reference, description,\ninformalDescription, technicalDescription,\nduration, cost, taskCategory, employee )
+autonumber 12
+-> VehiclesRepository: create
 
-autonumber 16.1
-activate ORG
-    group Create Task
+activate VehiclesRepository
+    group Create Vehicle
 
-        ORG -> TAREFA**: create(reference, description,\ninformalDescription, technicalDescription,\nduration, cost, taskCategory, employee)
-        ORG -> ORG: addTask (task)
+        VehiclesRepository -> VEICULO**: create
+        activate VEICULO
 
-        activate ORG
-            ORG -> ORG: validateTask(task)
-            activate ORG
-                ORG --> ORG
-            deactivate ORG
+        VEICULO -> VEICULO: validateVehicle(vehicle)
 
-            ORG --> ORG
-        deactivate ORG
+        VEICULO --> VehiclesRepository : vehicle
+        VehiclesRepository -> VehiclesRepository: validateVehicle(vehicle)
+        deactivate VEICULO
+        VehiclesRepository -> VehiclesRepository: addVehicle(vehicle)
+        VehiclesRepository -> VehiclesRepository: true/false
+        VehiclesRepository -> VehiclesRepository: true/false
+
+        -> PlateCertificationsRepository : create
+
+        deactivate VehiclesRepository
+
+        activate PlateCertificationsRepository
+
+        PlateCertificationsRepository -> PLATE_CERTIFICATION**: create
+
+        activate PLATE_CERTIFICATION
+            PLATE_CERTIFICATION -> PLATE_CERTIFICATION: validatePlateCertification(plateCertification)
+
+            PLATE_CERTIFICATION --> PlateCertificationsRepository : plateCertification
+            PlateCertificationsRepository -> PlateCertificationsRepository: validatePlateCertification(plateCertification)
+            deactivate PLATE_CERTIFICATION
+            PlateCertificationsRepository -> PlateCertificationsRepository: addPlateCertification(plateCertification)
+            PlateCertificationsRepository -> PlateCertificationsRepository: true/false
+            PlateCertificationsRepository -> PlateCertificationsRepository: true/false
     end
+     <-- PlateCertificationsRepository : plateCertificationsList
+     deactivate PlateCertificationsRepository
 
-    autonumber 17
-    <-- ORG : task
-deactivate ORG
+    activate VehiclesRepository
+    <-- VehiclesRepository : jobsList
+deactivate VehiclesRepository
 
 
 @enduml
