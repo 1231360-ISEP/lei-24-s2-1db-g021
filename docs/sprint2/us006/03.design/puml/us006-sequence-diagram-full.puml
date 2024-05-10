@@ -8,8 +8,8 @@ participant ":RegisterVehicleUI" as UI
 participant ":RegisterVehicleController" as CTRL
 participant ":Repositories" as RepositorySingleton
 participant "repositories\n:Repositories" as PLAT
-participant "registedVehiclesRepository:\nRegistedVehiclesRepository" as RegistedVehiclesRepository
-participant "registedPlateCertificationsRepository:\nRegistedPlateCertificationsRepository" as RegistedPlateCertificationsRepository
+participant "VehiclesRepository:\nVehiclesRepository" as VehiclesRepository
+participant "PlateCertificationsRepository:\nPlateCertificationsRepository" as PlateCertificationsRepository
 participant "vehicle\n:Vehicle" as VEICULO
 participant "plateCertification\n:PlateCertification" as PLATE_CERTIFICATION
 
@@ -29,17 +29,17 @@ activate VFM
     RepositorySingleton --> CTRL: repositories
     deactivate RepositorySingleton
 
-        CTRL -> PLAT : getRegistedVehiclesRepository()
+        CTRL -> PLAT : getVehiclesRepository()
     activate PLAT
 
-    PLAT --> CTRL: registedVehiclesRepository
+    PLAT --> CTRL: VehiclesRepository
     deactivate PLAT
 
-    CTRL -> PLAT : getRegistedPlateCertificationsRepository()
+    CTRL -> PLAT : getPlateCertificationsRepository()
 
     activate PLAT
 
-    PLAT --> CTRL: RegistedPlateCertificationsRepository
+    PLAT --> CTRL: PlateCertificationsRepository
     deactivate PLAT
 
 deactivate CTRL
@@ -52,66 +52,64 @@ deactivate CTRL
         VFM -> UI : write the values of the new vehicle's attributes
     activate UI
 
-       UI -> CTRL: createVehicle(currentKm,\n acquisitionDate,maintenance)
+       UI -> CTRL: create
     activate CTRL
 
-        CTRL -> RegistedVehiclesRepository : createVehicle(currentKm,\n acquisitionDate,maintenance)
-    activate RegistedVehiclesRepository
+        CTRL -> VehiclesRepository : create
+    activate VehiclesRepository
 
-        RegistedVehiclesRepository -> VEICULO**: createVehicle(currentKm,\n acquisitionDate,maintenance)
+        'VehiclesRepository -> VEICULO**: createVehicle(currentKm,\n acquisitionDate,maintenance)
+        VehiclesRepository -> VEICULO**: create
     activate VEICULO
 
-        VEICULO -> VEICULO: validateVehicle(vehicle)
+    VEICULO -> VEICULO: validateVehicle(vehicle)
 
-    RegistedVehiclesRepository <-- VEICULO : vehicle
+    VEICULO --> VehiclesRepository : vehicle
+    VehiclesRepository -> VehiclesRepository: validateVehicle(vehicle)
     deactivate VEICULO
+    VehiclesRepository -> VehiclesRepository: addVehicle(vehicle)
+    VehiclesRepository -> VehiclesRepository: true/false
+    VehiclesRepository -> VehiclesRepository: true/false
 
-    RegistedVehiclesRepository -> RegistedVehiclesRepository: validateVehicle(vehicle)
-    RegistedVehiclesRepository -> RegistedVehiclesRepository: addVehicle(vehicle)
-
-    CTRL <-- RegistedVehiclesRepository
-    deactivate RegistedVehiclesRepository
+    CTRL <-- VehiclesRepository
+    deactivate VehiclesRepository
 
     UI <-- CTRL
 
     deactivate CTRL
 
-    UI -> CTRL: createPlateCertification(brand,\n model,type,tare,grossWeight,\n registerDate,plate)
+    UI -> CTRL: create
 
     activate CTRL
 
-        CTRL -> RegistedPlateCertificationsRepository : createPlateCertification(brand,\n model,type,tare,grossWeight,\n registerDate,plate)
-    activate RegistedPlateCertificationsRepository
+        CTRL -> PlateCertificationsRepository : create
+    activate PlateCertificationsRepository
 
-    RegistedPlateCertificationsRepository -> PLATE_CERTIFICATION**: createPlateCertification(brand,\n model,type,tare,grossWeight,\n registerDate,plate)
+    'PlateCertificationsRepository -> PLATE_CERTIFICATION**: createPlateCertification(brand,\n model,type,tare,grossWeight,\n registerDate,plate)
+    PlateCertificationsRepository -> PLATE_CERTIFICATION**: create
 
     activate PLATE_CERTIFICATION
-        PLATE_CERTIFICATION -> PLATE_CERTIFICATION: validateVehicle(vehicle)
+        PLATE_CERTIFICATION -> PLATE_CERTIFICATION: validatePlateCertification(plateCertification)
 
-    RegistedPlateCertificationsRepository <-- PLATE_CERTIFICATION : vehicle
-    deactivate PLATE_CERTIFICATION
-
-    RegistedPlateCertificationsRepository -> RegistedPlateCertificationsRepository: validatePlateCertification(plateCertification)
-    RegistedPlateCertificationsRepository -> RegistedPlateCertificationsRepository: addPlateCertification(plateCertification)
+        PLATE_CERTIFICATION --> PlateCertificationsRepository : plateCertification
+        PlateCertificationsRepository -> PlateCertificationsRepository: validatePlateCertification(plateCertification)
+        deactivate PLATE_CERTIFICATION
+        PlateCertificationsRepository -> PlateCertificationsRepository: addPlateCertification(plateCertification)
+        PlateCertificationsRepository -> PlateCertificationsRepository: true/false
+        PlateCertificationsRepository -> PlateCertificationsRepository: true/false
 
     end
 
-    CTRL <-- RegistedPlateCertificationsRepository
-    deactivate
+    CTRL <-- PlateCertificationsRepository : plateCertificationsList
+    deactivate PlateCertificationsRepository
 
-        CTRL -> RegistedVehiclesRepository : getRegistedVehiclesList()
-    activate RegistedVehiclesRepository
+    CTRL --> UI : plateCertificationsList
 
-    RegistedVehiclesRepository --> CTRL : registedVehiclesList
-    deactivate RegistedVehiclesRepository
+    activate VehiclesRepository
 
-        CTRL -> RegistedPlateCertificationsRepository : getRegistedPlateCertificationsList()
-    activate RegistedPlateCertificationsRepository
-
-    RegistedPlateCertificationsRepository --> CTRL : registedPlateCertificationsList
-    deactivate RegistedPlateCertificationsRepository
-
-    CTRL --> UI : registedPlateCertificationsList
+    CTRL <-- VehiclesRepository : VehiclesList
+    CTRL --> UI : VehiclesList
+    deactivate VehiclesRepository
 
     deactivate CTRL
 

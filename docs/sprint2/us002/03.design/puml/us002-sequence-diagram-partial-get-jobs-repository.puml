@@ -13,7 +13,7 @@ autonumber 2
 
  -> CTRL : create
 activate CTRL
-    group Get Registed Jobs Repository
+    group Get Jobs Repository
 
             CTRL -> RepositorySingleton : getInstance()
             activate RepositorySingleton

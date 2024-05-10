@@ -1,0 +1,42 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+participant ":RegisterJobController" as CTRL
+participant ":Repositories" as RepositorySingleton
+participant "repositories\n:Repositories" as PLAT
+
+autonumber 2
+
+ -> CTRL : getTaskCategories()
+autonumber 3
+activate CTRL
+    group Get Vehicles Repository
+
+        CTRL -> RepositorySingleton : getInstance()
+        activate RepositorySingleton
+
+        RepositorySingleton --> CTRL: repositories
+        deactivate RepositorySingleton
+
+        CTRL -> PLAT : getVehiclesRepository()
+        activate PLAT
+
+        PLAT --> CTRL: VehiclesRepository
+        deactivate PLAT
+
+        CTRL -> PLAT : getPlateCertificationsRepository()
+
+        activate PLAT
+
+        PLAT --> CTRL: PlateCertificationsRepository
+        deactivate PLAT
+
+    end
+deactivate CTRL
+
+
+@enduml
