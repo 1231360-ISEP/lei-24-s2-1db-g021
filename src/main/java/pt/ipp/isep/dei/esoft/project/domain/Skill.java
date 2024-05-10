@@ -35,6 +35,11 @@ public class Skill {
                 '}';
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
+
     public Skill clone() {
         return new Skill(this.name);
     }

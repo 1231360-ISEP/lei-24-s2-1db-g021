@@ -32,8 +32,7 @@ public class SkillsRepository {
     }
 
     private boolean validateSkill(Skill skill) {
-        boolean isValid = !skillsList.contains(skill);
-        return isValid;
+        return !skillsList.contains(skill);
     }
 
     /**
@@ -46,5 +45,10 @@ public class SkillsRepository {
         return List.copyOf(skillsList);
     }
 
+/*
+    public boolean remove(Skill skill) {
+        return skillsList.remove(skill);
+    }
 
+*/
 }

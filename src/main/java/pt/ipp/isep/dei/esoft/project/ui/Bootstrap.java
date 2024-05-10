@@ -2,10 +2,7 @@ package pt.ipp.isep.dei.esoft.project.ui;
 
 import pt.ipp.isep.dei.esoft.project.application.controller.authorization.AuthenticationController;
 import pt.ipp.isep.dei.esoft.project.domain.*;
-import pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository;
-import pt.ipp.isep.dei.esoft.project.repository.OrganizationRepository;
-import pt.ipp.isep.dei.esoft.project.repository.Repositories;
-import pt.ipp.isep.dei.esoft.project.repository.TaskCategoryRepository;
+import pt.ipp.isep.dei.esoft.project.repository.*;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -36,7 +33,9 @@ public class Bootstrap implements Runnable {
     private void addTaskCategories() {
         //TODO: add bootstrap Task Categories here
 
-        //get task category repository
+        SkillsRepository skillsRepository = Repositories.getInstance().getSkillsRepository();
+        skillsRepository.add(new Skill("Register Skill: "));
+
         TaskCategoryRepository taskCategoryRepository = Repositories.getInstance().getTaskCategoryRepository();
         taskCategoryRepository.add(new TaskCategory("Analysis"));
         taskCategoryRepository.add(new TaskCategory("Design"));
