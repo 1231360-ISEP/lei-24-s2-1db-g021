@@ -15,7 +15,7 @@ class GenerateTeamProposalController {
     + getSkillsList()
     + getCollaboratorsList()
     + getCollaboratorSkillsList()
-    - getTeam()
+    + getTeam()
 }
 
 class Collaborator {
@@ -27,8 +27,32 @@ class Collaborator {
     - int idCard
     - int idNumber
     - List<Skill> skills
-
     + Collaborator(name, bornDate, admDate, phoneNumber, email, idCard, idNumber)
+    + Collaborator(name, bornDate, admDate, phoneNumber, email, idCard, idNumber, skills)
+    + Collaborator(email)
+    + getName()
+    + setName(name)
+    + getBornDate()
+    + setBornDate(bornDate)
+    + getAdmDate()
+    + setAdmDate(admDate)
+    + getAddress()
+    + setAddress(address)
+    + getPhoneNumber()
+    + setPhoneNumber(phoneNumber)
+    + getEmail()
+    + setEmail(email)
+    + getIdCard()
+    + setIdCard(idCard)
+    + getIdNumber
+    + setIdNumber(idNumber)
+    + getSkills()
+    + setSkills(skills)
+    + equals()
+    + toString()
+    + hashCode()
+    + hasEmail(email)
+    + clone()
     + void addSkill(skill)
     + void removeSkill(skill)
 }
@@ -42,34 +66,67 @@ class Repositories {
 }
 
 class CollaboratorsRepository {
+    - List<Collaborator> collaboratorsList
+    + CollaboratorsRepository(collaboratorsList)
+    + Optional<Collaborator> add(collaborator)
+    - validateCollaborator(collaborator)
     + getCollaboratorsList()
 }
 
-class CollaboratorSkills {
-    + getCollaboratorSkillsList()
-}
-
 class SkillsRepository {
+    - List<Skill> skillsList
+    + SkillsRepository()
+    + Optional<Skill> add(skill)
+    - validateSkill(skill)
     + getSkillsList()
 }
 
 class Address {
     - int doorNumber
+    - ZipCode zipCode
+    + Address(doorNumber, zipCode)
+    + Address(address)
+    + getDoorNumber()
+    + setDoorNumber()
+    + getZipCode()
+    + setZipCode()
 }
 
 class ZipCode {
     - int local
     - int street
+    + ZipCode(local, street)
+    + ZipCode(zipCode)
+    + getLocal()
+    + setLocal()
+    + getStreet()
+    + setStreet()
 }
 
 class TeamRepository {
+    - List<Team> teamsList
+    + TeamRepository()
+    + Optional<Team> add(team)
+    + validateTeam(team)
     + getTeam()
 }
 
 class Team {
     - String name
+    - List<Collaborator> collaboratorsList
+    - List<Skill> skillsSelected;
+    + Team(name, collaboratorsList, skillsSelected)
+    + getName()
+    + setName(name)
+    + getCollaboratorsList()
+    + setCollaboratorsList(collaboratorsList)
+    + getSkillsSelected()
+    + setSkillsSelected(skillsSelected)
     + addCollaborator(collaborator)
-    + Team(name)
+    + equals(o)
+    + hashCode(name, collaboratorsList, skillsSelected)
+    + toString()
+    + clone()
 }
 
 
@@ -94,8 +151,5 @@ CollaboratorsRepository --> "*" Collaborator
 
 Collaborator *-- "1" Address : owns
 Address *-- "1" ZipCode : owns
-
-Collaborator *-- "*" CollaboratorSkills
-
 
 @enduml
