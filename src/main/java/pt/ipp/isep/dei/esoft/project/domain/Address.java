@@ -43,4 +43,17 @@ public class Address {
         Address address = (Address) o;
         return doorNumber == address.doorNumber && Objects.equals(zipCode, address.zipCode);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(doorNumber, zipCode);
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "doorNumber=" + doorNumber +
+                ", zipCode=" + zipCode +
+                '}';
+    }
 }

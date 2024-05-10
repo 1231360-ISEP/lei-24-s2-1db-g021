@@ -46,4 +46,17 @@ public class ZipCode {
         ZipCode zipCode = (ZipCode) o;
         return local == zipCode.local && street == zipCode.street;
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(local, street);
+    }
+
+    @Override
+    public String toString() {
+        return "ZipCode{" +
+                "local=" + local +
+                ", street=" + street +
+                '}';
+    }
 }
