@@ -58,7 +58,6 @@ deactivate CTRL
         CTRL -> VehiclesRepository : create
     activate VehiclesRepository
 
-        'VehiclesRepository -> VEICULO**: createVehicle(currentKm,\n acquisitionDate,maintenance)
         VehiclesRepository -> VEICULO**: create
     activate VEICULO
 
@@ -85,8 +84,7 @@ deactivate CTRL
         CTRL -> PlateCertificationsRepository : create
     activate PlateCertificationsRepository
 
-    'PlateCertificationsRepository -> PLATE_CERTIFICATION**: createPlateCertification(brand,\n model,type,tare,grossWeight,\n registerDate,plate)
-    PlateCertificationsRepository -> PLATE_CERTIFICATION**: create
+        PlateCertificationsRepository -> PLATE_CERTIFICATION**: create
 
     activate PLATE_CERTIFICATION
         PLATE_CERTIFICATION -> PLATE_CERTIFICATION: validatePlateCertification(plateCertification)
@@ -104,11 +102,17 @@ deactivate CTRL
     deactivate PlateCertificationsRepository
 
     CTRL --> UI : plateCertificationsList
+    deactivate CTRL
+
+    UI -> CTRL : getVehiclesList()
+    activate CTRL
 
     activate VehiclesRepository
 
-    CTRL <-- VehiclesRepository : VehiclesList
-    CTRL --> UI : VehiclesList
+    CTRL -> VehiclesRepository : getVehiclesList()
+
+    CTRL <-- VehiclesRepository : vehiclesList
+    CTRL --> UI : vehiclesList
     deactivate VehiclesRepository
 
     deactivate CTRL

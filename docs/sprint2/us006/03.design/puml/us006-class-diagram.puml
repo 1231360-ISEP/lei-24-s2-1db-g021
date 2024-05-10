@@ -20,8 +20,6 @@ class Repositories {
     + getPlateCertificationsRepository()
 }
 
-'----------------CLASSES PLATE CERTIFICATION-------------
-
 class Vehicle {
     - double currentKm
     - Date acquisitionDate
@@ -36,20 +34,6 @@ class VehiclesRepository {
     + validateVehicle(vehicle)
 }
 
-RegisterVehicleUI .> RegisterVehicleController
-
-RegisterVehicleController .> Repositories : repositories
-
-'-----------LIGAÇÕES VEHICLE------
-
-Repositories --> "1" VehiclesRepository
-
-RegisterVehicleController ..> Vehicle : Vehicle
-RegisterVehicleController ..> VehiclesRepository : VehiclesRepository
-
-VehiclesRepository "1" --> "*" Vehicle
-
-'----------------CLASSES PLATE CERTIFICATION-------------
 class PlateCertification {
     - String brand
     - String model
@@ -68,7 +52,15 @@ class PlateCertificationsRepository {
     + validatePlateCertifications(plateCertification)
 }
 
-'-----------LIGAÇÕES PLATE CERTIFICATION------
+RegisterVehicleUI .> RegisterVehicleController
+
+RegisterVehicleController .> Repositories : repositories
+Repositories --> "1" VehiclesRepository
+
+RegisterVehicleController ..> Vehicle : Vehicle
+RegisterVehicleController ..> VehiclesRepository : VehiclesRepository
+
+VehiclesRepository "1" --> "*" Vehicle
 
 Repositories --> "1" PlateCertificationsRepository
 
@@ -77,6 +69,6 @@ RegisterVehicleController ..> PlateCertificationsRepository : PlateCertification
 
 PlateCertificationsRepository "1" --> "*" PlateCertification
 
-Vehicle *-- "1" PlateCertification : assigned to
+Vehicle "1" *-- "1" PlateCertification : has
 
 @enduml

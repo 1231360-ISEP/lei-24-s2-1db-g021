@@ -6,11 +6,6 @@ _Specifies functionalities that:
 &nbsp; &nbsp; (i) are common across several US/UC;  
 &nbsp; &nbsp; (ii) are not related to US/UC, namely: Audit, Reporting and Security._
 
-(i)
-* Register skills that a collaborator need to have.
-* Register a job that an employee should have.
-* Register a vehicle with multiple attributes.
-
 (ii)
 Security:
 * All those who wish to use the application must be authenticated with a password of seven alphanumeric characters, including three capital letters and two digits.
@@ -39,9 +34,6 @@ _Refers to the integrity, compliance and interoperability of the software. The r
 ## Performance
 
 _Evaluates the performance requirements of the software, namely: response time, start-up time, recovery time, memory consumption, CPU usage, load capacity and application availability._
-
-### Memory Consumption
-* The application should use object serialization to ensure data persistence between two runs of the application;
 
 
 
@@ -98,9 +90,6 @@ database integrity, resource limits, operating system._
 
 _Specifies or constraints the features inherent to the interaction of the
 system being developed with other external systems._
-
-#### Graphical Interface
-* The application’s graphical interface is to be developed in JavaFX 11.
 
 
 
