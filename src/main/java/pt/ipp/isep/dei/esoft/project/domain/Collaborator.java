@@ -25,6 +25,7 @@ public class Collaborator{
     }
 
     public Collaborator(String email) {
+        this.email = email;
     }
 
     public String getName() {

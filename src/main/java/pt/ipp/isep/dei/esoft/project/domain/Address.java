@@ -35,4 +35,12 @@ public class Address {
     public void setZipCode(ZipCode zipCode) {
         this.zipCode = new ZipCode(zipCode);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address = (Address) o;
+        return doorNumber == address.doorNumber && Objects.equals(zipCode, address.zipCode);
+    }
 }
