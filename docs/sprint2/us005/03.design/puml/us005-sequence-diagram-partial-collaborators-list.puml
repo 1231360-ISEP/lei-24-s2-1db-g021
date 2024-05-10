@@ -7,8 +7,8 @@ autonumber
 
 participant ":GenerateTeamProposalController" as CTRL
 participant "name\n:CollaboratorsRepository" as CollaboratorsRepository
-participant "CollaboratorSkills\n:List<CollaboratorSkills>" as CollaboratorSkills
-participant "SkillsSelected\n:List<SkillsSelected>" as ListOfSkillsSelected
+participant "Collaborator\n:List<Skill>skills" as CollaboratorSkills
+participant ":GenerateTeamProposalController\nList<Skill> skillsSelected" as ListOfSkillsSelected
 participant "team\n:TeamRepository" as TeamRepository
 
 

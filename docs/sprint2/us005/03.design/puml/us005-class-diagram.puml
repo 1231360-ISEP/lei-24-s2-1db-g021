@@ -10,6 +10,7 @@ class GenerateTeamProposalUI {
 }
 
 class GenerateTeamProposalController {
+    - List<Skill> skillsSelected
     + GenerateTeamProposalController(SkillsRepository, CollaboratorsRepository, TeamRepository)
     + getSkillsList()
     + getCollaboratorsList()
@@ -25,8 +26,11 @@ class Collaborator {
     - String email
     - int idCard
     - int idNumber
+    - List<Skill> skills
 
     + Collaborator(name, bornDate, admDate, phoneNumber, email, idCard, idNumber)
+    + void addSkill(skill)
+    + void removeSkill(skill)
 }
 
 class Repositories {
@@ -47,10 +51,6 @@ class CollaboratorSkills {
 
 class SkillsRepository {
     + getSkillsList()
-}
-
-class SkillsSelected {
-    + getSkillsSelected()
 }
 
 class Address {
@@ -89,8 +89,6 @@ GenerateTeamProposalController ...> "1" Collaborator : Collaborator
 
 TeamRepository --> "*" Team : teams
 Team o-- "*" Collaborator : has
-
-SkillsRepository --> "*" SkillsSelected
 
 CollaboratorsRepository --> "*" Collaborator
 

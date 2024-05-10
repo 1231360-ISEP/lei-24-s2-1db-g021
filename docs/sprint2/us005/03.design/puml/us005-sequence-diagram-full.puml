@@ -10,8 +10,8 @@ participant ":Repositories" as RepositorySingleton
 participant "repositories\n:Repositories" as PLAT
 participant "name\n:SkillsRepository" as SkillsRepository
 participant "name\n:CollaboratorsRepository" as CollaboratorsRepository
-participant "CollaboratorSkills\n:List<CollaboratorSkills>" as CollaboratorSkills
-participant "SkillsSelected\n:List<SkillsSelected>" as ListOfSkillsSelected
+participant "Collaborator:\nList<Skill>skills" as CollaboratorSkills
+participant ":GenerateTeamProposalController\nList<Skill> skillsSelected" as ListOfSkillsSelected
 participant "team\n:TeamRepository" as TeamRepository
 
 autonumber 1
