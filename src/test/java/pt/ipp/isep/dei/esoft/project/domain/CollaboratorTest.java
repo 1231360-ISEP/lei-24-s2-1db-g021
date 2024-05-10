@@ -48,7 +48,6 @@ class CollaboratorTest {
 
     @Test
     void ensureHashCodeIsNotEqualForDifferentObjects() {
-
         Collaborator Collaborator1 = new Collaborator("john.doe@this.company.com");
         Collaborator Collaborator2 = new Collaborator("jane.doe@this.company.com");
         assertNotEquals(Collaborator1.hashCode(), Collaborator2.hashCode());
@@ -72,9 +71,14 @@ class CollaboratorTest {
 
     @Test
     void ensureCloneWorks() {
+        // Arrange
         String email = "john.doe@this.company.com";
-        Collaborator Collaborator = new Collaborator(email);
-        Collaborator clone = Collaborator.clone();
-        assertEquals(Collaborator, clone);
+        Collaborator collaborator = new Collaborator(email);
+
+        // Act
+        Collaborator clone = collaborator.clone();
+
+        // Assert
+        assertEquals(collaborator, clone);
     }
 }

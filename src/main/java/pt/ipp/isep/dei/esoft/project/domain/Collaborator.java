@@ -2,6 +2,7 @@ package pt.ipp.isep.dei.esoft.project.domain;
 
 import pt.ipp.isep.dei.esoft.project.domain.Skill;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -151,4 +152,18 @@ public class Collaborator{
     public Collaborator clone() {
         return new Collaborator(this.name, this.bornDate, this.admDate, this.address, this.phoneNumber, this.email, this.idCard, this.idNumber, this.skills);
     }
+
+    public void addSkill(Skill skill) {
+        if (skills == null) {
+            skills = new ArrayList<>();
+        }
+        skills.add(skill);
+    }
+    /*
+    public void removeSkill(Skill skill) {
+        if (skills != null) {
+            skills.remove(skill);
+        }
+    }
+    */
 }
