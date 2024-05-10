@@ -9,6 +9,7 @@ import java.util.Optional;
 public class SkillsRepository {
 
     private final List<Skill> skillsList;
+
     public SkillsRepository() {
         skillsList = new ArrayList<>();
     }
@@ -44,4 +45,6 @@ public class SkillsRepository {
         //This is a defensive copy, so that the repository cannot be modified from the outside.
         return List.copyOf(skillsList);
     }
+
+
 }
