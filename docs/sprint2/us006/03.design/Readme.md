@@ -1,4 +1,4 @@
-# US006 - Create a Task 
+# US006 - Register Vehicle
 
 ## 3. Design - User Story Realization 
 
@@ -24,13 +24,17 @@ _**Note that SSD - Alternative One is adopted.**_
 
 According to the taken rationale, the conceptual classes promoted to software classes are: 
 
-* Organization
-* Task
+* Collaborator
+* Vehicle
+* PlateCertification
 
 Other software classes (i.e. Pure Fabrication) identified: 
 
-* CreateTaskUI  
-* CreateTaskController
+* RegisterVehicleUI
+* RegisterVehicleController
+* Repositories
+* VehiclesRepository
+* PlateCertificationsRepository
 
 
 ## 3.2. Sequence Diagram (SD)
