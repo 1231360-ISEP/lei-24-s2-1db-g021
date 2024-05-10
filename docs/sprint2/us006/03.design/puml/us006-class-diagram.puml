@@ -1,130 +1,82 @@
 @startuml
-'skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
 skinparam linetype polyline
-'skinparam linetype orto
-
 skinparam classAttributeIconSize 0
 
-'left to right direction
-
-class ApplicationSession
-{
-    + static getInstance()
-    + getCurrentSession()
+class RegisterVehicleUI {
 }
 
-class UserSession
-{
-    + getUserEmail()
-}
-
-class Employee {
-    - name
-    - email
-    - position
-    - phone
-}
-
-class Task {
-    - String reference
-    - String description
-    - String informalDescription
-    - String technicalDescription
-    - Integer duration
-    - Double cost
-
-    + Task(reference, description,\ninformalDescription, technicalDescription,\nduration, cost, createdBy, taskCategory)
-}
-
-class TaskCategory {
-    - String description
-
-    + TaskCategory(description)
-}
-
-class Organization {
-    - String name
-    - String vatNumber
-    - String website
-    - String phone
-    - String email
-
-    - addTask(task)
-    - validateTask(task)
-    + anyEmployeeHasEmail(email)
-    + Organization(name, vatNumber, webSite, phone, email, postalAddress, manager)
-    + createTask(reference, description, informalDesccription,\ntechnicalDescription, duration, cost, taskCategoryDescription)
-    - getEmployeeByEmail(email)
-
-'  +saveTask(task)
-}
-
-class TaskCategoryRepository {
-    + getTaskCategoryByDescription(description)
-}
-
-class OrganizationRepository {
-    + getOrganizationByEmployeeEmail(email)
+class RegisterVehicleController {
+    + RegisterVehicleController()
+    + getVehiclesList()
+    + getPlateCertificationsList()
 }
 
 class Repositories {
     - Repositories()
     + getInstance() : Repositories
-    + getTaskCategoryRepository()
-    + getOrganizationRepository()
+    + getVehiclesRepository()
+    + getPlateCertificationsRepository()
 }
 
-class CreateTaskController {
-    + CreateTaskController(organizationRepository, taskCategoryRepository)
-    + getTaskCategories()
-    + createTask(userEmail, reference, description,\ninformalDescription, technicalDescription,\nduration, cost, categoryDescription)
-    - getTaskCategoryByDescription(taskCategoryDescription)
-    - getEmployeeFromSession()
+'----------------CLASSES PLATE CERTIFICATION-------------
+
+class Vehicle {
+    - double currentKm
+    - Date acquisitionDate
+    - double maintenance
+    + Vehicle(vehicle)
+    + validateVehicle(vehicle)
 }
 
-note right of CreateTaskController
-    - userEmail is obtained
-    from the user session
-    - categoryDescription
-    is retrieved from selected data
-end note
-
-note bottom of TaskCategoryRepository
-    - used for displaying
-    the category list
-end note
-
-class CreateTaskUI {
+class VehiclesRepository {
+    + getVehiclesList()
+    + addVehicle(vehicle)
+    + validateVehicle(vehicle)
 }
 
-Repositories -> Repositories : instance
-ApplicationSession -> ApplicationSession : instance
+RegisterVehicleUI .> RegisterVehicleController
 
-CreateTaskUI .> CreateTaskController
+RegisterVehicleController .> Repositories : repositories
 
-CreateTaskController .> Repositories : repositories
+'-----------LIGAÇÕES VEHICLE------
 
-Repositories -> "1" TaskCategoryRepository
+Repositories --> "1" VehiclesRepository
 
-CreateTaskController ..> TaskCategory
-CreateTaskController ..> OrganizationRepository : organizationRepository
-CreateTaskController ..> TaskCategoryRepository : TaskCategoryRepository
+RegisterVehicleController ..> Vehicle : Vehicle
+RegisterVehicleController ..> VehiclesRepository : VehiclesRepository
 
-Repositories --> "1" OrganizationRepository
+VehiclesRepository "1" --> "*" Vehicle
 
-OrganizationRepository --> "*" Organization
-ApplicationSession --> "1" UserSession : userSession
+'----------------CLASSES PLATE CERTIFICATION-------------
+class PlateCertification {
+    - String brand
+    - String model
+    - String type
+    - double tare
+    - double grossWeight
+    - Date registerDate
+    - String plate
+    + PlateCertification(plateCertification)
+    + validatePlateCertification(plateCertification)
+}
 
-CreateTaskController ..> "1" Organization : organization
-CreateTaskController ..> ApplicationSession
-CreateTaskController ..> UserSession
-Task "*" --> "1" TaskCategory : taskCategory
-TaskCategoryRepository "1" --> "*" TaskCategory : taskCategory
-Organization "1" --> "*" Task : tasks
-Task --> Employee : createdBy
+class PlateCertificationsRepository {
+    + getPlateCertificationsList()
+    + addPlateCertification(plateCertification)
+    + validatePlateCertifications(plateCertification)
+}
 
-Organization --> "*" Employee : employs
+'-----------LIGAÇÕES PLATE CERTIFICATION------
+
+Repositories --> "1" PlateCertificationsRepository
+
+RegisterVehicleController ..> PlateCertification : PlateCertification
+RegisterVehicleController ..> PlateCertificationsRepository : PlateCertificationsRepository
+
+PlateCertificationsRepository "1" --> "*" PlateCertification
+
+Vehicle *-- "1" PlateCertification : assigned to
 
 @enduml
