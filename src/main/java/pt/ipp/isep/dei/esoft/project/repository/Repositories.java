@@ -6,12 +6,16 @@ public class Repositories {
 
     private static Repositories instance;
     private final SkillsRepository skillsRepository;
+    private final CollaboratorsRepository collaboratorsRepository;
+    private final TeamRepository teamRepository;
     private final OrganizationRepository organizationRepository;
     private final TaskCategoryRepository taskCategoryRepository;
     private final AuthenticationRepository authenticationRepository;
 
     private Repositories() {
         skillsRepository = new SkillsRepository();
+        collaboratorsRepository = new CollaboratorsRepository();
+        teamRepository = new TeamRepository();
         organizationRepository = new OrganizationRepository();
         taskCategoryRepository = new TaskCategoryRepository();
         authenticationRepository = new AuthenticationRepository();
@@ -39,4 +43,9 @@ public class Repositories {
     }
 
     public SkillsRepository getSkillsRepository() { return skillsRepository;}
+
+    public CollaboratorsRepository getCollaboratorsRepository() { return collaboratorsRepository; }
+
+    public TeamRepository getTeamRepository() { return teamRepository; }
+
 }

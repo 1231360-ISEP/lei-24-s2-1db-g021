@@ -1,6 +1,9 @@
 package pt.ipp.isep.dei.esoft.project.domain;
 
+import pt.ipp.isep.dei.esoft.project.domain.Skill;
+
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 public class Collaborator{
@@ -12,6 +15,7 @@ public class Collaborator{
     private String email;
     private int idCard;
     private int idNumber;
+    private List<Skill> skills;
 
     public Collaborator(String name, Date bornDate, Date admDate, Address address, int phoneNumber, String email, int idCard, int idNumber) {
         this.name = name;
@@ -22,6 +26,18 @@ public class Collaborator{
         this.email = email;
         this.idCard = idCard;
         this.idNumber = idNumber;
+    }
+
+    public Collaborator(String name, Date bornDate, Date admDate, Address address, int phoneNumber, String email, int idCard, int idNumber, List<Skill> skills) {
+        this.name = name;
+        this.bornDate = bornDate;
+        this.admDate = admDate;
+        this.setAddress(address);
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.idCard = idCard;
+        this.idNumber = idNumber;
+        this.skills = skills;
     }
 
     public Collaborator(String email) {
@@ -88,6 +104,14 @@ public class Collaborator{
         this.idNumber = idNumber;
     }
 
+    public List<Skill> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(List<Skill> skills) {
+        this.skills = skills;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -106,11 +130,12 @@ public class Collaborator{
                 "name='" + name + '\'' +
                 ", bornDate=" + bornDate +
                 ", admDate=" + admDate +
-                ", address='" + address + '\'' +
+                ", address=" + address +
                 ", phoneNumber=" + phoneNumber +
                 ", email='" + email + '\'' +
                 ", idCard=" + idCard +
                 ", idNumber=" + idNumber +
+                ", skills=" + skills +
                 '}';
     }
 
@@ -124,6 +149,6 @@ public class Collaborator{
     }
 
     public Collaborator clone() {
-        return new Collaborator(this.name, this.bornDate, this.admDate, this.address, this.phoneNumber, this.email, this.idCard, this.idNumber);
+        return new Collaborator(this.name, this.bornDate, this.admDate, this.address, this.phoneNumber, this.email, this.idCard, this.idNumber, this.skills);
     }
 }
