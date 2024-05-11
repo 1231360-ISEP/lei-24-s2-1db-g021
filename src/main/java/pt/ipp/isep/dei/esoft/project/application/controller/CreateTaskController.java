@@ -1,40 +1,35 @@
 package pt.ipp.isep.dei.esoft.project.application.controller;
 
 import pt.ipp.isep.dei.esoft.project.domain.Collaborator;
-import pt.ipp.isep.dei.esoft.project.domain.Organization;
 import pt.ipp.isep.dei.esoft.project.domain.Task;
 import pt.ipp.isep.dei.esoft.project.domain.TaskCategory;
-import pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository;
-import pt.ipp.isep.dei.esoft.project.repository.OrganizationRepository;
-import pt.ipp.isep.dei.esoft.project.repository.Repositories;
-import pt.ipp.isep.dei.esoft.project.repository.TaskCategoryRepository;
+import pt.ipp.isep.dei.esoft.project.repository.*;
 import pt.isep.lei.esoft.auth.domain.model.Email;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 public class CreateTaskController {
 
-    private OrganizationRepository organizationRepository;
     private TaskCategoryRepository taskCategoryRepository;
     private AuthenticationRepository authenticationRepository;
+    private TasksRepository tasksRepository;
 
 
     //Repository instances are obtained from the Repositories class
     public CreateTaskController() {
-        getOrganizationRepository();
         getTaskCategoryRepository();
         getAuthenticationRepository();
+        getTaskRepository();
     }
 
     //Allows receiving the repositories as parameters for testing purposes
-    public CreateTaskController(OrganizationRepository organizationRepository,
-                                TaskCategoryRepository taskCategoryRepository,
-                                AuthenticationRepository authenticationRepository) {
-        this.organizationRepository = organizationRepository;
+    public CreateTaskController(TaskCategoryRepository taskCategoryRepository,
+                                AuthenticationRepository authenticationRepository,
+                                TasksRepository tasksRepository) {
         this.taskCategoryRepository = taskCategoryRepository;
         this.authenticationRepository = authenticationRepository;
+        this.tasksRepository = tasksRepository;
     }
 
     private TaskCategoryRepository getTaskCategoryRepository() {
@@ -47,15 +42,6 @@ public class CreateTaskController {
         return taskCategoryRepository;
     }
 
-    private OrganizationRepository getOrganizationRepository() {
-        if (organizationRepository == null) {
-            Repositories repositories = Repositories.getInstance();
-            organizationRepository = repositories.getOrganizationRepository();
-        }
-        return organizationRepository;
-
-    }
-
     private AuthenticationRepository getAuthenticationRepository() {
         if (authenticationRepository == null) {
             Repositories repositories = Repositories.getInstance();
@@ -66,6 +52,16 @@ public class CreateTaskController {
         return authenticationRepository;
     }
 
+    private TasksRepository getTaskRepository() {
+        if (tasksRepository == null) {
+            Repositories repositories = Repositories.getInstance();
+
+            tasksRepository = repositories.getTaskRepository();
+        }
+
+        return tasksRepository;
+    }
+
     public Optional<Task> createTask(String reference, String description, String informalDescription,
                                      String technicalDescription, int duration, double cost,
                                      String taskCategoryDescription) {
@@ -73,15 +69,15 @@ public class CreateTaskController {
         TaskCategory taskCategory = getTaskCategoryByDescription(taskCategoryDescription);
 
         Collaborator collaborator = getCollaboratorFromSession();
-        Optional<Organization> organization = getOrganizationRepository().getOrganizationByCollaborator(collaborator);
 
         Optional<Task> newTask = Optional.empty();
 
-        if (organization.isPresent()) {
-            newTask = organization.get()
-                    .createTask(reference, description, informalDescription, technicalDescription, duration, cost,
-                            taskCategory, collaborator);
-        }
+        newTask = getTaskRepository().add(new Task(
+                reference, description, informalDescription,
+                technicalDescription, duration, cost,
+                taskCategory, collaborator
+        ));
+
         return newTask;
     }
 

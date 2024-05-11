@@ -18,16 +18,17 @@ public class Bootstrap implements Runnable {
 
     private void addOrganization() {
         //TODO: add organizations bootstrap here
-        //get organization repository
-        OrganizationRepository organizationRepository = Repositories.getInstance().getOrganizationRepository();
-        Organization organization = new Organization("This Company");
+        CollaboratorsRepository collaboratorsRepository = Repositories.getInstance().getCollaboratorsRepository();
+
         Date bornDate = new Date(1234, Calendar.MAY, 6);
         Date admDate = new Date(6543, Calendar.FEBRUARY, 1);
         ZipCode zipCode = new ZipCode(4200,400);
         Address address = new Address(123, zipCode);
-        organization.addCollaborator(new Collaborator("admin", bornDate, admDate, address, 123456789,"admin@this.app", 123456789, 123456789));
-        organization.addCollaborator(new Collaborator("collaborator",bornDate,admDate, address, 987654321,"collaborator@this.app", 987654321, 987654321));
-        organizationRepository.add(organization);
+        Collaborator admin =  new Collaborator("admin", bornDate, admDate, address, 123456789,"admin@this.app", 123456789, 123456789);
+        Collaborator collaborator = new Collaborator("collaborator",bornDate,admDate, address, 987654321,"collaborator@this.app", 987654321, 987654321);
+
+        collaboratorsRepository.add(admin);
+        collaboratorsRepository.add(collaborator);
     }
 
     private void addTaskCategories() {

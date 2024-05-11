@@ -1,24 +1,22 @@
 package pt.ipp.isep.dei.esoft.project.repository;
 
-import pt.ipp.isep.dei.esoft.project.application.session.ApplicationSession;
-
 public class Repositories {
 
     private static Repositories instance;
     private final SkillsRepository skillsRepository;
     private final CollaboratorsRepository collaboratorsRepository;
     private final TeamRepository teamRepository;
-    private final OrganizationRepository organizationRepository;
     private final TaskCategoryRepository taskCategoryRepository;
     private final AuthenticationRepository authenticationRepository;
+    private final TasksRepository tasksRepository;
 
     private Repositories() {
         skillsRepository = new SkillsRepository();
         collaboratorsRepository = new CollaboratorsRepository();
         teamRepository = new TeamRepository();
-        organizationRepository = new OrganizationRepository();
         taskCategoryRepository = new TaskCategoryRepository();
         authenticationRepository = new AuthenticationRepository();
+        tasksRepository = new TasksRepository();
     }
 
     public static Repositories getInstance() {
@@ -30,10 +28,6 @@ public class Repositories {
         return instance;
     }
 
-    public OrganizationRepository getOrganizationRepository() {
-        return organizationRepository;
-    }
-
     public TaskCategoryRepository getTaskCategoryRepository() {
         return taskCategoryRepository;
     }
@@ -42,10 +36,20 @@ public class Repositories {
         return authenticationRepository;
     }
 
-    public SkillsRepository getSkillsRepository() { return skillsRepository;}
+    public SkillsRepository getSkillsRepository() {
+        return skillsRepository;
+    }
 
-    public CollaboratorsRepository getCollaboratorsRepository() { return collaboratorsRepository; }
+    public CollaboratorsRepository getCollaboratorsRepository() {
+        return collaboratorsRepository;
+    }
 
-    public TeamRepository getTeamRepository() { return teamRepository; }
+    public TeamRepository getTeamRepository() {
+        return teamRepository;
+    }
+
+    public TasksRepository getTaskRepository() {
+        return tasksRepository;
+    }
 
 }
