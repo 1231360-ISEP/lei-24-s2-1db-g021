@@ -40,23 +40,6 @@ class SkillsRepositoryTest {
         assertTrue(addedSecondSkill.isEmpty());
     }
 
-    /*
-    @Test
-    void ensureGetSkillsReturnsAnImmutableList() {
-        // Arrange
-        SkillsRepository skillsRepository = new SkillsRepository();
-        Skill skill = new Skill("Tree Pruner");
-
-        // Act
-        skillsRepository.add(skill);
-        List<Skill> skillsList = skillsRepository.getSkillsList();
-
-        // Assert
-        assertThrows(UnsupportedOperationException.class,
-                () -> skillsList.add(new Skill("Light Vehicle Driving Licence")));
-    }
-    */
-
     @Test
     void ensureSkillsListIsNotNull() {
         // Arrange
