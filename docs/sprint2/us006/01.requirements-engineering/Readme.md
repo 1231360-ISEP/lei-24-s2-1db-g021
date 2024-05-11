@@ -44,9 +44,6 @@ that can be attached to tractors, such as disc harrows, weeders, aerators and sc
 
 ### 1.3. Acceptance Criteria
 
-* **AC1:** Provide the set of attributes necessary for the correct registration of a given vehicle.
-* **AC2:** All attributes must be validated, there must be no negative values, no duplicate names or number plates and the date of purchase must not be more recent than the vehicle's registration date.
-
 ### 1.4. Found out Dependencies
 
 * This User Storie doesn't have any dependencies.
