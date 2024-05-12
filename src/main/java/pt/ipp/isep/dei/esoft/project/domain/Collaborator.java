@@ -22,7 +22,8 @@ public class Collaborator{
         this.name = name;
         this.bornDate = bornDate;
         this.admDate = admDate;
-        this.setAddress(address);
+        if (address != null)
+            this.setAddress(address);
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.idCard = idCard;
@@ -33,7 +34,8 @@ public class Collaborator{
         this.name = name;
         this.bornDate = bornDate;
         this.admDate = admDate;
-        this.setAddress(address);
+        if (address != null)
+            this.setAddress(address);
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.idCard = idCard;
