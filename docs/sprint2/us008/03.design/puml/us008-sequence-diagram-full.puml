@@ -43,30 +43,61 @@ activate ADM
 
             loop as long as VehiclesRepository doesn't end.
 
-                CTRL -> Veh : isVehicleNeedingOrAlmostCheckup()
+                CTRL -> CTRL : isVehicleNeedingOrAlmostCheckup()
 
-                activate Veh
+                activate CTRL
 
-                    Veh -> Veh : didVehExceededCheckup()
-                    activate Veh
-                        Veh --> Veh : true/false
-                    deactivate Veh
+                    CTRL -> CTRL : didVehExceededCheckup()
+                    activate CTRL
 
-                    Veh -> Veh : isVehicleCloseToExceedCheckup()
+                        CTRL -> Veh : getMaintenance()
+                        activate Veh
+                            Veh --> CTRL : maintenance
+                        deactivate Veh
 
-                    activate Veh
-                        Veh --> Veh : true/false
-                    deactivate Veh
+                        CTRL -> Veh : getCurrentKm()
+                        activate Veh
+                            Veh --> CTRL : currentKm
+                        deactivate Veh
+
+                        alt if currentKm exceeded maintenance
+                            CTRL --> CTRL : true
+                        else
+                            CTRL --> CTRL : false
+                        end
+
+                    deactivate CTRL
+
+                    CTRL -> CTRL : isVehicleCloseToExceedCheckup()
+
+                    activate CTRL
+                        CTRL -> Veh : getMaintenance()
+                        activate Veh
+                            Veh --> CTRL : maintenance
+                        deactivate Veh
+
+                        CTRL -> Veh : getCurrentKm()
+                        activate Veh
+                            Veh --> CTRL : currentKm
+                        deactivate Veh
+
+                        alt if currentKm is 5% almost exceeding maintenance
+                            CTRL --> CTRL : true
+                        else
+                            CTRL --> CTRL : false
+                        end
+                        CTRL --> CTRL : true/false
+                    deactivate CTRL
 
                     alt didVehExceededCheckup() == true
-                        Veh --> CTRL : true
+                        CTRL --> CTRL : true
                     else isVehicleCloseToExceedCheckup() == true
-                        Veh --> CTRL : true
+                        CTRL --> CTRL : true
                     else
-                        Veh --> CTRL : false
+                        CTRL --> CTRL : false
                     end
 
-                deactivate Veh
+                deactivate CTRL
 
             end
 
