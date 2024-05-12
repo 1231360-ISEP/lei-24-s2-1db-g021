@@ -89,8 +89,8 @@ activate ADM
 
         Data --> CollaboratorsRepository : fundamentalCharacteristics
                     deactivate Data
+                                    CollaboratorsRepository -> CollaboratorsRepository: validateCollaborator(jobSelected,fundamentalCharacteristics)
                 CollaboratorsRepository -> CollaboratorsRepository: addCollaborator(jobSelected,fundamentalCharacteristics)
-                CollaboratorsRepository -> CollaboratorsRepository: validateCollaborator(jobSelected,fundamentalCharacteristics)
         end
                 CollaboratorsRepository --> CTRL : registedCollaboratorsList
             deactivate CollaboratorsRepository

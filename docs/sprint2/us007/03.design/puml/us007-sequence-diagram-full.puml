@@ -31,16 +31,6 @@ activate VFM
                     RepositorySingleton --> CTRL: repositories
                 deactivate RepositorySingleton
 
-                CTRL -> PLAT : getRegistedVehiclesRepository()
-                activate PLAT
-
-                    PLAT --> CTRL: registedVehiclesRepository
-                deactivate PLAT
-                CTRL -> PLAT : getRegistedPlateCertificationsRepository()
-
-                activate PLAT
-                    PLAT --> CTRL: RegistedPlateCertificationsRepository
-                deactivate PLAT
                 CTRL -> PLAT : registedVehiclesCheckUpsRepository()
 
                 activate PLAT
@@ -76,9 +66,15 @@ activate VFM
             CTRL -> registedVehicleCheckUpsRepository : create
 
             activate registedVehicleCheckUpsRepository
-                registedVehicleCheckUpsRepository -> Data**: create
+            registedVehicleCheckUpsRepository -> Data**: create
+        activate Data
+
+        Data -> Data: validateinformation(information)
+
+        Data --> registedVehicleCheckUpsRepository : information
+                    deactivate Data
+                                registedVehicleCheckUpsRepository -> registedVehicleCheckUpsRepository: validateVeichleCheckUp(veichlePlate,information)
                 registedVehicleCheckUpsRepository -> registedVehicleCheckUpsRepository: addVeichleCheckUp(veichlePlate plate,information)
-                registedVehicleCheckUpsRepository -> registedVehicleCheckUpsRepository: validateVeichleCheckUp(veichlePlate,information)
         end
                 registedVehicleCheckUpsRepository --> CTRL : registedVeichleCheckUpList
             deactivate registedVehicleCheckUpsRepository
