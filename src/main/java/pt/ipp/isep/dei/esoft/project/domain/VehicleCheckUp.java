@@ -51,12 +51,23 @@ public class VehicleCheckUp {
         this.kms = kms;
     }
 
+    /**
+     * This method returns true if the date of the moment is later than the date
+     * @param date the date
+     * @return a boolean value
+     */
     private static boolean checkIfDateSurpassedActualOne(Date date){
         Date actualDate = new Date();
         if (actualDate.after(date))
             return true;
         return false;
     }
+
+    /**
+     * This method returns true if the kilometers are below 0 i.e. the value is negative
+     * @param kms the kilometers
+     * @return a boolean value
+     */
     private static boolean kmsAreNegative(float kms){
         return kms < 0;
     }
