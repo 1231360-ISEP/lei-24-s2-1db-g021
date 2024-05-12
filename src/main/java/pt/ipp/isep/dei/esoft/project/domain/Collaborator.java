@@ -169,4 +169,12 @@ public class Collaborator{
             skills = updatedSkills;
         }
     }
+    public boolean isSkillAssigned(Skill skill){
+        if (skills != null){
+            if(skills.contains(skill)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
