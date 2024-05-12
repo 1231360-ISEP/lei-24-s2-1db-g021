@@ -28,6 +28,6 @@ class VehicleCheckUpTest {
         float kms = 100200;
 
         VehicleCheckUp vcu = new VehicleCheckUp(new Date(),ad, kms);
-        vcu.setDate(d);
+        assertFalse(vcu.setDate(d));
     }
 }

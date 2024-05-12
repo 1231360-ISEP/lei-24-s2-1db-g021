@@ -12,7 +12,7 @@ public class VehicleCheckUp {
     }
 
     public boolean setDate(Date date) {
-        if(checkIfDateSurpassed(date)){
+        if(checkIfDateSurpassedActualOne(date)){
             return false;
         }
         this.date = date;
@@ -36,7 +36,7 @@ public class VehicleCheckUp {
     }
 
     public VehicleCheckUp(Date date, Address place, float kms) {
-        if(checkIfDateSurpassed(date)){
+        if(checkIfDateSurpassedActualOne(date)){
             throw new IllegalArgumentException("Date has surpassed the actual date.");
         }
         this.date = date;
@@ -44,7 +44,7 @@ public class VehicleCheckUp {
         this.kms = kms;
     }
 
-    private static boolean checkIfDateSurpassed(Date date){
+    private static boolean checkIfDateSurpassedActualOne(Date date){
         Date actualDate = new Date();
         if (actualDate.after(date))
             return true;
