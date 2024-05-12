@@ -31,8 +31,12 @@ public class VehicleCheckUp {
         return kms;
     }
 
-    public void setKms(float kms) {
+    public boolean setKms(float kms) {
+        if(kmsAreNegative(kms)){
+            return false;
+        }
         this.kms = kms;
+        return true;
     }
 
     public VehicleCheckUp(Date date, Address place, float kms) {
@@ -41,6 +45,9 @@ public class VehicleCheckUp {
         }
         this.date = date;
         this.place = place;
+        if(kmsAreNegative(kms)){
+            throw new IllegalArgumentException("Kilometers can't be negative.");
+        }
         this.kms = kms;
     }
 
@@ -49,5 +56,8 @@ public class VehicleCheckUp {
         if (actualDate.after(date))
             return true;
         return false;
+    }
+    private static boolean kmsAreNegative(float kms){
+        return kms < 0;
     }
 }
