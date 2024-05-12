@@ -39,6 +39,14 @@ public class VehicleCheckUp {
         return true;
     }
 
+    /**
+     * Initializes a new VehicleCheckUp
+     * Throws IllegalArgumentException if the date is earlier than the current date
+     * Throws IllegalArgumentException if the kilometers is negative i.e. below 0
+     * @param date the date
+     * @param place the place
+     * @param kms the kilometers
+     */
     public VehicleCheckUp(Date date, Address place, float kms) {
         if(checkIfDateSurpassedActualOne(date)){
             throw new IllegalArgumentException("Date has surpassed the actual date.");
@@ -64,7 +72,7 @@ public class VehicleCheckUp {
     }
 
     /**
-     * This method returns true if the kilometers are below 0 i.e. the value is negative
+     * This method returns true if the kilometers are negative i.e. are below 0
      * @param kms the kilometers
      * @return a boolean value
      */
