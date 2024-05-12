@@ -12,7 +12,7 @@ participant ":RegistVehicleCheckUpController" as CTRL
 participant ":Repositories" as RepositorySingleton
 participant "repositories\n:Repositories" as PLAT
 participant "registedVehicleCheckUpsRepository:\registedVehicleCheckUpsRepository" as registedVehicleCheckUpsRepository
-participant "information\n:veichleCheckUp" as Data
+participant "information\n:vehicleCheckUp" as Data
 
 activate VFM
 
@@ -38,15 +38,15 @@ activate VFM
                 deactivate PLAT
             deactivate CTRL
         loop while intended
-            UI --> VFM : request the veichle plate
+            UI --> VFM : request the vehicle plate
         deactivate UI
 
-    VFM -> UI : Type the veichle plate
+    VFM -> UI : Type the vehicle plate
     activate UI
 
-            UI -> CTRL : veichlePlate
+            UI -> CTRL : vehiclePlate
                 activate CTRL
-                CTRL -> CTRL : storeVeichlePlate()
+                CTRL -> CTRL : storeVehiclePlate()
 
                 activate CTRL
                     CTRL --> CTRL : success
@@ -73,21 +73,21 @@ activate VFM
 
         Data --> registedVehicleCheckUpsRepository : information
                     deactivate Data
-                                registedVehicleCheckUpsRepository -> registedVehicleCheckUpsRepository: validateVeichleCheckUp(veichlePlate,information)
-                registedVehicleCheckUpsRepository -> registedVehicleCheckUpsRepository: addVeichleCheckUp(veichlePlate plate,information)
+                                registedVehicleCheckUpsRepository -> registedVehicleCheckUpsRepository: validateVehicleCheckUp(veichlePlate,information)
+                registedVehicleCheckUpsRepository -> registedVehicleCheckUpsRepository: addVeichleCheckUp(vehiclePlate plate,information)
         end
-                registedVehicleCheckUpsRepository --> CTRL : registedVeichleCheckUpList
+                registedVehicleCheckUpsRepository --> CTRL : registedVehicleCheckUpList
             deactivate registedVehicleCheckUpsRepository
 
-            CTRL --> UI : RegistedVeichleCheckUpList
+            CTRL --> UI : RegistedVehicleCheckUpList
 
         deactivate CTRL
 
-        UI --> VFM : list all registered veichle check-ups and asks to confirm
+        UI --> VFM : list all registered vehicle check-ups and asks to confirm
 
     deactivate UI
 
-    VFM -> UI : confirms all veichle check-ups
+    VFM -> UI : confirms all vehicle check-ups
 
     activate UI
     UI --> VFM : displays operation success

@@ -16,8 +16,8 @@ class RegisterVehicleCheckUpUI
 
 class RegistVehicleCheckUpController
 {
-    - veichlePlate
-    + storeVeichlePlate()
+    - vehiclePlate
+    + storeVehiclePlate()
 }
 
 class Repositories {
@@ -28,12 +28,12 @@ class Repositories {
 
 class registedVehicleCheckUpsRepository {
     - registedVehicleCheckUpsRepository
-    + addVeichleCheckUp(veichlePlate plate,information)
-    + validateVeichleCheckUp(veichlePlate,information)
+    + addVehicleCheckUp(vehiclePlate plate,information)
+    + validateVehicleCheckUp(vehiclePlate,information)
 }
 
 
-class veichleCheckUp {
+class vehicleCheckUp {
     - VehicleCheckUps
     + validateinformation(information)
 }
@@ -44,10 +44,10 @@ RegistVehicleCheckUpController -- Repositories
 
 RegistVehicleCheckUpController -- registedVehicleCheckUpsRepository
 
-RegistVehicleCheckUpController -- veichleCheckUp
+RegistVehicleCheckUpController -- vehicleCheckUp
 
 Repositories *- registedVehicleCheckUpsRepository
 
-registedVehicleCheckUpsRepository o- veichleCheckUp
+registedVehicleCheckUpsRepository o- vehicleCheckUp
 
 @enduml
