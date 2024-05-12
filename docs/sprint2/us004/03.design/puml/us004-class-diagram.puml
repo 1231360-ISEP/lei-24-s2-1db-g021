@@ -11,22 +11,22 @@ skinparam classAttributeIconSize 0
 
 class Collaborator {
     -skills
-    +assignSkills(skillsToAssign)
+    +addSkill(skill)
 }
 
 class SkillsRepository {
-    - skillsRepository
-    + getAllSkills()
+    - skillsList
+    + getSkillsList()
 }
 
 class CollaboratorsRepository {
-    - collaboratorsRepository
-    + getAllCollaborators()
+    - collaboratorsList
+    + getCollaboratorsList()
 }
 
 class Repositories {
     - Repositories()
-    + getInstance() : Repositories
+    + getInstance()
     + getCollaboratorsRepository()
     + getSkillsRepository()
 }
