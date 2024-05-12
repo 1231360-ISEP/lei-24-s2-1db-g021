@@ -54,7 +54,9 @@ public class AssignSkillController {
     public void addSkills(){
         for (Skill skill:
              skillsToAssign) {
-            collaboratorSelected.addSkill(skill);
+            if(!collaboratorSelected.isSkillAssigned(skill)){
+                collaboratorSelected.addSkill(skill);
+            }
         }
     }
 }

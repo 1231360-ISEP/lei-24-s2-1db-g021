@@ -49,7 +49,6 @@ class AssignSkillControllerTest {
         Repositories.getInstance().getSkillsRepository().add(s2);
 
         c1.addSkill(s1);
-        Collaborator c3 = c1.clone();
 
         List<Skill> skillList = new ArrayList<>();
         skillList.add(s1);
@@ -59,6 +58,25 @@ class AssignSkillControllerTest {
         assignSkillController.setCollaboratorSelected(c1);
         assignSkillController.addSkills();
 
-        assertEquals(c3.getSkills(), c1.getSkills());
+        List<Skill> expected = new ArrayList<Skill>();
+        expected.add(s1);
+
+        assertEquals(expected, c1.getSkills());
+    }
+    @Test
+    void noAssignSkillsSelected(){
+        Collaborator c1 = new Collaborator("tomaspintomoreira28@gmail.com");
+
+        Repositories.getInstance().getCollaboratorsRepository().add(c1);
+
+        List<Skill> skillList = new ArrayList<>();
+
+        AssignSkillController assignSkillController = new AssignSkillController();
+        assignSkillController.storeSkills(skillList);
+        assignSkillController.setCollaboratorSelected(c1);
+        assignSkillController.addSkills();
+
+        List<Skill> expected = null;
+        assertEquals(expected, c1.getSkills());
     }
 }

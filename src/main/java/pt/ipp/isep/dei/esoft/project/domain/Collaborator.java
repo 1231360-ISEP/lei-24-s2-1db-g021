@@ -162,11 +162,27 @@ public class Collaborator{
         skills.add(skill);
     }
 
+    /**
+     *
+     * @param skill is the skill given,
+     *              if the list of skills is not null,
+     *              it creates a new ArrayList named updatedSkills,
+     *              and remove the skill givened,
+     *              to conclude, it updates the skills list named skills.
+     */
     public void removeSkill(Skill skill) {
         if (skills != null) {
             List<Skill> updatedSkills = new ArrayList<>(skills);
             updatedSkills.remove(skill);
             skills = updatedSkills;
         }
+    }
+    public boolean isSkillAssigned(Skill skill){
+        if (skills != null){
+            if(skills.contains(skill)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

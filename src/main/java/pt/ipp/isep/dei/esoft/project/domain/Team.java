@@ -21,6 +21,11 @@ public class Team {
         return name;
     }
 
+    /**
+     * @param name is the name of the team,
+     *             if the name was a valid name, set the name,
+     *             if it was null or empty, it throws a IllegalArgumentException,
+     */
     public void setName(String name) {
         if (name == null || name.isEmpty()){
             throw new IllegalArgumentException("Name cannot be empty.");
@@ -48,6 +53,11 @@ public class Team {
         return minSizeTeam;
     }
 
+    /**
+     * @param minSizeTeam is the Minimum Size of the Team,
+     *                    if the Minimum Size was valid, it sets the Minimum Size of the Team,
+     *                    if not it throws a IllegalArgumentException.
+     */
     public void setMinSizeTeam(int minSizeTeam) {
         if (minSizeTeam < 0) {
             throw new IllegalArgumentException("Minimum team size cannot be negative.");
@@ -59,6 +69,11 @@ public class Team {
         return maxSizeTeam;
     }
 
+    /**
+     * @param maxSizeTeam is the Maximum Size of the Team,
+     *                    if the Maximum Size was valid, it sets the Maximum Size of the Team,
+     *                    if not it throws a IllegalArgumentException.
+     */
     public void setMaxSizeTeam(int maxSizeTeam) {
         if (maxSizeTeam < 0) {
             throw new IllegalArgumentException("Maximum team size cannot be negative.");
@@ -94,12 +109,23 @@ public class Team {
         return new Team(this.name, this.minSizeTeam, this.maxSizeTeam, this.collaboratorsList, this.skillsSelected);
     }
 
+    /**
+     * getTeamCollaboratorsList is a method that will return the list of Collaborators in Team.
+     *
+     * @return teamCollaboratorsList
+     */
     public List<Collaborator> getTeamCollaboratorsList() {
         List<Collaborator> teamCollaborators = selectedCollaboratorsBySkills();
         return teamCollaboratorsList(teamCollaborators);
 
     }
 
+    /**
+     * selectedCollaboratorsBySkills is a method that returns the Collaborators
+     * that were selected by their Skills.
+     *
+     * @return collaboratorsList
+     */
     private List<Collaborator> selectedCollaboratorsBySkills() {
         return collaboratorsList.stream()
                 .filter(this::hasSelectedSkills)
@@ -110,10 +136,23 @@ public class Team {
         return collaboratorsList;
     }
 
+    /**
+     *
+     * @param collaborator is the collaborator selected,
+     *                     this method will verify if collaborator has the skills neeed,
+     *                     if collaborator has the skills needed it
+     * @return the collaborator selected
+     */
     private boolean hasSelectedSkills(Collaborator collaborator) {
         return collaborator.getSkills().containsAll(skillsSelected);
     }
 
+    /**
+     * isTeamSizeWithinBounds is a method that will verify
+     * if the Team Size is between the Minimum and Maximum number of team members.
+     *
+     * @return the interval of Minimum and Maximum Size of the Team
+     */
     public boolean isTeamSizeWithinBounds() {
         int teamSize = collaboratorsList.size();
         return teamSize >= minSizeTeam && teamSize <= maxSizeTeam;

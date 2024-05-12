@@ -13,6 +13,12 @@ public class Skill {
         return name;
     }
 
+    /**
+     * @param name is the name of the skill that will be assigned to a Collaborator,
+     *             if the name was a valid name, set the name,
+     *             if it was null or empty, it throws a IllegalArgumentException,
+     *             if name contain special characters or digits, it throws a IllegalArgumentException.
+     */
     public void setName(String name) {
         if (name == null || name.isEmpty()){
             throw new IllegalArgumentException("Name cannot be empty.");
