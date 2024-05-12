@@ -35,4 +35,13 @@ class ListVehiclesCheckupController {
 class ListVehiclesCheckupUI {
 }
 
+Repositories *- VehiclesRepository
+
+VehiclesRepository o- Vehicle
+
+ListVehiclesCheckupController -- ListVehiclesCheckupUI
+ListVehiclesCheckupController -- Repositories
+ListVehiclesCheckupController -- VehiclesRepository
+ListVehiclesCheckupController -- Vehicle
+
 @enduml
