@@ -66,7 +66,7 @@ class SkillsRepositoryTest {
                 () -> skillsList.add(new Skill("Light Vehicle Driving Licence")));
     }
 
-/*    @Test
+    @Test
     void ensureRemovingSkillFromListWorks() {
         // Arrange
         SkillsRepository skillsRepository = new SkillsRepository();
@@ -80,5 +80,5 @@ class SkillsRepositoryTest {
         assertTrue(removed);
         assertFalse(skillsRepository.getSkillsList().contains(skill1));
     }
-*/
+
 }

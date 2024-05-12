@@ -79,6 +79,7 @@ class SkillsRepository {
     + Optional<Skill> add(skill)
     - validateSkill(skill)
     + getSkillsList()
+    + remove(skill)
 }
 
 class Address {

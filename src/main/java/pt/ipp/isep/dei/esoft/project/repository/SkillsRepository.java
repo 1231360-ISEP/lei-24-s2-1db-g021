@@ -45,10 +45,7 @@ public class SkillsRepository {
         return List.copyOf(skillsList);
     }
 
-/*
     public boolean remove(Skill skill) {
         return skillsList.remove(skill);
     }
-
-*/
 }
