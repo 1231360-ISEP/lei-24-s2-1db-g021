@@ -39,9 +39,9 @@ Repositories *- VehiclesRepository
 
 VehiclesRepository o- Vehicle
 
-ListVehiclesCheckupController -- ListVehiclesCheckupUI
-ListVehiclesCheckupController -- Repositories
-ListVehiclesCheckupController -- VehiclesRepository
-ListVehiclesCheckupController -- Vehicle
+ListVehiclesCheckupController .. ListVehiclesCheckupUI
+ListVehiclesCheckupController .. Repositories
+ListVehiclesCheckupController .. VehiclesRepository
+ListVehiclesCheckupController .. Vehicle
 
 @enduml

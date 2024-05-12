@@ -42,15 +42,15 @@ class AssignSkillController {
 class AssignSkillUI {
 }
 
-AssignSkillUI -- AssignSkillController
+AssignSkillUI .. AssignSkillController
 
-AssignSkillController -- Repositories
+AssignSkillController .. Repositories
 
-AssignSkillController -- CollaboratorsRepository
+AssignSkillController .. CollaboratorsRepository
 
-AssignSkillController -- SkillsRepository
+AssignSkillController .. SkillsRepository
 
-AssignSkillController -- Collaborator
+AssignSkillController .. Collaborator
 
 Repositories *- CollaboratorsRepository
 
