@@ -11,6 +11,7 @@ participant ":RegistCollaboratorUI" as UI
 participant ":RegistCollaboratorController" as CTRL
 participant ":Repositories" as RepositorySingleton
 participant "repositories\n:Repositories" as PLAT
+participant "RegistedJobsRepository:\nRegistedJobsRepository" as RegistedJobsRepository
 participant "CollaboratorsRepository:\nCollaboratorsRepository" as CollaboratorsRepository
 participant "fundamentalCharacteristics\n:Collaborator" as Data
 
@@ -38,6 +39,17 @@ activate ADM
 
                     PLAT --> CTRL: registedJobsRepository
                 deactivate PLAT
+
+                CTRL -> PLAT : getCollaboratorsRepository()
+                activate PLAT
+
+                PLAT --> CTRL: CollaboratorsRepository
+                deactivate PLAT
+
+                CTRL -> RegistedJobsRepository : getAllJobs()
+                activate RegistedJobsRepository
+                    RegistedJobsRepository --> CTRL : allJobs
+                deactivate RegistedJobsRepository
 
                 CTRL --> UI : jobs
             deactivate CTRL
@@ -70,7 +82,13 @@ activate ADM
             CTRL -> CollaboratorsRepository : create
 
             activate CollaboratorsRepository
-                CollaboratorsRepository -> Data**: create
+            CollaboratorsRepository -> Data**: create
+        activate Data
+
+        Data -> Data: validatefundamentalCharacteristics(fundamentalCharacteristics)
+
+        Data --> CollaboratorsRepository : fundamentalCharacteristics
+                    deactivate Data
                 CollaboratorsRepository -> CollaboratorsRepository: addCollaborator(jobSelected,fundamentalCharacteristics)
                 CollaboratorsRepository -> CollaboratorsRepository: validateCollaborator(jobSelected,fundamentalCharacteristics)
         end
