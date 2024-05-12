@@ -94,7 +94,7 @@ public class Team {
         return new Team(this.name, this.minSizeTeam, this.maxSizeTeam, this.collaboratorsList, this.skillsSelected);
     }
 
-    public List<Collaborator> getTeam() {
+    public List<Collaborator> getTeamCollaboratorsList() {
         List<Collaborator> teamCollaborators = selectedCollaboratorsBySkills();
         return teamCollaboratorsList(teamCollaborators);
 
