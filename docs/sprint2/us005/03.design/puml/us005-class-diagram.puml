@@ -53,8 +53,8 @@ class Collaborator {
     + hashCode()
     + hasEmail(email)
     + clone()
-    + void addSkill(skill)
-    + void removeSkill(skill)
+    + addSkill(skill)
+    + removeSkill(skill)
 }
 
 class Repositories {
@@ -122,11 +122,20 @@ class Team {
     + setCollaboratorsList(collaboratorsList)
     + getSkillsSelected()
     + setSkillsSelected(skillsSelected)
+    + getMinSizeTeam()
+    + setMinSizeTeam(minSizeTeam)
+    + getMaxSizeTeam()
+    + setMaxSizeTeam(maxSizeTeam)
     + addCollaborator(collaborator)
     + equals(o)
     + hashCode(name, collaboratorsList, skillsSelected)
     + toString()
     + clone()
+    + getTeamCollaboratorsList()
+    - selectedCollaboratorsBySkills()
+    - teamCollaboratorsList(collaboratorsList)
+    - hasSelectedSkills(collaborator)
+    + isTeamSizeWithinBounds()
 }
 
 
