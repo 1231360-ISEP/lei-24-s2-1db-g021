@@ -53,7 +53,7 @@ public class Address {
     public String toString() {
         return "Address{" +
                 "doorNumber=" + doorNumber +
-                ", zipCode=" + zipCode +
+                ", zipCode='" + zipCode + '\'' +
                 '}';
     }
 }
