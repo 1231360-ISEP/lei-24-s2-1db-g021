@@ -2,19 +2,46 @@ package pt.ipp.isep.dei.esoft.project.application.controller;
 
 import pt.ipp.isep.dei.esoft.project.domain.Collaborator;
 import pt.ipp.isep.dei.esoft.project.domain.Skill;
-import pt.ipp.isep.dei.esoft.project.repository.CollaboratorsRepository;
-import pt.ipp.isep.dei.esoft.project.repository.Repositories;
-import pt.ipp.isep.dei.esoft.project.repository.SkillsRepository;
+import pt.ipp.isep.dei.esoft.project.repository.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AssignSkillController {
+    private CollaboratorsRepository collaboratorsRepository;
+    private SkillsRepository skillsRepository;
     private Collaborator collaboratorSelected;
     private List<Skill> skillsToAssign;
     private final Repositories repositories = Repositories.getInstance();
+
+    public AssignSkillController() {
+        getSkillsRepository();
+        getCollaboratorsRepository();
+    }
+    public AssignSkillController(CollaboratorsRepository collaboratorsRepository, SkillsRepository skillsRepository) {
+        this.collaboratorsRepository = collaboratorsRepository;
+        this.skillsRepository = skillsRepository;
+    }
+    private CollaboratorsRepository getCollaboratorsRepository(){
+        if (collaboratorsRepository == null) {
+            Repositories repositories = Repositories.getInstance();
+
+            //Get the TaskCategoryRepository
+            collaboratorsRepository = repositories.getCollaboratorsRepository();
+        }
+        return collaboratorsRepository;
+    }
+    private SkillsRepository getSkillsRepository(){
+        if (skillsRepository == null) {
+            Repositories repositories = Repositories.getInstance();
+
+            //Get the TaskCategoryRepository
+            skillsRepository = repositories.getSkillsRepository();
+        }
+        return skillsRepository;
+    }
+
     public List<Collaborator> getCollaborators(){
-        CollaboratorsRepository collaboratorsRepository = repositories.getCollaboratorsRepository();
         List<Collaborator> collaboratorsList = collaboratorsRepository.getCollaboratorsList();
         return collaboratorsList;
     }
@@ -22,7 +49,6 @@ public class AssignSkillController {
         this.collaboratorSelected = collaborator;
     }
     public List<Skill> getSkills(){
-        SkillsRepository skillsRepository = repositories.getSkillsRepository();
         return skillsRepository.getSkillsList();
     }
     public void storeSkills(List<Skill> skillsToAssign){
