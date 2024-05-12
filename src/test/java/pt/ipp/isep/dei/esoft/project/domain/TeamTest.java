@@ -22,7 +22,7 @@ class TeamTest {
     }
 
     @Test
-    void ensureGetTeamReturnsSelectedCollaboratorsBySkills() {
+    void ensureGetTeamCollaboratorsListReturnsSelectedCollaboratorsBySkills() {
         // Arrange
         Collaborator collaborator1 = new Collaborator("John Doe");
         collaborator1.addSkill(new Skill("Tree Pruner"));
@@ -37,7 +37,7 @@ class TeamTest {
         Team team = new Team("Team A", 1,4, collaborators, skillsSelected);
 
         // Act
-        List<Collaborator> teamMembers = team.getTeam();
+        List<Collaborator> teamMembers = team.getTeamCollaboratorsList();
 
         // Assert
         assertEquals(2, teamMembers.size());

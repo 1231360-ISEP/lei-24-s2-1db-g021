@@ -161,11 +161,12 @@ public class Collaborator{
         }
         skills.add(skill);
     }
-    /*
+
     public void removeSkill(Skill skill) {
         if (skills != null) {
-            skills.remove(skill);
+            List<Skill> updatedSkills = new ArrayList<>(skills);
+            updatedSkills.remove(skill);
+            skills = updatedSkills;
         }
     }
-    */
 }
