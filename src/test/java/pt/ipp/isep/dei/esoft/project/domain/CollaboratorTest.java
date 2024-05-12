@@ -2,6 +2,10 @@ package pt.ipp.isep.dei.esoft.project.domain;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CollaboratorTest {
@@ -72,8 +76,19 @@ class CollaboratorTest {
     @Test
     void ensureCloneWorks() {
         // Arrange
-        String email = "john.doe@this.company.com";
-        Collaborator collaborator = new Collaborator(email);
+        Skill skill1 = new Skill("Tree Pruner");
+        Skill skill2 = new Skill("Light Vehicle Driving Licence");
+        Skill skill3 = new Skill("Heavy Vehicle Driving Licence");
+
+        Collaborator collaborator = new Collaborator("John Doe",
+                new Date(2000, Calendar.JUNE, 1),
+                new Date(2020, Calendar.FEBRUARY, 1),
+                new Address(1, new ZipCode(1234,1)),
+                123456789,
+                "john.doe@example.com",
+                123456,
+                1,
+                List.of(skill1, skill2, skill3));
 
         // Act
         Collaborator clone = collaborator.clone();
@@ -81,4 +96,32 @@ class CollaboratorTest {
         // Assert
         assertEquals(collaborator, clone);
     }
+
+    @Test
+    void ensureRemoveSkillRemovesSkillFromCollaborator() {
+        // Arrange
+        Skill skill1 = new Skill("Tree Pruner");
+        Skill skill2 = new Skill("Light Vehicle Driving Licence");
+        Skill skill3 = new Skill("Heavy Vehicle Driving Licence");
+
+        Collaborator collaborator = new Collaborator("John Doe",
+                new Date(2000, Calendar.JUNE, 1),
+                new Date(2020, Calendar.FEBRUARY, 1),
+                new Address(1, new ZipCode(1234,1)),
+                123456789,
+                "john.doe@example.com",
+                123456,
+                1,
+                List.of(skill1, skill2, skill3));
+
+        // Act
+        collaborator.removeSkill(skill2);
+
+        // Assert
+        List<Skill> skills = collaborator.getSkills();
+        assertEquals(2, skills.size());
+        assertTrue(skills.contains(skill1));
+        assertTrue(skills.contains(skill3));
+    }
+
 }
