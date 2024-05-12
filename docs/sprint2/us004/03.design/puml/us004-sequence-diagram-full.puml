@@ -11,8 +11,8 @@ participant ":AssignSkillUI" as UI
 participant ":AssignSkillController" as CTRL
 participant ":Repositories" as Repositories
 participant "repositories\n:Repositories" as RepoInstance
-participant "CollaboratorsRepository\n:CollaboratorsRepository" as CollaboratorRepo
-participant "SkillsRepository\n:SkillsRepository" as SkillRepo
+participant "collaboratorsRepository\n:CollaboratorsRepository" as CollaboratorRepo
+participant "skillsRepository\n:SkillsRepository" as SkillRepo
 participant "collaboratorSelected\n:Collaborator" as Collaborator
 
 activate ADM
@@ -33,12 +33,12 @@ activate ADM
                 CTRL -> RepoInstance : getCollaboratorsRepository()
 
                 activate RepoInstance
-                    RepoInstance --> CTRL : CollaboratorsRepository
+                    RepoInstance --> CTRL : collaboratorsRepository
                 deactivate RepoInstance
 
-                CTRL -> CollaboratorRepo : getAllCollaborators()
+                CTRL -> CollaboratorRepo : getCollaboratorsList()
                 activate CollaboratorRepo
-                    CollaboratorRepo --> CTRL : allCollaborators
+                    CollaboratorRepo --> CTRL : collaboratorsList
                 deactivate CollaboratorRepo
 
                 CTRL --> UI : collaborators
@@ -70,13 +70,13 @@ activate ADM
                 CTRL -> RepoInstance : getSkillsRepository()
 
                 activate RepoInstance
-                    RepoInstance --> CTRL : SkillsRepository
+                    RepoInstance --> CTRL : skillsRepository
                 deactivate RepoInstance
 
-                CTRL -> SkillRepo : getAllSkills()
+                CTRL -> SkillRepo : getSkillsList()
 
                 activate SkillRepo
-                    SkillRepo --> CTRL : allSkills
+                    SkillRepo --> CTRL : skillsList
                 deactivate SkillRepo
 
                 CTRL --> UI : skills
@@ -109,13 +109,15 @@ activate ADM
             UI -> CTRL : Confirms changes
             
             activate CTRL
-                CTRL -> Collaborator : assignSkills(skillsToAssign)
+                loop as long as skillsToAssign still unassigned
+                    CTRL -> Collaborator : addSkill(skill)
 
-                activate Collaborator
-                    Collaborator --> CTRL : Success
-                deactivate Collaborator
+                    activate Collaborator
+                        Collaborator --> CTRL : Success
+                    deactivate Collaborator
 
-                CTRL --> UI : Success
+                end
+                CTRL --> UI : success
             deactivate CTRL
 
             UI --> ADM : Displays operation success

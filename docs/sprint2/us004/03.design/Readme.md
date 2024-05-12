@@ -6,23 +6,18 @@
 
 _**Note that SSD - Alternative One is adopted.**_
 
-| Interaction ID | Question: Which class is responsible for...   | Answer                | Justification (with patterns)                                                                                 |
-|:-------------  |:----------------------------------------------|:----------------------|:--------------------------------------------------------------------------------------------------------------|
-| Step 1  		 | 	... interacting with the actor?              | AssignSkillUI         | Pure Fabrication: there is no reason to assign this responsibility to any existing class in the Domain Model. |
-| 			  		 | 	... coordinating the US?                     | AssignSkillController | Controller                                                                                                    |
-| 			  		 | 	... instantiating a new CollaboratorList?               | AssignSkillController          | Creator (Rule 1): AssignSkillController closely uses CollaboratorList.                                                        |
-| 			  		 | ... knowing the user using the system?        | UserSession           | IE: cf. A&A component documentation.                                                                          |
-| 			  		 | 							                                       | CollaboratorList          | IE: knows/has its own Collaborators                                                                           |
-| 			  		 | 							                                       | Collaborator              | IE: knows its own data (e.g. email)                                                                           |
-| Step 2  		 | 							                                       |                       |                                                                                                               |
-| Step 3  		 | 	...saving the inputted data?                 | Task                  | IE: object created in step 1 has its own data.                                                                |
-| Step 4  		 | 	...knowing the task categories to show?      | System                | IE: Task Categories are defined by the Administrators.                                                        |
-| Step 5  		 | 	... saving the selected category?            | Task                  | IE: object created in step 1 is classified in one Category.                                                   |
-| Step 6  		 | 							                                       |                       |                                                                                                               |              
-| Step 7  		 | 	... validating all data (local validation)?  | Task                  | IE: owns its data.                                                                                            | 
-| 			  		 | 	... validating all data (global validation)? | Organization          | IE: knows all its tasks.                                                                                      | 
-| 			  		 | 	... saving the created task?                 | Organization          | IE: owns all its tasks.                                                                                       | 
-| Step 8  		 | 	... informing operation success?             | AssignSkillUI         | IE: is responsible for user interactions.                                                                     | 
+| Interaction ID | Question: Which class is responsible for...     | Answer                | Justification (with patterns)                                                                                 |
+|:---------------|:------------------------------------------------|:----------------------|:--------------------------------------------------------------------------------------------------------------|
+| Step 1  		     | 	... interacting with the actor?                | AssignSkillUI         | Pure Fabrication: there is no reason to assign this responsibility to any existing class in the Domain Model. |
+| 			  		        | 	... coordinating the US?                       | AssignSkillController | Controller                                                                                                    |
+| 			  		        | 	... instantiating a new CollaboratorRepository? | Repositories          | Creator (Rule 1): Repositories aggregates instances of CollaboratorList.                                      |
+| 			  		        | ... knowing the user using the system?          | UserSession           | IE: cf. A&A component documentation.                                                                          |
+| 			  		        | 							                                         | CollaboratorRepository | IE: knows/has its own Collaborators                                                                           |
+| 			  		        | 							                                         | Collaborator          | IE: knows its own data (e.g. email)                                                                           |
+| Step 2  		     | 							                                         |                       |                                                                                                               |
+| Step 3  		     | 	...saving the inputted data?                   | AssignSkillController                  | IE: object created in step 1 has its own data.                                                                |
+| Step 4  		     | 							                                         |                       |                                                                                                               |               |
+| Step 5  		     | 	... informing operation success?               | AssignSkillUI         | IE: is responsible for user interactions.                                                                     | 
 
 ### Systematization ##
 
