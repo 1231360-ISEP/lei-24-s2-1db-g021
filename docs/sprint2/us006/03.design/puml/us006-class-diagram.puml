@@ -55,6 +55,23 @@ class PlateCertification {
     - String plate
     + PlateCertification(plateCertification)
     + validatePlateCertification(plateCertification)
+    + String getBrand()
+    + String getModel()
+    + String getType()
+    + double getTare()
+    + double getGrossWeight()
+    + Date getRegisterDate()
+    + String getPlate()
+    + setBrand(String brand)
+    + setModel(String model)
+    + setType(String type)
+    + setTare(double tare)
+    + setGrossWeight(double grossWeight)
+    + setRegisterDate(Date registerDate)
+    + setPlate(String plate)
+    + int hashCode()
+    + String toString()
+    + boolean equals(Object o)
 }
 
 class PlateCertificationsRepository {
