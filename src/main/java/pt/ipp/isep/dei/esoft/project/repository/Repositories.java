@@ -9,6 +9,7 @@ public class Repositories {
     private final TaskCategoryRepository taskCategoryRepository;
     private final AuthenticationRepository authenticationRepository;
     private final TasksRepository tasksRepository;
+    private final VehiclesRepository vehiclesRepository;
 
     private Repositories() {
         skillsRepository = new SkillsRepository();
@@ -17,6 +18,7 @@ public class Repositories {
         taskCategoryRepository = new TaskCategoryRepository();
         authenticationRepository = new AuthenticationRepository();
         tasksRepository = new TasksRepository();
+        vehiclesRepository = new VehiclesRepository();
     }
 
     public static Repositories getInstance() {
@@ -52,4 +54,7 @@ public class Repositories {
         return tasksRepository;
     }
 
+    public VehiclesRepository getVehiclesRepository() {
+        return vehiclesRepository;
+    }
 }
