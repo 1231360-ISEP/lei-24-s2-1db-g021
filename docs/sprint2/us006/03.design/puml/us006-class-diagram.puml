@@ -43,6 +43,10 @@ class VehiclesRepository {
     + getVehiclesList()
     + addVehicle(vehicle)
     + validateVehicle(vehicle)
+    - List<Vehicle> vehiclesList
+    + VehiclesRepository()
+    + Optional<Vehicle> add(vehicle)
+    + remove(vehicle)
 }
 
 class PlateCertification {
@@ -78,6 +82,10 @@ class PlateCertificationsRepository {
     + getPlateCertificationsList()
     + addPlateCertification(plateCertification)
     + validatePlateCertifications(plateCertification)
+    - List<PlateCertification> plateCertificationsList
+    + PlateCertificationsRepository()
+    + Optional<PlateCertification> add(plateCertification)
+    + remove(plateCertification)
 }
 
 RegisterVehicleUI .> RegisterVehicleController

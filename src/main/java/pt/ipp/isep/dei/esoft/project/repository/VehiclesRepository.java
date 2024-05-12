@@ -1,5 +1,6 @@
 package pt.ipp.isep.dei.esoft.project.repository;
 
+import pt.ipp.isep.dei.esoft.project.domain.Job;
 import pt.ipp.isep.dei.esoft.project.domain.Vehicle;
 
 import java.util.ArrayList;
@@ -42,5 +43,9 @@ public class VehiclesRepository {
     public List<Vehicle> getVehiclesList() {
         //This is a defensive copy, so that the repository cannot be modified from the outside.
         return List.copyOf(vehiclesList);
+    }
+
+    public boolean remove(Vehicle vehicle) {
+        return vehiclesList.remove(vehicle);
     }
 }

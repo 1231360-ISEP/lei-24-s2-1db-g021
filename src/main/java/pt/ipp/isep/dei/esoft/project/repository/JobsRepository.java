@@ -1,6 +1,7 @@
 package pt.ipp.isep.dei.esoft.project.repository;
 
 import pt.ipp.isep.dei.esoft.project.domain.Job;
+import pt.ipp.isep.dei.esoft.project.domain.Skill;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,5 +43,9 @@ public class JobsRepository {
     public List<Job> getJobsList() {
         //This is a defensive copy, so that the repository cannot be modified from the outside.
         return List.copyOf(jobsList);
+    }
+
+    public boolean remove(Job job) {
+        return jobsList.remove(job);
     }
 }
