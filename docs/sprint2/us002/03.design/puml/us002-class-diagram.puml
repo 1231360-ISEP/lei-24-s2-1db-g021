@@ -16,13 +16,22 @@ class RegisterJobController {
 class Job {
     - String name
     + Job(name)
+    + getName()
+    + setName()
+    + equals()
+    + toString()
+    + clone()
     + validateJob(name)
 }
 
 class JobsRepository {
-    + getJobsList()
+    - List<Job> jobsList
+    + JobsRepository()
+    + Optional<Job> add(job)
     + addJob(name)
     + validateJob(name)
+    - validateJob(job)
+    + getJobsList()
 }
 
 class Repositories {
