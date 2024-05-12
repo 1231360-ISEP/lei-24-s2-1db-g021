@@ -2,6 +2,9 @@ package pt.ipp.isep.dei.esoft.project.domain;
 
 import java.util.Objects;
 
+import static java.lang.Character.isLetter;
+import static java.lang.Character.isWhitespace;
+
 public class Job {
     private String name;
 
@@ -16,6 +19,13 @@ public class Job {
     public void setName(String name) {
         if (name == null || name.isEmpty()){
             throw new IllegalArgumentException("Job name can't be empty. Please, try again.");
+        }
+
+        for (int i = 0; i < name.length(); i++) {
+            char c = name.charAt(i);
+            if (!isLetter(c) && !isWhitespace(c)) {
+                throw new IllegalArgumentException("Invalid job name. A job name can’t have special characters or digits. Please, try again.");
+            }
         }
         this.name = name;
     }
