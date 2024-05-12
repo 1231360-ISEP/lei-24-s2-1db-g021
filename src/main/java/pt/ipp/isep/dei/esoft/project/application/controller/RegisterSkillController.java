@@ -33,9 +33,9 @@ public class RegisterSkillController {
 
     /**
      * @param name is the name of the skill that will be created
-     *             if the skill has a valid name,
+     *             if the skill was a valid name,
      * @return the new skill
-     *             if not it throws a IllegalArgumentException
+     *             if not, it throws a IllegalArgumentException
      */
     public Optional<Skill> createSkill(String name) {
         Optional<Skill> newSkill;

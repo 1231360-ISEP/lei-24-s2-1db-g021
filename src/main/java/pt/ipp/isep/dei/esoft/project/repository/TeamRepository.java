@@ -37,12 +37,12 @@ public class TeamRepository {
     }
 
     /**
-     * This method returns a defensive (immutable) copy of the list of teams.
+     * getTeam is a method that returns a defensive (immutable) copy of the list of teams.
      *
-     * @return The list of teams.
+     * @return the list of teams.
      */
     public List<Team> getTeam() {
-        //This is a defensive copy, so that the repository cannot be modified from the outside.
+        // This is a defensive copy, so that the repository cannot be modified from the outside.
         return List.copyOf(teamsList);
     }
 

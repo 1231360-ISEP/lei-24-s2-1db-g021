@@ -21,6 +21,11 @@ public class ZipCode {
         return local;
     }
 
+    /**
+     * @param local is the number of the local that will be assigned to the ZipCode,
+     *             if the local number was a valid number, set the local,
+     *             if not, it throws a InvalidParameterException.
+     */
     public void setLocal(int local) {
         if (local > 9999 || local < 1000){
             throw new InvalidParameterException("Street must have a total of 4 digits.");
@@ -32,6 +37,12 @@ public class ZipCode {
         return street;
     }
 
+
+    /**
+     * @param street is the number of the street that will be assigned to the ZipCode,
+     *             if the street number was a valid number, set the street,
+     *             if not, it throws a InvalidParameterException.
+     */
     public void setStreet(int street) {
         if (street > 999){
             throw new InvalidParameterException("Street must have a total of 3 digits.");
