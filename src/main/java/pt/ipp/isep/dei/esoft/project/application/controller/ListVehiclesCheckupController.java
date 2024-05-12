@@ -43,9 +43,15 @@ public class ListVehiclesCheckupController {
     private boolean isVehicleCloseToExceedCheckup(Vehicle vehicle){
         double maintenance = vehicle.getMaintenance();
         double currentKm = vehicle.getCurrentKm();
-        double maintenanceSum = 0;
-        while(maintenanceSum <= currentKm){
-            maintenanceSum += maintenance;
+
+        double maintenanceGoal = 0;
+        while(maintenanceGoal <= currentKm){
+            maintenanceGoal += maintenance;
         }
+        double margin = maintenanceGoal * 0.05; //5%
+        if(currentKm >= maintenanceGoal - margin){
+            return true;
+        }
+        return false;
     }
 }
