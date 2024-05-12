@@ -1,4 +1,4 @@
-# US006 - Create a Task 
+# US003 - Register Collaborator Job & Skills
 
 ## 3. Design - User Story Realization 
 
