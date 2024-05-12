@@ -11,8 +11,12 @@ public class VehicleCheckUp {
         return date;
     }
 
-    public void setDate(Date date) {
+    public boolean setDate(Date date) {
+        if(checkIfDateSurpassed(date)){
+            return false;
+        }
         this.date = date;
+        return true;
     }
 
     public Address getPlace() {
@@ -40,7 +44,7 @@ public class VehicleCheckUp {
         this.kms = kms;
     }
 
-    private boolean checkIfDateSurpassed(Date date){
+    private static boolean checkIfDateSurpassed(Date date){
         Date actualDate = new Date();
         if (actualDate.after(date))
             return true;
