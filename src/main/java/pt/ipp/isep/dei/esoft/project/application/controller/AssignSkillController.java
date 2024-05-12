@@ -12,7 +12,6 @@ public class AssignSkillController {
     private SkillsRepository skillsRepository;
     private Collaborator collaboratorSelected;
     private List<Skill> skillsToAssign;
-    private final Repositories repositories = Repositories.getInstance();
 
     public AssignSkillController() {
         getSkillsRepository();
@@ -25,8 +24,6 @@ public class AssignSkillController {
     private CollaboratorsRepository getCollaboratorsRepository(){
         if (collaboratorsRepository == null) {
             Repositories repositories = Repositories.getInstance();
-
-            //Get the TaskCategoryRepository
             collaboratorsRepository = repositories.getCollaboratorsRepository();
         }
         return collaboratorsRepository;
