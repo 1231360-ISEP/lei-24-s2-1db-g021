@@ -52,10 +52,10 @@ AssignSkillController .. SkillsRepository
 
 AssignSkillController .. Collaborator
 
-Repositories *- CollaboratorsRepository
+Repositories o- "1" CollaboratorsRepository
 
-Repositories *- SkillsRepository
+Repositories o- "1" SkillsRepository
 
-CollaboratorsRepository o- Collaborator
+CollaboratorsRepository o- "*" Collaborator
 
 @enduml

@@ -16,9 +16,8 @@ class VehiclesRepository {
 class Vehicle {
     - currentKm
     - maintenance
-    + didVehExceededCheckup()
-    + isVehicleCloseToExceedCheckup()
-    + isVehicleNeedingOrAlmostCheckup()
+    + getCurrentKm()
+    + getMaintenance()
 }
 
 class Repositories {
@@ -30,14 +29,17 @@ class Repositories {
 
 class ListVehiclesCheckupController {
     + getVehiclesNeedingCheckup()
+    + didVehExceededCheckup()
+    + isVehicleCloseToExceedCheckup()
+    + isVehicleNeedingOrAlmostCheckup()
 }
 
 class ListVehiclesCheckupUI {
 }
 
-Repositories *- VehiclesRepository
+Repositories o- "1" VehiclesRepository
 
-VehiclesRepository o- Vehicle
+VehiclesRepository o- "*" Vehicle
 
 ListVehiclesCheckupController .. ListVehiclesCheckupUI
 ListVehiclesCheckupController .. Repositories
