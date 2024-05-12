@@ -13,12 +13,6 @@ class RegisterSkillController {
     + getSkillsList()
 }
 
-'class Skill {
-'    - String name
-'    + Skill(name)
-'    + validateSkill(name)
-'}
-
 class Skill {
     - String name
     + Skill(name)
@@ -30,22 +24,14 @@ class Skill {
     + validateSkill(name)
 }
 
-
-'class SkillsRepository {
-'    + getSkillsList()
-'    + addSkill(name)
-'    + validateSkill(name)
-'}
-
-
 class SkillsRepository {
     - List<Skill> skillsList
     + SkillsRepository()
     + Optional<Skill> add(skill)
     + addSkill(name)
-    + validateSkill(name)
     - validateSkill(skill)
     + getSkillsList()
+    + remove(skill)
 }
 
 class Repositories {
