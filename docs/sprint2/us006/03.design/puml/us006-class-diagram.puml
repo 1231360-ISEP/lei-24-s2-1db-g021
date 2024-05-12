@@ -24,8 +24,19 @@ class Vehicle {
     - double currentKm
     - Date acquisitionDate
     - double maintenance
+    -PlateCertification final plateCertification
     + Vehicle(vehicle)
     + validateVehicle(vehicle)
+    + getCurrentKm()
+    + setCurrentKm()
+    + getAcquisitionDate()
+    + setAcquisitionDate()
+    + getMaintenance()
+    + setMaintenance()
+    + getPlateCertification()
+    + equals()
+    + toString()
+    + clone()
 }
 
 class VehiclesRepository {
