@@ -10,177 +10,186 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class PlateCertificationTest {
     @Test
-    void testEqualsSameObject() throws ParseException {
-        // Arrange
-        String ExampleDate = "2005-01-02";
+    public void testPlateCertificationConstructor() throws ParseException {
+        //Arrange
+        String exampleDate = "2005-01-02";
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date dateTest = sdf.parse(ExampleDate);
+        Date dateTest = sdf.parse(exampleDate);
 
+        //Act
         PlateCertification plateCertification = new PlateCertification("Renault","Clio","Electric",900,1200,dateTest,"72-XQ-70");
 
-        // Act
-        boolean result = plateCertification.equals(plateCertification);
-
-        // Assert
-        assertTrue(result, "Plate Certification should be equal to itself.");
+        //Assert
+        assertEquals("Renault", plateCertification.getBrand());
+        assertEquals("Clio", plateCertification.getModel());
+        assertEquals("Electric", plateCertification.getType());
+        assertEquals(900, plateCertification.getTare());
+        assertEquals(1200, plateCertification.getGrossWeight());
+        assertEquals(dateTest, plateCertification.getRegisterDate());
+        assertEquals("72-XQ-70", plateCertification.getPlate());
     }
 
     @Test
-    void testEqualsDifferentClass() throws ParseException {
-        // Arrange
-        String ExampleDate = "2005-01-02";
+    public void testSetTare_NegativeValue() throws ParseException {
+        //Arrange
+        String exampleDate = "2005-01-02";
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date dateTest = sdf.parse(ExampleDate);
-
+        Date dateTest = sdf.parse(exampleDate);
         PlateCertification plateCertification = new PlateCertification("Renault","Clio","Electric",900,1200,dateTest,"72-XQ-70");
 
-        // Act
-        boolean result = plateCertification.equals("");
-
-        // Assert
-        assertFalse(result, "Plate Certification should not be equal to an object of a different class.");
-
+        //Act and assert (ensure that an exception is launched)
+        assertThrows(IllegalArgumentException.class, () -> plateCertification.setTare(-100));
     }
 
     @Test
-    void testEqualsNull() throws ParseException {
-        // Arrange
-        String ExampleDate = "2005-01-02";
+    public void testSetTare_ZeroValue() throws ParseException {
+        //Arrange
+        String exampleDate = "2005-01-02";
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date dateTest = sdf.parse(ExampleDate);
-
-        PlateCertification plateCertification1 = new PlateCertification("Renault","Clio","Electric",900,1200,dateTest,"72-XQ-70");
-
-        // Act
-        boolean result = plateCertification1.equals(null);
-
-        // Assert
-        assertFalse(result, "Plate Certification should not be equal to null.");
-    }
-    @Test
-    void testEqualsDifferentObject() throws ParseException {
-        // Arrange
-        String ExampleDate = "2005-01-02";
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date dateTest = sdf.parse(ExampleDate);
-
-        String ExampleDate2 = "2006-08-10";
-        Date dateTest2 = sdf.parse(ExampleDate2);
-
-        PlateCertification plateCertification1 = new PlateCertification("Renault","Clio","Electric",900,1200,dateTest,"72-XQ-70");
-        PlateCertification plateCertification2 = new PlateCertification("Mercedes","Benz","Hybrid",1050,1400,dateTest2,"53-NA-63");
-
-        // Act and Assert
-        assertNotEquals(plateCertification1, plateCertification2);
-    }
-    @Test
-    void testEqualsSameObjectDifferentName() throws ParseException {
-        // Arrange
-        String ExampleDate = "2005-01-02";
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date dateTest = sdf.parse(ExampleDate);
-
-        String ExampleDate2 = "2006-08-10";
-        Date dateTest2 = sdf.parse(ExampleDate2);
-
-        PlateCertification plateCertification1 = new PlateCertification("Renault","Clio","Electric",900,1200,dateTest,"72-XQ-70");
-        PlateCertification plateCertification2 = new PlateCertification("Mercedes","Benz","Hybrid",1050,1400,dateTest2,"53-NA-63");
-
-        // Act
-        boolean result = plateCertification1.equals(plateCertification2);
-
-        // Assert
-        assertFalse(result, "Plate Certifications with different values should not be equal.");
-    }
-
-    @Test
-    void testEqualsDifferentObjectsSameName() throws ParseException {
-        // Arrange
-        String ExampleDate = "2005-01-02";
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date dateTest = sdf.parse(ExampleDate);
-
-        PlateCertification plateCertification1 = new PlateCertification("Renault","Clio","Electric",900,1200,dateTest,"72-XQ-70");
-        PlateCertification plateCertification2 = new PlateCertification("Renault","Clio","Electric",900,1200,dateTest,"72-XQ-70");
-
-        // Act
-        boolean result = plateCertification1.equals(plateCertification2);
-
-        // Assert
-        assertTrue(result, "Plate Certifications with same values should be equal.");
-    }
-    @Test
-    void testHashCodeSameObject() throws ParseException {
-        // Arrange
-        String ExampleDate = "2005-01-02";
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date dateTest = sdf.parse(ExampleDate);
-
+        Date dateTest = sdf.parse(exampleDate);
         PlateCertification plateCertification = new PlateCertification("Renault","Clio","Electric",900,1200,dateTest,"72-XQ-70");
 
-        // Act and Assert
-        assertEquals(plateCertification.hashCode(), plateCertification.hashCode());
+        //Act and assert (ensure that an exception is launched)
+        assertThrows(IllegalArgumentException.class, () -> plateCertification.setTare(0));
     }
 
     @Test
-    void testHashCodeDifferentObject() throws ParseException {
-        // Arrange
-        String ExampleDate = "2005-01-02";
+    public void testSetGrossWeight_NegativeValue() throws ParseException {
+        //Arrange
+        String exampleDate = "2005-01-02";
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date dateTest = sdf.parse(ExampleDate);
+        Date dateTest = sdf.parse(exampleDate);
+        PlateCertification plateCertification = new PlateCertification("Renault","Clio","Electric",900,1200,dateTest,"72-XQ-70");
 
-        String ExampleDate2 = "2006-08-10";
-        Date dateTest2 = sdf.parse(ExampleDate2);
-
-        PlateCertification plateCertification1 = new PlateCertification("Renault","Clio","Electric",900,1200,dateTest,"72-XQ-70");
-        PlateCertification plateCertification2 = new PlateCertification("Mercedes","Benz","Hybrid",1050,1400,dateTest2,"53-NA-63");
-
-        // Act and Assert
-        assertNotEquals(plateCertification1.hashCode(), plateCertification2.hashCode());
+        //Act and assert (ensure that an exception is launched)
+        assertThrows(IllegalArgumentException.class, () -> plateCertification.setGrossWeight(-200));
     }
 
     @Test
-    void testHashCodeSameObjectDifferentName() throws ParseException {
-        // Arrange
-        String ExampleDate = "2005-01-02";
+    public void testSetGrossWeight_ZeroValue() throws ParseException {
+        //Arrange
+        String exampleDate = "2005-01-02";
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date dateTest = sdf.parse(ExampleDate);
+        Date dateTest = sdf.parse(exampleDate);
+        PlateCertification plateCertification = new PlateCertification("Renault","Clio","Electric",900,1200,dateTest,"72-XQ-70");
 
-        String ExampleDate2 = "2006-08-10";
-        Date dateTest2 = sdf.parse(ExampleDate2);
-
-        PlateCertification plateCertification1 = new PlateCertification("Renault","Clio","Electric",900,1200,dateTest,"72-XQ-70");
-        PlateCertification plateCertification2 = new PlateCertification("Mercedes","Benz","Hybrid",1050,1400,dateTest2,"53-NA-63");
-
-        // Act and Assert
-        assertNotEquals(plateCertification1.hashCode(), plateCertification2.hashCode());
+        //Act and assert (ensure that an exception is launched)
+        assertThrows(IllegalArgumentException.class, () -> plateCertification.setGrossWeight(0));
     }
 
     @Test
-    void testHashCodeSameObjectSameName() throws ParseException {
-        // Arrange
-        String ExampleDate = "2005-01-02";
+    public void testSetPlateWithNull() throws ParseException {
+        //Arrange
+        String exampleDate = "2005-01-02";
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date dateTest = sdf.parse(ExampleDate);
+        Date dateTest = sdf.parse(exampleDate);
+        PlateCertification plateCertification = new PlateCertification("Renault","Clio","Electric",900,1200,dateTest,"72-XQ-70");
 
-        PlateCertification plateCertification1 = new PlateCertification("Renault","Clio","Electric",900,1200,dateTest,"72-XQ-70");
-        PlateCertification plateCertification2 = new PlateCertification("Renault","Clio","Electric",900,1200,dateTest,"72-XQ-70");
+        //Act and assert (ensure that an exception is launched)
+        assertThrows(IllegalArgumentException.class, () -> plateCertification.setPlate(null));
+    }
 
-        // Act and Assert
+    @Test
+    public void testSetPlateWithEmpty() throws ParseException {
+        //Arrange
+        String exampleDate = "2005-01-02";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date dateTest = sdf.parse(exampleDate);
+        PlateCertification plateCertification = new PlateCertification("Renault","Clio","Electric",900,1200,dateTest,"72-XQ-70");
+
+        //Act and assert (ensure that an exception is launched)
+        assertThrows(IllegalArgumentException.class, () -> plateCertification.setPlate(""));
+    }
+
+    @Test
+    public void testSetModelWithNull() throws ParseException {
+        //Arrange
+        String exampleDate = "2005-01-02";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date dateTest = sdf.parse(exampleDate);
+        PlateCertification plateCertification = new PlateCertification("Renault","Clio","Electric",900,1200,dateTest,"72-XQ-70");
+
+        //Act and assert (ensure that an exception is launched)
+        assertThrows(IllegalArgumentException.class, () -> plateCertification.setModel(null));
+    }
+
+    @Test
+    public void testSetModelWithEmpty() throws ParseException {
+        //Arrange
+        String exampleDate = "2005-01-02";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date dateTest = sdf.parse(exampleDate);
+        PlateCertification plateCertification = new PlateCertification("Renault","Clio","Electric",900,1200,dateTest,"72-XQ-70");
+
+        //Act and assert (ensure that an exception is launched)
+        assertThrows(IllegalArgumentException.class, () -> plateCertification.setModel(""));
+    }
+
+    @Test
+    public void testSetBrandWithNull() throws ParseException {
+        //Arrange
+        String exampleDate = "2005-01-02";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date dateTest = sdf.parse(exampleDate);
+        PlateCertification plateCertification = new PlateCertification("Renault","Clio","Electric",900,1200,dateTest,"72-XQ-70");
+
+        //Act and assert (ensure that an exception is launched)
+        assertThrows(IllegalArgumentException.class, () -> plateCertification.setBrand(null));
+    }
+
+    @Test
+    public void testSetBrandWithEmpty() throws ParseException {
+        //Arrange
+        String exampleDate = "2005-01-02";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date dateTest = sdf.parse(exampleDate);
+        PlateCertification plateCertification = new PlateCertification("Renault","Clio","Electric",900,1200,dateTest,"72-XQ-70");
+
+        //Act and assert (ensure that an exception is launched)
+        assertThrows(IllegalArgumentException.class, () -> plateCertification.setBrand(""));
+    }
+
+    @Test
+    public void testSetTypeWithNull() throws ParseException {
+        //Arrange
+        String exampleDate = "2005-01-02";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date dateTest = sdf.parse(exampleDate);
+        PlateCertification plateCertification = new PlateCertification("Renault","Clio","Electric",900,1200,dateTest,"72-XQ-70");
+
+        //Act and assert (ensure that an exception is launched)
+        assertThrows(IllegalArgumentException.class, () -> plateCertification.setType(null));
+    }
+
+    @Test
+    public void testSetTypeWithEmpty() throws ParseException {
+        //Arrange
+        String exampleDate = "2005-01-02";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date dateTest = sdf.parse(exampleDate);
+        PlateCertification plateCertification = new PlateCertification("Renault","Clio","Electric",900,1200,dateTest,"72-XQ-70");
+
+        //Act and assert (ensure that an exception is launched)
+        assertThrows(IllegalArgumentException.class, () -> plateCertification.setType(""));
+    }
+
+    @Test
+    public void testEqualsAndHashCode() throws ParseException {
+        //Arrange
+        String exampleDate1 = "2005-01-02";
+        String exampleDate2 = "2006-08-10";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date dateTest1 = sdf.parse(exampleDate1);
+        Date dateTest2 = sdf.parse(exampleDate2);
+
+        PlateCertification plateCertification1 = new PlateCertification("Renault","Clio","Electric",900,1200,dateTest1,"72-XQ-70");
+        PlateCertification plateCertification2 = new PlateCertification("Renault","Clio","Electric",900,1200,dateTest1,"72-XQ-70");
+        PlateCertification plateCertification3 = new PlateCertification("Mercedes","Benz","Hybrid",1050,1400,dateTest2,"53-NA-63");
+
+        //Act and assert
+        assertEquals(plateCertification1, plateCertification2);
+        assertNotEquals(plateCertification1, plateCertification3);
         assertEquals(plateCertification1.hashCode(), plateCertification2.hashCode());
-    }
-
-    @Test
-    void ensureCloneWorks() throws ParseException {
-        // Arrange
-        String ExampleDate = "2005-01-02";
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date dateTest = sdf.parse(ExampleDate);
-
-        PlateCertification plateCertification = new PlateCertification("Renault","Clio","Electric",900,1200,dateTest,"72-XQ-70");
-        PlateCertification clone = plateCertification.clone();
-
-        // Act and Assert
-        assertEquals(plateCertification, clone);
+        assertNotEquals(plateCertification1.hashCode(), plateCertification3.hashCode());
     }
 }
