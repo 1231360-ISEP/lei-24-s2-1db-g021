@@ -17,9 +17,12 @@ class VehicleCheckUpTest {
         ZipCode zc = new ZipCode(4500,034);
         Address ad = new Address(725,zc);
         float kms = 100200;
+        Date vehicleDate = new Date();
+        PlateCertification plateCertification = new PlateCertification("a", "a", "a", 1, 1, vehicleDate, "");
+        Vehicle vehicle = new Vehicle(1, new Date(), 20, plateCertification);
 
         assertThrows(IllegalArgumentException.class, () ->
-                new VehicleCheckUp(d,ad, kms)
+                new VehicleCheckUp(d,ad, kms, vehicle)
         );
     }
     @Test
@@ -29,9 +32,12 @@ class VehicleCheckUpTest {
         ZipCode zc = new ZipCode(4500,034);
         Address ad = new Address(725,zc);
         float kms = -100200;
+        Date vehicleDate = new Date();
+        PlateCertification plateCertification = new PlateCertification("a", "a", "a", 1, 1, vehicleDate, "");
+        Vehicle vehicle = new Vehicle(1, new Date(), 20, plateCertification);
 
         assertThrows(IllegalArgumentException.class, () ->
-                new VehicleCheckUp(d,ad, kms)
+                new VehicleCheckUp(d,ad, kms, vehicle)
         );
     }
     @Test
@@ -41,8 +47,11 @@ class VehicleCheckUpTest {
         ZipCode zc = new ZipCode(4500,034);
         Address ad = new Address(725,zc);
         float kms = 100200;
+        Date vehicleDate = new Date();
+        PlateCertification plateCertification = new PlateCertification("a", "a", "a", 1, 1, vehicleDate, "");
+        Vehicle vehicle = new Vehicle(1, new Date(), 20, plateCertification);
 
-        VehicleCheckUp vcu = new VehicleCheckUp(new Date(),ad, kms);
+        VehicleCheckUp vcu = new VehicleCheckUp(new Date(),ad, kms, vehicle);
         assertFalse(vcu.setDate(d));
     }
     @Test
@@ -52,8 +61,11 @@ class VehicleCheckUpTest {
         ZipCode zc = new ZipCode(4500,034);
         Address ad = new Address(725,zc);
         float kms = 100200;
+        Date vehicleDate = new Date();
+        PlateCertification plateCertification = new PlateCertification("a", "a", "a", 1, 1, vehicleDate, "");
+        Vehicle vehicle = new Vehicle(1, new Date(), 20, plateCertification);
 
-        VehicleCheckUp vcu = new VehicleCheckUp(d,ad, kms);
+        VehicleCheckUp vcu = new VehicleCheckUp(d,ad, kms, vehicle);
 
         float negativeKms = -1 * kms;
         assertFalse(vcu.setKms(negativeKms));

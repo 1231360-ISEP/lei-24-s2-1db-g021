@@ -6,6 +6,7 @@ public class VehicleCheckUp {
     private Date date;
     private Address place;
     private float kms;
+    Vehicle vehicle;
 
     public Date getDate() {
         return date;
@@ -47,7 +48,7 @@ public class VehicleCheckUp {
      * @param place the place
      * @param kms the kilometers
      */
-    public VehicleCheckUp(Date date, Address place, float kms) {
+    public VehicleCheckUp(Date date, Address place, float kms, Vehicle vehicle) {
         if(checkIfDateSurpassedActualOne(date)){
             throw new IllegalArgumentException("Date has surpassed the actual date.");
         }
@@ -57,6 +58,7 @@ public class VehicleCheckUp {
             throw new IllegalArgumentException("Kilometers can't be negative.");
         }
         this.kms = kms;
+        this.vehicle = vehicle;
     }
 
     /**
