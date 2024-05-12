@@ -43,12 +43,14 @@ class VehicleCheckUpTest {
     }
     @Test
     void setKmsReturnFalseWhenIsNegative(){
-        Date d = new Date();
+        Date d = new GregorianCalendar(2025,GregorianCalendar.MAY,12).getTime();
         ZipCode zc = new ZipCode(4500,034);
         Address ad = new Address(725,zc);
-        float kms = -100200;
+        float kms = 100200;
 
         VehicleCheckUp vcu = new VehicleCheckUp(d,ad, kms);
-        assertFalse(vcu.setKms(kms));
+
+        float negativeKms = -1 * kms;
+        assertFalse(vcu.setKms(negativeKms));
     }
 }
