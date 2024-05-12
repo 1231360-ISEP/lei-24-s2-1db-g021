@@ -17,6 +17,11 @@ public class Skill {
         if (name == null || name.isEmpty()){
             throw new IllegalArgumentException("Name cannot be empty.");
         }
+        for (char c : name.toCharArray()) {
+            if (!Character.isLetter(c) && !Character.isWhitespace(c)) {
+                throw new IllegalArgumentException("Name cannot contain special characters or digits.");
+            }
+        }
         this.name = name;
     }
 

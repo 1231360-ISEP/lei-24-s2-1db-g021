@@ -77,6 +77,18 @@ class SkillTest {
         // Assert
         assertTrue(result, "Skills with same names should be equal.");
     }
+
+    @Test
+    void ensureSkillNameCannotContainSpecialCharactersOrDigits() {
+        // Arrange
+        String invalidSkill1 = "Tree%Pruner";
+        String invalidSkill2 = "Tree1Pruner";
+
+        // Act and Assert
+        assertThrows(IllegalArgumentException.class, () -> new Skill(invalidSkill1));
+        assertThrows(IllegalArgumentException.class, () -> new Skill(invalidSkill2));
+    }
+
     @Test
     void testHashCodeSameObject() {
         // Arrange
