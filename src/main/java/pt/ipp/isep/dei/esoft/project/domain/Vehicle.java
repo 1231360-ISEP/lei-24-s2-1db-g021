@@ -28,6 +28,10 @@ public class Vehicle {
         this.currentKm = currentKm;
     }
 
+    public PlateCertification getPlateCertification() {
+        return plateCertification;
+    }
+
     public Date getAcquisitionDate() {
         return acquisitionDate;
     }
