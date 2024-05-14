@@ -1,11 +1,8 @@
 package pt.ipp.isep.dei.esoft.project.application.controller;
 
-import pt.ipp.isep.dei.esoft.project.domain.Collaborator;
 import pt.ipp.isep.dei.esoft.project.domain.Job;
-import pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository;
 import pt.ipp.isep.dei.esoft.project.repository.Repositories;
 import pt.ipp.isep.dei.esoft.project.repository.JobsRepository;
-import pt.isep.lei.esoft.auth.domain.model.Email;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,10 +11,18 @@ public class RegisterJobController {
 
     private JobsRepository jobsRepository;
 
+    /**
+     * Constructs a new RegisterJobController object.
+     */
     public RegisterJobController() {
         getJobsRepository();
     }
 
+    /**
+     * Constructs a new RegisterJobController object with a specified JobsRepository.
+     *
+     * @param jobsRepository The JobsRepository to be used by the controller.
+     */
     public RegisterJobController(JobsRepository jobsRepository) {
         this.jobsRepository = jobsRepository;
     }
@@ -25,17 +30,16 @@ public class RegisterJobController {
     private JobsRepository getJobsRepository() {
         if (jobsRepository == null) {
             Repositories repositories = Repositories.getInstance();
-
             jobsRepository = repositories.getJobsRepository();
         }
         return jobsRepository;
     }
 
     /**
-     * @param name is the name of the job that it's going to be created
-     *             if the job name is valid,
-     * @return the new job name
-     *             if not it throws a IllegalArgumentException
+     * Creates a new Job with the given name.
+     *
+     * @param name The name of the job to be created.
+     * @return An Optional containing the newly created Job, or empty if the operation fails.
      */
     public Optional<Job> createJob(String name) {
         Optional<Job> newJob;
@@ -44,9 +48,14 @@ public class RegisterJobController {
         } catch (IllegalArgumentException e) {
             return Optional.empty();
         }
-        return  newJob;
+        return newJob;
     }
 
+    /**
+     * Retrieves the list of all jobs.
+     *
+     * @return The list of all jobs.
+     */
     public List<Job> getJobsList() {
         return jobsRepository.getJobsList();
     }
