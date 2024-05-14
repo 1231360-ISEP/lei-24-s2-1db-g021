@@ -6,8 +6,7 @@ import pt.ipp.isep.dei.esoft.project.repository.Repositories;
 import pt.ipp.isep.dei.esoft.project.repository.VehicleCheckUpRepository;
 import pt.ipp.isep.dei.esoft.project.repository.VehiclesRepository;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class ListVehiclesCheckupController {
     private VehiclesRepository vehiclesRepository;
@@ -49,13 +48,15 @@ public class ListVehiclesCheckupController {
      * This method gets the vehicles needing or almost needing a check-up
      * @return a list containing the vehicles needing or almost needing a check-up
      */
-    public List<Vehicle> getVehiclesNeedingCheckup(){
+    public Map<Vehicle, VehicleCheckUp[]> getVehiclesNeedingCheckup(){
         List<Vehicle> vehicles = vehiclesRepository.getVehiclesList();
-        List<Vehicle> vehiclesNeedingIt = new ArrayList<Vehicle>();
+        Map<Vehicle, VehicleCheckUp[]> vehiclesNeedingIt = new HashMap<>();
         for (Vehicle vehicle:
              vehicles) {
                 if(isVehicleNeedingOrAlmostCheckup(vehicle)){
-                    vehiclesNeedingIt.add(vehicle);
+                    List<VehicleCheckUp> vehicleCheckUps = vehiclesCheckUpsRepository.getVehicleCheckUps(vehicle);
+                    VehicleCheckUp[] lastNextCheckups = getNextAndLastCheckup(vehicleCheckUps);
+                    vehiclesNeedingIt.put(vehicle, lastNextCheckups);
                 }
         }
         return vehiclesNeedingIt;
@@ -88,16 +89,23 @@ public class ListVehiclesCheckupController {
         }
         return false;
     }
-
-    private List<VehicleCheckUp> getVehicleCheckUps(Vehicle vehicle){
-        List<VehicleCheckUp> vehicleCheckUps = new ArrayList<VehicleCheckUp>();
-        List<VehicleCheckUp> vehiclesCheckUpsList = vehiclesCheckUpsRepository.getVehiclesCheckUpsList();
+    private VehicleCheckUp[] getNextAndLastCheckup(List<VehicleCheckUp> vehicleCheckUpList){
+        VehicleCheckUp lastCheckup = null;
+        VehicleCheckUp nextCheckup = null;
+        Date momentDate = new Date();
         for (VehicleCheckUp vehCheckUp:
-                vehiclesCheckUpsList) {
-            if(vehCheckUp.getVehicle() == vehicle){
-                vehicleCheckUps.add(vehCheckUp);
+             vehicleCheckUpList) {
+            if (nextCheckup == null) {
+                nextCheckup = vehCheckUp;
             }
+            if (lastCheckup == null) {
+                lastCheckup = vehCheckUp;
+            }
+            if(vehCheckUp.getDate().after(lastCheckup.getDate()) && vehCheckUp.getDate().before(momentDate))
+                lastCheckup = vehCheckUp;
+            if(vehCheckUp.getDate().before(nextCheckup.getDate()) && vehCheckUp.getDate().after(momentDate))
+                nextCheckup = vehCheckUp;
         }
-        return  vehicleCheckUps;
+        return new VehicleCheckUp[]{lastCheckup, nextCheckup};
     }
 }

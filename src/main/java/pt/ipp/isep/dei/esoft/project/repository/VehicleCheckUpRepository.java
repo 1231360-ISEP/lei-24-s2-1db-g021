@@ -1,5 +1,6 @@
 package pt.ipp.isep.dei.esoft.project.repository;
 
+import pt.ipp.isep.dei.esoft.project.domain.Vehicle;
 import pt.ipp.isep.dei.esoft.project.domain.VehicleCheckUp;
 
 import java.util.ArrayList;
@@ -46,5 +47,16 @@ public class VehicleCheckUpRepository {
 
     public boolean remove(VehicleCheckUp vehicleCheckUp) {
         return vehiclesCheckUpList.remove(vehicleCheckUp);
+    }
+
+    public List<VehicleCheckUp> getVehicleCheckUps(Vehicle vehicle){
+        List<VehicleCheckUp> vehicleCheckUps = new ArrayList<>();
+        for (VehicleCheckUp vehCheckUp:
+                vehiclesCheckUpList) {
+            if(vehCheckUp.getVehicle() == vehicle){
+                vehicleCheckUps.add(vehCheckUp);
+            }
+        }
+        return  vehicleCheckUps;
     }
 }
