@@ -17,12 +17,8 @@ public class VehicleCheckUp {
         return date;
     }
 
-    public boolean setDate(Date date) {
-        if(checkIfDateSurpassedActualOne(date)){
-            return false;
-        }
+    public void setDate(Date date) {
         this.date = date;
-        return true;
     }
 
     public Address getPlace() {
@@ -53,35 +49,19 @@ public class VehicleCheckUp {
 
     /**
      * Initializes a new VehicleCheckUp
-     * Throws IllegalArgumentException if the date is earlier than the current date
      * Throws IllegalArgumentException if the kilometers is negative i.e. below 0
      * @param date the date
      * @param place the place
      * @param kms the kilometers
      */
     public VehicleCheckUp(Date date, Address place, float kms, Vehicle vehicle) {
-        if(checkIfDateSurpassedActualOne(date)){
-            throw new IllegalArgumentException("Date has surpassed the actual date.");
-        }
-        this.date = date;
-        this.place = place;
         if(kmsAreNegative(kms)){
             throw new IllegalArgumentException("Kilometers can't be negative.");
         }
         this.kms = kms;
         this.vehicle = vehicle;
-    }
-
-    /**
-     * This method returns true if the date of the moment is later than the date
-     * @param date the date
-     * @return a boolean value
-     */
-    private static boolean checkIfDateSurpassedActualOne(Date date){
-        Date actualDate = new Date();
-        if (actualDate.after(date))
-            return true;
-        return false;
+        this.date = date;
+        this.place = place;
     }
 
     /**

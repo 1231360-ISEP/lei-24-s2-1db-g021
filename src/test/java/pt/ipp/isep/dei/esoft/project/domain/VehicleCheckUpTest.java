@@ -9,22 +9,6 @@ import java.util.GregorianCalendar;
 import static org.junit.jupiter.api.Assertions.*;
 
 class VehicleCheckUpTest {
-
-    @Test
-    @DisplayName("Throw an Exception when date surpassed the actual date")
-    void throwExceptionWhenDateSurpassed() {
-        Date d = new GregorianCalendar(2005, GregorianCalendar.NOVEMBER, 20).getTime();
-        ZipCode zc = new ZipCode(4500,034);
-        Address ad = new Address(725,zc);
-        float kms = 100200;
-        Date vehicleDate = new Date();
-        PlateCertification plateCertification = new PlateCertification("a", "a", "a", 1, 1, vehicleDate, "");
-        Vehicle vehicle = new Vehicle(1, new Date(), 20, plateCertification);
-
-        assertThrows(IllegalArgumentException.class, () ->
-                new VehicleCheckUp(d,ad, kms, vehicle)
-        );
-    }
     @Test
     @DisplayName("Throw an Exception when kms are negative")
     void throwExceptionWhenKmsAreNegative(){
@@ -39,20 +23,6 @@ class VehicleCheckUpTest {
         assertThrows(IllegalArgumentException.class, () ->
                 new VehicleCheckUp(d,ad, kms, vehicle)
         );
-    }
-    @Test
-    @DisplayName("setDate() returning false when date is surpassed")
-    void setDateReturnFalseWhenDateSurpassed(){
-        Date d = new GregorianCalendar(2005, GregorianCalendar.NOVEMBER, 20).getTime();
-        ZipCode zc = new ZipCode(4500,034);
-        Address ad = new Address(725,zc);
-        float kms = 100200;
-        Date vehicleDate = new Date();
-        PlateCertification plateCertification = new PlateCertification("a", "a", "a", 1, 1, vehicleDate, "");
-        Vehicle vehicle = new Vehicle(1, new Date(), 20, plateCertification);
-
-        VehicleCheckUp vcu = new VehicleCheckUp(new Date(),ad, kms, vehicle);
-        assertFalse(vcu.setDate(d));
     }
     @Test
     @DisplayName("setKms() returning false when is negative")
