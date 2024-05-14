@@ -38,7 +38,7 @@ public class PlateCertificationTest {
         PlateCertification plateCertification = new PlateCertification("Renault","Clio","Electric",900,1200,dateTest,"72-XQ-70");
 
         //Act and assert (ensure that an exception is launched)
-        assertThrows(IllegalArgumentException.class, () -> plateCertification.setTare(-100));
+        assertThrows(IllegalArgumentException.class, () -> plateCertification.setTare(-100,plateCertification));
     }
 
     @Test
@@ -50,7 +50,7 @@ public class PlateCertificationTest {
         PlateCertification plateCertification = new PlateCertification("Renault","Clio","Electric",900,1200,dateTest,"72-XQ-70");
 
         //Act and assert (ensure that an exception is launched)
-        assertThrows(IllegalArgumentException.class, () -> plateCertification.setTare(0));
+        assertThrows(IllegalArgumentException.class, () -> plateCertification.setTare(0,plateCertification));
     }
 
     @Test
@@ -62,7 +62,7 @@ public class PlateCertificationTest {
         PlateCertification plateCertification = new PlateCertification("Renault","Clio","Electric",900,1200,dateTest,"72-XQ-70");
 
         //Act and assert (ensure that an exception is launched)
-        assertThrows(IllegalArgumentException.class, () -> plateCertification.setGrossWeight(-200));
+        assertThrows(IllegalArgumentException.class, () -> plateCertification.setGrossWeight(-200,plateCertification));
     }
 
     @Test
@@ -74,7 +74,7 @@ public class PlateCertificationTest {
         PlateCertification plateCertification = new PlateCertification("Renault","Clio","Electric",900,1200,dateTest,"72-XQ-70");
 
         //Act and assert (ensure that an exception is launched)
-        assertThrows(IllegalArgumentException.class, () -> plateCertification.setGrossWeight(0));
+        assertThrows(IllegalArgumentException.class, () -> plateCertification.setGrossWeight(0,plateCertification));
     }
 
     @Test
