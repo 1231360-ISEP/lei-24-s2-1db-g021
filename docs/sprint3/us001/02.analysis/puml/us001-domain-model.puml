@@ -1,0 +1,42 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+skinparam classAttributeIconSize 0
+
+hide circle
+hide methods
+
+class Collaborator {
+    name
+    bornDate
+    admDate
+    phoneNumber
+    email
+    idCard
+    idNumber
+}
+
+class Address {
+    doorNumber
+}
+
+class ZipCode {
+    local
+    street
+}
+
+class HumanResourcesManager {}
+
+class Skill {
+    name
+}
+
+
+Collaborator --|> HumanResourcesManager
+HumanResourcesManager "1" -- "1..*" Skill : regist >
+Collaborator "1" -- "1" Address: owns >
+Address "1" -- "1" ZipCode : owns >
+
+@enduml

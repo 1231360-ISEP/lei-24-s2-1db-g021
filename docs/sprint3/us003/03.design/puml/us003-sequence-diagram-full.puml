@@ -1,0 +1,114 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+actor "Human Resources Manager" as ADM
+participant ":RegistCollaboratorUI" as UI
+participant ":RegistCollaboratorController" as CTRL
+participant ":Repositories" as RepositorySingleton
+participant "repositories\n:Repositories" as PLAT
+participant "RegistedJobsRepository:\nRegistedJobsRepository" as RegistedJobsRepository
+participant "CollaboratorsRepository:\nCollaboratorsRepository" as CollaboratorsRepository
+participant "fundamentalCharacteristics\n:Collaborator" as Data
+
+activate ADM
+
+        ADM -> UI : asks to regist a new collaborator
+
+        activate UI
+
+'            UI --> ADM : requests data (reference, description,  informal \n description, technical description, duration, cost)
+            'create CTRL
+            UI -> CTRL** : create
+
+            UI -> CTRL : getJobs()
+            activate CTRL
+
+                CTRL -> RepositorySingleton : getInstance()
+                activate RepositorySingleton
+
+                    RepositorySingleton --> CTRL: repositories
+                deactivate RepositorySingleton
+
+                CTRL -> PLAT : getRegistedJobsRepository()
+                activate PLAT
+
+                    PLAT --> CTRL: registedJobsRepository
+                deactivate PLAT
+
+                CTRL -> PLAT : getCollaboratorsRepository()
+                activate PLAT
+
+                PLAT --> CTRL: CollaboratorsRepository
+                deactivate PLAT
+
+                CTRL -> RegistedJobsRepository : getAllJobs()
+                activate RegistedJobsRepository
+                    RegistedJobsRepository --> CTRL : allJobs
+                deactivate RegistedJobsRepository
+
+                CTRL --> UI : jobs
+            deactivate CTRL
+        loop while intended
+            UI --> ADM : Shows all the jobs
+        deactivate UI
+
+    ADM -> UI : Select a job
+    activate UI
+
+            UI -> CTRL : jobSelected
+                activate CTRL
+                CTRL -> CTRL : storeJob()
+
+                activate CTRL
+                    CTRL --> CTRL : success
+                deactivate CTRL
+
+                CTRL --> UI : success
+            deactivate CTRL
+
+            UI --> ADM : Requests the fundamental characteristics\n (i.e. name, birth date, admission date, address,\n contact info (mobile and email), taxpayer number,\nID doc type and respective number)
+        deactivate UI
+
+    ADM -> UI : Types the fundamental characteristics\n (i.e. name, birth date, admission date, address,\n contact info (mobile and email), taxpayer number,\nID doc type and respective number)
+    activate UI
+        UI -> CTRL: create
+
+        activate CTRL
+            CTRL -> CollaboratorsRepository : create
+
+            activate CollaboratorsRepository
+            CollaboratorsRepository -> Data**: create
+        activate Data
+
+        Data -> Data: validatefundamentalCharacteristics(fundamentalCharacteristics)
+
+        Data --> CollaboratorsRepository : fundamentalCharacteristics
+                    deactivate Data
+                                    CollaboratorsRepository -> CollaboratorsRepository: validateCollaborator(jobSelected,fundamentalCharacteristics)
+                CollaboratorsRepository -> CollaboratorsRepository: addCollaborator(jobSelected,fundamentalCharacteristics)
+        end
+                CollaboratorsRepository --> CTRL : registedCollaboratorsList
+            deactivate CollaboratorsRepository
+
+            CTRL --> UI : RegistedCollaboratorsList
+
+        deactivate CTRL
+
+        UI --> ADM : list all registered collaborators and asks to confirm
+
+    deactivate UI
+
+    ADM -> UI : confirms all collaborators
+
+    activate UI
+    UI --> ADM : displays operation success
+    deactivate UI
+
+deactivate ADM
+
+@enduml

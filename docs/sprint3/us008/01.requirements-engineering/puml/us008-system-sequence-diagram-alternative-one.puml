@@ -1,0 +1,21 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative One
+
+autonumber
+
+actor "Vehicle and Equipment\nFleet Manager" as Employee
+participant "System" as System
+
+activate Employee
+
+    Employee -> System : triggers to show the list the vehicles needing (or almost needing) the check-up
+    activate System
+
+        System --> Employee : shows a list with the vehicles that need it (or are near it) and their check-up information;\ndisplays operation success
+    deactivate System
+
+@enduml

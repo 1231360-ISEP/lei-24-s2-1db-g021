@@ -1,0 +1,129 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+actor "Human Resources\nManager" as HRM
+participant ":GenerateTeamProposalUI" as UI
+participant ":GenerateTeamProposalController" as CTRL
+participant ":Repositories" as RepositorySingleton
+participant "repositories\n:Repositories" as PLAT
+participant "name\n:SkillsRepository" as SkillsRepository
+participant "name\n:CollaboratorsRepository" as CollaboratorsRepository
+participant "Collaborator:\nList<Skill>skills" as CollaboratorSkills
+participant ":GenerateTeamProposalController\nList<Skill> skillsSelected" as ListOfSkillsSelected
+participant "team\n:TeamRepository" as TeamRepository
+
+autonumber 1
+
+activate HRM
+
+HRM -> UI : asks to generate a team proposal
+    activate UI
+
+UI --> HRM : requests which is the minimum and\n maximum number of team collaborators
+deactivate UI
+
+
+HRM -> UI : types the minimum and maximum number of\n team collaborators
+    activate UI
+
+UI -> CTRL: getSkillsList()
+
+activate CTRL
+
+    CTRL -> RepositorySingleton : getInstance()
+activate RepositorySingleton
+
+RepositorySingleton --> CTRL: repositories
+deactivate RepositorySingleton
+
+    CTRL -> PLAT : getSkillsRepository()
+activate PLAT
+
+PLAT --> CTRL: SkillsRepository
+deactivate PLAT
+
+    CTRL -> SkillsRepository : getSkillsList()
+activate SkillsRepository
+
+SkillsRepository --> CTRL : skillsList
+deactivate SkillsRepository
+
+CTRL --> UI : skillsList
+deactivate CTRL
+
+UI --> HRM : requests to selects the skills needed
+
+deactivate UI
+
+    HRM -> UI : selects the skills
+activate UI
+
+deactivate CTRL
+
+UI -> CTRL: getCollaboratorsList()
+
+activate CTRL
+
+    CTRL -> CollaboratorsRepository : getCollaboratorsList()
+activate CollaboratorsRepository
+
+    loop for each collaborator
+            CollaboratorsRepository -> CollaboratorSkills : getCollaboratorSkillsList()
+        activate CollaboratorSkills
+
+            loop for each Skill of that Collaborator
+                    CollaboratorSkills -> ListOfSkillsSelected : e = equalsSkill(name)
+                activate ListOfSkillsSelected
+
+                CollaboratorSkills <-- ListOfSkillsSelected : true/false
+                deactivate ListOfSkillsSelected
+            end
+        CollaboratorsRepository <-- CollaboratorSkills : true/false
+        deactivate CollaboratorSkills
+
+        opt e == true
+
+            CollaboratorsRepository -> TeamRepository : addCollaborator(colllaborator)
+            activate TeamRepository
+            deactivate TeamRepository
+
+        end
+
+        deactivate CollaboratorSkills
+
+    end
+
+CollaboratorsRepository --> CTRL:
+deactivate CollaboratorsRepository
+
+
+CTRL --> UI :
+deactivate CTRL
+
+UI -> CTRL: getTeam()
+
+activate CTRL
+
+    CTRL -> TeamRepository : getTeam()
+activate TeamRepository
+
+TeamRepository --> CTRL : team
+deactivate TeamRepository
+
+CTRL --> UI : team
+deactivate CTRL
+
+UI --> HRM : shows and aks to confirm all the data
+deactivate UI
+
+HRM -> UI : confirms all the data
+activate UI
+
+UI --> HRM : displays operation success
+deactivate UI
+
+
+@enduml
+

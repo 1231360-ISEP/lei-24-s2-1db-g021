@@ -1,0 +1,64 @@
+@startuml
+'skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam linetype polyline
+'skinparam linetype orto
+
+skinparam classAttributeIconSize 0
+
+'left to right direction
+
+class RegistCollaboratorUI
+{
+
+}
+
+class RegistCollaboratorController
+{
+    - jobSelected
+    + getJobs()
+    + storeJob()
+}
+
+class Repositories {
+    - Repositories()
+    + getInstance() : Repositories
+    + getRegistedJobsRepository()
+    + getCollaboratorsRepository()
+}
+
+class CollaboratorsRepository {
+    - collaboratorsRepository
+    + addCollaborator(jobSelected,fundamentalCharacteristics)
+    + validateCollaborator(jobSelected,fundamentalCharacteristics)
+}
+
+
+class RegistedJobsRepository {
+    - RegistedJobsRepository
+    + getAllJobs()
+}
+
+class Collaborator {
+    - collaborators
+    + validatefundamentalCharacteristics(fundamentalCharacteristics)
+}
+
+RegistCollaboratorUI -- RegistCollaboratorController
+
+RegistCollaboratorController -- Repositories
+
+RegistCollaboratorController -- CollaboratorsRepository
+
+RegistCollaboratorController -- RegistedJobsRepository
+
+RegistCollaboratorController -- Collaborator
+
+Repositories *- CollaboratorsRepository
+
+Repositories *- RegistedJobsRepository
+
+CollaboratorsRepository o- Collaborator
+
+@enduml

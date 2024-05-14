@@ -1,0 +1,110 @@
+@startuml
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam linetype polyline
+skinparam classAttributeIconSize 0
+
+class RegisterVehicleUI {
+}
+
+class RegisterVehicleController {
+    + RegisterVehicleController()
+    + getVehiclesList()
+    + getPlateCertificationsList()
+}
+
+class Repositories {
+    - Repositories()
+    + getInstance() : Repositories
+    + getVehiclesRepository()
+    + getPlateCertificationsRepository()
+}
+
+class Vehicle {
+    - double currentKm
+    - Date acquisitionDate
+    - double maintenance
+    -PlateCertification final plateCertification
+    + Vehicle(vehicle)
+    + validateVehicle(vehicle)
+    + getCurrentKm()
+    + setCurrentKm()
+    + getAcquisitionDate()
+    + setAcquisitionDate()
+    + getMaintenance()
+    + setMaintenance()
+    + getPlateCertification()
+    + equals()
+    + toString()
+    + clone()
+}
+
+class VehiclesRepository {
+    + getVehiclesList()
+    + addVehicle(vehicle)
+    + validateVehicle(vehicle)
+    - List<Vehicle> vehiclesList
+    + VehiclesRepository()
+    + Optional<Vehicle> add(vehicle)
+    + remove(vehicle)
+}
+
+class PlateCertification {
+    - String brand
+    - String model
+    - String type
+    - double tare
+    - double grossWeight
+    - Date registerDate
+    - String plate
+    + PlateCertification(plateCertification)
+    + validatePlateCertification(plateCertification)
+    + String getBrand()
+    + String getModel()
+    + String getType()
+    + double getTare()
+    + double getGrossWeight()
+    + Date getRegisterDate()
+    + String getPlate()
+    + setBrand(String brand)
+    + setModel(String model)
+    + setType(String type)
+    + setTare(double tare)
+    + setGrossWeight(double grossWeight)
+    + setRegisterDate(Date registerDate)
+    + setPlate(String plate)
+    + int hashCode()
+    + String toString()
+    + boolean equals(Object o)
+}
+
+class PlateCertificationsRepository {
+    + getPlateCertificationsList()
+    + addPlateCertification(plateCertification)
+    + validatePlateCertifications(plateCertification)
+    - List<PlateCertification> plateCertificationsList
+    + PlateCertificationsRepository()
+    + Optional<PlateCertification> add(plateCertification)
+    + remove(plateCertification)
+}
+
+RegisterVehicleUI .> RegisterVehicleController
+
+RegisterVehicleController .> Repositories : repositories
+Repositories --> "1" VehiclesRepository
+
+RegisterVehicleController ..> Vehicle : Vehicle
+RegisterVehicleController ..> VehiclesRepository : VehiclesRepository
+
+VehiclesRepository "1" --> "*" Vehicle
+
+Repositories --> "1" PlateCertificationsRepository
+
+RegisterVehicleController ..> PlateCertification : PlateCertification
+RegisterVehicleController ..> PlateCertificationsRepository : PlateCertificationsRepository
+
+PlateCertificationsRepository "1" --> "*" PlateCertification
+
+Vehicle "1" *-- "1" PlateCertification : has
+
+@enduml

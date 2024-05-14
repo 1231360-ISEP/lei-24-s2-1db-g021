@@ -1,0 +1,129 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+actor "Vehicle Fleet\nManager" as VFM
+participant ":RegisterVehicleUI" as UI
+participant ":RegisterVehicleController" as CTRL
+participant ":Repositories" as RepositorySingleton
+participant "repositories\n:Repositories" as PLAT
+participant "VehiclesRepository:\nVehiclesRepository" as VehiclesRepository
+participant "PlateCertificationsRepository:\nPlateCertificationsRepository" as PlateCertificationsRepository
+participant "vehicle\n:Vehicle" as VEICULO
+participant "plateCertification\n:PlateCertification" as PLATE_CERTIFICATION
+
+autonumber 1
+
+activate VFM
+
+        VFM -> UI : asks to register a new vehicle
+    activate UI
+
+        UI -> CTRL** : create
+    activate CTRL
+
+        CTRL -> RepositorySingleton : getInstance()
+    activate RepositorySingleton
+
+    RepositorySingleton --> CTRL: repositories
+    deactivate RepositorySingleton
+
+        CTRL -> PLAT : getVehiclesRepository()
+    activate PLAT
+
+    PLAT --> CTRL: VehiclesRepository
+    deactivate PLAT
+
+    CTRL -> PLAT : getPlateCertificationsRepository()
+
+    activate PLAT
+
+    PLAT --> CTRL: PlateCertificationsRepository
+    deactivate PLAT
+
+deactivate CTRL
+
+    loop while intended
+        UI --> VFM : requests vehicle data (i.e. Brand, Model, Type, \nTare,Gross Weight, Current Km, Register Date, \nAcquisition Date, Maintenance/Checkup Frequency (in Kms),\n vehicle plate)
+
+    deactivate UI
+
+        VFM -> UI : write the values of the new vehicle's attributes
+    activate UI
+
+       UI -> CTRL: create
+    activate CTRL
+
+        CTRL -> VehiclesRepository : create
+    activate VehiclesRepository
+
+        VehiclesRepository -> VEICULO**: create
+    activate VEICULO
+
+    VEICULO -> VEICULO: validateVehicle(vehicle)
+
+    VEICULO --> VehiclesRepository : vehicle
+    VehiclesRepository -> VehiclesRepository: validateVehicle(vehicle)
+    deactivate VEICULO
+    VehiclesRepository -> VehiclesRepository: addVehicle(vehicle)
+    VehiclesRepository -> VehiclesRepository: true/false
+    VehiclesRepository -> VehiclesRepository: true/false
+
+    CTRL <-- VehiclesRepository
+    deactivate VehiclesRepository
+
+    UI <-- CTRL
+
+    deactivate CTRL
+
+    UI -> CTRL: create
+
+    activate CTRL
+
+        CTRL -> PlateCertificationsRepository : create
+    activate PlateCertificationsRepository
+
+        PlateCertificationsRepository -> PLATE_CERTIFICATION**: create
+
+    activate PLATE_CERTIFICATION
+        PLATE_CERTIFICATION -> PLATE_CERTIFICATION: validatePlateCertification(plateCertification)
+
+        PLATE_CERTIFICATION --> PlateCertificationsRepository : plateCertification
+        PlateCertificationsRepository -> PlateCertificationsRepository: validatePlateCertification(plateCertification)
+        deactivate PLATE_CERTIFICATION
+        PlateCertificationsRepository -> PlateCertificationsRepository: addPlateCertification(plateCertification)
+        PlateCertificationsRepository -> PlateCertificationsRepository: true/false
+        PlateCertificationsRepository -> PlateCertificationsRepository: true/false
+
+    end
+
+    CTRL <-- PlateCertificationsRepository : plateCertificationsList
+    deactivate PlateCertificationsRepository
+
+    CTRL --> UI : plateCertificationsList
+    deactivate CTRL
+
+    UI -> CTRL : getVehiclesList()
+    activate CTRL
+
+    activate VehiclesRepository
+
+    CTRL -> VehiclesRepository : getVehiclesList()
+
+    CTRL <-- VehiclesRepository : vehiclesList
+    CTRL --> UI : vehiclesList
+    deactivate VehiclesRepository
+
+    deactivate CTRL
+
+    UI --> VFM : shows all registered vehicles and asks to confirm
+    deactivate UI
+
+        VFM -> UI : confirms all vehicles
+    activate UI
+
+    UI --> VFM : displays operation success
+    deactivate UI
+
+@enduml

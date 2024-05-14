@@ -1,0 +1,34 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+participant "skillsRepository:\nSkillsRepository" as SkillsRepository
+participant "name\n:Skill" as TAREFA
+
+autonumber 10
+-> SkillsRepository: create
+
+activate SkillsRepository
+    group Create Skill
+
+        SkillsRepository -> TAREFA**: create
+                activate TAREFA
+
+                TAREFA -> TAREFA: validateSkill(name)
+
+                TAREFA --> SkillsRepository : name
+                SkillsRepository -> SkillsRepository: validateSkill(name)
+                deactivate TAREFA
+                SkillsRepository -> SkillsRepository: addSkill(name)
+                SkillsRepository -> SkillsRepository: true/false
+                SkillsRepository -> SkillsRepository: true/false
+
+    end
+
+    <-- SkillsRepository : SkillsList
+
+deactivate SkillsRepository
+
+
+@enduml

@@ -1,0 +1,117 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+hide circle
+hide methods
+
+
+class Collaborator {
+    name
+    bornDate
+    admDate
+    phoneNumber
+    email
+    idCard
+    idNumber
+}
+
+class Address {
+    doorNumber
+}
+
+class ZipCode {
+    local
+    street
+}
+
+class HumanResourceManager {}
+
+class VehicleFleetManager {}
+
+class SoftwareQualityTeamManager {}
+
+class GreenSpaceManager {}
+
+class GreenSpaceUser {}
+
+class Skill {
+    name
+}
+
+class Job {
+    name
+}
+
+class Task {
+    name
+}
+
+class Team {
+    name
+}
+
+class Vehicle {
+    currentKm
+    acquisitionDate
+    maintenance
+}
+
+class PlateCertification {
+    brand
+    model
+    type
+    tare
+    grossWeight
+    registerDate
+    plate
+}
+
+class VehicleCheckUp {
+    date
+    place
+    kms
+}
+
+class TypeGarden {
+    garden
+    mediumSizedGarden
+    largeSizedGarden
+}
+
+class Agenda {}
+
+HumanResourceManager "1" --"1..*" Skill : regist >
+HumanResourceManager "1" -- "1..*" Job : regist >
+HumanResourceManager "1" -- "1..*" Collaborator : regist >
+HumanResourceManager "1" -- "1..*" Team : creates >
+
+VehicleFleetManager ---|> Collaborator
+HumanResourceManager ---|> Collaborator
+SoftwareQualityTeamManager ---|> Collaborator
+GreenSpaceManager ---|> Collaborator
+
+Collaborator "1..*" -- "1" Job : assigned to <
+Collaborator "*" -- "*" Skill : assigned to <
+Collaborator "1" -- "1" Address: owns >
+Address "1" -- "1" ZipCode : owns >
+
+Team "1" -- "1..*" Collaborator : has >
+Team "1" -- "1" Agenda : has >
+Task "1..*" -- "1..*" Team : assigned to >
+Agenda "1..*" --- "1..*" Task : has >
+
+VehicleFleetManager "1" -- "1..*" Vehicle : regist >
+VehicleFleetManager "1" -- "1..*" VehicleCheckUp : regist >
+VehicleFleetManager "1" -- "1" Address: owns >
+
+Vehicle "1" --- "*" VehicleCheckUp : assigned to <
+Vehicle "1" -- "1" PlateCertification : owns >
+
+Task "1..*" -- "1..*" TypeGarden : carried out in >
+
+GreenSpaceUser "1..*" -- "1..*" TypeGarden : use >
+
+
+@enduml

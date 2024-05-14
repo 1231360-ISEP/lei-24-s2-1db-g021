@@ -1,0 +1,33 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+participant "jobsRepository\n:JobsRepository" as JobsRepository
+participant "name\n:Job" as PROFISSAO
+
+autonumber 10
+-> JobsRepository: create
+
+activate JobsRepository
+    group Create Job
+
+        JobsRepository -> PROFISSAO**: create
+                activate PROFISSAO
+
+                PROFISSAO -> PROFISSAO: validateSkill(name)
+
+                PROFISSAO --> JobsRepository : name
+                JobsRepository -> JobsRepository: validateJob(name)
+                deactivate PROFISSAO
+                JobsRepository -> JobsRepository: addJob(name)
+                JobsRepository -> JobsRepository: true/false
+                JobsRepository -> JobsRepository: true/false
+
+    end
+
+    <-- JobsRepository : jobsList
+
+deactivate JobsRepository
+
+@enduml

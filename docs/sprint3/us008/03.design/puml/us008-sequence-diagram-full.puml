@@ -1,0 +1,112 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+actor "Vehicle and Equipment\nFleet Manager" as ADM
+participant ":ListVehiclesCheckupUI" as UI
+participant ":ListVehiclesCheckupController" as CTRL
+participant ":Repositories" as RepositorySingleton
+participant "repositories\n:Repositories" as PLAT
+participant "vehiclesRepository\n:VehiclesRepository" as VehRepo
+participant "Vehicle" as Veh
+
+activate ADM
+    ADM -> UI : asks to list the vehicles needing a check-up
+
+    activate UI
+        UI -> CTRL** : create
+        UI -> CTRL : getVehiclesNeedingCheckup()
+
+        activate CTRL
+
+            CTRL -> RepositorySingleton : getInstance()
+
+            activate RepositorySingleton
+                RepositorySingleton --> CTRL: repositories
+            deactivate RepositorySingleton
+
+            CTRL -> PLAT : getVehiclesRepository()
+
+            activate PLAT
+                PLAT --> CTRL: vehiclesRepository
+            deactivate PLAT
+
+            CTRL -> VehRepo : getVehicles()
+
+            activate VehRepo
+                VehRepo --> CTRL : vehicles
+            deactivate VehRepo
+
+            loop as long as VehiclesRepository doesn't end.
+
+                CTRL -> CTRL : isVehicleNeedingOrAlmostCheckup()
+
+                activate CTRL
+
+                    CTRL -> CTRL : didVehExceededCheckup()
+                    activate CTRL
+
+                        CTRL -> Veh : getMaintenance()
+                        activate Veh
+                            Veh --> CTRL : maintenance
+                        deactivate Veh
+
+                        CTRL -> Veh : getCurrentKm()
+                        activate Veh
+                            Veh --> CTRL : currentKm
+                        deactivate Veh
+
+                        alt if currentKm exceeded maintenance
+                            CTRL --> CTRL : true
+                        else
+                            CTRL --> CTRL : false
+                        end
+
+                    deactivate CTRL
+
+                    CTRL -> CTRL : isVehicleCloseToExceedCheckup()
+
+                    activate CTRL
+                        CTRL -> Veh : getMaintenance()
+                        activate Veh
+                            Veh --> CTRL : maintenance
+                        deactivate Veh
+
+                        CTRL -> Veh : getCurrentKm()
+                        activate Veh
+                            Veh --> CTRL : currentKm
+                        deactivate Veh
+
+                        alt if currentKm is 5% almost exceeding maintenance
+                            CTRL --> CTRL : true
+                        else
+                            CTRL --> CTRL : false
+                        end
+                        CTRL --> CTRL : true/false
+                    deactivate CTRL
+
+                    alt didVehExceededCheckup() == true
+                        CTRL --> CTRL : true
+                    else isVehicleCloseToExceedCheckup() == true
+                        CTRL --> CTRL : true
+                    else
+                        CTRL --> CTRL : false
+                    end
+
+                deactivate CTRL
+
+            end
+
+            CTRL --> UI : vehiclesNeedingCheckup
+        deactivate CTRL
+
+        UI --> ADM : Shows the list of vehicles needing or almost needing check-up.
+    deactivate UI
+
+deactivate ADM
+
+@enduml

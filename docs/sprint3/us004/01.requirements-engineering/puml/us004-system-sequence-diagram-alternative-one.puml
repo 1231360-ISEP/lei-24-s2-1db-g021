@@ -1,0 +1,48 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative One
+
+autonumber
+
+actor "Human Resources\nManager" as Employee
+participant "System" as System
+
+activate Employee
+
+    Employee -> System : Asks to assign one or more skills to a collaborator
+    activate System
+
+        System --> Employee : Requests the collaborator to assign skills to
+    deactivate System
+
+    Employee -> System : Types the collaborator information
+    activate System
+
+            System --> Employee : Request confirmation
+    deactivate System
+
+    Employee -> System : Confirms it.
+    loop as long as Human Resources Manager don´t want to type in more skills.
+        activate System
+        System --> Employee : Requests skill(s)
+        deactivate System
+        Employee -> System : Type a skill
+        activate System
+        System --> Employee : Request confirmation
+        deactivate System
+        Employee -> System : Confirms it
+        activate System
+    end
+        System --> Employee : Shows the skills typed in, the collaborator and requests confirmation
+    deactivate System
+
+    Employee -> System : Confirms data
+    activate System
+
+        System --> Employee : Displays operation success
+    deactivate System
+
+@enduml

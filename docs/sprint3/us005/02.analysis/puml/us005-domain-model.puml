@@ -1,0 +1,55 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+skinparam classAttributeIconSize 0
+
+hide circle
+hide methods
+
+
+class HumanResourcesManager {}
+
+class Skill {
+    name
+}
+
+class Task {
+    name
+}
+
+class Collaborator {
+    name
+    bornDate
+    admDate
+    phoneNumber
+    email
+    idCard
+    idNumber
+}
+
+class Address {
+    doorNumber
+}
+
+class ZipCode {
+    local
+    street
+}
+
+class Team {
+    name
+}
+
+HumanResourcesManager ---|> Collaborator
+HumanResourcesManager "1" -- "1..*" Team : creates >
+Collaborator "*" -- "*" Skill : owns >
+Collaborator "1" -- "1" Address: owns >
+Address "1" -- "1" ZipCode : owns >
+Team "1" -- "1..*" Collaborator : has >
+Team "1" -- "1" Agenda : has >
+Agenda "1..*" -- "1..*" Task : has >
+Task "1..*" -- "1..*" Team : assigned to >
+
+@enduml

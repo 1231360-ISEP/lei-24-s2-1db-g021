@@ -1,0 +1,71 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+actor "Human Resources\nManager" as HRM
+participant ":RegisterSkillUI" as UI
+participant ":RegisterSkillController" as CTRL
+participant "skillsRepository:\nSkillsRepository" as SkillsRepository
+
+autonumber 1
+
+activate HRM
+
+    HRM -> UI : asks to regist a new skill
+activate UI
+
+    UI -> CTRL** : create
+
+activate CTRL
+
+ref over CTRL
+    Get Skills Repository
+end ref
+
+deactivate CTRL
+
+loop while intended
+
+    autonumber 7
+        UI --> HRM : requests the skill name
+    deactivate CTRL
+    deactivate UI
+
+
+    HRM -> UI : types the new skill name
+    activate UI
+        UI -> CTRL: create
+    activate CTRL
+
+        CTRL -> SkillsRepository : create
+    activate SkillsRepository
+
+    ref over SkillsRepository
+        Get Skills List
+    end ref
+
+end
+
+autonumber 18
+
+SkillsRepository --> CTRL : skillsList
+deactivate SkillsRepository
+
+CTRL --> UI : skillsList
+deactivate CTRL
+
+UI --> HRM : show all the skills registed\n and aks to confirm
+
+deactivate CTRL
+deactivate UI
+
+HRM -> UI : confirm the set of skills registed
+activate UI
+
+UI --> HRM : displays operation success
+deactivate UI
+
+
+@enduml
+

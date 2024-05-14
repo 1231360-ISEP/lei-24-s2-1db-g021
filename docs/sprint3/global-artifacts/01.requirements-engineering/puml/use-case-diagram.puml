@@ -1,0 +1,35 @@
+@startuml
+'skinparam monochrome true
+skinparam packageStyle rectangle
+'skinparam shadowing false
+
+skinparam rectangle{
+    BorderColor yellow
+}
+
+'title Use Case Diagram Example
+actor "Human Resources Manager" as HRM
+actor  "Vehicle Fleet Manager" as VFM
+left to right direction
+
+rectangle "Integrating Project" as actors {
+        usecase "UC1 - Register Skills" as UC1
+        HRM -- UC1
+        usecase "UC2 - Register Job" as UC2
+        HRM -- UC2
+        usecase "UC3 - Register Collaborator Job & Skills" as UC3
+        HRM -- UC3
+        usecase "UC4 - Add Collaborator Skills" as UC4
+        HRM -- UC4
+        usecase "UC5 - Generate Team Proposal" as UC5
+        HRM -- UC5
+        usecase "UC6 - Register Vehicle" as UC6
+        VFM -- UC6
+        usecase "UC7 - Register Vehicles Check-up" as UC7
+        VFM -- UC7
+        usecase "UC8 - List Vehicles Need Check-up" as UC8
+        VFM -- UC8
+}
+
+
+@enduml

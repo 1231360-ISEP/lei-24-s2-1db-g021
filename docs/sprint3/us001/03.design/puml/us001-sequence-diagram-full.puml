@@ -1,0 +1,86 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+actor "Human Resources\nManager" as HRM
+participant ":RegisterSkillUI" as UI
+participant ":RegisterSkillController" as CTRL
+participant ":Repositories" as RepositorySingleton
+participant "repositories\n:Repositories" as PLAT
+participant "skillsRepository\n:SkillsRepository" as SkillsRepository
+participant "name\n:Skill" as TAREFA
+
+autonumber 1
+
+activate HRM
+
+    HRM -> UI : asks to regist a new skill
+    activate UI
+
+        UI -> CTRL** : create
+
+        activate CTRL
+
+        CTRL -> RepositorySingleton : getInstance()
+        activate RepositorySingleton
+
+            RepositorySingleton --> CTRL: repositories
+        deactivate RepositorySingleton
+
+        CTRL -> PLAT : getSkillsRepository()
+        activate PLAT
+
+            PLAT --> CTRL: SkillsRepository
+        deactivate PLAT
+
+        deactivate CTRL
+
+    loop while intended
+            UI --> HRM : requests the skill name
+        deactivate UI
+
+            HRM -> UI : types the new skill name
+        activate UI
+
+            UI -> CTRL: create
+        activate CTRL
+
+            CTRL -> SkillsRepository : create
+        activate SkillsRepository
+
+            SkillsRepository -> TAREFA**: create
+        activate TAREFA
+
+        TAREFA -> TAREFA: validateSkill(name)
+
+        TAREFA --> SkillsRepository : name
+        SkillsRepository -> SkillsRepository: validateSkill(name)
+        deactivate TAREFA
+        SkillsRepository -> SkillsRepository: addSkill(name)
+        SkillsRepository -> SkillsRepository: true/false
+        SkillsRepository -> SkillsRepository: true/false
+
+
+    end
+
+    SkillsRepository --> CTRL : skillsList
+    deactivate SkillsRepository
+
+    CTRL --> UI : skillsList
+    deactivate CTRL
+
+    UI --> HRM : show all the skills registed\n and aks to confirm
+
+    deactivate CTRL
+    deactivate UI
+
+    HRM -> UI : confirm the set of skills registed
+    activate UI
+
+    UI --> HRM : displays operation success
+    deactivate UI
+
+
+@enduml
+

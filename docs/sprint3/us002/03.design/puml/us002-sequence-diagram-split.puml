@@ -1,0 +1,70 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+actor "Human Resources\nManager" as HRM
+participant ":RegisterJobUI" as UI
+participant ":RegisterJobController" as CTRL
+participant "jobsRepository\n:JobsRepository" as JobsRepository
+
+autonumber 1
+
+activate HRM
+
+    HRM -> UI : asks to regist a new job
+activate UI
+
+    UI -> CTRL** : create
+
+activate CTRL
+
+ref over CTRL
+    Get Jobs Repository
+end ref
+
+deactivate CTRL
+
+loop while intended
+
+    autonumber 7
+        UI --> HRM : requests the job name
+    deactivate CTRL
+    deactivate UI
+
+
+    HRM -> UI : type the new job
+    activate UI
+        UI -> CTRL: create
+    activate CTRL
+
+        CTRL -> JobsRepository : create
+    activate JobsRepository
+
+    ref over JobsRepository
+        Get Jobs List
+    end ref
+
+end
+
+autonumber 18
+
+JobsRepository --> CTRL : jobsList
+deactivate JobsRepository
+
+CTRL --> UI : jobsList
+deactivate CTRL
+
+UI --> HRM : list all registered\n jobs and asks to confirm
+
+deactivate CTRL
+deactivate UI
+
+HRM -> UI : confirms all jobs
+activate UI
+
+UI --> HRM : displays operation success
+deactivate UI
+
+
+@enduml

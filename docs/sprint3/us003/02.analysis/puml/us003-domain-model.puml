@@ -1,0 +1,43 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+skinparam classAttributeIconSize 0
+
+hide circle
+hide methods
+
+class HumanResourcesManager {}
+
+class Collaborator {
+    name
+    bornDate
+    admDate
+    phoneNumber
+    email
+    idCard
+    idNumber
+}
+
+class Job {
+    name
+}
+
+class Address {
+    doorNumber
+}
+
+class ZipCode {
+    local
+    street
+}
+
+
+Collaborator --|> HumanResourcesManager
+Collaborator "1..*" - "1" Job: assigned to <
+HumanResourcesManager "1" -- "1..*" Job : regist >
+Collaborator "1" -- "1" Address: owns >
+Address "1" -- "1" ZipCode : owns >
+
+@enduml

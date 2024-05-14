@@ -1,0 +1,56 @@
+@startuml
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam linetype polyline
+skinparam classAttributeIconSize 0
+
+
+class RegisterSkillUI {
+}
+
+class RegisterSkillController {
+    + RegisterSkillController()
+    + getSkillsList()
+}
+
+class Skill {
+    - String name
+    + Skill(name)
+    + getName()
+    + setName()
+    + equals()
+    + toString()
+    + clone()
+    + validateSkill(name)
+}
+
+class SkillsRepository {
+    - List<Skill> skillsList
+    + SkillsRepository()
+    + Optional<Skill> add(skill)
+    + addSkill(name)
+    - validateSkill(skill)
+    + getSkillsList()
+    + remove(skill)
+}
+
+class Repositories {
+    - Repositories()
+    + getInstance() : Repositories
+    + getSkillsRepository()
+}
+
+
+RegisterSkillUI .> RegisterSkillController
+
+RegisterSkillController .> Repositories : repositories
+
+Repositories --> "1" SkillsRepository
+
+RegisterSkillController ..> Skill : Skill
+RegisterSkillController ..> SkillsRepository : SkillsRepository
+
+SkillsRepository "1" --> "*" Skill
+
+
+@enduml
