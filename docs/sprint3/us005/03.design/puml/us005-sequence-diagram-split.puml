@@ -1,0 +1,88 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+actor "Human Resources\nManager" as HRM
+participant ":GenerateTeamProposalUI" as UI
+participant ":GenerateTeamProposalController" as CTRL
+participant "name\n:CollaboratorsRepository" as CollaboratorsRepository
+
+autonumber 1
+
+activate HRM
+
+HRM -> UI : asks to generate a team proposal
+    activate UI
+
+UI --> HRM : requests which is the minimum and\n maximum number of team collaborators
+deactivate UI
+
+
+HRM -> UI : types the minimum and maximum number of\n team collaborators
+    activate UI
+
+UI -> CTRL: getSkillsList()
+
+activate CTRL
+
+    ref over CTRL
+        Get Skills List
+    end ref
+
+autonumber 11
+
+CTRL --> UI : skillsList
+deactivate CTRL
+
+UI --> HRM : requests to selects the skills needed
+deactivate UI
+
+    HRM -> UI : selects the skills
+activate UI
+
+deactivate CTRL
+
+UI -> CTRL: getCollaboratorsList()
+
+activate CTRL
+
+    CTRL -> CollaboratorsRepository : getCollaboratorsList()
+activate CollaboratorsRepository
+
+    ref over CollaboratorsRepository
+        Get Collaborators List
+    end ref
+
+autonumber 21
+
+CollaboratorsRepository --> CTRL
+deactivate CollaboratorsRepository
+
+CTRL --> UI
+deactivate CTRL
+
+    UI -> CTRL: getTeam()
+activate CTRL
+
+    ref over CTRL
+        Get Team
+    end ref
+
+autonumber 26
+
+CTRL --> UI : team
+deactivate CTRL
+
+UI --> HRM : shows and aks to confirm all the data
+deactivate UI
+
+HRM -> UI : confirms all the data
+activate UI
+
+UI --> HRM : displays operation success
+deactivate UI
+
+
+@enduml
+

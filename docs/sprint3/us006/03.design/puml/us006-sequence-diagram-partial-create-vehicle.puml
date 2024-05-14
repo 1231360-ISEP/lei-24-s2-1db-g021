@@ -1,0 +1,55 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+participant "VehiclesRepository:\nVehiclesRepository" as VehiclesRepository
+participant "vehicle\n:Vehicle" as VEICULO
+participant "PlateCertificationsRepository:\nPlateCertificationsRepository" as PlateCertificationsRepository
+participant "plateCertification\n:PlateCertification" as PLATE_CERTIFICATION
+
+autonumber 12
+-> VehiclesRepository: create
+
+activate VehiclesRepository
+    group Create Vehicle
+
+        VehiclesRepository -> VEICULO**: create
+        activate VEICULO
+
+        VEICULO -> VEICULO: validateVehicle(vehicle)
+
+        VEICULO --> VehiclesRepository : vehicle
+        VehiclesRepository -> VehiclesRepository: validateVehicle(vehicle)
+        deactivate VEICULO
+        VehiclesRepository -> VehiclesRepository: addVehicle(vehicle)
+        VehiclesRepository -> VehiclesRepository: true/false
+        VehiclesRepository -> VehiclesRepository: true/false
+
+        -> PlateCertificationsRepository : create
+
+        deactivate VehiclesRepository
+
+        activate PlateCertificationsRepository
+
+        PlateCertificationsRepository -> PLATE_CERTIFICATION**: create
+
+        activate PLATE_CERTIFICATION
+            PLATE_CERTIFICATION -> PLATE_CERTIFICATION: validatePlateCertification(plateCertification)
+
+            PLATE_CERTIFICATION --> PlateCertificationsRepository : plateCertification
+            PlateCertificationsRepository -> PlateCertificationsRepository: validatePlateCertification(plateCertification)
+            deactivate PLATE_CERTIFICATION
+            PlateCertificationsRepository -> PlateCertificationsRepository: addPlateCertification(plateCertification)
+            PlateCertificationsRepository -> PlateCertificationsRepository: true/false
+            PlateCertificationsRepository -> PlateCertificationsRepository: true/false
+    end
+     <-- PlateCertificationsRepository : plateCertificationsList
+     deactivate PlateCertificationsRepository
+
+    activate VehiclesRepository
+    <-- VehiclesRepository : jobsList
+deactivate VehiclesRepository
+
+
+@enduml

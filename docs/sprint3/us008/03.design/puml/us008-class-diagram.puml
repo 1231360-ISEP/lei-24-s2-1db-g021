@@ -1,0 +1,49 @@
+@startuml
+'skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam linetype polyline
+'skinparam linetype orto
+
+skinparam classAttributeIconSize 0
+
+'left to right direction
+
+class VehiclesRepository {
+    - vehicles
+    + getVehicles()
+}
+class Vehicle {
+    - currentKm
+    - maintenance
+    + getCurrentKm()
+    + getMaintenance()
+}
+
+class Repositories {
+    - instance
+    - Repositories()
+    + getInstance()
+    + getVehiclesRepository()
+}
+
+class ListVehiclesCheckupController {
+    + getVehiclesNeedingCheckup()
+    + didVehExceededCheckup()
+    + isVehicleCloseToExceedCheckup()
+    + isVehicleNeedingOrAlmostCheckup()
+}
+
+class ListVehiclesCheckupUI {
+}
+
+Repositories o- "1" VehiclesRepository
+
+VehiclesRepository o- "*" Vehicle
+
+ListVehiclesCheckupController .. ListVehiclesCheckupUI
+ListVehiclesCheckupController .. Repositories
+ListVehiclesCheckupController .. VehiclesRepository
+ListVehiclesCheckupController .. Vehicle
+
+@enduml

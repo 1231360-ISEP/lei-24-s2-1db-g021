@@ -1,0 +1,98 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+actor "Vehicle Fleet\nManager" as VFM
+participant ":RegisterVehicleCheckUpUI" as UI
+participant ":RegistVehicleCheckUpController" as CTRL
+participant ":Repositories" as RepositorySingleton
+participant "repositories\n:Repositories" as PLAT
+participant "registedVehicleCheckUpsRepository:\registedVehicleCheckUpsRepository" as registedVehicleCheckUpsRepository
+participant "information\n:vehicleCheckUp" as Data
+
+activate VFM
+
+        VFM -> UI : asks to regist a new vehicle check-up
+
+        activate UI
+
+'            UI --> ADM : requests data (reference, description,  informal \n description, technical description, duration, cost)
+            'create CTRL
+            UI -> CTRL** : create
+            activate CTRL
+
+                CTRL -> RepositorySingleton : getInstance()
+                activate RepositorySingleton
+
+                    RepositorySingleton --> CTRL: repositories
+                deactivate RepositorySingleton
+
+                CTRL -> PLAT : registedVehiclesCheckUpsRepository()
+
+                activate PLAT
+                    PLAT --> CTRL: registedVehiclesCheckUpsRepository
+                deactivate PLAT
+            deactivate CTRL
+        loop while intended
+            UI --> VFM : request the vehicle plate
+        deactivate UI
+
+    VFM -> UI : Type the vehicle plate
+    activate UI
+
+            UI -> CTRL : vehiclePlate
+                activate CTRL
+                CTRL -> CTRL : storeVehiclePlate()
+
+                activate CTRL
+                    CTRL --> CTRL : success
+                deactivate CTRL
+
+                CTRL --> UI : success
+            deactivate CTRL
+
+            UI --> VFM : Requests the information about the check-up\n (i.e. date, place, kms)
+        deactivate UI
+
+    VFM -> UI : Types the information about the check-up\n (i.e. date, place, kms)
+    activate UI
+        UI -> CTRL: create
+
+        activate CTRL
+            CTRL -> registedVehicleCheckUpsRepository : create
+
+            activate registedVehicleCheckUpsRepository
+            registedVehicleCheckUpsRepository -> Data**: create
+        activate Data
+
+        Data -> Data: validateinformation(information)
+
+        Data --> registedVehicleCheckUpsRepository : information
+                    deactivate Data
+                                registedVehicleCheckUpsRepository -> registedVehicleCheckUpsRepository: validateVehicleCheckUp(veichlePlate,information)
+                registedVehicleCheckUpsRepository -> registedVehicleCheckUpsRepository: addVeichleCheckUp(vehiclePlate plate,information)
+        end
+                registedVehicleCheckUpsRepository --> CTRL : registedVehicleCheckUpList
+            deactivate registedVehicleCheckUpsRepository
+
+            CTRL --> UI : RegistedVehicleCheckUpList
+
+        deactivate CTRL
+
+        UI --> VFM : list all registered vehicle check-ups and asks to confirm
+
+    deactivate UI
+
+    VFM -> UI : confirms all vehicle check-ups
+
+    activate UI
+    UI --> VFM : displays operation success
+    deactivate UI
+
+deactivate VFM
+
+@enduml

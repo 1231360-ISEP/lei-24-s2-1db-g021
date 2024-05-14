@@ -1,0 +1,56 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+participant ":GenerateTeamProposalController" as CTRL
+participant "name\n:CollaboratorsRepository" as CollaboratorsRepository
+participant "Collaborator\n:List<Skill>skills" as CollaboratorSkills
+participant ":GenerateTeamProposalController\nList<Skill> skillsSelected" as ListOfSkillsSelected
+participant "team\n:TeamRepository" as TeamRepository
+
+
+autonumber 14
+
+->CTRL: getCollaboratorsList()
+
+activate CTRL
+
+group Get Collaborators By Skills List
+
+    CTRL -> CollaboratorsRepository : getCollaboratorsList()
+activate CollaboratorsRepository
+
+    loop for each collaborator
+            CollaboratorsRepository -> CollaboratorSkills : getCollaboratorSkillsList()
+        activate CollaboratorSkills
+
+            loop for each Skill of that Collaborator
+                    CollaboratorSkills -> ListOfSkillsSelected : e = equalsSkill(name)
+                activate ListOfSkillsSelected
+
+                CollaboratorSkills <-- ListOfSkillsSelected : true/false
+                deactivate ListOfSkillsSelected
+            end
+        CollaboratorsRepository <-- CollaboratorSkills : true/false
+        deactivate CollaboratorSkills
+
+        opt e == true
+
+            CollaboratorsRepository -> TeamRepository : addCollaborator(colllaborator)
+            activate TeamRepository
+            deactivate TeamRepository
+
+        end
+
+        deactivate CollaboratorSkills
+
+    end
+
+CollaboratorsRepository --> CTRL:
+deactivate CollaboratorsRepository
+
+<-- CTRL :
+@enduml

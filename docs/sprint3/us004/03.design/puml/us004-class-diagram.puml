@@ -1,0 +1,61 @@
+@startuml
+'skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam linetype polyline
+'skinparam linetype orto
+
+skinparam classAttributeIconSize 0
+
+'left to right direction
+
+class Collaborator {
+    -skills
+    +addSkill(skill)
+}
+
+class SkillsRepository {
+    - skillsList
+    + getSkillsList()
+}
+
+class CollaboratorsRepository {
+    - collaboratorsList
+    + getCollaboratorsList()
+}
+
+class Repositories {
+    - Repositories()
+    + getInstance()
+    + getCollaboratorsRepository()
+    + getSkillsRepository()
+}
+
+class AssignSkillController {
+    - collaboratorSelected
+    + setCollaboratorSelected(collaboratorSelected)
+    + getCollaborators()
+    + getSkills()
+    + storeSkills(skillsToAssign)
+}
+
+class AssignSkillUI {
+}
+
+AssignSkillUI .. AssignSkillController
+
+AssignSkillController .. Repositories
+
+AssignSkillController .. CollaboratorsRepository
+
+AssignSkillController .. SkillsRepository
+
+AssignSkillController .. Collaborator
+
+Repositories o- "1" CollaboratorsRepository
+
+Repositories o- "1" SkillsRepository
+
+CollaboratorsRepository o- "*" Collaborator
+
+@enduml

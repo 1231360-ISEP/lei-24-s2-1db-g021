@@ -1,0 +1,165 @@
+@startuml
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam linetype polyline
+
+skinparam classAttributeIconSize 0
+
+
+class GenerateTeamProposalUI {
+}
+
+class GenerateTeamProposalController {
+    - List<Skill> skillsSelected
+    + GenerateTeamProposalController(SkillsRepository, CollaboratorsRepository, TeamRepository)
+    + getSkillsList()
+    + getCollaboratorsList()
+    + getCollaboratorSkillsList()
+    + getTeam()
+}
+
+class Collaborator {
+    - String name
+    - Date bornDate
+    - Date admDate
+    - int phoneNumber
+    - String email
+    - int idCard
+    - int idNumber
+    - List<Skill> skills
+    + Collaborator(name, bornDate, admDate, phoneNumber, email, idCard, idNumber)
+    + Collaborator(name, bornDate, admDate, phoneNumber, email, idCard, idNumber, skills)
+    + Collaborator(email)
+    + getName()
+    + setName(name)
+    + getBornDate()
+    + setBornDate(bornDate)
+    + getAdmDate()
+    + setAdmDate(admDate)
+    + getAddress()
+    + setAddress(address)
+    + getPhoneNumber()
+    + setPhoneNumber(phoneNumber)
+    + getEmail()
+    + setEmail(email)
+    + getIdCard()
+    + setIdCard(idCard)
+    + getIdNumber
+    + setIdNumber(idNumber)
+    + getSkills()
+    + setSkills(skills)
+    + equals()
+    + toString()
+    + hashCode()
+    + hasEmail(email)
+    + clone()
+    + addSkill(skill)
+    + removeSkill(skill)
+}
+
+class Repositories {
+    - Repositories()
+    + getInstance() : Repositories
+    + getSkillsRepository()
+    + getCollaboratorsRepository()
+    + getTeamRepository()
+}
+
+class CollaboratorsRepository {
+    - List<Collaborator> collaboratorsList
+    + CollaboratorsRepository(collaboratorsList)
+    + Optional<Collaborator> add(collaborator)
+    - validateCollaborator(collaborator)
+    + getCollaboratorsList()
+}
+
+class SkillsRepository {
+    - List<Skill> skillsList
+    + SkillsRepository()
+    + Optional<Skill> add(skill)
+    - validateSkill(skill)
+    + getSkillsList()
+    + remove(skill)
+}
+
+class Address {
+    - int doorNumber
+    - ZipCode zipCode
+    + Address(doorNumber, zipCode)
+    + Address(address)
+    + getDoorNumber()
+    + setDoorNumber()
+    + getZipCode()
+    + setZipCode()
+}
+
+class ZipCode {
+    - int local
+    - int street
+    + ZipCode(local, street)
+    + ZipCode(zipCode)
+    + getLocal()
+    + setLocal()
+    + getStreet()
+    + setStreet()
+}
+
+class TeamRepository {
+    - List<Team> teamsList
+    + TeamRepository()
+    + Optional<Team> add(team)
+    + validateTeam(team)
+    + getTeam()
+}
+
+class Team {
+    - String name
+    - List<Collaborator> collaboratorsList
+    - List<Skill> skillsSelected;
+    + Team(name, collaboratorsList, skillsSelected)
+    + getName()
+    + setName(name)
+    + getCollaboratorsList()
+    + setCollaboratorsList(collaboratorsList)
+    + getSkillsSelected()
+    + setSkillsSelected(skillsSelected)
+    + getMinSizeTeam()
+    + setMinSizeTeam(minSizeTeam)
+    + getMaxSizeTeam()
+    + setMaxSizeTeam(maxSizeTeam)
+    + addCollaborator(collaborator)
+    + equals(o)
+    + hashCode(name, collaboratorsList, skillsSelected)
+    + toString()
+    + clone()
+    + getTeamCollaboratorsList()
+    - selectedCollaboratorsBySkills()
+    - teamCollaboratorsList(collaboratorsList)
+    - hasSelectedSkills(collaborator)
+    + isTeamSizeWithinBounds()
+}
+
+
+Repositories -> Repositories : instance
+
+GenerateTeamProposalUI .> GenerateTeamProposalController
+
+Repositories --> "1" TeamRepository
+Repositories --> "1" CollaboratorsRepository
+Repositories --> "1" SkillsRepository
+
+GenerateTeamProposalController ...> CollaboratorsRepository: CollaboratorsRepository
+GenerateTeamProposalController ...> SkillsRepository: SkillsRepository
+GenerateTeamProposalController ...> TeamRepository : TeamRepository
+GenerateTeamProposalController .> Repositories : repositories
+GenerateTeamProposalController ...> "1" Collaborator : Collaborator
+
+TeamRepository --> "*" Team : teams
+Team o-- "*" Collaborator : has
+
+CollaboratorsRepository --> "*" Collaborator
+
+Collaborator *-- "1" Address : owns
+Address *-- "1" ZipCode : owns
+
+@enduml

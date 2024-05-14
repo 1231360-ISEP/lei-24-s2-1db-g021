@@ -1,0 +1,62 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+skinparam classAttributeIconSize 0
+
+hide circle
+hide methods
+
+class Collaborator {
+    name
+    bornDate
+    admDate
+    phoneNumber
+    email
+    idCard
+    idNumber
+}
+
+class Address {
+    doorNumber
+}
+
+class ZipCode {
+    local
+    street
+}
+
+class VehicleFleetManager {}
+
+class Vehicle {
+    currentKm
+    acquisitionDate
+    maintenance
+}
+
+class PlateCertification{
+    brand
+    model
+    type
+    tare
+    grossWeight
+    registerDate
+    plate
+}
+
+class VehicleCheckUp {
+    date
+    place
+    kms
+}
+
+Collaborator --|> VehicleFleetManager
+VehicleFleetManager "1" -- "1..*" Vehicle : regist >
+Vehicle "1" -- "1" PlateCertification : owns >
+Collaborator "1" -- "1" Address: owns >
+Address "1" -- "1" ZipCode : owns >
+VehicleFleetManager "1" -- "1..*" VehicleCheckUp : regist >
+Vehicle "1" -- "*" VehicleCheckUp : assigned to <
+
+@enduml

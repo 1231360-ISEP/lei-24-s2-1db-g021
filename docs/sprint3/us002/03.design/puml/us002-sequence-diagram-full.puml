@@ -1,0 +1,86 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+actor "Human Resources\nManager" as HRM
+participant ":RegisterJobUI" as UI
+participant ":RegisterJobController" as CTRL
+participant ":Repositories" as RepositorySingleton
+participant "repositories\n:Repositories" as PLAT
+participant "jobsRepository\n:JobsRepository" as JobsRepository
+participant "name\n:Job" as PROFISSAO
+
+autonumber 1
+
+activate HRM
+
+    HRM -> UI : asks to regist a new job
+    activate UI
+
+        UI -> CTRL** : create
+
+        activate CTRL
+
+        CTRL -> RepositorySingleton : getInstance()
+        activate RepositorySingleton
+
+            RepositorySingleton --> CTRL: repositories
+        deactivate RepositorySingleton
+
+        CTRL -> PLAT : getJobsRepository()
+        activate PLAT
+
+            PLAT --> CTRL: jobsRepository
+        deactivate PLAT
+
+        deactivate CTRL
+
+    loop while intended
+            UI --> HRM : requests the job name
+        deactivate UI
+
+            HRM -> UI : type the new job
+        activate UI
+
+            UI -> CTRL: create
+        activate CTRL
+
+            CTRL -> JobsRepository : create
+        activate JobsRepository
+
+            JobsRepository -> PROFISSAO**: create
+        activate PROFISSAO
+
+        PROFISSAO -> PROFISSAO: validateJob(name)
+
+        PROFISSAO --> JobsRepository : name
+        JobsRepository -> JobsRepository: validateJob(name)
+        deactivate PROFISSAO
+        JobsRepository -> JobsRepository: addJob(name)
+        JobsRepository -> JobsRepository: true/false
+        JobsRepository -> JobsRepository: true/false
+
+
+    end
+
+    JobsRepository --> CTRL : jobsList
+    deactivate JobsRepository
+
+    CTRL --> UI : jobsList
+    deactivate CTRL
+
+    UI --> HRM : list all registered\n jobs and asks to confirm
+
+    deactivate CTRL
+    deactivate UI
+
+    HRM -> UI : confirms all jobs
+    activate UI
+
+    UI --> HRM : displays operation success
+    deactivate UI
+
+
+@enduml
+

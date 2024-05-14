@@ -1,0 +1,40 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD)
+
+autonumber
+
+actor "Human Resources\nManager" as HRM
+participant ":System" as System
+
+activate HRM
+
+    HRM -> System : asks to regist a new collaborator
+    activate System
+
+    loop while intended
+            System --> HRM : List all jobs and requests the job
+        deactivate System
+        HRM -> System : Select a job
+        activate System
+
+        System --> HRM : requests the fundamental characteristics (i.e. name, birth date, admission date,\n address, contact info (mobile and email), taxpayer number,ID doc type and respective number)
+        deactivate System
+        HRM -> System : Type the fundamental characteristics
+        activate System
+    end
+
+        System --> HRM : show all the collaborator(s) and requests confirmation
+    deactivate System
+
+    HRM -> System : confirm the collaborator(s)
+    activate System
+
+    System --> HRM : displays operation success
+    deactivate System
+
+
+@enduml

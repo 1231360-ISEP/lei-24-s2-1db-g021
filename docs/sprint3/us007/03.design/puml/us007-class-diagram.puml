@@ -1,0 +1,53 @@
+@startuml
+'skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam linetype polyline
+'skinparam linetype orto
+
+skinparam classAttributeIconSize 0
+
+'left to right direction
+
+class RegisterVehicleCheckUpUI
+{
+
+}
+
+class RegistVehicleCheckUpController
+{
+    - vehiclePlate
+    + storeVehiclePlate()
+}
+
+class Repositories {
+    - Repositories()
+    + getInstance() : Repositories
+    + getRegistedVehiclesRepository()
+}
+
+class registedVehicleCheckUpsRepository {
+    - registedVehicleCheckUpsRepository
+    + addVehicleCheckUp(vehiclePlate plate,information)
+    + validateVehicleCheckUp(vehiclePlate,information)
+}
+
+
+class vehicleCheckUp {
+    - VehicleCheckUps
+    + validateinformation(information)
+}
+
+RegisterVehicleCheckUpUI -- RegistVehicleCheckUpController
+
+RegistVehicleCheckUpController -- Repositories
+
+RegistVehicleCheckUpController -- registedVehicleCheckUpsRepository
+
+RegistVehicleCheckUpController -- vehicleCheckUp
+
+Repositories *- registedVehicleCheckUpsRepository
+
+registedVehicleCheckUpsRepository o- vehicleCheckUp
+
+@enduml

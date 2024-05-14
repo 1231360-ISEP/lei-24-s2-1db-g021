@@ -1,0 +1,128 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+actor "Human Resources Manager" as ADM
+participant ":AssignSkillUI" as UI
+participant ":AssignSkillController" as CTRL
+participant ":Repositories" as Repositories
+participant "repositories\n:Repositories" as RepoInstance
+participant "collaboratorsRepository\n:CollaboratorsRepository" as CollaboratorRepo
+participant "skillsRepository\n:SkillsRepository" as SkillRepo
+participant "collaboratorSelected\n:Collaborator" as Collaborator
+
+activate ADM
+
+        ADM -> UI : Asks to assign collaborator skills
+
+        activate UI
+            UI -> CTRL** : create
+            UI -> CTRL : getCollaborators()
+
+            activate CTRL
+
+                CTRL -> Repositories : getInstance()
+                activate Repositories
+                    Repositories --> CTRL : repositories
+                deactivate Repositories
+
+                CTRL -> RepoInstance : getCollaboratorsRepository()
+
+                activate RepoInstance
+                    RepoInstance --> CTRL : collaboratorsRepository
+                deactivate RepoInstance
+
+                CTRL -> CollaboratorRepo : getCollaboratorsList()
+                activate CollaboratorRepo
+                    CollaboratorRepo --> CTRL : collaboratorsList
+                deactivate CollaboratorRepo
+
+                CTRL --> UI : collaborators
+            deactivate CTRL
+
+            UI --> ADM : Shows all the collaborators
+        deactivate UI
+
+        ADM -> UI : Selects one of the collaborators
+
+        activate UI
+
+            UI -> CTRL : setCollaboratorSelected(collaboratorSelected)
+
+            activate CTRL
+                CTRL --> UI : success
+            deactivate CTRL
+
+            UI --> ADM : Shows collaborator information and request confirmation
+        deactivate UI
+
+        ADM -> UI : Confirms it
+
+        activate UI
+            UI -> CTRL : getSkills()
+
+            activate CTRL
+
+                CTRL -> RepoInstance : getSkillsRepository()
+
+                activate RepoInstance
+                    RepoInstance --> CTRL : skillsRepository
+                deactivate RepoInstance
+
+                CTRL -> SkillRepo : getSkillsList()
+
+                activate SkillRepo
+                    SkillRepo --> CTRL : skillsList
+                deactivate SkillRepo
+
+                CTRL --> UI : skills
+            deactivate CTRL
+
+            UI --> ADM : Shows the skills available to assign
+        deactivate UI
+
+        ADM -> UI : Selects the skills which are going to be assigned
+
+        activate UI
+            UI -> CTRL : skillsToAssign
+
+            activate CTRL
+                CTRL -> CTRL : storeSkills(skillsToAssign)
+
+                activate CTRL
+                    CTRL --> CTRL : success
+                deactivate CTRL
+
+                CTRL --> UI : Success
+            deactivate CTRL
+
+            UI --> ADM : Shows them and request confirmation
+        deactivate UI
+
+        ADM -> UI : Confirms it
+
+        activate UI
+            UI -> CTRL : Confirms changes
+            
+            activate CTRL
+                loop as long as skillsToAssign still unassigned
+                    CTRL -> Collaborator : addSkill(skill)
+
+                    activate Collaborator
+                        Collaborator --> CTRL : Success
+                    deactivate Collaborator
+
+                end
+                CTRL --> UI : success
+            deactivate CTRL
+
+            UI --> ADM : Displays operation success
+        deactivate UI
+
+deactivate ADM
+
+@enduml

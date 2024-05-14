@@ -6,8 +6,8 @@ import pt.ipp.isep.dei.esoft.project.domain.Job;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class JobsRepositoryTest {
     @Test
@@ -49,6 +49,35 @@ public class JobsRepositoryTest {
 
         // Assert
         assertTrue(jobsList.isEmpty());
+    }
 
+    @Test
+    void ensureGetJobsReturnsAnImmutableList() {
+        // Arrange
+        JobsRepository jobsRepository = new JobsRepository();
+        Job job = new Job("Gardener");
+
+        // Act
+        jobsRepository.add(job);
+        List<Job> jobsList = jobsRepository.getJobsList();
+
+        // Assert
+        assertThrows(UnsupportedOperationException.class,
+                () -> jobsList.add(new Job("Bricklayer")));
+    }
+
+    @Test
+    void ensureRemovingJobFromListWorks() {
+        // Arrange
+        JobsRepository jobsRepository = new JobsRepository();
+        Job job = new Job("Gardener");
+
+        // Act
+        jobsRepository.add(job);
+        boolean removed = jobsRepository.remove(job);
+
+        // Assert
+        assertTrue(removed);
+        assertFalse(jobsRepository.getJobsList().contains(job));
     }
 }

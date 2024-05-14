@@ -2,6 +2,7 @@ package pt.ipp.isep.dei.esoft.project.application.controller;
 
 import pt.ipp.isep.dei.esoft.project.domain.Collaborator;
 import pt.ipp.isep.dei.esoft.project.domain.Job;
+import pt.ipp.isep.dei.esoft.project.domain.Skill;
 import pt.ipp.isep.dei.esoft.project.repository.*;
 
 import java.util.ArrayList;
@@ -15,6 +16,8 @@ public class RegistCollaboratorController {
     private JobsRepository jobsRepository;
     private Job job;
     private List<Job> jobSelected;
+    private List<Skill> skillsToAssign;
+
     public RegistCollaboratorController() {
         getJobsRepository();
         getCollaboratorsRepository();
@@ -60,10 +63,13 @@ public class RegistCollaboratorController {
     public void storeJob(List<Skill> skillsToAssign){
         this.skillsToAssign = skillsToAssign;
     }
+    /*
     public void addSkills(){
         for (Skill skill:
                 skillsToAssign) {
             collaboratorSelected.addSkill(skill);
         }
     }
+
+     */
 }

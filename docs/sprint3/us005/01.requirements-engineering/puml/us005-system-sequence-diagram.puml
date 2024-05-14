@@ -1,0 +1,41 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD)
+
+autonumber
+
+actor "Human Resources\nManager" as HRM
+participant ":System" as System
+
+activate HRM
+
+    HRM -> System : asks to generate a team proposal
+    activate System
+
+        System --> HRM : requests which is the minimum and\n maximum number of team collaborators
+    deactivate System
+
+    HRM -> System : types the minimum and maximum number of\n team collaborators
+    activate System
+
+        System --> HRM : requests to selects the skills needed
+    deactivate System
+
+    HRM -> System : selects the skills
+    activate System
+
+
+        System --> HRM : shows and aks to confirm all the data
+    deactivate System
+
+    HRM -> System : confirms all the data
+    activate System
+
+        System --> HRM : displays operation success
+    deactivate System
+
+
+@enduml
