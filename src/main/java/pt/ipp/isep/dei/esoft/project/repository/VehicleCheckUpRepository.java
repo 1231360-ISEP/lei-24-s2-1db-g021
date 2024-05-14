@@ -20,7 +20,7 @@ public class VehicleCheckUpRepository {
 
         if (validateVehicleCheckUp(vehicleCheckUp)) {
             newVehicleCheckUp = Optional.of(vehicleCheckUp.clone());
-            operationSuccess = vehiclesCheckUpList.add(vehicleCheckUp.get());
+            operationSuccess = vehiclesCheckUpList.add(newVehicleCheckUp.get());
         }
 
         if (!operationSuccess) {

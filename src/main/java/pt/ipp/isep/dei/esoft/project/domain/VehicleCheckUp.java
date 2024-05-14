@@ -32,6 +32,12 @@ public class VehicleCheckUp {
         return kms;
     }
 
+    /**
+     * This method set the kilometers of the vehicle check-up
+     * if the kilometers provided are negative, its returns false
+     * @param kms the kilometers
+     * @return a boolean value indicating the success of it
+     */
     public boolean setKms(float kms) {
         if(kmsAreNegative(kms)){
             return false;
@@ -80,5 +86,9 @@ public class VehicleCheckUp {
      */
     private static boolean kmsAreNegative(float kms){
         return kms < 0;
+    }
+
+    public VehicleCheckUp clone() {
+        return new VehicleCheckUp(this.date, this.place, this.kms, this.vehicle);
     }
 }
