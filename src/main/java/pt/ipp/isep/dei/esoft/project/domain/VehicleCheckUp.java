@@ -6,6 +6,11 @@ public class VehicleCheckUp {
     private Date date;
     private Address place;
     private float kms;
+
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
     Vehicle vehicle;
 
     public Date getDate() {

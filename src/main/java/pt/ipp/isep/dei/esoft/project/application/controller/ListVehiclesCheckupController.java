@@ -1,7 +1,9 @@
 package pt.ipp.isep.dei.esoft.project.application.controller;
 
 import pt.ipp.isep.dei.esoft.project.domain.Vehicle;
+import pt.ipp.isep.dei.esoft.project.domain.VehicleCheckUp;
 import pt.ipp.isep.dei.esoft.project.repository.Repositories;
+import pt.ipp.isep.dei.esoft.project.repository.VehicleCheckUpRepository;
 import pt.ipp.isep.dei.esoft.project.repository.VehiclesRepository;
 
 import java.util.ArrayList;
@@ -9,20 +11,24 @@ import java.util.List;
 
 public class ListVehiclesCheckupController {
     private VehiclesRepository vehiclesRepository;
+    private VehicleCheckUpRepository vehiclesCheckUpsRepository;
 
     /**
-     * This constructor instantiates it with the default vehicles repository.
+     * This constructor instantiates it with the default vehicle and vehicles check-ups repositories.
      */
     public ListVehiclesCheckupController() {
         getVehiclesRepository();
+        getVehiclesCheckUpsRepository();
     }
 
     /**
-     * This constructor instantiates it with the custom vehicles repository.
+     * This constructor instantiates it with the custom vehicles and vehicles check-ups repositories.
      * @param vehiclesRepository the custom vehicle repository
+     * @param vehicleCheckUpRepository the custom vehicles check-ups repository
      */
-    public ListVehiclesCheckupController(VehiclesRepository vehiclesRepository) {
+    public ListVehiclesCheckupController(VehiclesRepository vehiclesRepository, VehicleCheckUpRepository vehicleCheckUpRepository) {
         this.vehiclesRepository = vehiclesRepository;
+        this.vehiclesCheckUpsRepository = vehicleCheckUpRepository;
     }
     private VehiclesRepository getVehiclesRepository(){
         if (vehiclesRepository == null) {
@@ -30,6 +36,13 @@ public class ListVehiclesCheckupController {
             vehiclesRepository = repositories.getVehiclesRepository();
         }
         return vehiclesRepository;
+    }
+    private VehicleCheckUpRepository getVehiclesCheckUpsRepository(){
+        if (vehiclesCheckUpsRepository == null) {
+            Repositories repositories = Repositories.getInstance();
+            vehiclesCheckUpsRepository = repositories.getVehicleCheckUpRepository();
+        }
+        return vehiclesCheckUpsRepository;
     }
 
     /**
@@ -74,5 +87,17 @@ public class ListVehiclesCheckupController {
             return true;
         }
         return false;
+    }
+
+    private List<VehicleCheckUp> getVehicleCheckUps(Vehicle vehicle){
+        List<VehicleCheckUp> vehicleCheckUps = new ArrayList<VehicleCheckUp>();
+        List<VehicleCheckUp> vehiclesCheckUpsList = vehiclesCheckUpsRepository.getVehiclesCheckUpsList();
+        for (VehicleCheckUp vehCheckUp:
+                vehiclesCheckUpsList) {
+            if(vehCheckUp.getVehicle() == vehicle){
+                vehicleCheckUps.add(vehCheckUp);
+            }
+        }
+        return  vehicleCheckUps;
     }
 }
