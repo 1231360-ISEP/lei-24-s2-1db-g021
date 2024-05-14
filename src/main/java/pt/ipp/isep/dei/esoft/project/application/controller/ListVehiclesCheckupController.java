@@ -10,10 +10,17 @@ import java.util.List;
 public class ListVehiclesCheckupController {
     private VehiclesRepository vehiclesRepository;
 
+    /**
+     * This constructor instantiates it with the default vehicles repository.
+     */
     public ListVehiclesCheckupController() {
         getVehiclesRepository();
     }
 
+    /**
+     * This constructor instantiates it with the custom vehicles repository.
+     * @param vehiclesRepository the custom vehicle repository
+     */
     public ListVehiclesCheckupController(VehiclesRepository vehiclesRepository) {
         this.vehiclesRepository = vehiclesRepository;
     }
@@ -25,12 +32,16 @@ public class ListVehiclesCheckupController {
         return vehiclesRepository;
     }
 
+    /**
+     * This method gets the vehicles needing or almost needing a check-up
+     * @return a list containing the vehicles needing or almost needing a check-up
+     */
     public List<Vehicle> getVehiclesNeedingCheckup(){
         List<Vehicle> vehicles = vehiclesRepository.getVehiclesList();
         List<Vehicle> vehiclesNeedingIt = new ArrayList<Vehicle>();
         for (Vehicle vehicle:
              vehicles) {
-                if(isVehicleCloseToExceedCheckup(vehicle)){
+                if(isVehicleNeedingOrAlmostCheckup(vehicle)){
                     vehiclesNeedingIt.add(vehicle);
                 }
         }
