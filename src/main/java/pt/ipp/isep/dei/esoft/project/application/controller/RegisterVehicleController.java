@@ -17,16 +17,16 @@ public class RegisterVehicleController {
 
     public RegisterVehicleController() {
         getVehiclesRepository();
-        //getPlateCertificationsRepository();
+        getPlateCertificationsRepository();
     }
 
-    /*private PlateCertificationsRepository getPlateCertificationsRepository() {
+    private PlateCertificationsRepository getPlateCertificationsRepository() {
         if (plateCertificationsRepository == null) {
             Repositories repositories = Repositories.getInstance();
             plateCertificationsRepository = repositories.getPlateCertificationsRepository();
         }
         return plateCertificationsRepository;
-    }*/
+    }
 
     public RegisterVehicleController(VehiclesRepository vehiclesRepository, PlateCertificationsRepository plateCertificationsRepository) {
         this.vehiclesRepository = vehiclesRepository;
