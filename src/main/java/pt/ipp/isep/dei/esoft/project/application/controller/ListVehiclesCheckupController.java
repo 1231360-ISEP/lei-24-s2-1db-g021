@@ -59,7 +59,7 @@ public class ListVehiclesCheckupController {
             maintenanceGoal += maintenance;
         }
         maintenanceGoal -= maintenance;
-        return currentKm > maintenance;
+        return currentKm > maintenanceGoal;
     }
     private boolean isVehicleCloseToExceedCheckup(Vehicle vehicle){
         double maintenance = vehicle.getMaintenance();
