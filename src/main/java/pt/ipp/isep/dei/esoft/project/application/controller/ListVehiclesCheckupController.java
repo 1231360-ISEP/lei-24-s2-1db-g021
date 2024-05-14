@@ -46,7 +46,7 @@ public class ListVehiclesCheckupController {
 
     /**
      * This method gets the vehicles needing or almost needing a check-up
-     * @return a list containing the vehicles needing or almost needing a check-up
+     * @return a Map containing the vehicles needing or almost needing a check-up
      */
     public Map<Vehicle, VehicleCheckUp[]> getVehiclesNeedingCheckup(){
         List<Vehicle> vehicles = vehiclesRepository.getVehiclesList();
