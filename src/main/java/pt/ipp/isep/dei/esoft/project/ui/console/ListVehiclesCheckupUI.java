@@ -19,6 +19,14 @@ public class ListVehiclesCheckupUI implements Runnable{
     public ListVehiclesCheckupUI(){
         controller = new ListVehiclesCheckupController();
     }
+
+    private String convertStrArrToFormattedLine(String[] strArr, String startingStr){
+        StringBuilder str = new StringBuilder(startingStr);
+        for (String s : strArr) {
+            str.append(String.format("%15s", s));
+        }
+        return str.toString();
+    }
     @Override
     public void run() {
         Map<Vehicle, VehicleCheckUp[]> vehNeedingIt = controller.getVehiclesNeedingCheckup();
@@ -29,10 +37,11 @@ public class ListVehiclesCheckupUI implements Runnable{
             Vehicle veh = entry.getKey();
             VehicleCheckUp[] checkUps = entry.getValue();
             PlateCertification vehPlateCert = veh.getPlateCertification();
-            String[] entryToStr = new String[]{vehPlateCert.getPlate(), vehPlateCert.getBrand(), vehPlateCert.getModel(), String.valueOf(veh.getCurrentKm()), String.valueOf(veh.getMaintenance()), String.valueOf(checkUps[0].getKms()), String.valueOf(checkUps[1].getKms())};
-            data.add(String.join("\t", entryToStr));
+            String[] entryToStrArr = new String[]{vehPlateCert.getPlate(), vehPlateCert.getBrand(), vehPlateCert.getModel(), String.valueOf(veh.getCurrentKm()), String.valueOf(veh.getMaintenance()), String.valueOf(checkUps[0].getKms()), String.valueOf(checkUps[1].getKms())};
+
+            data.add(convertStrArrToFormattedLine(entryToStrArr, ""));
         }
         String[] header = new String[]{"Plate","Brand","Model","Curr.Kms", "Freq", "Last", "Next"};
-        Utils.showList(data, String.join("\t",header));
+        Utils.showList(data, convertStrArrToFormattedLine(header, "      "));
     }
 }

@@ -53,7 +53,7 @@ public class VehicleCheckUpRepository {
         List<VehicleCheckUp> vehicleCheckUps = new ArrayList<>();
         for (VehicleCheckUp vehCheckUp:
                 vehiclesCheckUpList) {
-            if(vehCheckUp.getVehicle() == vehicle){
+            if(vehCheckUp.getVehicle().equals(vehicle)){
                 vehicleCheckUps.add(vehCheckUp);
             }
         }
