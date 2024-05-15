@@ -12,9 +12,9 @@ public class Bootstrap implements Runnable {
 
     //Add some task categories to the repository as bootstrap
     public void run() {
-        addTaskCategories();
+        /*addTaskCategories();
         addOrganization();
-        addUsers();
+        addUsers();*/
         addVehicles(true);
     }
 
@@ -37,7 +37,7 @@ public class Bootstrap implements Runnable {
         VehiclesRepository vehiclesRepository = Repositories.getInstance().getVehiclesRepository();
         Date d1 = new GregorianCalendar(2005, Calendar.FEBRUARY, 28).getTime();
         PlateCertification p1 = new PlateCertification("Ford", "Fiesta", "Car", 100000, 100000, d1, "12-AB-34");
-        Vehicle v1 = new Vehicle(1102, d1,200, p1);
+        Vehicle v1 = new Vehicle(1149, d1,200, p1);
         Date d2 = new GregorianCalendar(2006, Calendar.JUNE, 7).getTime();
         PlateCertification p2 = new PlateCertification("Renault", "Twingo", "Car", 120000, 120009, d2, "12-AC-34");
         Vehicle v2 = new Vehicle(1400, d2,1000, p2);
@@ -52,6 +52,9 @@ public class Bootstrap implements Runnable {
             VehicleCheckUp v1c1 = new VehicleCheckUp(new GregorianCalendar(2023, Calendar.JUNE,15).getTime(), new Address(731, new ZipCode(4500,034)),675,v1);
             VehicleCheckUp v1c2 = new VehicleCheckUp(new GregorianCalendar(2024, Calendar.JANUARY,21).getTime(), new Address(731, new ZipCode(4500,034)),893,v1);
             VehicleCheckUp v1c3 = new VehicleCheckUp(new GregorianCalendar(2024, Calendar.DECEMBER,16).getTime(), new Address(731, new ZipCode(4500,034)),1250,v1);
+            vehicleCheckUpRepository.add(v1c1);
+            vehicleCheckUpRepository.add(v1c2);
+            vehicleCheckUpRepository.add(v1c3);
         }
     }
     private void addTaskCategories() {
