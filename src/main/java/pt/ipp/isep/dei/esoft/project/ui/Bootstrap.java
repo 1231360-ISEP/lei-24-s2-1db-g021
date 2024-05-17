@@ -33,6 +33,17 @@ public class Bootstrap implements Runnable {
         collaboratorsRepository.add(collaborator);
     }
 
+    private void addSkills(){
+        SkillsRepository skillsRepository = Repositories.getInstance().getSkillsRepository();
+
+        Skill s1 = new Skill("Carta Carro");
+        Skill s2 = new Skill("Carta Mota");
+        Skill s3 = new Skill("Carta Barco");
+
+        skillsRepository.add(s1);
+        skillsRepository.add(s2);
+        skillsRepository.add(s3);
+    }
     private void addVehicles(boolean addCheckupstoo){
         VehiclesRepository vehiclesRepository = Repositories.getInstance().getVehiclesRepository();
         Date d1 = new GregorianCalendar(2005, Calendar.FEBRUARY, 28).getTime();
